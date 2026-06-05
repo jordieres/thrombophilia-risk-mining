@@ -1,0 +1,86 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: CLI (prompt args)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/cli.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "args": [
+        "--data",
+        "${input:dataFile}",
+        "--experiment",
+        "${input:experiment}",
+        "--permutation-max-samples",
+        "${input:permutationMaxSamples}",
+        "--contrast-max-samples",
+        "${input:contrastMaxSamples}",
+        "--clustering-max-samples",
+        "${input:clusteringMaxSamples}"
+      ],
+      "justMyCode": true
+    },
+    {
+      "name": "Python: CLI (all experiments)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/cli.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "args": [
+        "--data",
+        "${input:dataFile}",
+        "--experiment",
+        "all",
+        "--permutation-max-samples",
+        "${input:permutationMaxSamples}",
+        "--contrast-max-samples",
+        "${input:contrastMaxSamples}",
+        "--clustering-max-samples",
+        "${input:clusteringMaxSamples}"
+      ],
+      "justMyCode": true
+    }
+  ],
+  "inputs": [
+    {
+      "id": "dataFile",
+      "type": "promptString",
+      "description": "Ruta al dataset de entrada",
+      "default": "data/dataset.parquet"
+    },
+    {
+      "id": "experiment",
+      "type": "pickString",
+      "description": "Experimento a ejecutar",
+      "options": [
+        "permutation",
+        "contrast",
+        "clustering",
+        "bayesian",
+        "all"
+      ],
+      "default": "permutation"
+    },
+    {
+      "id": "permutationMaxSamples",
+      "type": "promptString",
+      "description": "Max filas para permutation importance",
+      "default": "1000"
+    },
+    {
+      "id": "contrastMaxSamples",
+      "type": "promptString",
+      "description": "Max filas para contrast mining",
+      "default": "300"
+    },
+    {
+      "id": "clusteringMaxSamples",
+      "type": "promptString",
+      "description": "Max filas para clustering",
+      "default": "1000"
+    }
+  ]
+}
