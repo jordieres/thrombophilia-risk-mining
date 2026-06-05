@@ -39,8 +39,26 @@ python src/cli.py --data data/dataset.xlsx --experiment contrast
 
 # Execute all four analytical experiments sequentially using Parquet
 python src/cli.py --data data/dataset.parquet --experiment all
-
 ```
+
+### Multi-line Shell Commands
+
+When a command is split across multiple lines in Bash, each line must end with ``\`` except the last one. Otherwise, the shell will try to execute each flag as a separate command and will report ``command not found``.
+
+Correct example:
+
+```bash
+poetry run python src/cli.py   --data data/patD.parquet   --experiment all   --permutation-max-samples 2000   --permutation-max-splits 2   --permutation-repeats 1   --permutation-estimators 10   --contrast-max-samples 300   --clustering-max-samples 1000
+```
+
+Incorrect example:
+
+```bash
+poetry run python src/cli.py --data data/patD.parquet --experiment all
+--permutation-max-samples 2000
+```
+
+In the incorrect form above, the first line runs correctly, but the next line is treated as a new shell command.
 
 ## Output Artifacts
 Every completed experiment generates two complementary output formats:
@@ -48,5 +66,3 @@ Every completed experiment generates two complementary output formats:
 * Publication-Ready LaTeX Tables: Formatted structures utilizing the booktabs standard to summarize stable performance parameters.
 
 * Interactive Plotly Visualizations: Dynamic standalone HTML charts providing deep analytical cross-examinations of clinical boundaries.
-
-

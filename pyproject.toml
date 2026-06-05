@@ -33,6 +33,7 @@ pandas-stubs = "^2.2.2.240909"
 [tool.poetry.group.docs.dependencies]
 sphinx = "^8.0.2"
 sphinx-autodoc-typehints = "^2.3.0"
+furo = "^2024.8.6"
 
 [tool.poetry.scripts]
 thrombomining = "src.cli:main"

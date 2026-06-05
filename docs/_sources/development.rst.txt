@@ -32,7 +32,7 @@ Generate the HTML documentation locally with:
 
 .. code-block:: bash
 
-   poetry run sphinx-build -b html docs docs/_build/html
+   poetry run sphinx-build -d docs_source/.doctrees -b html docs_source docs
 
 Project structure
 -----------------
@@ -40,8 +40,11 @@ Project structure
 ``src/``
    Application source code, preprocessing utilities, and experiment modules.
 
+``docs_source/``
+   Editable Sphinx configuration and reStructuredText source files.
+
 ``docs/``
-   Sphinx configuration and reStructuredText source files.
+   Published HTML documentation generated from ``docs_source/``.
 
 ``.vscode/launch.json``
    Debugger configuration for interactive CLI runs.

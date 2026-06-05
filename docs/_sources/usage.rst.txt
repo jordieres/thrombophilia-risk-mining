@@ -18,7 +18,48 @@ clinical datasets.
 
 .. code-block:: bash
 
-   poetry run python src/cli.py      --data data/patD.parquet      --experiment permutation      --permutation-max-samples 800      --permutation-max-splits 2      --permutation-repeats 1      --permutation-estimators 10
+   poetry run python src/cli.py \
+     --data data/patD.parquet \
+     --experiment permutation \
+     --permutation-max-samples 800 \
+     --permutation-max-splits 2 \
+     --permutation-repeats 1 \
+     --permutation-estimators 10
+
+Multi-line shell commands
+-------------------------
+
+When writing a Bash command across multiple lines, every continued line must be
+escaped with ``\``. Without that escape character, Bash treats the next line as
+a brand-new command.
+
+Correct multi-line example
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+   poetry run python src/cli.py \
+     --data data/patD.parquet \
+     --experiment all \
+     --permutation-max-samples 2000 \
+     --permutation-max-splits 2 \
+     --permutation-repeats 1 \
+     --permutation-estimators 10 \
+     --contrast-max-samples 300 \
+     --clustering-max-samples 1000
+
+Incorrect multi-line example
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: bash
+
+   poetry run python src/cli.py --data data/patD.parquet --experiment all
+   --permutation-max-samples 2000
+   --permutation-max-splits 2
+
+In the incorrect example, the first line runs the CLI and the following lines
+are interpreted by the shell as independent commands, which leads to
+``command not found`` messages.
 
 Available configuration groups
 ------------------------------
