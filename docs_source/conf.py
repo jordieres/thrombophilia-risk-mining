@@ -46,3 +46,5 @@ intersphinx_mapping = {
 templates_path = ["_templates"]
 exclude_patterns = ["Thumbs.db", ".DS_Store"]
 html_theme = "furo"
+
+html_extra_path = [".nojekyll"]
