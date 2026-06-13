@@ -1,0 +1,24 @@
+@startuml ComponentsDiagram
+interface "Data Ingestion API" as I1
+interface "Experiment Driver API" as I2
+
+component "Data Processing Component" as CompData {
+  [ClinicalDataProcessor] as Processor
+}
+
+component "CLI Orchestration Core" as CompCLI {
+  [cli.py Execution Engine] as MainCLI
+}
+
+component "Mathematical Modeling Suite" as CompModels {
+  [XGBoost Pipeline] as ModXG
+  [FP-Growth Mining Node] as ModFP
+  [pgmpy Causal Solver] as ModBayes
+}
+
+I1 - Processor
+MainCLI ..> I1 : Uses
+MainCLI -- I2
+CompModels ..> I2 : Realizes
+ModXG ..> Processor : Ingests Frames
+@endum

@@ -1,0 +1,30 @@
+@startuml SequenceDiagram
+autonumber
+actor "Investigator" as User
+participant "CLI Engine (cli.py)" as CLI
+participant "DataProcessor" as Proc
+participant "Registry Base" as Exp
+database "Storage System" as Disk
+
+User -> CLI : main() [Arguments passed]
+activate CLI
+CLI -> Proc : new(file_path)
+activate Proc
+CLI -> Proc : load_data()
+Proc -> Disk : Read Parquet / Sheet matrix
+Disk --> Proc : Return raw bytes
+Proc --> CLI : Return raw pd.DataFrame
+CLI -> Proc : transform_pipeline()
+Proc --> CLI : Return cleaned pd.DataFrame
+deactivate Proc
+
+CLI -> Exp : run(df, config)
+activate Exp
+Exp -> Exp : Compute analytical engine
+Exp --> CLI : Yield artifacts (LaTeX string, Plotly structure)
+deactivate Exp
+
+CLI -> Disk : save_interactive_plot(path)
+CLI --> User : Print LaTeX tables to screen
+deactivate CLI
+@endum

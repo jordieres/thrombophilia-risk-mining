@@ -1,0 +1,25 @@
+@startuml UseCaseDiagram
+left to right direction
+actor "Lead Investigator" as User
+actor "Clinical Data Ingestion Layer" as System
+
+rectangle "Thrombophilia Risk Mining Suite (thrombomining)" {
+  usecase "Ingest Clinical Dataset\n(Parquet / XLSX / CSV)" as UC1
+  usecase "Execute Permutation Importance\n(Isolate Demographics via XGBoost)" as UC2
+  usecase "Perform Sex-Stratified Contrast Mining\n(FP-Growth Rule Association)" as UC3
+  usecase "Generate Phenotypic Groupings\n(t-SNE & Hierarchical Clusters)" as UC4
+  usecase "Evaluate Bayesian Causal Networks\n(Joint Probability Modeling)" as UC5
+  usecase "Export Research Artifacts\n(Interactive Plots & LaTeX Tables)" as UC6
+}
+
+User --> UC1
+User --> UC2
+User --> UC3
+User --> UC4
+User --> UC5
+UC1 <-- System
+UC2 ..> UC6 : <<include>>
+UC3 ..> UC6 : <<include>>
+UC4 ..> UC6 : <<include>>
+UC5 ..> UC6 : <<include>>
+@endum

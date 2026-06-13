@@ -1,0 +1,24 @@
+@startuml PackagesDiagram
+package "Thrombophilia Application Architecture" {
+  
+  package "src.core_pipeline" as Core {
+    [cli.py] as CLI
+    [data_processor.py] as Ingestion
+  }
+  
+  package "src.experimental_modules" as Research {
+    [experiment_base.py] as Base
+    [exp_permutation_importance.py] as Perm
+    [exp_contrast_mining.py] as Contrast
+    [exp_unsupervised_clustering.py] as Cluster
+    [exp_bayesian_networks.py] as Bayes
+  }
+}
+
+CLI --> Ingestion
+CLI --> Research
+Perm --|> Base
+Contrast --|> Base
+Cluster --|> Base
+Bayes --|> Base
+@endum

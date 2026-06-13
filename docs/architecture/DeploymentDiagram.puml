@@ -1,0 +1,20 @@
+@startuml DeploymentDiagram
+node "Linux Enterprise Compute Node (apiivm01)" as Server {
+  node "Poetry Executable Virtual Environment (vpy-ms)" as VirtualEnv {
+    artifact "thrombophilia-risk-mining Package" as Pack
+    component "Python Runtime Engine >= 3.10" as Py
+    component "XGBoost Shared Libraries (.so)" as Libs
+  }
+  file "High-Performance Data Ingestion Source (patD.parquet)" as DataFile
+}
+
+node "Local Administrator Terminal Console" as Client {
+  [Standard Terminal CLI Output] as Terminal
+}
+
+Client <=> Server : Secure Shell Protocol (SSH)
+Pack --> Py : Interpreted on
+Py --> Libs : Offloads tensor math
+Py <-- DataFile : PyArrow vectorized reads
+Py --> Terminal : Standard out print
+@endum

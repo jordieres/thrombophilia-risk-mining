@@ -1,0 +1,30 @@
+@startuml TemporalDiagram
+robust "CLI Execution Thread" as CLI
+robust "Processor Ingestion State" as PROC
+robust "Computational Modeling Engine" as COMP
+
+@0
+CLI is Idle
+PROC is Idle
+COMP is Idle
+
+@10
+CLI is Parsing
+PROC is Ingesting
+COMP is Idle
+
+@30
+CLI is Waiting
+PROC is Normalizing
+COMP is Idle
+
+@50
+CLI is Executing
+PROC is Idle
+COMP is Training_XGBoost_or_FP_Tree
+
+@90
+CLI is Exporting
+PROC is Idle
+COMP is Idle
+@endum

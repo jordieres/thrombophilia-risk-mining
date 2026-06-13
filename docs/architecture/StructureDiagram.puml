@@ -1,0 +1,17 @@
+@startuml StructureDiagram
+component "BayesianNetworkExperiment" {
+  port "Data Input" as P1
+  port "Artifact Export" as P2
+  
+  rectangle "Internal Pipeline Structure" {
+    [DataFrame Mapper] as Mapper
+    [MaximumLikelihoodEstimator] as Estimator
+    [Crosstab Generator] as Generator
+  }
+  
+  P1 --> Mapper
+  Mapper --> Estimator : Structured arrays
+  Estimator --> Generator : Conditional Tables
+  Generator --> P2 : LaTeX payload
+}
+@endum

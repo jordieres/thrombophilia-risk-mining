@@ -1,0 +1,18 @@
+@startuml ProfilesDiagram
+package "Thrombophilia Mining UML Profile Stereotypes" {
+  
+  class "<<Metaclass>> Class" as MetaClass
+  
+  class "<<ClinicalFeature>>" as StereotypeFeature {
+    + missingnessAllowed : Boolean
+    + clinicalStandardUnit : String
+  }
+  
+  class "<<PredictiveTarget>>" as StereotypeTarget {
+    + targetedExclusionClass : String
+  }
+  
+  MetaClass <|-- StereotypeFeature
+  MetaClass <|-- StereotypeTarget
+}
+@endum

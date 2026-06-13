@@ -1,0 +1,12 @@
+@startuml CommunicationDiagram
+object "cli: Main Entry" as CLI
+object "processor: ClinicalDataProcessor" as Proc
+object "experiment: PermutationImportance" as Exp
+object "plotlyEngine: go.Figure" as Plot
+
+CLI -> Proc : 1: load_data()\n2: transform_pipeline()
+CLI -> Exp : 3: run(processed_df, config)
+Exp -> Exp : 4: Train Stratified XGBoost Loop
+Exp -> Plot : 5: Generate metrics matrix
+CLI -> Exp : 6: save_interactive_plot(output_path)
+@endum

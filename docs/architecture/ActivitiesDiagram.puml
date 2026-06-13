@@ -1,0 +1,31 @@
+@startuml ActivitiesDiagram
+start
+:Invoke execution via CLI command entry point;
+:Parse arguments and runtime threshold boundaries;
+:Initialize ClinicalDataProcessor;
+if (Validate file format signature?) then (.parquet / .pq)
+  :Read file via high-performance pyarrow engine;
+else ( .xlsx / .xls / .csv)
+  :Read file via traditional pandas fallback engine;
+endif
+:Execute transform_pipeline();
+:Apply discretization and data imputation layers;
+:Identify target execution registry modules;
+fork
+  :Run Permutation Importance;
+  :Train cross-validated XGBoost model;
+fork again
+  :Run Contrast Mining;
+  :Build transactional prefix frequent pattern tree;
+fork again
+  :Run Unsupervised Clustering;
+  :Apply Agglomerative grouping & t-SNE layout;
+fork again
+  :Run Bayesian Networks;
+  :Fit Maximum Likelihood Estimator on causal graphs;
+end fork
+:Consolidate export artifacts;
+:Write standalone interactive HTML charts;
+:Print Booktabs LaTeX formatting matrices to standard output;
+stop
+@endum

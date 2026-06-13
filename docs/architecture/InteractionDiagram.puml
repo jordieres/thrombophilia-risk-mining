@@ -1,0 +1,14 @@
+@startuml InteractionDiagram
+state "Ingestion General Framework" as S1
+state "Analytical Matrix Processing" as S2
+state "Publication Export Interlocking" as S3
+
+[*] --> S1
+S1 --> S2 : Data Frame Ready
+state S2 {
+  [*] --> XGBoost_Track
+  [*] --> FPGrowth_Track
+}
+S2 --> S3 : Extraction Complete
+S3 --> [*]
+@endum

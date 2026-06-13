@@ -1,0 +1,27 @@
+@startuml ObjectsDiagram
+object "processorInstance : ClinicalDataProcessor" as p1 {
+  file_path = "data/patD.parquet"
+  raw_data = [pandas.DataFrame: 22874 rows]
+  processed_data = [pandas.DataFrame: 22874 rows]
+}
+
+object "runConfig : Dict" as c1 {
+  permutation_max_samples = 2000
+  permutation_max_splits = 2
+  contrast_max_samples = 300
+  clustering_max_samples = 1000
+}
+
+object "studyOne : PermutationImportanceExperiment" as e1 {
+  name = "Permutation Importance Without Demographics"
+  latex_table = "\\begin{table}..."
+}
+
+object "studyFour : BayesianNetworkExperiment" as e4 {
+  name = "Bayesian Network Probabilistic Modeling"
+}
+
+p1 ..> e1 : Injects processed matrices
+c1 ..> e1 : Injects thresholds
+c1 ..> e4 : Injects thresholds
+@endum

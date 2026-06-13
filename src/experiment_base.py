@@ -6,58 +6,51 @@ stores a LaTeX representation of the results, and optionally stores an
 interactive Plotly figure.
 """
 
-from __future__ import annotations
-
 from abc import ABC, abstractmethod
-from os import PathLike
-from typing import Final
-
 import pandas as pd
-from plotly.basedatatypes import BaseFigure
-
+from typing import Optional, Dict, Any
+import plotly.graph_objects as go
 
 class BaseExperiment(ABC):
-    """Abstract base class for thrombophilia analytical experiments.
+    """Abstract baseline class defining the life-cycle contract for all experimental modules.
 
-    Attributes:
-        name: Human-readable experiment name used in CLI output and file names.
-        latex_table: LaTeX representation of the latest experiment results.
-        plotly_figure: Optional interactive figure created during execution.
+    Every distinct research study must inherit from this structure, implementing the required
+    execution contract to ensure seamless integration into the CLI pipeline.
     """
 
-    EMPTY_LATEX: Final[str] = ""
-
     def __init__(self, name: str) -> None:
-        """Initialize the common experiment state.
+        """Initializes the abstract experiment parameters.
 
         Args:
-            name: Descriptive name shown in the CLI and output artifacts.
+            name (str): Unique descriptive name for the underlying analytical module.
         """
         self.name: str = name
-        self.latex_table: str = self.EMPTY_LATEX
-        self.plotly_figure: BaseFigure | None = None
+        self.latex_table: str = ""
+        self.plotly_figure: Optional[go.Figure] = None
 
     @abstractmethod
-    def run(self, data: pd.DataFrame) -> None:
-        """Execute the experiment and populate output artifacts.
+    def run(self, data: pd.DataFrame, config: Dict[str, Any]) -> None:
+        """Executes the target machine learning or statistical modeling pipeline.
 
         Args:
-            data: Preprocessed clinical dataset produced by the shared pipeline.
+            data (pd.DataFrame): Preprocessed clinical data matrix.
+            config (Dict[str, Any]): Dynamic execution limits passed down from the command line.
         """
+        pass
 
     def export_latex(self) -> str:
-        """Return the LaTeX representation produced by the last run.
+        """Returns the formatted production-grade LaTeX table representing results.
 
         Returns:
-            LaTeX table content formatted for inclusion in reports.
+            str: Booktabs styled LaTeX tabular string.
         """
         return self.latex_table
 
-    def save_interactive_plot(self, output_path: str | PathLike[str]) -> None:
-        """Persist the interactive Plotly figure as a standalone HTML file.
+    def save_interactive_plot(self, output_path: str) -> None:
+        """Writes the optimized internal interactive Plotly figure onto disk as raw standalone HTML.
 
         Args:
-            output_path: Destination path for the generated HTML artifact.
+            output_path (str): Target destination layout on the local storage file system.
         """
-        if self.plotly_figure is not None:
-            self.plotly_figure.write_html(str(output_path))
+        if self.plotly_figure:
+            self.plotly_figure.write_html(output_path)

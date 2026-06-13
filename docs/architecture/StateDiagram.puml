@@ -1,0 +1,15 @@
+@startuml StateDiagram
+[*] --> Instantiated
+Instantiated --> ConfigurationLoaded : Config dict assigned
+ConfigurationLoaded --> ExecutingPipeline : run() triggered
+state ExecutingPipeline {
+  [*] --> IngestingFrames
+  IngestingFrames --> ModelingGraphs : Apply ML algorithms
+  ModelingGraphs --> BuildingArtifacts : Populate structures
+}
+ExecutingPipeline --> CompletedSuccessfully : Computation completed
+ExecutingPipeline --> ExecutionFailed : Exception raised
+CompletedSuccessfully --> FileWritten : save_interactive_plot()
+FileWritten --> [*]
+ExecutionFailed --> [*]
+@endum

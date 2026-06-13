@@ -1,0 +1,41 @@
+@startuml ClassesDiagram
+abstract class BaseExperiment {
+  + name : str
+  + latex_table : str
+  + plotly_figure : Optional[go.Figure]
+  + {abstract} run(data : pd.DataFrame, config : Dict[str, Any]) : void
+  + export_latex() : str
+  + save_interactive_plot(output_path : str) : void
+}
+
+class PermutationImportanceExperiment {
+  + run(data : pd.DataFrame, config : Dict[str, Any]) : void
+}
+
+class ContrastPatternMiningExperiment {
+  + run(data : pd.DataFrame, config : Dict[str, Any]) : void
+}
+
+class UnsupervisedClusteringExperiment {
+  + run(data : pd.DataFrame, config : Dict[str, Any]) : void
+}
+
+class BayesianNetworkExperiment {
+  + run(data : pd.DataFrame, config : Dict[str, Any]) : void
+}
+
+class ClinicalDataProcessor {
+  + file_path : str
+  + raw_data : Optional[pd.DataFrame]
+  + processed_data : Optional[pd.DataFrame]
+  + load_data() : pd.DataFrame
+  + transform_pipeline() : pd.DataFrame
+}
+
+BaseExperiment <|-- PermutationImportanceExperiment
+BaseExperiment <|-- ContrastPatternMiningExperiment
+BaseExperiment <|-- UnsupervisedClusteringExperiment
+BaseExperiment <|-- BayesianNetworkExperiment
+
+ClinicalDataProcessor ..> BaseExperiment : Supplies DataFrames
+@endum
