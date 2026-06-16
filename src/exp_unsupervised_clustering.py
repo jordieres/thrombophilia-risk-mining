@@ -55,7 +55,7 @@ class UnsupervisedClusteringExperiment(BaseExperiment):
 
         # Set perplexity dynamically relative to size metrics to safeguard execution pipelines
         perp_val: float = max(1.0, min(30.0, float(len(X_scaled) - 1) / 3.0))
-        tsne: TSNE = TSNE(n_components=2, random_state=42, perplexity=perp_val, n_iter=500)
+        tsne: TSNE = TSNE(n_components=2, random_state=42, perplexity=perp_val, max_iter=500)
         embeddings: np.ndarray = tsne.fit_transform(X_scaled)
 
         plot_df: pd.DataFrame = pd.DataFrame({

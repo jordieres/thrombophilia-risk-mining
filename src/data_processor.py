@@ -7,10 +7,10 @@ and producing a cleaned dataset that downstream experiments can consume.
 
 from __future__ import annotations
 
-from typing import Final, Optional, List
+from typing import List, Optional
 import pandas as pd
 import numpy as np
-from typing import Optional, List
+
 
 class ClinicalDataProcessor:
     """Manages high-performance data ingestion and strategic preprocessing pipelines.
@@ -62,6 +62,12 @@ class ClinicalDataProcessor:
             self.load_data()
 
         df: pd.DataFrame = self.raw_data.copy()
+
+        # Some parquet exports encode missing integer values as int64 minimum sentinel.
+        sentinel_int64: int = np.iinfo(np.int64).min
+        numeric_cols: List[str] = df.select_dtypes(include=[np.number]).columns.tolist()
+        if numeric_cols:
+            df[numeric_cols] = df[numeric_cols].replace(sentinel_int64, np.nan)
 
         # Clinical discrete binning matching initial processing protocols
         if 'hemoglobina' in df.columns:
