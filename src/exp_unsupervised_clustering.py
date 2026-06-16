@@ -12,6 +12,7 @@ import plotly.express as px
 from typing import Dict, Any, List
 from sklearn.manifold import TSNE
 from sklearn.cluster import AgglomerativeClustering
+from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from experiment_base import BaseExperiment
 
@@ -25,18 +26,35 @@ class UnsupervisedClusteringExperiment(BaseExperiment):
         """Partitions the patient matrix into distinct non-supervised tracking subgroups."""
         max_samples: int = config.get('clustering_max_samples', 1000)
 
-        df_numeric: pd.DataFrame = data.select_dtypes(include=[np.number]).dropna()
+        df_numeric: pd.DataFrame = data.select_dtypes(include=[np.number]).copy()
+        df_numeric = df_numeric.drop(columns=['id_pacie'], errors='ignore')
+        df_numeric = df_numeric.dropna(axis=1, how='all')
+
+        if df_numeric.empty:
+            raise ValueError("No numeric features are available for clustering after excluding empty columns.")
+
+        imputer: SimpleImputer = SimpleImputer(strategy='median')
+        df_numeric = pd.DataFrame(
+            imputer.fit_transform(df_numeric),
+            columns=df_numeric.columns,
+            index=df_numeric.index,
+        )
+
         if len(df_numeric) > max_samples:
             df_numeric = df_numeric.sample(n=max_samples, random_state=42).reset_index(drop=True)
+
+        if len(df_numeric) < 2:
+            raise ValueError("Clustering requires at least 2 samples after preprocessing.")
 
         scaler: StandardScaler = StandardScaler()
         X_scaled: np.ndarray = scaler.fit_transform(df_numeric)
 
-        cluster_model: AgglomerativeClustering = AgglomerativeClustering(n_clusters=3)
+        n_clusters: int = min(3, len(df_numeric))
+        cluster_model: AgglomerativeClustering = AgglomerativeClustering(n_clusters=n_clusters)
         labels: np.ndarray = cluster_model.fit_predict(X_scaled)
 
         # Set perplexity dynamically relative to size metrics to safeguard execution pipelines
-        perp_val: float = min(30.0, float(len(X_scaled) - 1) / 3.0)
+        perp_val: float = max(1.0, min(30.0, float(len(X_scaled) - 1) / 3.0))
         tsne: TSNE = TSNE(n_components=2, random_state=42, perplexity=perp_val, n_iter=500)
         embeddings: np.ndarray = tsne.fit_transform(X_scaled)
 

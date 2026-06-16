@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-noshorthands]{babel}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, calc}
+\usetikzlibrary{babel} 
+
+\usepackage[margin=0.5cm]{geometry}
+
+\begin{document}
+\pagestyle{empty} 
+\centering
+
+\begin{tikzpicture}[
+    >=Stealth,
+    font=\sffamily\small,
+    % Estilo para las cajas de componentes
+    box/.style={
+        draw=black, fill=gray!4, rounded corners=6pt, line width=0.6pt,
+        align=center, inner sep=8pt, text width=4cm, minimum height=1cm
+    },
+    arrow/.style={->, line width=0.7pt, draw=black}
+]
+
+% --- CAPA 1: Orígenes ---
+\node[box] (app) at (-3, 6) {Application Services};
+\node[box] (kafka) at (3, 6) {Kafka Components};
+
+% --- CAPA 2: Intermedios (Alineados perfectamente debajo) ---
+\node[box] (verif) at (-3, 4) {Verification\\Framework};
+\node[box] (deploy) at (3, 4) {Deployment\\Infrastructure};
+
+% --- CAPA 3 y 4: Destinos Centrales ---
+\node[box, text width=6cm] (diagnostic) at (0, 1.5) {Central Diagnostic Collection};
+\node[box, text width=7cm] (users) at (0, 0) {Operators / Developers / Administrators};
+
+% --- CONEXIONES VERTICALES DIRECTAS ---
+\draw[arrow] (app.south) -- (verif.north);
+\draw[arrow] (kafka.south) -- (deploy.north);
+
+% --- EL ACOPLADOR EN T SIMÉTRICO ---
+% Calculamos el punto de unión central a una altura intermedia (Y = 2.8)
+\coordinate (union) at (0, 2.8);
+
+% Forzamos a que las líneas salgan del SUR de las cajas, bajen rectas y giren al centro
+\draw[line width=0.7pt, draw=black] (verif.south) |- (union);
+\draw[line width=0.7pt, draw=black] (deploy.south) |- (union);
+
+% Del punto de unión central sale la flecha vertical hacia el bloque de diagnóstico
+\draw[arrow] (union) -- (diagnostic.north);
+
+% Conexión final inferior
+\draw[arrow] (diagnostic.south) -- (users.north);
+
+\end{tikzpicture}
+
+\end{document}
