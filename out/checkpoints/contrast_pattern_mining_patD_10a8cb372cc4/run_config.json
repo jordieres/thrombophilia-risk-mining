@@ -1,0 +1,11 @@
+{
+  "contrast_max_feature_cardinality": 12,
+  "contrast_max_features": 48,
+  "contrast_max_rule_size": 3,
+  "contrast_max_samples": 300,
+  "contrast_min_confidence": 0.4,
+  "contrast_min_support": 0.05,
+  "contrast_top_k_per_outcome": 5,
+  "contrast_workers": 2,
+  "data": "data/patD.parquet"
+}

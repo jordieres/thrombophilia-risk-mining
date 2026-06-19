@@ -1,24 +1,24 @@
 <!doctype html>
 <html class="no-js" lang="en" data-content_root="./">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Architecture" href="architecture.html" /><link rel="prev" title="Installation" href="installation.html" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Architecture" href="architecture.html"><link rel="prev" title="Installation" href="installation.html">
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
         <title>Usage - Thrombophilia Risk Mining 0.1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
@@ -145,14 +145,10 @@
   </symbol>
 </svg>
 
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
-<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation">
-  <div class="visually-hidden">Hide navigation sidebar</div>
-</label>
-<label class="overlay toc-overlay" for="__toc">
-  <div class="visually-hidden">Hide table of contents sidebar</div>
-</label>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
 <a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
@@ -162,8 +158,7 @@
   <header class="mobile-header">
     <div class="header-left">
       <label class="nav-overlay-icon" for="__navigation">
-        <div class="visually-hidden">Toggle site navigation sidebar</div>
-        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
       </label>
     </div>
     <div class="header-center">
@@ -171,8 +166,7 @@
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
-        <button class="theme-toggle">
-          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
           <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
           <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
           <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
@@ -180,8 +174,7 @@
         </button>
       </div>
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
-        <div class="visually-hidden">Toggle table of contents sidebar</div>
-        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
   </header>
@@ -189,7 +182,6 @@
     <div class="sidebar-container">
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
-  
   
   <span class="sidebar-brand-text">Thrombophilia Risk Mining 0.1.0 documentation</span>
   
@@ -232,8 +224,7 @@
   </a>
 </div>
 <div class="theme-toggle-container theme-toggle-content">
-            <button class="theme-toggle">
-              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
               <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
               <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
@@ -241,8 +232,7 @@
             </button>
           </div>
           <label class="toc-overlay-icon toc-content-icon" for="__toc">
-            <div class="visually-hidden">Toggle table of contents sidebar</div>
-            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
@@ -269,11 +259,45 @@ clinical datasets.</p>
 </pre></div>
 </div>
 </section>
+<section id="contrast-mining-on-large-datasets">
+<h2>Contrast mining on large datasets<a class="headerlink" href="#contrast-mining-on-large-datasets" title="Link to this heading">¶</a></h2>
+<p>The contrast workflow now includes explicit memory guards, bounded rule search,
+and resumable checkpoints. On large datasets, prefer configuring the contrast
+run with a modest sample budget, a strict support threshold, and a checkpoint
+folder that can be reused with <code class="docutils literal notranslate"><span class="pre">--resume</span></code> after an interrupted run.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>src/cli.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--data<span class="w"> </span>data/patD.parquet<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--experiment<span class="w"> </span>contrast<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--contrast-max-samples<span class="w"> </span><span class="m">300</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--contrast-min-support<span class="w"> </span><span class="m">0</span>.05<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--contrast-min-confidence<span class="w"> </span><span class="m">0</span>.40<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--contrast-max-feature-cardinality<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--contrast-max-features<span class="w"> </span><span class="m">48</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--contrast-max-rule-size<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--contrast-top-k-per-outcome<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--contrast-workers<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--checkpoint-dir<span class="w"> </span>out/checkpoints<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output-dir<span class="w"> </span>out<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--resume
+</pre></div>
+</div>
+<p>The contrast checkpoint directory stores four stages:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">01_prepared_sample.parquet</span></code></dt><dd><p>Stratified sample plus the selected low-cardinality columns.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">02_encoded_transactions.parquet</span></code></dt><dd><p>Sparse one-hot transactional matrix serialized as compact integer values.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">03_frequent_itemsets.parquet</span></code></dt><dd><p>Frequent itemsets mined with the configured support and maximum rule length.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">04_target_rules.parquet</span></code></dt><dd><p>Final outcome-targeted rules ready for LaTeX and Plotly export.</p>
+</dd>
+</dl>
+</section>
 <section id="multi-line-shell-commands">
 <h2>Multi-line shell commands<a class="headerlink" href="#multi-line-shell-commands" title="Link to this heading">¶</a></h2>
 <p>When writing a Bash command across multiple lines, every continued line must be
 escaped with <code class="docutils literal notranslate"><span class="pre">\</span></code>. Without that escape character, Bash treats the next line as
-a brand-new command.</p>
+an entirely new command.</p>
 <section id="correct-multi-line-example">
 <h3>Correct multi-line example<a class="headerlink" href="#correct-multi-line-example" title="Link to this heading">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>src/cli.py<span class="w"> </span><span class="se">\</span>
@@ -284,6 +308,8 @@ a brand-new command.</p>
 <span class="w">  </span>--permutation-repeats<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--permutation-estimators<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--contrast-max-samples<span class="w"> </span><span class="m">300</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--contrast-min-support<span class="w"> </span><span class="m">0</span>.05<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--contrast-min-confidence<span class="w"> </span><span class="m">0</span>.40<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--clustering-max-samples<span class="w"> </span><span class="m">1000</span>
 </pre></div>
 </div>
@@ -305,13 +331,19 @@ are interpreted by the shell as independent commands, which leads to
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">permutation</span></code></dt><dd><p>Controls sampling, fold count, permutation repeats, and XGBoost tree count.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">contrast</span></code></dt><dd><p>Controls sampling, support threshold, selected categorical features, and
-accepted feature cardinality.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">contrast</span></code></dt><dd><p>Controls sampling, support/confidence thresholds, low-cardinality feature
+selection, maximum rule size, worker count, and checkpoint reuse.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">clustering</span></code></dt><dd><p>Controls the number of sampled rows, requested clusters, and maximum t-SNE
 perplexity.</p>
 </dd>
 </dl>
+</section>
+<section id="artifact-locations">
+<h2>Artifact locations<a class="headerlink" href="#artifact-locations" title="Link to this heading">¶</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--output-dir</span></code> to redirect interactive HTML charts away from the project
+root, and <code class="docutils literal notranslate"><span class="pre">--checkpoint-dir</span></code> to persist resumable intermediate state for
+long-running experiments.</p>
 </section>
 <section id="vs-code-debugging">
 <h2>VS Code debugging<a class="headerlink" href="#vs-code-debugging" title="Link to this heading">¶</a></h2>
@@ -378,12 +410,14 @@ launched under <code class="docutils literal notranslate"><span class="pre">debu
 <li><a class="reference internal" href="#">Usage</a><ul>
 <li><a class="reference internal" href="#cli-entry-point">CLI entry point</a></li>
 <li><a class="reference internal" href="#configurable-experiment-budgets">Configurable experiment budgets</a></li>
+<li><a class="reference internal" href="#contrast-mining-on-large-datasets">Contrast mining on large datasets</a></li>
 <li><a class="reference internal" href="#multi-line-shell-commands">Multi-line shell commands</a><ul>
 <li><a class="reference internal" href="#correct-multi-line-example">Correct multi-line example</a></li>
 <li><a class="reference internal" href="#incorrect-multi-line-example">Incorrect multi-line example</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#available-configuration-groups">Available configuration groups</a></li>
+<li><a class="reference internal" href="#artifact-locations">Artifact locations</a></li>
 <li><a class="reference internal" href="#vs-code-debugging">VS Code debugging</a></li>
 </ul>
 </li>
@@ -399,6 +433,6 @@ launched under <code class="docutils literal notranslate"><span class="pre">debu
 </div><script src="_static/documentation_options.js?v=01f34227"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
     </body>
 </html>

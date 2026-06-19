@@ -28,11 +28,23 @@ Run the checker with:
 Build the documentation
 -----------------------
 
-Generate the HTML documentation locally with:
+Generate the HTML documentation locally from the repository root with:
 
 .. code-block:: bash
 
-   poetry run sphinx-build -d docs_source/.doctrees -b html docs_source docs
+   poetry run sphinx-build -d docs/docs_source/.doctrees -b html docs/docs_source docs
+
+If you prefer to build from inside ``docs/docs_source``, the equivalent command
+is:
+
+.. code-block:: bash
+
+   poetry run sphinx-build -d .doctrees -b html . ..
+
+The ``docs/`` directory is both the editable documentation container and the
+published GitHub Pages output root. The ``docs/docs_source/`` subtree contains
+Sphinx source files, while the generated HTML is written directly into
+``docs/``.
 
 Project structure
 -----------------
@@ -40,11 +52,11 @@ Project structure
 ``src/``
    Application source code, preprocessing utilities, and experiment modules.
 
-``docs_source/``
+``docs/docs_source/``
    Editable Sphinx configuration and reStructuredText source files.
 
 ``docs/``
-   Published HTML documentation generated from ``docs_source/``.
+   Published HTML documentation generated from ``docs/docs_source/``.
 
 ``.vscode/launch.json``
    Debugger configuration for interactive CLI runs.

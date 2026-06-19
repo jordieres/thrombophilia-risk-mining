@@ -1,24 +1,24 @@
 <!doctype html>
 <html class="no-js" lang="en" data-content_root="./">
-  <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Development" href="development.html" /><link rel="prev" title="Architecture" href="architecture.html" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Development" href="development.html"><link rel="prev" title="Architecture" href="architecture.html">
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
         <title>API Reference - Thrombophilia Risk Mining 0.1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f8f8f8;
-  --color-code-foreground: black;
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
   
   }
   @media not print {
@@ -145,14 +145,10 @@
   </symbol>
 </svg>
 
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
-<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation">
-  <div class="visually-hidden">Hide navigation sidebar</div>
-</label>
-<label class="overlay toc-overlay" for="__toc">
-  <div class="visually-hidden">Hide table of contents sidebar</div>
-</label>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
 
 <a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
@@ -162,8 +158,7 @@
   <header class="mobile-header">
     <div class="header-left">
       <label class="nav-overlay-icon" for="__navigation">
-        <div class="visually-hidden">Toggle site navigation sidebar</div>
-        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
       </label>
     </div>
     <div class="header-center">
@@ -171,8 +166,7 @@
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
-        <button class="theme-toggle">
-          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
           <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
           <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
           <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
@@ -180,8 +174,7 @@
         </button>
       </div>
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
-        <div class="visually-hidden">Toggle table of contents sidebar</div>
-        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
   </header>
@@ -189,7 +182,6 @@
     <div class="sidebar-container">
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
-  
   
   <span class="sidebar-brand-text">Thrombophilia Risk Mining 0.1.0 documentation</span>
   
@@ -232,8 +224,7 @@
   </a>
 </div>
 <div class="theme-toggle-container theme-toggle-content">
-            <button class="theme-toggle">
-              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
               <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
               <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
@@ -241,8 +232,7 @@
             </button>
           </div>
           <label class="toc-overlay-icon toc-content-icon" for="__toc">
-            <div class="visually-hidden">Toggle table of contents sidebar</div>
-            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
@@ -258,72 +248,15 @@
 <li><p>export of LaTeX and interactive HTML artifacts.</p></li>
 </ul>
 <dl class="py function">
-<dt class="sig sig-object py" id="cli.positive_int">
-<span class="sig-prename descclassname"><span class="pre">cli.</span></span><span class="sig-name descname"><span class="pre">positive_int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cli.html#positive_int"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cli.positive_int" title="Link to this definition">¶</a></dt>
-<dd><p>Parse an integer CLI argument that must be strictly positive.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Raw string passed by <code class="docutils literal notranslate"><span class="pre">argparse</span></code>.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Parsed positive integer.</p>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentTypeError" title="(in Python v3.14)"><strong>argparse.ArgumentTypeError</strong></a> – If the provided value is not positive.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="cli.positive_float">
-<span class="sig-prename descclassname"><span class="pre">cli.</span></span><span class="sig-name descname"><span class="pre">positive_float</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cli.html#positive_float"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cli.positive_float" title="Link to this definition">¶</a></dt>
-<dd><p>Parse a float CLI argument that must be strictly positive.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Raw string passed by <code class="docutils literal notranslate"><span class="pre">argparse</span></code>.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Parsed positive float.</p>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentTypeError" title="(in Python v3.14)"><strong>argparse.ArgumentTypeError</strong></a> – If the provided value is not positive.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="cli.build_parser">
-<span class="sig-prename descclassname"><span class="pre">cli.</span></span><span class="sig-name descname"><span class="pre">build_parser</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cli.html#build_parser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cli.build_parser" title="Link to this definition">¶</a></dt>
-<dd><p>Create the CLI parser.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Fully configured argument parser for the project entry point.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser" title="(in Python v3.14)"><em>ArgumentParser</em></a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="cli.build_experiment_registry">
-<span class="sig-prename descclassname"><span class="pre">cli.</span></span><span class="sig-name descname"><span class="pre">build_experiment_registry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cli.html#build_experiment_registry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cli.build_experiment_registry" title="Link to this definition">¶</a></dt>
-<dd><p>Instantiate the experiments requested by the CLI.</p>
+<span class="sig-prename descclassname"><span class="pre">cli.</span></span><span class="sig-name descname"><span class="pre">build_experiment_registry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selected_experiment</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/cli.html#build_experiment_registry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cli.build_experiment_registry" title="Link to this definition">¶</a></dt>
+<dd><p>Builds only the experiment objects required for the current CLI request.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>args</strong> (<a class="reference external" href="https://docs.python.org/3/library/argparse.html#argparse.Namespace" title="(in Python v3.14)"><em>Namespace</em></a>) – Parsed CLI arguments.</p>
+<dd class="field-odd"><p><strong>selected_experiment</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Mapping from experiment key to configured experiment instance.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference internal" href="#experiment_base.BaseExperiment" title="experiment_base.BaseExperiment"><em>BaseExperiment</em></a>]</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -331,7 +264,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="cli.main">
 <span class="sig-prename descclassname"><span class="pre">cli.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/cli.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#cli.main" title="Link to this definition">¶</a></dt>
-<dd><p>Run the CLI entry point.</p>
+<dd><p>Main CLI execution router managing running configurations and research loops.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>None</p>
@@ -350,50 +283,22 @@ and producing a cleaned dataset that downstream experiments can consume.</p>
 <dt class="sig sig-object py" id="data_processor.ClinicalDataProcessor">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_processor.</span></span><span class="sig-name descname"><span class="pre">ClinicalDataProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processor.html#ClinicalDataProcessor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processor.ClinicalDataProcessor" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Load and preprocess thrombophilia datasets.</p>
-<p>The processor intentionally keeps the transformation pipeline lightweight and
-deterministic so all analytical experiments start from the same curated
-dataframe.</p>
+<p>Manages high-performance data ingestion and strategic preprocessing pipelines.</p>
+<p>This class provides robust handlers for multi-format file systems, allowing seamless
+transitions between compressed Parquet and standard Excel spreadsheets while establishing
+defensive imputation layers to handle clinical missingness metrics cleanly.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
 </dd>
 </dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="data_processor.ClinicalDataProcessor.file_path">
-<span class="sig-name descname"><span class="pre">file_path</span></span><a class="headerlink" href="#data_processor.ClinicalDataProcessor.file_path" title="Link to this definition">¶</a></dt>
-<dd><p>Path to the source tabular dataset.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="data_processor.ClinicalDataProcessor.raw_data">
-<span class="sig-name descname"><span class="pre">raw_data</span></span><a class="headerlink" href="#data_processor.ClinicalDataProcessor.raw_data" title="Link to this definition">¶</a></dt>
-<dd><p>Dataframe loaded directly from disk before transformations.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="data_processor.ClinicalDataProcessor.processed_data">
-<span class="sig-name descname"><span class="pre">processed_data</span></span><a class="headerlink" href="#data_processor.ClinicalDataProcessor.processed_data" title="Link to this definition">¶</a></dt>
-<dd><p>Cleaned dataframe produced by <a class="reference internal" href="#data_processor.ClinicalDataProcessor.transform_pipeline" title="data_processor.ClinicalDataProcessor.transform_pipeline"><code class="xref py py-meth docutils literal notranslate"><span class="pre">transform_pipeline()</span></code></a>.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="data_processor.ClinicalDataProcessor.INT64_SENTINEL">
-<span class="sig-name descname"><span class="pre">INT64_SENTINEL</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Final" title="(in Python v3.14)"><span class="pre">Final</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-9223372036854775808</span></em><a class="headerlink" href="#data_processor.ClinicalDataProcessor.INT64_SENTINEL" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="data_processor.ClinicalDataProcessor.HISTORY_PREFIXES">
-<span class="sig-name descname"><span class="pre">HISTORY_PREFIXES</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Final" title="(in Python v3.14)"><span class="pre">Final</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">('fr_',</span> <span class="pre">'sin_')</span></em><a class="headerlink" href="#data_processor.ClinicalDataProcessor.HISTORY_PREFIXES" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="data_processor.ClinicalDataProcessor.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processor.html#ClinicalDataProcessor.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processor.ClinicalDataProcessor.__init__" title="Link to this definition">¶</a></dt>
-<dd><p>Store the source path used by the processor.</p>
+<dd><p>Initializes the data processor with a targeted local disk file path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Path to an input CSV, Excel, or Parquet file.</p>
+<dd class="field-odd"><p><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – The absolute or relative path to the target data file.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -404,13 +309,16 @@ dataframe.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="data_processor.ClinicalDataProcessor.load_data">
 <span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processor.html#ClinicalDataProcessor.load_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processor.ClinicalDataProcessor.load_data" title="Link to this definition">¶</a></dt>
-<dd><p>Load the source dataset from disk.</p>
+<dd><p>Loads raw clinical data matrices supporting multi-format files automatically.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Raw dataframe loaded from the configured file path.</p>
+<dd class="field-odd"><p>The loaded raw pandas DataFrame matrix.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><em>DataFrame</em></p>
+<dd class="field-even"><p>pd.DataFrame</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the input file extension does not match supported formats.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -418,16 +326,15 @@ dataframe.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="data_processor.ClinicalDataProcessor.transform_pipeline">
 <span class="sig-name descname"><span class="pre">transform_pipeline</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/data_processor.html#ClinicalDataProcessor.transform_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_processor.ClinicalDataProcessor.transform_pipeline" title="Link to this definition">¶</a></dt>
-<dd><p>Apply the shared preprocessing pipeline.</p>
+<dd><p>Executes the categorical curation and clinical features aggregation sequence.</p>
+<p>This method normalizes vital continuous distributions, maps laboratory markers,
+and ensures missing attributes are classified as non-present securely.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Cleaned dataframe ready for consumption by analytical experiments.</p>
+<dd class="field-odd"><p>The processed, analytical clinical dataframe.</p>
 </dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the raw dataset has not been loaded yet.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><em>DataFrame</em></p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>pd.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
@@ -443,42 +350,21 @@ interactive Plotly figure.</p>
 <dt class="sig sig-object py" id="experiment_base.BaseExperiment">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">experiment_base.</span></span><span class="sig-name descname"><span class="pre">BaseExperiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiment_base.html#BaseExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#experiment_base.BaseExperiment" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
-<p>Abstract base class for thrombophilia analytical experiments.</p>
+<p>Abstract baseline class defining the life-cycle contract for all experimental modules.</p>
+<p>Every distinct research study must inherit from this structure, implementing the required
+execution contract to ensure seamless integration into the CLI pipeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
 </dd>
 </dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="experiment_base.BaseExperiment.name">
-<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#experiment_base.BaseExperiment.name" title="Link to this definition">¶</a></dt>
-<dd><p>Human-readable experiment name used in CLI output and file names.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="experiment_base.BaseExperiment.latex_table">
-<span class="sig-name descname"><span class="pre">latex_table</span></span><a class="headerlink" href="#experiment_base.BaseExperiment.latex_table" title="Link to this definition">¶</a></dt>
-<dd><p>LaTeX representation of the latest experiment results.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="experiment_base.BaseExperiment.plotly_figure">
-<span class="sig-name descname"><span class="pre">plotly_figure</span></span><a class="headerlink" href="#experiment_base.BaseExperiment.plotly_figure" title="Link to this definition">¶</a></dt>
-<dd><p>Optional interactive figure created during execution.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="experiment_base.BaseExperiment.EMPTY_LATEX">
-<span class="sig-name descname"><span class="pre">EMPTY_LATEX</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Final" title="(in Python v3.14)"><span class="pre">Final</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#experiment_base.BaseExperiment.EMPTY_LATEX" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="experiment_base.BaseExperiment.__init__">
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiment_base.html#BaseExperiment.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#experiment_base.BaseExperiment.__init__" title="Link to this definition">¶</a></dt>
-<dd><p>Initialize the common experiment state.</p>
+<dd><p>Initializes the abstract experiment parameters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Descriptive name shown in the CLI and output artifacts.</p>
+<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Unique descriptive name for the underlying analytical module.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -488,11 +374,14 @@ interactive Plotly figure.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="experiment_base.BaseExperiment.run">
-<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiment_base.html#BaseExperiment.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#experiment_base.BaseExperiment.run" title="Link to this definition">¶</a></dt>
-<dd><p>Execute the experiment and populate output artifacts.</p>
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiment_base.html#BaseExperiment.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#experiment_base.BaseExperiment.run" title="Link to this definition">¶</a></dt>
+<dd><p>Executes the target machine learning or statistical modeling pipeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>DataFrame</em>) – Preprocessed clinical dataset produced by the shared pipeline.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pd.DataFrame</em>) – Preprocessed clinical data matrix.</p></li>
+<li><p><strong>config</strong> (<em>Dict</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>Any</em><em>]</em>) – Dynamic execution limits passed down from the command line.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -503,10 +392,10 @@ interactive Plotly figure.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="experiment_base.BaseExperiment.export_latex">
 <span class="sig-name descname"><span class="pre">export_latex</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiment_base.html#BaseExperiment.export_latex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#experiment_base.BaseExperiment.export_latex" title="Link to this definition">¶</a></dt>
-<dd><p>Return the LaTeX representation produced by the last run.</p>
+<dd><p>Returns the formatted production-grade LaTeX table representing results.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>LaTeX table content formatted for inclusion in reports.</p>
+<dd class="field-odd"><p>Booktabs styled LaTeX tabular string.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
@@ -517,10 +406,10 @@ interactive Plotly figure.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="experiment_base.BaseExperiment.save_interactive_plot">
 <span class="sig-name descname"><span class="pre">save_interactive_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/experiment_base.html#BaseExperiment.save_interactive_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#experiment_base.BaseExperiment.save_interactive_plot" title="Link to this definition">¶</a></dt>
-<dd><p>Persist the interactive Plotly figure as a standalone HTML file.</p>
+<dd><p>Writes the optimized internal interactive Plotly figure onto disk as raw standalone HTML.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>output_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/os.html#os.PathLike" title="(in Python v3.14)"><em>PathLike</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>) – Destination path for the generated HTML artifact.</p>
+<dd class="field-odd"><p><strong>output_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Target destination layout on the local storage file system.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -540,96 +429,24 @@ workflow is intentionally conservative about leakage by fitting preprocessing
 inside each validation fold.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="exp_permutation_importance.PermutationImportanceExperiment">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">exp_permutation_importance.</span></span><span class="sig-name descname"><span class="pre">PermutationImportanceExperiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_repeats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_estimators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_permutation_importance.html#PermutationImportanceExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_permutation_importance.PermutationImportanceExperiment" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">exp_permutation_importance.</span></span><span class="sig-name descname"><span class="pre">PermutationImportanceExperiment</span></span><a class="reference internal" href="_modules/exp_permutation_importance.html#PermutationImportanceExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_permutation_importance.PermutationImportanceExperiment" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#experiment_base.BaseExperiment" title="experiment_base.BaseExperiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseExperiment</span></code></a></p>
-<p>Estimate feature importance after removing demographic shortcuts.</p>
+<p>Study 1: Feature importance isolating secondary lab variables by dropping demographic features.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>max_samples</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
-<li><p><strong>max_splits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
-<li><p><strong>n_repeats</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
-<li><p><strong>n_estimators</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
-</ul>
-</dd>
 </dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_permutation_importance.PermutationImportanceExperiment.max_samples">
-<span class="sig-name descname"><span class="pre">max_samples</span></span><a class="headerlink" href="#exp_permutation_importance.PermutationImportanceExperiment.max_samples" title="Link to this definition">¶</a></dt>
-<dd><p>Maximum number of rows used during the experiment.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_permutation_importance.PermutationImportanceExperiment.max_splits">
-<span class="sig-name descname"><span class="pre">max_splits</span></span><a class="headerlink" href="#exp_permutation_importance.PermutationImportanceExperiment.max_splits" title="Link to this definition">¶</a></dt>
-<dd><p>Maximum number of stratified validation folds.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_permutation_importance.PermutationImportanceExperiment.n_repeats">
-<span class="sig-name descname"><span class="pre">n_repeats</span></span><a class="headerlink" href="#exp_permutation_importance.PermutationImportanceExperiment.n_repeats" title="Link to this definition">¶</a></dt>
-<dd><p>Number of shuffling repeats per fold.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_permutation_importance.PermutationImportanceExperiment.n_estimators">
-<span class="sig-name descname"><span class="pre">n_estimators</span></span><a class="headerlink" href="#exp_permutation_importance.PermutationImportanceExperiment.n_estimators" title="Link to this definition">¶</a></dt>
-<dd><p>Number of boosting trees in the classifier.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_permutation_importance.PermutationImportanceExperiment.DEFAULT_MAX_SAMPLES">
-<span class="sig-name descname"><span class="pre">DEFAULT_MAX_SAMPLES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1000</span></em><a class="headerlink" href="#exp_permutation_importance.PermutationImportanceExperiment.DEFAULT_MAX_SAMPLES" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_permutation_importance.PermutationImportanceExperiment.DEFAULT_MAX_SPLITS">
-<span class="sig-name descname"><span class="pre">DEFAULT_MAX_SPLITS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#exp_permutation_importance.PermutationImportanceExperiment.DEFAULT_MAX_SPLITS" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_permutation_importance.PermutationImportanceExperiment.DEFAULT_N_REPEATS">
-<span class="sig-name descname"><span class="pre">DEFAULT_N_REPEATS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#exp_permutation_importance.PermutationImportanceExperiment.DEFAULT_N_REPEATS" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_permutation_importance.PermutationImportanceExperiment.DEFAULT_N_ESTIMATORS">
-<span class="sig-name descname"><span class="pre">DEFAULT_N_ESTIMATORS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#exp_permutation_importance.PermutationImportanceExperiment.DEFAULT_N_ESTIMATORS" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
-<dt class="sig sig-object py" id="exp_permutation_importance.PermutationImportanceExperiment.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_repeats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_estimators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_permutation_importance.html#PermutationImportanceExperiment.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_permutation_importance.PermutationImportanceExperiment.__init__" title="Link to this definition">¶</a></dt>
-<dd><p>Initialize experiment parameters.</p>
+<dt class="sig sig-object py" id="exp_permutation_importance.PermutationImportanceExperiment.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_permutation_importance.html#PermutationImportanceExperiment.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_permutation_importance.PermutationImportanceExperiment.run" title="Link to this definition">¶</a></dt>
+<dd><p>Executes a stratified cross-validation tree training loop using runtime sampling caps.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>max_samples</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>) – Optional cap on the number of sampled observations.</p></li>
-<li><p><strong>max_splits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>) – Optional cap on cross-validation folds.</p></li>
-<li><p><strong>n_repeats</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>) – Optional number of permutation repeats per fold.</p></li>
-<li><p><strong>n_estimators</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>) – Optional number of trees for the classifier.</p></li>
+<li><p><strong>data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="exp_permutation_importance.PermutationImportanceExperiment.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_permutation_importance.html#PermutationImportanceExperiment.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_permutation_importance.PermutationImportanceExperiment.run" title="Link to this definition">¶</a></dt>
-<dd><p>Run the permutation-importance workflow.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>DataFrame</em>) – Preprocessed clinical dataframe.</p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the target column is missing or the dataset does not
-    contain enough variability for stratified validation.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -637,101 +454,30 @@ inside each validation fold.</p>
 </dd></dl>
 
 <p id="module-exp_contrast_mining">Contrast-pattern mining experiment implementation.</p>
-<p>This module builds transaction baskets from a constrained set of categorical
-variables and then searches for association rules that are especially relevant
-for positive and negative diagnostic outcomes.</p>
+<p>This module constrains the transactional search space to low-cardinality
+variables, mines frequent itemsets over a sparse one-hot matrix, and derives
+only outcome-targeted rules so the memory footprint remains bounded on large
+clinical datasets.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="exp_contrast_mining.ContrastPatternMiningExperiment">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">exp_contrast_mining.</span></span><span class="sig-name descname"><span class="pre">ContrastPatternMiningExperiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_support</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_cardinality</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_contrast_mining.html#ContrastPatternMiningExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_contrast_mining.ContrastPatternMiningExperiment" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">exp_contrast_mining.</span></span><span class="sig-name descname"><span class="pre">ContrastPatternMiningExperiment</span></span><a class="reference internal" href="_modules/exp_contrast_mining.html#ContrastPatternMiningExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_contrast_mining.ContrastPatternMiningExperiment" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#experiment_base.BaseExperiment" title="experiment_base.BaseExperiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseExperiment</span></code></a></p>
-<p>Mine contrasting association rules for diagnostic outcomes.</p>
+<p>Study 2: Sex-stratified contrast pattern discovery to map risk disparities.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>max_samples</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
-<li><p><strong>min_support</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em> | </em><em>None</em>)</p></li>
-<li><p><strong>max_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
-<li><p><strong>max_cardinality</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
-</ul>
-</dd>
 </dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_contrast_mining.ContrastPatternMiningExperiment.max_samples">
-<span class="sig-name descname"><span class="pre">max_samples</span></span><a class="headerlink" href="#exp_contrast_mining.ContrastPatternMiningExperiment.max_samples" title="Link to this definition">¶</a></dt>
-<dd><p>Maximum number of rows sampled for transaction mining.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_contrast_mining.ContrastPatternMiningExperiment.min_support">
-<span class="sig-name descname"><span class="pre">min_support</span></span><a class="headerlink" href="#exp_contrast_mining.ContrastPatternMiningExperiment.min_support" title="Link to this definition">¶</a></dt>
-<dd><p>Minimum support threshold for frequent itemsets.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_contrast_mining.ContrastPatternMiningExperiment.max_features">
-<span class="sig-name descname"><span class="pre">max_features</span></span><a class="headerlink" href="#exp_contrast_mining.ContrastPatternMiningExperiment.max_features" title="Link to this definition">¶</a></dt>
-<dd><p>Maximum number of categorical features kept in baskets.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_contrast_mining.ContrastPatternMiningExperiment.max_cardinality">
-<span class="sig-name descname"><span class="pre">max_cardinality</span></span><a class="headerlink" href="#exp_contrast_mining.ContrastPatternMiningExperiment.max_cardinality" title="Link to this definition">¶</a></dt>
-<dd><p>Maximum allowed cardinality per categorical feature.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_contrast_mining.ContrastPatternMiningExperiment.DEFAULT_MAX_SAMPLES">
-<span class="sig-name descname"><span class="pre">DEFAULT_MAX_SAMPLES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">300</span></em><a class="headerlink" href="#exp_contrast_mining.ContrastPatternMiningExperiment.DEFAULT_MAX_SAMPLES" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_contrast_mining.ContrastPatternMiningExperiment.DEFAULT_MIN_SUPPORT">
-<span class="sig-name descname"><span class="pre">DEFAULT_MIN_SUPPORT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.08</span></em><a class="headerlink" href="#exp_contrast_mining.ContrastPatternMiningExperiment.DEFAULT_MIN_SUPPORT" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_contrast_mining.ContrastPatternMiningExperiment.DEFAULT_MAX_FEATURES">
-<span class="sig-name descname"><span class="pre">DEFAULT_MAX_FEATURES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">12</span></em><a class="headerlink" href="#exp_contrast_mining.ContrastPatternMiningExperiment.DEFAULT_MAX_FEATURES" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_contrast_mining.ContrastPatternMiningExperiment.DEFAULT_MAX_CARDINALITY">
-<span class="sig-name descname"><span class="pre">DEFAULT_MAX_CARDINALITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#exp_contrast_mining.ContrastPatternMiningExperiment.DEFAULT_MAX_CARDINALITY" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
-<dt class="sig sig-object py" id="exp_contrast_mining.ContrastPatternMiningExperiment.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_support</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_cardinality</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_contrast_mining.html#ContrastPatternMiningExperiment.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_contrast_mining.ContrastPatternMiningExperiment.__init__" title="Link to this definition">¶</a></dt>
-<dd><p>Initialize experiment parameters.</p>
+<dt class="sig sig-object py" id="exp_contrast_mining.ContrastPatternMiningExperiment.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_contrast_mining.html#ContrastPatternMiningExperiment.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_contrast_mining.ContrastPatternMiningExperiment.run" title="Link to this definition">¶</a></dt>
+<dd><p>Extracts targeted contrast rules while checkpointing each major stage.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>max_samples</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>) – Optional cap on sampled rows.</p></li>
-<li><p><strong>min_support</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em> | </em><em>None</em>) – Optional support threshold for FP-growth.</p></li>
-<li><p><strong>max_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>) – Optional cap on selected categorical features.</p></li>
-<li><p><strong>max_cardinality</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>) – Optional cap on feature cardinality.</p></li>
+<li><p><strong>data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="exp_contrast_mining.ContrastPatternMiningExperiment.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_contrast_mining.html#ContrastPatternMiningExperiment.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_contrast_mining.ContrastPatternMiningExperiment.run" title="Link to this definition">¶</a></dt>
-<dd><p>Run the contrast-pattern mining workflow.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>DataFrame</em>) – Preprocessed clinical dataframe.</p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If required columns are missing or the sampling and
-    mining process cannot produce meaningful rules.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -744,82 +490,24 @@ values with robust medians, scales the data, and then produces both cluster
 assignments and a two-dimensional t-SNE embedding for visualization.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="exp_unsupervised_clustering.UnsupervisedClusteringExperiment">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">exp_unsupervised_clustering.</span></span><span class="sig-name descname"><span class="pre">UnsupervisedClusteringExperiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_perplexity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_unsupervised_clustering.html#UnsupervisedClusteringExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">exp_unsupervised_clustering.</span></span><span class="sig-name descname"><span class="pre">UnsupervisedClusteringExperiment</span></span><a class="reference internal" href="_modules/exp_unsupervised_clustering.html#UnsupervisedClusteringExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#experiment_base.BaseExperiment" title="experiment_base.BaseExperiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseExperiment</span></code></a></p>
-<p>Discover latent numeric patient subgroups.</p>
+<p>Study 3: Unsupervised phenotypic segmentation using t-SNE reduction mappings.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>max_samples</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
-<li><p><strong>n_clusters</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
-<li><p><strong>max_perplexity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
-</ul>
-</dd>
 </dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_unsupervised_clustering.UnsupervisedClusteringExperiment.max_samples">
-<span class="sig-name descname"><span class="pre">max_samples</span></span><a class="headerlink" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.max_samples" title="Link to this definition">¶</a></dt>
-<dd><p>Maximum number of rows retained for the experiment.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_unsupervised_clustering.UnsupervisedClusteringExperiment.n_clusters">
-<span class="sig-name descname"><span class="pre">n_clusters</span></span><a class="headerlink" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.n_clusters" title="Link to this definition">¶</a></dt>
-<dd><p>Requested number of agglomerative clusters.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_unsupervised_clustering.UnsupervisedClusteringExperiment.max_perplexity">
-<span class="sig-name descname"><span class="pre">max_perplexity</span></span><a class="headerlink" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.max_perplexity" title="Link to this definition">¶</a></dt>
-<dd><p>Upper bound applied to the t-SNE perplexity parameter.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_unsupervised_clustering.UnsupervisedClusteringExperiment.DEFAULT_MAX_SAMPLES">
-<span class="sig-name descname"><span class="pre">DEFAULT_MAX_SAMPLES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1000</span></em><a class="headerlink" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.DEFAULT_MAX_SAMPLES" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_unsupervised_clustering.UnsupervisedClusteringExperiment.DEFAULT_N_CLUSTERS">
-<span class="sig-name descname"><span class="pre">DEFAULT_N_CLUSTERS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.DEFAULT_N_CLUSTERS" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="exp_unsupervised_clustering.UnsupervisedClusteringExperiment.DEFAULT_MAX_PERPLEXITY">
-<span class="sig-name descname"><span class="pre">DEFAULT_MAX_PERPLEXITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">30</span></em><a class="headerlink" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.DEFAULT_MAX_PERPLEXITY" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="py method">
-<dt class="sig sig-object py" id="exp_unsupervised_clustering.UnsupervisedClusteringExperiment.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_perplexity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_unsupervised_clustering.html#UnsupervisedClusteringExperiment.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.__init__" title="Link to this definition">¶</a></dt>
-<dd><p>Initialize experiment parameters.</p>
+<dt class="sig sig-object py" id="exp_unsupervised_clustering.UnsupervisedClusteringExperiment.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_unsupervised_clustering.html#UnsupervisedClusteringExperiment.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.run" title="Link to this definition">¶</a></dt>
+<dd><p>Partitions the patient matrix into distinct non-supervised tracking subgroups.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>max_samples</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>) – Optional row cap used before clustering.</p></li>
-<li><p><strong>n_clusters</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>) – Optional requested number of clusters.</p></li>
-<li><p><strong>max_perplexity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>) – Optional upper bound for the t-SNE perplexity.</p></li>
+<li><p><strong>data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="exp_unsupervised_clustering.UnsupervisedClusteringExperiment.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_unsupervised_clustering.html#UnsupervisedClusteringExperiment.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.run" title="Link to this definition">¶</a></dt>
-<dd><p>Run the clustering and visualization workflow.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>DataFrame</em>) – Preprocessed clinical dataframe.</p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the numeric subset is empty or too small to cluster.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -834,35 +522,22 @@ a lightweight probabilistic summary suitable for exploratory reporting.</p>
 <dt class="sig sig-object py" id="exp_bayesian_networks.BayesianNetworkExperiment">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">exp_bayesian_networks.</span></span><span class="sig-name descname"><span class="pre">BayesianNetworkExperiment</span></span><a class="reference internal" href="_modules/exp_bayesian_networks.html#BayesianNetworkExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_bayesian_networks.BayesianNetworkExperiment" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#experiment_base.BaseExperiment" title="experiment_base.BaseExperiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseExperiment</span></code></a></p>
-<p>Summarize outcome probabilities conditioned on sex.</p>
-<p>The implementation intentionally stays simple and robust so the Bayesian
-analysis path remains fast during interactive exploration.</p>
+<p>Study 4: Joint probability modeling and causal gatekeeping parameter estimations.</p>
 <dl class="field-list simple">
 </dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="exp_bayesian_networks.BayesianNetworkExperiment.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_bayesian_networks.html#BayesianNetworkExperiment.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_bayesian_networks.BayesianNetworkExperiment.__init__" title="Link to this definition">¶</a></dt>
-<dd><p>Initialize the experiment metadata.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="exp_bayesian_networks.BayesianNetworkExperiment.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_bayesian_networks.html#BayesianNetworkExperiment.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_bayesian_networks.BayesianNetworkExperiment.run" title="Link to this definition">¶</a></dt>
-<dd><p>Compute conditional outcome probabilities by sex.</p>
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_bayesian_networks.html#BayesianNetworkExperiment.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_bayesian_networks.BayesianNetworkExperiment.run" title="Link to this definition">¶</a></dt>
+<dd><p>Models conditional probability distribution charts to isolate wasted testing indices.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>DataFrame</em>) – Preprocessed clinical dataframe.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
+</ul>
 </dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the target column is missing.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>None</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -929,30 +604,18 @@ analysis path remains fast during interactive exploration.</p>
             <ul>
 <li><a class="reference internal" href="#">API Reference</a><ul>
 <li><a class="reference internal" href="#module-cli">CLI entry points</a><ul>
-<li><a class="reference internal" href="#cli.positive_int"><code class="docutils literal notranslate"><span class="pre">positive_int()</span></code></a></li>
-<li><a class="reference internal" href="#cli.positive_float"><code class="docutils literal notranslate"><span class="pre">positive_float()</span></code></a></li>
-<li><a class="reference internal" href="#cli.build_parser"><code class="docutils literal notranslate"><span class="pre">build_parser()</span></code></a></li>
 <li><a class="reference internal" href="#cli.build_experiment_registry"><code class="docutils literal notranslate"><span class="pre">build_experiment_registry()</span></code></a></li>
 <li><a class="reference internal" href="#cli.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#module-data_processor">Shared infrastructure</a><ul>
 <li><a class="reference internal" href="#data_processor.ClinicalDataProcessor"><code class="docutils literal notranslate"><span class="pre">ClinicalDataProcessor</span></code></a><ul>
-<li><a class="reference internal" href="#data_processor.ClinicalDataProcessor.file_path"><code class="docutils literal notranslate"><span class="pre">ClinicalDataProcessor.file_path</span></code></a></li>
-<li><a class="reference internal" href="#data_processor.ClinicalDataProcessor.raw_data"><code class="docutils literal notranslate"><span class="pre">ClinicalDataProcessor.raw_data</span></code></a></li>
-<li><a class="reference internal" href="#data_processor.ClinicalDataProcessor.processed_data"><code class="docutils literal notranslate"><span class="pre">ClinicalDataProcessor.processed_data</span></code></a></li>
-<li><a class="reference internal" href="#data_processor.ClinicalDataProcessor.INT64_SENTINEL"><code class="docutils literal notranslate"><span class="pre">ClinicalDataProcessor.INT64_SENTINEL</span></code></a></li>
-<li><a class="reference internal" href="#data_processor.ClinicalDataProcessor.HISTORY_PREFIXES"><code class="docutils literal notranslate"><span class="pre">ClinicalDataProcessor.HISTORY_PREFIXES</span></code></a></li>
 <li><a class="reference internal" href="#data_processor.ClinicalDataProcessor.__init__"><code class="docutils literal notranslate"><span class="pre">ClinicalDataProcessor.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#data_processor.ClinicalDataProcessor.load_data"><code class="docutils literal notranslate"><span class="pre">ClinicalDataProcessor.load_data()</span></code></a></li>
 <li><a class="reference internal" href="#data_processor.ClinicalDataProcessor.transform_pipeline"><code class="docutils literal notranslate"><span class="pre">ClinicalDataProcessor.transform_pipeline()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#experiment_base.BaseExperiment"><code class="docutils literal notranslate"><span class="pre">BaseExperiment</span></code></a><ul>
-<li><a class="reference internal" href="#experiment_base.BaseExperiment.name"><code class="docutils literal notranslate"><span class="pre">BaseExperiment.name</span></code></a></li>
-<li><a class="reference internal" href="#experiment_base.BaseExperiment.latex_table"><code class="docutils literal notranslate"><span class="pre">BaseExperiment.latex_table</span></code></a></li>
-<li><a class="reference internal" href="#experiment_base.BaseExperiment.plotly_figure"><code class="docutils literal notranslate"><span class="pre">BaseExperiment.plotly_figure</span></code></a></li>
-<li><a class="reference internal" href="#experiment_base.BaseExperiment.EMPTY_LATEX"><code class="docutils literal notranslate"><span class="pre">BaseExperiment.EMPTY_LATEX</span></code></a></li>
 <li><a class="reference internal" href="#experiment_base.BaseExperiment.__init__"><code class="docutils literal notranslate"><span class="pre">BaseExperiment.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#experiment_base.BaseExperiment.run"><code class="docutils literal notranslate"><span class="pre">BaseExperiment.run()</span></code></a></li>
 <li><a class="reference internal" href="#experiment_base.BaseExperiment.export_latex"><code class="docutils literal notranslate"><span class="pre">BaseExperiment.export_latex()</span></code></a></li>
@@ -963,44 +626,18 @@ analysis path remains fast during interactive exploration.</p>
 </li>
 <li><a class="reference internal" href="#module-exp_permutation_importance">Experiments</a><ul>
 <li><a class="reference internal" href="#exp_permutation_importance.PermutationImportanceExperiment"><code class="docutils literal notranslate"><span class="pre">PermutationImportanceExperiment</span></code></a><ul>
-<li><a class="reference internal" href="#exp_permutation_importance.PermutationImportanceExperiment.max_samples"><code class="docutils literal notranslate"><span class="pre">PermutationImportanceExperiment.max_samples</span></code></a></li>
-<li><a class="reference internal" href="#exp_permutation_importance.PermutationImportanceExperiment.max_splits"><code class="docutils literal notranslate"><span class="pre">PermutationImportanceExperiment.max_splits</span></code></a></li>
-<li><a class="reference internal" href="#exp_permutation_importance.PermutationImportanceExperiment.n_repeats"><code class="docutils literal notranslate"><span class="pre">PermutationImportanceExperiment.n_repeats</span></code></a></li>
-<li><a class="reference internal" href="#exp_permutation_importance.PermutationImportanceExperiment.n_estimators"><code class="docutils literal notranslate"><span class="pre">PermutationImportanceExperiment.n_estimators</span></code></a></li>
-<li><a class="reference internal" href="#exp_permutation_importance.PermutationImportanceExperiment.DEFAULT_MAX_SAMPLES"><code class="docutils literal notranslate"><span class="pre">PermutationImportanceExperiment.DEFAULT_MAX_SAMPLES</span></code></a></li>
-<li><a class="reference internal" href="#exp_permutation_importance.PermutationImportanceExperiment.DEFAULT_MAX_SPLITS"><code class="docutils literal notranslate"><span class="pre">PermutationImportanceExperiment.DEFAULT_MAX_SPLITS</span></code></a></li>
-<li><a class="reference internal" href="#exp_permutation_importance.PermutationImportanceExperiment.DEFAULT_N_REPEATS"><code class="docutils literal notranslate"><span class="pre">PermutationImportanceExperiment.DEFAULT_N_REPEATS</span></code></a></li>
-<li><a class="reference internal" href="#exp_permutation_importance.PermutationImportanceExperiment.DEFAULT_N_ESTIMATORS"><code class="docutils literal notranslate"><span class="pre">PermutationImportanceExperiment.DEFAULT_N_ESTIMATORS</span></code></a></li>
-<li><a class="reference internal" href="#exp_permutation_importance.PermutationImportanceExperiment.__init__"><code class="docutils literal notranslate"><span class="pre">PermutationImportanceExperiment.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#exp_permutation_importance.PermutationImportanceExperiment.run"><code class="docutils literal notranslate"><span class="pre">PermutationImportanceExperiment.run()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#exp_contrast_mining.ContrastPatternMiningExperiment"><code class="docutils literal notranslate"><span class="pre">ContrastPatternMiningExperiment</span></code></a><ul>
-<li><a class="reference internal" href="#exp_contrast_mining.ContrastPatternMiningExperiment.max_samples"><code class="docutils literal notranslate"><span class="pre">ContrastPatternMiningExperiment.max_samples</span></code></a></li>
-<li><a class="reference internal" href="#exp_contrast_mining.ContrastPatternMiningExperiment.min_support"><code class="docutils literal notranslate"><span class="pre">ContrastPatternMiningExperiment.min_support</span></code></a></li>
-<li><a class="reference internal" href="#exp_contrast_mining.ContrastPatternMiningExperiment.max_features"><code class="docutils literal notranslate"><span class="pre">ContrastPatternMiningExperiment.max_features</span></code></a></li>
-<li><a class="reference internal" href="#exp_contrast_mining.ContrastPatternMiningExperiment.max_cardinality"><code class="docutils literal notranslate"><span class="pre">ContrastPatternMiningExperiment.max_cardinality</span></code></a></li>
-<li><a class="reference internal" href="#exp_contrast_mining.ContrastPatternMiningExperiment.DEFAULT_MAX_SAMPLES"><code class="docutils literal notranslate"><span class="pre">ContrastPatternMiningExperiment.DEFAULT_MAX_SAMPLES</span></code></a></li>
-<li><a class="reference internal" href="#exp_contrast_mining.ContrastPatternMiningExperiment.DEFAULT_MIN_SUPPORT"><code class="docutils literal notranslate"><span class="pre">ContrastPatternMiningExperiment.DEFAULT_MIN_SUPPORT</span></code></a></li>
-<li><a class="reference internal" href="#exp_contrast_mining.ContrastPatternMiningExperiment.DEFAULT_MAX_FEATURES"><code class="docutils literal notranslate"><span class="pre">ContrastPatternMiningExperiment.DEFAULT_MAX_FEATURES</span></code></a></li>
-<li><a class="reference internal" href="#exp_contrast_mining.ContrastPatternMiningExperiment.DEFAULT_MAX_CARDINALITY"><code class="docutils literal notranslate"><span class="pre">ContrastPatternMiningExperiment.DEFAULT_MAX_CARDINALITY</span></code></a></li>
-<li><a class="reference internal" href="#exp_contrast_mining.ContrastPatternMiningExperiment.__init__"><code class="docutils literal notranslate"><span class="pre">ContrastPatternMiningExperiment.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#exp_contrast_mining.ContrastPatternMiningExperiment.run"><code class="docutils literal notranslate"><span class="pre">ContrastPatternMiningExperiment.run()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment"><code class="docutils literal notranslate"><span class="pre">UnsupervisedClusteringExperiment</span></code></a><ul>
-<li><a class="reference internal" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.max_samples"><code class="docutils literal notranslate"><span class="pre">UnsupervisedClusteringExperiment.max_samples</span></code></a></li>
-<li><a class="reference internal" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.n_clusters"><code class="docutils literal notranslate"><span class="pre">UnsupervisedClusteringExperiment.n_clusters</span></code></a></li>
-<li><a class="reference internal" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.max_perplexity"><code class="docutils literal notranslate"><span class="pre">UnsupervisedClusteringExperiment.max_perplexity</span></code></a></li>
-<li><a class="reference internal" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.DEFAULT_MAX_SAMPLES"><code class="docutils literal notranslate"><span class="pre">UnsupervisedClusteringExperiment.DEFAULT_MAX_SAMPLES</span></code></a></li>
-<li><a class="reference internal" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.DEFAULT_N_CLUSTERS"><code class="docutils literal notranslate"><span class="pre">UnsupervisedClusteringExperiment.DEFAULT_N_CLUSTERS</span></code></a></li>
-<li><a class="reference internal" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.DEFAULT_MAX_PERPLEXITY"><code class="docutils literal notranslate"><span class="pre">UnsupervisedClusteringExperiment.DEFAULT_MAX_PERPLEXITY</span></code></a></li>
-<li><a class="reference internal" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.__init__"><code class="docutils literal notranslate"><span class="pre">UnsupervisedClusteringExperiment.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.run"><code class="docutils literal notranslate"><span class="pre">UnsupervisedClusteringExperiment.run()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#exp_bayesian_networks.BayesianNetworkExperiment"><code class="docutils literal notranslate"><span class="pre">BayesianNetworkExperiment</span></code></a><ul>
-<li><a class="reference internal" href="#exp_bayesian_networks.BayesianNetworkExperiment.__init__"><code class="docutils literal notranslate"><span class="pre">BayesianNetworkExperiment.__init__()</span></code></a></li>
 <li><a class="reference internal" href="#exp_bayesian_networks.BayesianNetworkExperiment.run"><code class="docutils literal notranslate"><span class="pre">BayesianNetworkExperiment.run()</span></code></a></li>
 </ul>
 </li>
@@ -1020,6 +657,6 @@ analysis path remains fast during interactive exploration.</p>
 </div><script src="_static/documentation_options.js?v=01f34227"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
     </body>
 </html>
