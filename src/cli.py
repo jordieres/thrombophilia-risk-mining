@@ -14,6 +14,10 @@ from pathlib import Path
 import warnings
 from typing import Any, Dict, List
 
+import numpy as np
+import pandas as pd
+import plotly.express as px
+
 # Suppress deprecation and future warnings from third-party libraries globally.
 warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore", category=SyntaxWarning)
@@ -24,6 +28,129 @@ from data_processor import ClinicalDataProcessor
 CLUSTERING_METRICS: List[str] = ["euclidean", "manhattan", "cosine", "chebyshev"]
 SCORE_BENCHMARK_MODELS: List[str] = ["logistic", "xgboost", "both"]
 SCORE_FEATURE_STRATEGIES: List[str] = ["automatic", "association", "compare"]
+
+
+def _resolve_column_name(df: pd.DataFrame, requested_column: str) -> str:
+    """Resolves a dataframe column name with a light case-insensitive fallback."""
+    if requested_column in df.columns:
+        return requested_column
+
+    lowered_map: Dict[str, str] = {str(column).casefold(): str(column) for column in df.columns}
+    resolved_column: str | None = lowered_map.get(requested_column.casefold())
+    if resolved_column is None:
+        available_columns: str = ", ".join(map(str, df.columns))
+        raise ValueError(
+            f"The requested EDAS column '{requested_column}' was not found. "
+            f"Available columns: {available_columns}"
+        )
+    return resolved_column
+
+
+def run_edas_analysis(data: pd.DataFrame, config: Dict[str, Any], output_dir: Path) -> None:
+    """Generates descriptive EDAS artifacts for a selected numeric clinical variable."""
+    requested_column: str = str(config.get("edas_column", "DimeroD"))
+    analysis_mode: str = str(config.get("edas_analysis", "both"))
+    histogram_bins: int = int(config.get("edas_bins", 10))
+    range_min: float | None = config.get("edas_range_min")
+    range_max: float | None = config.get("edas_range_max")
+
+    column_name: str = _resolve_column_name(data, requested_column)
+    series: pd.Series = pd.to_numeric(data[column_name], errors="coerce").dropna()
+    if series.empty:
+        raise ValueError(f"EDAS analysis found no numeric non-null values in column '{column_name}'.")
+
+    if range_min is not None:
+        range_min = float(range_min)
+    if range_max is not None:
+        range_max = float(range_max)
+    if range_min is not None and range_max is not None and range_min >= range_max:
+        raise ValueError("EDAS histogram range requires --edas-range-min to be smaller than --edas-range-max.")
+
+    safe_column_stem: str = column_name.lower().replace(" ", "_")
+
+    if analysis_mode in {"stats", "both"}:
+        stats_df: pd.DataFrame = pd.DataFrame(
+            [
+                {
+                    "column": column_name,
+                    "count": int(series.count()),
+                    "min": float(series.min()),
+                    "q1": float(series.quantile(0.25)),
+                    "median": float(series.median()),
+                    "q3": float(series.quantile(0.75)),
+                    "max": float(series.max()),
+                }
+            ]
+        )
+        stats_output: Path = output_dir / f"edas_{safe_column_stem}_stats.csv"
+        stats_df.to_csv(stats_output, index=False)
+        print("\nEDAS descriptive statistics:")
+        print(stats_df.to_string(index=False))
+        print(f"EDAS statistics saved to {stats_output}")
+
+    if analysis_mode in {"histogram", "both"}:
+        in_range_mask: pd.Series = pd.Series(True, index=series.index)
+        if range_min is not None:
+            in_range_mask &= series >= range_min
+        if range_max is not None:
+            in_range_mask &= series <= range_max
+
+        filtered_series: pd.Series = series[in_range_mask]
+        below_range_count: int = int((series < range_min).sum()) if range_min is not None else 0
+        above_range_count: int = int((series > range_max).sum()) if range_max is not None else 0
+
+        if filtered_series.empty:
+            raise ValueError(
+                "EDAS histogram range excluded all rows. Adjust --edas-range-min/--edas-range-max."
+            )
+
+        counts, bin_edges = np.histogram(filtered_series.to_numpy(), bins=histogram_bins)
+        histogram_df: pd.DataFrame = pd.DataFrame(
+            {
+                "bin_start": bin_edges[:-1],
+                "bin_end": bin_edges[1:],
+                "count": counts,
+            }
+        )
+        histogram_df["n_below_range"] = below_range_count
+        histogram_df["n_above_range"] = above_range_count
+
+        histogram_summary_df: pd.DataFrame = pd.DataFrame(
+            [
+                {
+                    "column": column_name,
+                    "range_min": range_min,
+                    "range_max": range_max,
+                    "n_total": int(series.count()),
+                    "n_in_range": int(filtered_series.count()),
+                    "n_below_range": below_range_count,
+                    "n_above_range": above_range_count,
+                }
+            ]
+        )
+        histogram_output: Path = output_dir / f"edas_{safe_column_stem}_histogram.csv"
+        histogram_summary_output: Path = output_dir / f"edas_{safe_column_stem}_histogram_summary.csv"
+        histogram_df.to_csv(histogram_output, index=False)
+        histogram_summary_df.to_csv(histogram_summary_output, index=False)
+
+        figure = px.histogram(
+            x=filtered_series,
+            nbins=histogram_bins,
+            title=f"EDAS Histogram for {column_name}",
+            labels={"x": column_name, "y": "Count"},
+        )
+        if range_min is not None or range_max is not None:
+            figure.update_xaxes(range=[range_min, range_max])
+        html_output: Path = output_dir / f"edas_{safe_column_stem}_histogram.html"
+        figure.write_html(str(html_output), include_plotlyjs="cdn")
+
+        print("\nEDAS histogram range summary:")
+        print(histogram_summary_df.to_string(index=False))
+        print("\nEDAS histogram bins:")
+        print(histogram_df.to_string(index=False))
+        print(f"EDAS histogram bins saved to {histogram_output}")
+        print(f"EDAS histogram summary saved to {histogram_summary_output}")
+        print(f"EDAS histogram chart saved to {html_output}")
 
 
 def build_experiment_registry(selected_experiment: str) -> Dict[str, Any]:
@@ -66,7 +193,7 @@ def main() -> None:
         "--experiment",
         type=str,
         required=True,
-        choices=["permutation", "contrast", "clustering", "bayesian", "score", "all"],
+        choices=["permutation", "contrast", "clustering", "bayesian", "score", "edas", "all"],
     )
 
     # Execution optimization parameters.
@@ -115,6 +242,18 @@ def main() -> None:
     parser.add_argument("--score-min-sensitivity", type=float, default=0.90)
     parser.add_argument("--score-xgboost-estimators", type=int, default=80)
 
+    parser.add_argument("--edas-column", type=str, default="DimeroD")
+    parser.add_argument(
+        "--edas-analysis",
+        type=str,
+        default="both",
+        choices=["histogram", "stats", "both"],
+        help="EDAS output mode for the selected variable.",
+    )
+    parser.add_argument("--edas-bins", type=int, default=10, help="Number of bins used in the EDAS histogram.")
+    parser.add_argument("--edas-range-min", type=float, default=None, help="Lower bound included in the EDAS histogram.")
+    parser.add_argument("--edas-range-max", type=float, default=None, help="Upper bound included in the EDAS histogram.")
+
     parser.add_argument("--output-dir", type=str, default=".")
     parser.add_argument("--checkpoint-dir", type=str, default="out/checkpoints")
     parser.add_argument(
@@ -134,6 +273,10 @@ def main() -> None:
     processor: ClinicalDataProcessor = ClinicalDataProcessor(args.data)
     processor.load_data()
     processed_df = processor.transform_pipeline()
+
+    if args.experiment == "edas":
+        run_edas_analysis(processed_df, config, output_dir)
+        return
 
     experiment_registry: Dict[str, Any] = build_experiment_registry(args.experiment)
 
