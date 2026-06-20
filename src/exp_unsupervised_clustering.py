@@ -15,7 +15,7 @@ import plotly.express as px
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
-from umap import UMAP
+from umap.umap_ import UMAP
 
 from experiment_base import BaseExperiment
 
