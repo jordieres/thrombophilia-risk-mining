@@ -85,6 +85,75 @@ clinical trajectories.
      --clustering-min-dist 0.1 \
      --output-dir out
 
+Categorical association heatmap
+-------------------------------
+
+The ``categorical_association`` experiment measures pairwise relationships
+between categorical variables using Cramer's V, writes a full matrix export,
+and highlights the strongest variable pairs for exploratory review. It is the
+closest structured replacement for the categorical-correlation notebook work.
+
+.. code-block:: bash
+
+   poetry run python src/cli.py \
+     --data data/patD_slim.parquet \
+     --experiment categorical_association \
+     --association-max-samples 5000 \
+     --association-max-columns 20 \
+     --association-top-k 20 \
+     --output-dir out
+
+The categorical association export includes three complementary outputs:
+
+``tab:categorical_association``
+   Ranked top variable pairs ordered by descending Cramer's V.
+
+``categorical_association_matrix.csv``
+   Full square matrix of pairwise Cramer's V scores across the selected
+   categorical variables.
+
+``categorical_association_top_pairs.csv``
+   Flat table with the strongest non-diagonal variable pairs.
+
+Open association-rule explorer
+-----------------------------
+
+The ``association_explorer`` experiment mines general association rules over
+bounded categorical variables. Unlike ``contrast``, it is not restricted to a
+single outcome column, so it can be used to inspect what relationships emerge
+around any retained variable, including but not limited to ``ana_dura``.
+
+.. code-block:: bash
+
+   poetry run python src/cli.py \
+     --data data/patD_slim.parquet \
+     --experiment association_explorer \
+     --association-rules-max-samples 5000 \
+     --association-rules-min-support 0.01 \
+     --association-rules-min-confidence 0.40 \
+     --association-rules-min-lift 1.00 \
+     --association-rules-max-feature-cardinality 12 \
+     --association-rules-max-features 24 \
+     --association-rules-max-rule-size 3 \
+     --association-rules-top-k 30 \
+     --association-rules-sort-metric leverage \
+     --association-rules-filter-column ana_dura \
+     --association-rules-filter-side either \
+     --output-dir out
+
+The association-rule explorer export includes:
+
+``tab:association_explorer``
+   Ranked rule table ordered by the configured metric.
+
+``association_explorer_top_rules.csv``
+   Flat export of the displayed top rules with support, confidence, lift,
+   leverage, and itemset sizes.
+
+``out/checkpoints/association_explorer_*/``
+   Prepared sample, encoded transactions, frequent itemsets, and the full rule
+   table for resumable inspection.
+
 Clinical integer score and ROC benchmarking
 -------------------------------------------
 
@@ -135,6 +204,50 @@ The clinical score export includes four complementary outputs:
 ``clinical_risk_score_per_patient.csv``
    Patient-level export including the identifier, observed outcome, and one set
    of score/threshold/decision columns per enabled strategy.
+
+Clinical score screening for missing or unrequested studies
+--------------------------------------------------------
+
+The ``score_screening`` experiment trains the clinical score on the confirmed
+binary subset and then applies the resulting point cards to records labelled as
+``Missing`` or ``No buscada`` in ``ana_dura``. It also exports probability-based
+screening outputs from the same logistic and XGBoost benchmark families used in
+``score``, which is helpful when the bedside integer score is too blunt for
+prioritizing manual review. This is intended for review prioritization rather
+than definitive diagnosis.
+
+.. code-block:: bash
+
+   poetry run python src/cli.py \
+     --data data/patD_slim.parquet \
+     --experiment score_screening \
+     --score-target-column ana_dura \
+     --score-positive-label "Buscada positivo" \
+     --score-negative-label "Buscada negativo" \
+     --screening-labels Missing "No buscada" \
+     --score-feature-strategy compare \
+     --score-benchmark-model both \
+     --score-max-samples 4000 \
+     --score-max-feature-cardinality 12 \
+     --score-numeric-bins 4 \
+     --score-cv-splits 5 \
+     --score-min-sensitivity 0.90 \
+     --score-min-feature-prevalence 0.02 \
+     --score-top-features 12 \
+     --score-xgboost-estimators 80 \
+     --output-dir out
+
+The screening export includes:
+
+``tab:clinical_screening_roc``
+   Training ROC metrics used to derive the screening thresholds.
+
+``tab:clinical_screening_summary``
+   Counts of flagged candidates among the requested screening labels.
+
+``clinical_risk_score_screening_candidates.csv``
+   Patient-level candidate list with integer scores, benchmark probabilities,
+   thresholds, and predicted positive flags for review.
 
 Multi-line shell commands
 -------------------------
@@ -200,6 +313,43 @@ Artifact locations
 Use ``--output-dir`` to redirect interactive HTML charts away from the project
 root, and ``--checkpoint-dir`` to persist resumable intermediate state for
 long-running experiments.
+
+One-off patD preparation
+------------------------
+
+The repository includes a dedicated one-off utility for adapting
+``data/patD.parquet`` to an Excel-driven variable specification. This helper is
+independent from the main experiment CLI and is intended for controlled dataset
+curation before downstream analysis.
+
+Behavior summary:
+
+* reads the Excel file and uses column A as the authoritative ordered variable
+  list,
+* preserves ``id_pacie`` only as a reference column and excludes it from the
+  reported feature list,
+* keeps only those selected variables in the generated parquet,
+* replaces numeric sentinel values with ``NaN`` when present,
+* normalizes missing ``ana_dime`` values to ``No practicado``,
+* emits a JSON validation report with categorical and threshold-oriented checks
+  derived from column C.
+
+.. code-block:: bash
+
+   python -m src.patd_spec_tool \
+     --spec-xlsx "/tmp/varibeles explained.xlsx" \
+     --output-parquet out/patD_spec_subset.parquet \
+     --report-json out/patD_spec_subset_validation.json
+
+Generated artifacts:
+
+``out/patD_spec_subset.parquet``
+   Curated subset containing ``id_pacie`` plus only the Excel-selected
+   variables.
+
+``out/patD_spec_subset_validation.json``
+   Validation trace with row count, feature list, allowed categorical values,
+   observed values, and any detected issues.
 
 VS Code debugging
 -----------------

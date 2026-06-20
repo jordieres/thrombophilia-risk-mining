@@ -95,6 +95,7 @@ class ClinicalRiskScoreExperiment(BaseExperiment):
         benchmark_model: str = str(config.get("score_benchmark_model", "both"))
         top_features: int = int(config.get("score_top_features", 12))
         min_sensitivity: float = float(config.get("score_min_sensitivity", 0.90))
+        min_feature_prevalence: float = float(config.get("score_min_feature_prevalence", 0.02))
         xgboost_estimators: int = int(config.get("score_xgboost_estimators", 80))
         feature_strategy: str = str(config.get("score_feature_strategy", "automatic"))
         output_dir: Path = Path(str(config.get("output_dir", ".")))
@@ -148,6 +149,7 @@ class ClinicalRiskScoreExperiment(BaseExperiment):
                 min_sensitivity=min_sensitivity,
                 coefficient_direction="positive",
                 positive_if_score_at_most=False,
+                min_feature_prevalence=min_feature_prevalence,
             )
             results.append(automatic_result)
         else:
@@ -167,6 +169,7 @@ class ClinicalRiskScoreExperiment(BaseExperiment):
                 min_sensitivity=min_sensitivity,
                 coefficient_direction="negative",
                 positive_if_score_at_most=True,
+                min_feature_prevalence=min_feature_prevalence,
             )
             results.append(association_result)
         else:
@@ -280,6 +283,7 @@ class ClinicalRiskScoreExperiment(BaseExperiment):
         min_sensitivity: float,
         coefficient_direction: str,
         positive_if_score_at_most: bool,
+        min_feature_prevalence: float,
     ) -> StrategyResult:
         """Fits one score strategy end to end."""
         y: np.ndarray = np.where(modeling_df[target_col] == positive_label, 1, 0)
@@ -296,6 +300,7 @@ class ClinicalRiskScoreExperiment(BaseExperiment):
             model_name=strategy_name,
             coefficient_direction=coefficient_direction,
             positive_if_score_at_most=positive_if_score_at_most,
+            min_feature_prevalence=min_feature_prevalence,
         )
 
         fitted_pipeline = clone(pipeline)
@@ -305,6 +310,8 @@ class ClinicalRiskScoreExperiment(BaseExperiment):
             top_features=top_features,
             model_label=strategy_name,
             coefficient_direction=coefficient_direction,
+            X_reference=feature_df,
+            min_feature_prevalence=min_feature_prevalence,
         )
         patient_scores_df: pd.DataFrame = self._score_patients_with_points(
             strategy_key=strategy_key,
@@ -391,24 +398,29 @@ class ClinicalRiskScoreExperiment(BaseExperiment):
         guided_df = base_df[[identifier_col, target_col]].copy()
 
         if "sexo" in base_df.columns:
-            guided_df["female_sex_rule"] = np.where(base_df["sexo"].astype(str) == "Female", "Yes", "No")
+            sex_values = base_df["sexo"].astype(str)
+            guided_df["female_sex_rule"] = np.where(sex_values.isin(["Female", "Mujer"]), "Yes", "No")
 
         if "edad" in base_df.columns:
             age_values = pd.to_numeric(base_df["edad"], errors="coerce")
-            guided_df["age_lt50_rule"] = np.where(age_values < 50, "Yes", "No")
-            guided_df["age_50_69_rule"] = np.where((age_values >= 50) & (age_values <= 69), "Yes", "No")
+            guided_df["age_lt50_rule"] = np.where((age_values < 50).fillna(False), "Yes", "No")
+            guided_df["age_50_69_rule"] = np.where(((age_values >= 50) & (age_values <= 69)).fillna(False), "Yes", "No")
 
         if "fr_tvp_p" in base_df.columns:
             prior_dvt_values = pd.to_numeric(base_df["fr_tvp_p"], errors="coerce")
             guided_df["no_prior_dvt_rule"] = np.where(prior_dvt_values.fillna(0) <= 0, "Yes", "No")
+        elif "fr_tvp_a" in base_df.columns:
+            guided_df["no_prior_dvt_rule"] = np.where(base_df["fr_tvp_a"].astype(str) == "No", "Yes", "No")
 
         if "ana_hemo" in base_df.columns:
             hemo_values = pd.to_numeric(base_df["ana_hemo"], errors="coerce")
-            guided_df["normal_hemoglobin_rule"] = np.where(hemo_values >= 12.0, "Yes", "No")
+            guided_df["normal_hemoglobin_rule"] = np.where((hemo_values >= 12.0).fillna(False), "Yes", "No")
 
         if "ddvalmcg" in base_df.columns:
             ddimer_values = pd.to_numeric(base_df["ddvalmcg"], errors="coerce")
-            guided_df["negative_ddimer_rule"] = np.where(ddimer_values <= 0.5, "Yes", "No")
+            guided_df["negative_ddimer_rule"] = np.where((ddimer_values <= 0.5).fillna(False), "Yes", "No")
+        elif "ana_dime" in base_df.columns:
+            guided_df["negative_ddimer_rule"] = np.where(base_df["ana_dime"].astype(str) == "Negativo", "Yes", "No")
 
         if "fr_cance" in base_df.columns:
             guided_df["no_malignancy_rule"] = np.where(base_df["fr_cance"].astype(str) == "No", "Yes", "No")
@@ -527,6 +539,7 @@ class ClinicalRiskScoreExperiment(BaseExperiment):
         model_name: str,
         coefficient_direction: str,
         positive_if_score_at_most: bool,
+        min_feature_prevalence: float,
     ) -> ModelEvaluation:
         """Evaluates one integer-point clinical score with out-of-fold predictions."""
         point_scores: np.ndarray = np.zeros(len(X), dtype=float)
@@ -539,6 +552,8 @@ class ClinicalRiskScoreExperiment(BaseExperiment):
                 top_features=top_features,
                 model_label=model_name,
                 coefficient_direction=coefficient_direction,
+                X_reference=X.iloc[train_idx],
+                min_feature_prevalence=min_feature_prevalence,
             )
             point_scores[test_idx] = self._score_feature_frame_with_points(
                 pipeline=fold_pipeline,
@@ -587,33 +602,43 @@ class ClinicalRiskScoreExperiment(BaseExperiment):
         top_features: int,
         model_label: str,
         coefficient_direction: str,
+        X_reference: pd.DataFrame,
+        min_feature_prevalence: float,
     ) -> pd.DataFrame:
         """Extracts score components and converts them to integer points."""
         preprocessor: ColumnTransformer = pipeline.named_steps["preprocessor"]
         model: LogisticRegression = pipeline.named_steps["model"]
         feature_names: np.ndarray = preprocessor.get_feature_names_out()
         coefficients: np.ndarray = model.coef_.ravel()
+        transformed = preprocessor.transform(X_reference)
+        transformed_sparse = transformed if sparse.issparse(transformed) else sparse.csr_matrix(transformed)
+        prevalence = np.asarray(transformed_sparse.mean(axis=0)).ravel()
         coef_df: pd.DataFrame = pd.DataFrame(
             {
                 "Encoded_Feature": feature_names,
                 "Coefficient": coefficients,
                 "Odds_Ratio": np.exp(coefficients),
+                "Prevalence": prevalence,
             }
         )
+        coef_df["Component"] = coef_df["Encoded_Feature"].str.replace("cat__", "", regex=False)
+        coef_df = coef_df[~coef_df["Component"].str.endswith("_Missing")].copy()
+        coef_df = coef_df[coef_df["Prevalence"] >= min_feature_prevalence].copy()
         if coefficient_direction == "positive":
             coef_df = coef_df[coef_df["Coefficient"] > 0].copy()
         else:
             coef_df = coef_df[coef_df["Coefficient"] < 0].copy()
             coef_df["Coefficient_Abs"] = coef_df["Coefficient"].abs()
         if coef_df.empty:
-            raise ValueError("The fitted logistic model produced no positive coefficients to build a bedside score.")
+            raise ValueError(
+                "The fitted logistic model produced no eligible coefficients after prevalence and missing-value filtering."
+            )
         sort_col = "Coefficient" if coefficient_direction == "positive" else "Coefficient_Abs"
-        coef_df = coef_df.sort_values(by=sort_col, ascending=False).head(top_features).reset_index(drop=True)
+        coef_df = coef_df.sort_values(by=[sort_col, "Prevalence"], ascending=[False, False]).head(top_features).reset_index(drop=True)
         base_coef: float = float(coef_df[sort_col].min())
         coef_df["Points"] = np.maximum(1, np.rint(coef_df[sort_col] / base_coef)).astype(int)
-        coef_df["Component"] = coef_df["Encoded_Feature"].str.replace("cat__", "", regex=False)
         coef_df["Model"] = model_label
-        drop_cols = [col for col in ["Coefficient_Abs"] if col in coef_df.columns]
+        drop_cols = [col for col in ["Coefficient_Abs", "Prevalence"] if col in coef_df.columns]
         coef_df = coef_df.drop(columns=drop_cols)
         return coef_df[["Model", "Component", "Coefficient", "Odds_Ratio", "Points"]]
 

@@ -85,13 +85,20 @@ clinical trajectories.
      --clustering-min-dist 0.1 \
      --output-dir out
 
-Clinical z-score and ROC benchmarking
--------------------------------------
+Clinical integer score and ROC benchmarking
+-------------------------------------------
 
-The ``score`` experiment filters the cohort to a binary diagnostic criterion,
-fits an interpretable logistic model over numeric and low-cardinality
-categorical predictors, standardizes the linear predictor into a clinical
-z-score, and optionally benchmarks the ROC curve against XGBoost.
+The ``score`` experiment filters the cohort to the binary diagnostic criterion,
+removes ``Missing`` and ``No buscada`` outcomes, and can now compare two
+feature-selection strategies: an automatic low-cardinality discovery workflow
+and an association-guided preset based on rule-mining findings (female sex,
+younger age bands, no prior DVT, normal hemoglobin, negative D-dimer, no
+malignancy, and no immobilization when those fields are available).
+
+The operating threshold is no longer chosen by Youden optimization. Instead,
+the score selects the most specific threshold that still satisfies the
+pre-specified minimum sensitivity constraint, which is more appropriate for a
+rule-out screening tool.
 
 .. code-block:: bash
 
@@ -102,23 +109,32 @@ z-score, and optionally benchmarks the ROC curve against XGBoost.
      --score-positive-label "Buscada positivo" \
      --score-negative-label "Buscada negativo" \
      --score-max-samples 2500 \
+     --score-feature-strategy compare \
      --score-max-feature-cardinality 12 \
+     --score-numeric-bins 4 \
      --score-cv-splits 4 \
+     --score-min-sensitivity 0.90 \
      --score-benchmark-model both \
      --score-top-features 10 \
      --score-xgboost-estimators 80 \
      --output-dir out
 
-The clinical score export includes three complementary outputs:
+The clinical score export includes four complementary outputs:
 
 ``tab:clinical_roc``
-   Cross-validated ROC AUC, optimal threshold, sensitivity, and specificity.
+   Cross-validated ROC AUC plus the threshold selected under the minimum
+   sensitivity rule.
 
-``tab:clinical_zscore_distribution``
-   Outcome-stratified z-score distribution summary for interpretability.
+``tab:clinical_score_distribution``
+   Outcome-stratified integer-score distribution summary for interpretability.
 
-``tab:clinical_zscore_coefficients``
-   Largest standardized logistic components and their implied odds ratios.
+``tab:clinical_score_components``
+   Positive logistic components converted into bedside integer points for each
+   strategy.
+
+``clinical_risk_score_per_patient.csv``
+   Patient-level export including the identifier, observed outcome, and one set
+   of score/threshold/decision columns per enabled strategy.
 
 Multi-line shell commands
 -------------------------
@@ -174,8 +190,9 @@ Available configuration groups
 
 ``score``
    Controls the binary diagnostic labels, cohort sample cap, allowed
-   categorical cardinality, cross-validation folds, benchmark model family,
-   coefficient reporting depth, and XGBoost tree count.
+   categorical cardinality, numeric bin count, cross-validation folds,
+   minimum sensitivity requirement, benchmark model family, coefficient
+   reporting depth, and XGBoost tree count.
 
 Artifact locations
 ------------------
@@ -183,6 +200,43 @@ Artifact locations
 Use ``--output-dir`` to redirect interactive HTML charts away from the project
 root, and ``--checkpoint-dir`` to persist resumable intermediate state for
 long-running experiments.
+
+One-off patD preparation
+------------------------
+
+The repository includes a dedicated one-off utility for adapting
+``data/patD.parquet`` to an Excel-driven variable specification. This helper is
+independent from the main experiment CLI and is intended for controlled dataset
+curation before downstream analysis.
+
+Behavior summary:
+
+* reads the Excel file and uses column A as the authoritative ordered variable
+  list,
+* preserves ``id_pacie`` only as a reference column and excludes it from the
+  reported feature list,
+* keeps only those selected variables in the generated parquet,
+* replaces numeric sentinel values with ``NaN`` when present,
+* normalizes missing ``ana_dime`` values to ``No practicado``,
+* emits a JSON validation report with categorical and threshold-oriented checks
+  derived from column C.
+
+.. code-block:: bash
+
+   python -m src.patd_spec_tool \
+     --spec-xlsx "/tmp/varibeles explained.xlsx" \
+     --output-parquet out/patD_spec_subset.parquet \
+     --report-json out/patD_spec_subset_validation.json
+
+Generated artifacts:
+
+``out/patD_spec_subset.parquet``
+   Curated subset containing ``id_pacie`` plus only the Excel-selected
+   variables.
+
+``out/patD_spec_subset_validation.json``
+   Validation trace with row count, feature list, allowed categorical values,
+   observed values, and any detected issues.
 
 VS Code debugging
 -----------------

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import importlib.util
 import sys
 from pathlib import Path
 
@@ -46,7 +47,7 @@ intersphinx_mapping = {
 
 templates_path = ["_templates"]
 exclude_patterns = ["Thumbs.db", ".DS_Store"]
-html_theme = "furo"
+html_theme = "furo" if importlib.util.find_spec("furo") is not None else "alabaster"
 
 # GitHub Pages needs this file in the published ``docs/`` root, but the file is
 # already tracked directly in that output directory so Sphinx does not need to

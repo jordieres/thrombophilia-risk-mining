@@ -172,6 +172,16 @@ def build_experiment_registry(selected_experiment: str) -> Dict[str, Any]:
 
         registry["clustering"] = UnsupervisedClusteringExperiment()
 
+    if selected_experiment in {"categorical_association", "all"}:
+        from exp_categorical_association import CategoricalAssociationExperiment
+
+        registry["categorical_association"] = CategoricalAssociationExperiment()
+
+    if selected_experiment in {"association_explorer", "all"}:
+        from exp_association_explorer import AssociationExplorerExperiment
+
+        registry["association_explorer"] = AssociationExplorerExperiment()
+
     if selected_experiment in {"bayesian", "all"}:
         from exp_bayesian_networks import BayesianNetworkExperiment
 
@@ -181,6 +191,11 @@ def build_experiment_registry(selected_experiment: str) -> Dict[str, Any]:
         from exp_clinical_risk_score import ClinicalRiskScoreExperiment
 
         registry["score"] = ClinicalRiskScoreExperiment()
+
+    if selected_experiment in {"score_screening", "all"}:
+        from exp_score_screening import ClinicalScoreScreeningExperiment
+
+        registry["score_screening"] = ClinicalScoreScreeningExperiment()
 
     return registry
 
@@ -193,7 +208,7 @@ def main() -> None:
         "--experiment",
         type=str,
         required=True,
-        choices=["permutation", "contrast", "clustering", "bayesian", "score", "edas", "all"],
+        choices=["permutation", "contrast", "clustering", "categorical_association", "association_explorer", "bayesian", "score", "score_screening", "edas", "all"],
     )
 
     # Execution optimization parameters.
@@ -223,6 +238,24 @@ def main() -> None:
     parser.add_argument("--clustering-n-neighbors", type=int, default=15)
     parser.add_argument("--clustering-min-dist", type=float, default=0.1)
 
+    parser.add_argument("--association-max-samples", type=int, default=5000)
+    parser.add_argument("--association-max-columns", type=int, default=20)
+    parser.add_argument("--association-top-k", type=int, default=20)
+    parser.add_argument("--association-include-target", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--association-target-column", type=str, default="ana_dura")
+
+    parser.add_argument("--association-rules-max-samples", type=int, default=5000)
+    parser.add_argument("--association-rules-min-support", type=float, default=0.01)
+    parser.add_argument("--association-rules-min-confidence", type=float, default=0.4)
+    parser.add_argument("--association-rules-min-lift", type=float, default=1.0)
+    parser.add_argument("--association-rules-max-feature-cardinality", type=int, default=12)
+    parser.add_argument("--association-rules-max-features", type=int, default=24)
+    parser.add_argument("--association-rules-max-rule-size", type=int, default=3)
+    parser.add_argument("--association-rules-top-k", type=int, default=30)
+    parser.add_argument("--association-rules-sort-metric", type=str, default="leverage", choices=["leverage", "lift", "confidence", "support"])
+    parser.add_argument("--association-rules-filter-column", type=str, default=None)
+    parser.add_argument("--association-rules-filter-side", type=str, default="either", choices=["either", "antecedent", "consequent"])
+
     parser.add_argument("--score-target-column", type=str, default="ana_dura")
     parser.add_argument("--score-positive-label", type=str, default="Buscada positivo")
     parser.add_argument("--score-negative-label", type=str, default="Buscada negativo")
@@ -240,7 +273,9 @@ def main() -> None:
     parser.add_argument("--score-top-features", type=int, default=12)
     parser.add_argument("--score-numeric-bins", type=int, default=4)
     parser.add_argument("--score-min-sensitivity", type=float, default=0.90)
+    parser.add_argument("--score-min-feature-prevalence", type=float, default=0.02)
     parser.add_argument("--score-xgboost-estimators", type=int, default=80)
+    parser.add_argument("--screening-labels", nargs="*", default=["Missing", "No buscada"])
 
     parser.add_argument("--edas-column", type=str, default="DimeroD")
     parser.add_argument(
