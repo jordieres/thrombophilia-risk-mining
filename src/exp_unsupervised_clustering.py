@@ -8,6 +8,7 @@ and then produces a two-dimensional UMAP embedding for visualization.
 from __future__ import annotations
 
 from typing import Any, Dict, List
+import sys
 
 import numpy as np
 import pandas as pd
@@ -15,7 +16,12 @@ import plotly.express as px
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
-from umap.umap_ import UMAP
+
+# Force classic UMAP import path to skip parametric torchvision dependencies.
+if "torchvision" not in sys.modules:
+    sys.modules["torchvision"] = None
+
+from umap import UMAP
 
 from experiment_base import BaseExperiment
 
