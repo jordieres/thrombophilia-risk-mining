@@ -1,24 +1,24 @@
 <!doctype html>
 <html class="no-js" lang="en" data-content_root="./">
-  <head><meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Development" href="development.html"><link rel="prev" title="Architecture" href="architecture.html">
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Development" href="development.html" /><link rel="prev" title="Architecture" href="architecture.html" />
 
-    <!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
         <title>API Reference - Thrombophilia Risk Mining 0.1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
     
     
 
 
 <style>
   body {
-    --color-code-background: #f2f2f2;
-  --color-code-foreground: #1e1e1e;
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
   
   }
   @media not print {
@@ -145,10 +145,14 @@
   </symbol>
 </svg>
 
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
-<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
-<label class="overlay sidebar-overlay" for="__navigation"></label>
-<label class="overlay toc-overlay" for="__toc"></label>
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
 
 <a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
 
@@ -158,7 +162,8 @@
   <header class="mobile-header">
     <div class="header-left">
       <label class="nav-overlay-icon" for="__navigation">
-        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
       </label>
     </div>
     <div class="header-center">
@@ -166,7 +171,8 @@
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
-        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
           <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
           <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
           <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
@@ -174,7 +180,8 @@
         </button>
       </div>
       <label class="toc-overlay-icon toc-header-icon" for="__toc">
-        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
     </div>
   </header>
@@ -182,6 +189,7 @@
     <div class="sidebar-container">
       
       <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
   
   <span class="sidebar-brand-text">Thrombophilia Risk Mining 0.1.0 documentation</span>
   
@@ -224,7 +232,8 @@
   </a>
 </div>
 <div class="theme-toggle-container theme-toggle-content">
-            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
               <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
               <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
@@ -232,7 +241,8 @@
             </button>
           </div>
           <label class="toc-overlay-icon toc-content-icon" for="__toc">
-            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
@@ -486,13 +496,13 @@ clinical datasets.</p>
 
 <p id="module-exp_unsupervised_clustering">Unsupervised clustering experiment implementation.</p>
 <p>The clustering workflow restricts itself to numeric variables, imputes missing
-values with robust medians, scales the data, and then produces both cluster
-assignments and a two-dimensional t-SNE embedding for visualization.</p>
+values with robust medians, scales the data, applies agglomerative clustering,
+and then produces a two-dimensional UMAP embedding for visualization.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="exp_unsupervised_clustering.UnsupervisedClusteringExperiment">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">exp_unsupervised_clustering.</span></span><span class="sig-name descname"><span class="pre">UnsupervisedClusteringExperiment</span></span><a class="reference internal" href="_modules/exp_unsupervised_clustering.html#UnsupervisedClusteringExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#experiment_base.BaseExperiment" title="experiment_base.BaseExperiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseExperiment</span></code></a></p>
-<p>Study 3: Unsupervised phenotypic segmentation using t-SNE reduction mappings.</p>
+<p>Study 3: Unsupervised phenotypic segmentation using UMAP reduction mappings.</p>
 <dl class="field-list simple">
 </dl>
 <dl class="py method">
@@ -529,6 +539,116 @@ a lightweight probabilistic summary suitable for exploratory reporting.</p>
 <dt class="sig sig-object py" id="exp_bayesian_networks.BayesianNetworkExperiment.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_bayesian_networks.html#BayesianNetworkExperiment.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_bayesian_networks.BayesianNetworkExperiment.run" title="Link to this definition">¶</a></dt>
 <dd><p>Models conditional probability distribution charts to isolate wasted testing indices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em>)</p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p id="module-exp_clinical_risk_score">Clinical risk-score experiment implementation.</p>
+<p>This module builds an interpretable logistic-regression risk score over a
+bounded set of numeric and low-cardinality categorical features, converts the
+linear predictor into a standardized clinical z-score, and benchmarks the
+criterion with ROC curves.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="exp_clinical_risk_score.ModelEvaluation">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">exp_clinical_risk_score.</span></span><span class="sig-name descname"><span class="pre">ModelEvaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score_label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fpr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tpr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">best_threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensitivity</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specificity</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_clinical_risk_score.html#ModelEvaluation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_clinical_risk_score.ModelEvaluation" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Container for out-of-fold predictions and ROC metrics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>score_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>y_true</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>scores</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>auc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>fpr</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>tpr</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>thresholds</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>best_threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>sensitivity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>specificity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="exp_clinical_risk_score.ModelEvaluation.model_name">
+<span class="sig-name descname"><span class="pre">model_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#exp_clinical_risk_score.ModelEvaluation.model_name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="exp_clinical_risk_score.ModelEvaluation.score_label">
+<span class="sig-name descname"><span class="pre">score_label</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#exp_clinical_risk_score.ModelEvaluation.score_label" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="exp_clinical_risk_score.ModelEvaluation.y_true">
+<span class="sig-name descname"><span class="pre">y_true</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#exp_clinical_risk_score.ModelEvaluation.y_true" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="exp_clinical_risk_score.ModelEvaluation.scores">
+<span class="sig-name descname"><span class="pre">scores</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#exp_clinical_risk_score.ModelEvaluation.scores" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="exp_clinical_risk_score.ModelEvaluation.auc">
+<span class="sig-name descname"><span class="pre">auc</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#exp_clinical_risk_score.ModelEvaluation.auc" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="exp_clinical_risk_score.ModelEvaluation.fpr">
+<span class="sig-name descname"><span class="pre">fpr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#exp_clinical_risk_score.ModelEvaluation.fpr" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="exp_clinical_risk_score.ModelEvaluation.tpr">
+<span class="sig-name descname"><span class="pre">tpr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#exp_clinical_risk_score.ModelEvaluation.tpr" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="exp_clinical_risk_score.ModelEvaluation.thresholds">
+<span class="sig-name descname"><span class="pre">thresholds</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#exp_clinical_risk_score.ModelEvaluation.thresholds" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="exp_clinical_risk_score.ModelEvaluation.best_threshold">
+<span class="sig-name descname"><span class="pre">best_threshold</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#exp_clinical_risk_score.ModelEvaluation.best_threshold" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="exp_clinical_risk_score.ModelEvaluation.sensitivity">
+<span class="sig-name descname"><span class="pre">sensitivity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#exp_clinical_risk_score.ModelEvaluation.sensitivity" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="exp_clinical_risk_score.ModelEvaluation.specificity">
+<span class="sig-name descname"><span class="pre">specificity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#exp_clinical_risk_score.ModelEvaluation.specificity" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="exp_clinical_risk_score.ClinicalRiskScoreExperiment">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">exp_clinical_risk_score.</span></span><span class="sig-name descname"><span class="pre">ClinicalRiskScoreExperiment</span></span><a class="reference internal" href="_modules/exp_clinical_risk_score.html#ClinicalRiskScoreExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_clinical_risk_score.ClinicalRiskScoreExperiment" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#experiment_base.BaseExperiment" title="experiment_base.BaseExperiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseExperiment</span></code></a></p>
+<p>Study 5: Clinically interpretable risk z-score with ROC benchmarking.</p>
+<dl class="field-list simple">
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="exp_clinical_risk_score.ClinicalRiskScoreExperiment.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_clinical_risk_score.html#ClinicalRiskScoreExperiment.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_clinical_risk_score.ClinicalRiskScoreExperiment.run" title="Link to this definition">¶</a></dt>
+<dd><p>Builds a clinical z-score and evaluates ROC performance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -641,6 +761,24 @@ a lightweight probabilistic summary suitable for exploratory reporting.</p>
 <li><a class="reference internal" href="#exp_bayesian_networks.BayesianNetworkExperiment.run"><code class="docutils literal notranslate"><span class="pre">BayesianNetworkExperiment.run()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation</span></code></a><ul>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.model_name"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.model_name</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.score_label"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.score_label</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.y_true"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.y_true</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.scores"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.scores</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.auc"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.auc</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.fpr"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.fpr</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.tpr"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.tpr</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.thresholds"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.thresholds</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.best_threshold"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.best_threshold</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.sensitivity"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.sensitivity</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.specificity"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.specificity</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ClinicalRiskScoreExperiment"><code class="docutils literal notranslate"><span class="pre">ClinicalRiskScoreExperiment</span></code></a><ul>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ClinicalRiskScoreExperiment.run"><code class="docutils literal notranslate"><span class="pre">ClinicalRiskScoreExperiment.run()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -657,6 +795,6 @@ a lightweight probabilistic summary suitable for exploratory reporting.</p>
 </div><script src="_static/documentation_options.js?v=01f34227"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
     </body>
 </html>

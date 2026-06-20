@@ -44,3 +44,8 @@ Experiments
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. automodule:: exp_clinical_risk_score
+   :members:
+   :undoc-members:
+   :show-inheritance:

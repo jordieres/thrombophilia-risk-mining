@@ -29,9 +29,9 @@ clinical datasets.
 Contrast mining on large datasets
 ---------------------------------
 
-The contrast workflow now includes explicit memory guards, bounded rule search,
-and resumable checkpoints. On large datasets, prefer configuring the contrast
-run with a modest sample budget, a strict support threshold, and a checkpoint
+The contrast workflow includes explicit memory guards, bounded rule search, and
+resumable checkpoints. On large datasets, prefer configuring the contrast run
+with a modest sample budget, a strict support threshold, and a checkpoint
 folder that can be reused with ``--resume`` after an interrupted run.
 
 .. code-block:: bash
@@ -65,6 +65,77 @@ The contrast checkpoint directory stores four stages:
 ``04_target_rules.parquet``
    Final outcome-targeted rules ready for LaTeX and Plotly export.
 
+Metric-aware clustering
+-----------------------
+
+The clustering workflow accepts configurable distance spaces for both
+agglomerative grouping and UMAP embedding. This is useful when Euclidean space
+is too sensitive to scale, and a Manhattan or cosine geometry better matches
+clinical trajectories.
+
+.. code-block:: bash
+
+   poetry run python src/cli.py \
+     --data data/patD.parquet \
+     --experiment clustering \
+     --clustering-max-samples 20000 \
+     --clustering-metric manhattan \
+     --clustering-n-clusters 3 \
+     --clustering-n-neighbors 15 \
+     --clustering-min-dist 0.1 \
+     --output-dir out
+
+Clinical integer score and ROC benchmarking
+-------------------------------------------
+
+The ``score`` experiment filters the cohort to the binary diagnostic criterion,
+removes ``Missing`` and ``No buscada`` outcomes, and can now compare two
+feature-selection strategies: an automatic low-cardinality discovery workflow
+and an association-guided preset based on rule-mining findings (female sex,
+younger age bands, no prior DVT, normal hemoglobin, negative D-dimer, no
+malignancy, and no immobilization when those fields are available).
+
+The operating threshold is no longer chosen by Youden optimization. Instead,
+the score selects the most specific threshold that still satisfies the
+pre-specified minimum sensitivity constraint, which is more appropriate for a
+rule-out screening tool.
+
+.. code-block:: bash
+
+   poetry run python src/cli.py \
+     --data data/patD.parquet \
+     --experiment score \
+     --score-target-column ana_dura \
+     --score-positive-label "Buscada positivo" \
+     --score-negative-label "Buscada negativo" \
+     --score-max-samples 2500 \
+     --score-feature-strategy compare \
+     --score-max-feature-cardinality 12 \
+     --score-numeric-bins 4 \
+     --score-cv-splits 4 \
+     --score-min-sensitivity 0.90 \
+     --score-benchmark-model both \
+     --score-top-features 10 \
+     --score-xgboost-estimators 80 \
+     --output-dir out
+
+The clinical score export includes four complementary outputs:
+
+``tab:clinical_roc``
+   Cross-validated ROC AUC plus the threshold selected under the minimum
+   sensitivity rule.
+
+``tab:clinical_score_distribution``
+   Outcome-stratified integer-score distribution summary for interpretability.
+
+``tab:clinical_score_components``
+   Positive logistic components converted into bedside integer points for each
+   strategy.
+
+``clinical_risk_score_per_patient.csv``
+   Patient-level export including the identifier, observed outcome, and one set
+   of score/threshold/decision columns per enabled strategy.
+
 Multi-line shell commands
 -------------------------
 
@@ -87,7 +158,8 @@ Correct multi-line example
      --contrast-max-samples 300 \
      --contrast-min-support 0.05 \
      --contrast-min-confidence 0.40 \
-     --clustering-max-samples 1000
+     --clustering-max-samples 1000 \
+     --score-max-samples 2500
 
 Incorrect multi-line example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -113,8 +185,14 @@ Available configuration groups
    selection, maximum rule size, worker count, and checkpoint reuse.
 
 ``clustering``
-   Controls the number of sampled rows, requested clusters, and maximum t-SNE
-   perplexity.
+   Controls the sampled cohort size, distance metric, cluster count, UMAP
+   neighbor count, and embedding compactness.
+
+``score``
+   Controls the binary diagnostic labels, cohort sample cap, allowed
+   categorical cardinality, numeric bin count, cross-validation folds,
+   minimum sensitivity requirement, benchmark model family, coefficient
+   reporting depth, and XGBoost tree count.
 
 Artifact locations
 ------------------
