@@ -4,7 +4,7 @@
   "source_row_count": 119449,
   "output_row_count": 31123,
   "row_count": 31123,
-  "column_count": 84,
+  "column_count": 83,
   "id_column": "id_pacie",
   "target_columns": [
     "var156"
@@ -90,8 +90,7 @@
     "eisq_ang",
     "eisq_cer",
     "eisq_ei",
-    "eisq_ol",
-    "var155"
+    "eisq_ol"
   ],
   "hard_failures": [],
   "warnings": [],
@@ -740,10 +739,10 @@
       "remaining_null_count": 0,
       "applied_fill_value": "No"
     },
-    "var155": {
+    "var156": {
       "strategy": "missing",
       "remapped_count": 0,
-      "filled_count": 83954,
+      "filled_count": 83634,
       "remaining_null_count": 0,
       "applied_fill_value": "Missing"
     }
@@ -2057,7 +2056,7 @@
       ],
       "invalid_values": []
     },
-    "var155": {
+    "var156": {
       "dtype": "object",
       "non_null_count": 31123,
       "null_count": 0,
