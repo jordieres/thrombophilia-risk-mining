@@ -75,7 +75,7 @@ class ContrastPatternMiningExperiment(BaseExperiment):
 
     def run(self, data: pd.DataFrame, config: Dict[str, Any]) -> None:
         """Extracts targeted contrast rules while checkpointing each major stage."""
-        target_col: str = 'ana_dura'
+        target_col: str = str(config.get('contrast_target_column', 'ana_dura'))
         max_samples: int = int(config.get('contrast_max_samples', 300))
         min_support: float = float(config.get('contrast_min_support', 0.05))
         min_confidence: float = float(config.get('contrast_min_confidence', 0.4))
@@ -100,6 +100,7 @@ class ContrastPatternMiningExperiment(BaseExperiment):
                 'contrast_max_rule_size': max_rule_size,
                 'contrast_top_k_per_outcome': top_k,
                 'contrast_workers': requested_workers,
+                'contrast_target_column': target_col,
             },
         )
 

@@ -328,6 +328,95 @@ and then produces a two-dimensional UMAP embedding for visualization.</p>
 
 </dd></dl>
 
+<p id="module-exp_categorical_association">Categorical association experiment implementation.</p>
+<p>This module measures pairwise association strength across categorical clinical
+variables using Cramer’s V, exports the strongest relationships, and renders an
+interactive heatmap for exploratory review.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="exp_categorical_association.CategoricalAssociationExperiment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">exp_categorical_association.</span></span><span class="sig-name descname"><span class="pre">CategoricalAssociationExperiment</span></span><a class="reference internal" href="_modules/exp_categorical_association.html#CategoricalAssociationExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_categorical_association.CategoricalAssociationExperiment" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#experiment_base.BaseExperiment" title="experiment_base.BaseExperiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseExperiment</span></code></a></p>
+<p>Study 6: Pairwise association mapping across categorical variables.</p>
+<dl class="field-list simple">
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="exp_categorical_association.CategoricalAssociationExperiment.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_categorical_association.html#CategoricalAssociationExperiment.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_categorical_association.CategoricalAssociationExperiment.run" title="Link to this definition">¶</a></dt>
+<dd><p>Builds a Cramer’s V matrix and exports the strongest categorical pairs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em>) – </p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p id="module-exp_association_explorer">General association-rule explorer experiment implementation.</p>
+<p>This module mines open association rules across bounded categorical variables,
+allowing exploratory analysis beyond a single target outcome.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="exp_association_explorer.AssociationExplorerExperiment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">exp_association_explorer.</span></span><span class="sig-name descname"><span class="pre">AssociationExplorerExperiment</span></span><a class="reference internal" href="_modules/exp_association_explorer.html#AssociationExplorerExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_association_explorer.AssociationExplorerExperiment" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#experiment_base.BaseExperiment" title="experiment_base.BaseExperiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseExperiment</span></code></a></p>
+<p>Study 7: Open association-rule exploration across categorical variables.</p>
+<dl class="field-list simple">
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="exp_association_explorer.AssociationExplorerExperiment.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_association_explorer.html#AssociationExplorerExperiment.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_association_explorer.AssociationExplorerExperiment.run" title="Link to this definition">¶</a></dt>
+<dd><p>Mines general association rules and exports the strongest matches.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em>) – </p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p id="module-exp_bayesian_networks">Bayesian-style aggregation experiment.</p>
+<p>This module builds a simple conditional probability table for a chosen target
+outcome grouped by a configurable categorical parent variable. It does not
+require a full graphical-model dependency to generate the exported summary.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="exp_bayesian_networks.BayesianNetworkExperiment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">exp_bayesian_networks.</span></span><span class="sig-name descname"><span class="pre">BayesianNetworkExperiment</span></span><a class="reference internal" href="_modules/exp_bayesian_networks.html#BayesianNetworkExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_bayesian_networks.BayesianNetworkExperiment" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#experiment_base.BaseExperiment" title="experiment_base.BaseExperiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseExperiment</span></code></a></p>
+<p>Study 4: Joint probability modeling and causal gatekeeping parameter estimations.</p>
+<dl class="field-list simple">
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="exp_bayesian_networks.BayesianNetworkExperiment.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_bayesian_networks.html#BayesianNetworkExperiment.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_bayesian_networks.BayesianNetworkExperiment.run" title="Link to this definition">¶</a></dt>
+<dd><p>Models conditional probability distribution charts to isolate wasted testing indices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em>) – </p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 <p id="module-exp_clinical_risk_score">Clinical risk-score experiment implementation.</p>
 <p>This module supports two feature-selection strategies for a bedside-oriented
 clinical score:</p>
@@ -498,6 +587,36 @@ level for direct comparison.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="exp_clinical_risk_score.ClinicalRiskScoreExperiment.run">
 <span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_clinical_risk_score.html#ClinicalRiskScoreExperiment.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_clinical_risk_score.ClinicalRiskScoreExperiment.run" title="Link to this definition">¶</a></dt>
+<dd><p>Builds one or more integer-point clinical scores and evaluates ROC performance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>DataFrame</em>) – </p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p id="module-exp_score_screening">Clinical score screening experiment implementation.</p>
+<p>This module trains the clinical score on the known binary criterion and then
+applies the learned score card to records whose thrombophilia study is missing
+or was not requested, producing a review-oriented ranking.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="exp_score_screening.ClinicalScoreScreeningExperiment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">exp_score_screening.</span></span><span class="sig-name descname"><span class="pre">ClinicalScoreScreeningExperiment</span></span><a class="reference internal" href="_modules/exp_score_screening.html#ClinicalScoreScreeningExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_score_screening.ClinicalScoreScreeningExperiment" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#exp_clinical_risk_score.ClinicalRiskScoreExperiment" title="exp_clinical_risk_score.ClinicalRiskScoreExperiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClinicalRiskScoreExperiment</span></code></a></p>
+<p>Study 8: Apply the validated clinical score to unstudied or missing cases.</p>
+<dl class="field-list simple">
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="exp_score_screening.ClinicalScoreScreeningExperiment.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/exp_score_screening.html#ClinicalScoreScreeningExperiment.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_score_screening.ClinicalScoreScreeningExperiment.run" title="Link to this definition">¶</a></dt>
 <dd><p>Builds one or more integer-point clinical scores and evaluates ROC performance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

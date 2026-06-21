@@ -23,7 +23,10 @@ independent analytical modules.
        perm [label="PermutationImportanceExperiment"];
        contrast [label="ContrastPatternMiningExperiment"];
        cluster [label="UnsupervisedClusteringExperiment"];
+       assoc [label="CategoricalAssociationExperiment"];
+       rules [label="AssociationExplorerExperiment"];
        bayes [label="BayesianNetworkExperiment"];
+       screen [label="ClinicalScoreScreeningExperiment"];
        outputs [label="Artifacts\nLaTeX + HTML"];
 
        cli -> processor [label="load + preprocess"];
@@ -31,11 +34,17 @@ independent analytical modules.
        registry -> perm;
        registry -> contrast;
        registry -> cluster;
+       registry -> assoc;
+       registry -> rules;
        registry -> bayes;
+       registry -> screen;
        perm -> outputs;
        contrast -> outputs;
        cluster -> outputs;
+       assoc -> outputs;
+       rules -> outputs;
        bayes -> outputs;
+       screen -> outputs;
    }
 
 Execution Flow
@@ -97,9 +106,24 @@ Experiment Roles
    Restricts the dataset to numeric variables, imputes missing values, scales
    them, and combines agglomerative clustering with a t-SNE visualization.
 
+``CategoricalAssociationExperiment``
+   Restricts the dataset to categorical variables and measures pairwise
+   association strength using Cramer's V, exporting both a matrix and a ranked
+   pair list.
+
+``AssociationExplorerExperiment``
+   Mines open association rules across selected low-cardinality categorical
+   variables and supports filtering by whether a chosen column appears in the
+   antecedent, consequent, or either side of the rule.
+
 ``BayesianNetworkExperiment``
    Builds a conditional probability summary by sex for the diagnostic target and
    exports it as both a LaTeX table and a grouped bar chart.
+
+``ClinicalScoreScreeningExperiment``
+   Fits the validated score on confirmed positive/negative studies and applies
+   it to ``Missing`` or ``No buscada`` records to build a review-oriented
+   candidate ranking.
 
 Configuration Surfaces
 ----------------------
@@ -108,8 +132,8 @@ The architecture exposes three main configuration surfaces through the CLI:
 
 * preprocessing input selection through ``--data``;
 * experiment selection through ``--experiment``;
-* runtime budgets for expensive modules through the permutation, contrast, and
-  clustering parameter groups.
+* runtime budgets for expensive modules through the permutation, contrast,
+  clustering, categorical-association, and association-rule parameter groups.
 
 Type-Checked Boundaries
 -----------------------

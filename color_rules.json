@@ -1,0 +1,15 @@
+{
+  "default": "other",
+  "rules": [
+    {
+      "color": "positive_thrombophilia",
+      "var": "ana_dura",
+      "eq": "Buscada positivo"
+    },
+    {
+      "color": "negative_thrombophilia",
+      "var": "ana_dura",
+      "eq": "Buscada negativo"
+    }
+  ]
+}

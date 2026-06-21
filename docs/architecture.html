@@ -41,7 +41,7 @@ specific output artifacts.</p>
 <h2>System Overview<a class="headerlink" href="#system-overview" title="Link to this heading">¶</a></h2>
 <p>The project is organized around a thin orchestration layer and a set of
 independent analytical modules.</p>
-<div class="graphviz"><object data="_images/graphviz-6de5a6450d5bb2c974779dcd61491b205c172264.svg" type="image/svg+xml" class="graphviz">
+<div class="graphviz"><object data="_images/graphviz-f4d3c2b02485d2feb5434dd307c0eb6d8e3555b2.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph system_overview {
     rankdir=LR;
     node [shape=box, style=&quot;rounded,filled&quot;, fillcolor=&quot;#F8F8F8&quot;, color=&quot;#4C566A&quot;];
@@ -52,7 +52,10 @@ independent analytical modules.</p>
     perm [label=&quot;PermutationImportanceExperiment&quot;];
     contrast [label=&quot;ContrastPatternMiningExperiment&quot;];
     cluster [label=&quot;UnsupervisedClusteringExperiment&quot;];
+    assoc [label=&quot;CategoricalAssociationExperiment&quot;];
+    rules [label=&quot;AssociationExplorerExperiment&quot;];
     bayes [label=&quot;BayesianNetworkExperiment&quot;];
+    screen [label=&quot;ClinicalScoreScreeningExperiment&quot;];
     outputs [label=&quot;Artifacts\nLaTeX + HTML&quot;];
 
     cli -&gt; processor [label=&quot;load + preprocess&quot;];
@@ -60,11 +63,17 @@ independent analytical modules.</p>
     registry -&gt; perm;
     registry -&gt; contrast;
     registry -&gt; cluster;
+    registry -&gt; assoc;
+    registry -&gt; rules;
     registry -&gt; bayes;
+    registry -&gt; screen;
     perm -&gt; outputs;
     contrast -&gt; outputs;
     cluster -&gt; outputs;
+    assoc -&gt; outputs;
+    rules -&gt; outputs;
     bayes -&gt; outputs;
+    screen -&gt; outputs;
 }</p></object></div>
 </section>
 <section id="execution-flow">
@@ -117,8 +126,20 @@ transaction baskets and mines association rules linked to diagnostic outcome.</p
 <dt><code class="docutils literal notranslate"><span class="pre">UnsupervisedClusteringExperiment</span></code></dt><dd><p>Restricts the dataset to numeric variables, imputes missing values, scales
 them, and combines agglomerative clustering with a t-SNE visualization.</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">CategoricalAssociationExperiment</span></code></dt><dd><p>Restricts the dataset to categorical variables and measures pairwise
+association strength using Cramer’s V, exporting both a matrix and a ranked
+pair list.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">AssociationExplorerExperiment</span></code></dt><dd><p>Mines open association rules across selected low-cardinality categorical
+variables and supports filtering by whether a chosen column appears in the
+antecedent, consequent, or either side of the rule.</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">BayesianNetworkExperiment</span></code></dt><dd><p>Builds a conditional probability summary by sex for the diagnostic target and
 exports it as both a LaTeX table and a grouped bar chart.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ClinicalScoreScreeningExperiment</span></code></dt><dd><p>Fits the validated score on confirmed positive/negative studies and applies
+it to <code class="docutils literal notranslate"><span class="pre">Missing</span></code> or <code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">buscada</span></code> records to build a review-oriented
+candidate ranking.</p>
 </dd>
 </dl>
 </section>
@@ -128,8 +149,8 @@ exports it as both a LaTeX table and a grouped bar chart.</p>
 <ul class="simple">
 <li><p>preprocessing input selection through <code class="docutils literal notranslate"><span class="pre">--data</span></code>;</p></li>
 <li><p>experiment selection through <code class="docutils literal notranslate"><span class="pre">--experiment</span></code>;</p></li>
-<li><p>runtime budgets for expensive modules through the permutation, contrast, and
-clustering parameter groups.</p></li>
+<li><p>runtime budgets for expensive modules through the permutation, contrast,
+clustering, categorical-association, and association-rule parameter groups.</p></li>
 </ul>
 </section>
 <section id="type-checked-boundaries">

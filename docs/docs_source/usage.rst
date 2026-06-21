@@ -71,7 +71,11 @@ Metric-aware clustering
 The clustering workflow accepts configurable distance spaces for both
 agglomerative grouping and UMAP embedding. This is useful when Euclidean space
 is too sensitive to scale, and a Manhattan or cosine geometry better matches
-clinical trajectories.
+clinical trajectories. The experiment also exports a reusable
+``umap_coordinates.csv`` file containing the patient identifier, UMAP
+coordinates, cluster, and sampled source variables. An optional JSON ruleset
+can recolor the plot using clinical labels, with ``other`` (or another
+configured default) assigned to the remaining patients.
 
 .. code-block:: bash
 
@@ -84,6 +88,13 @@ clinical trajectories.
      --clustering-n-neighbors 15 \
      --clustering-min-dist 0.1 \
      --output-dir out
+
+To recolor an existing UMAP projection without recomputing the embedding, use
+``src/recolor_umap.py`` against the exported ``umap_coordinates.csv``:
+
+.. code-block:: bash
+
+   poetry run python src/recolor_umap.py      --umap-csv out/umap_cosine_alt/umap_coordinates.csv      --color-rules-json color_rules_v2.json      --output-html out/umap_cosine_alt/recolored_umap_v2.html
 
 Categorical association heatmap
 -------------------------------
@@ -116,7 +127,7 @@ The categorical association export includes three complementary outputs:
    Flat table with the strongest non-diagonal variable pairs.
 
 Open association-rule explorer
------------------------------
+-------------------------------
 
 The ``association_explorer`` experiment mines general association rules over
 bounded categorical variables. Unlike ``contrast``, it is not restricted to a
@@ -140,6 +151,39 @@ around any retained variable, including but not limited to ``ana_dura``.
      --association-rules-filter-column ana_dura \
      --association-rules-filter-side either \
      --output-dir out
+
+The main supervised workflows can now be repointed to an alternative target
+column when the dataset supports it. For example, if you want to explore a
+binary encoding derived from ``anadutip`` instead of ``ana_dura``, the
+``permutation``, ``contrast``, ``bayesian``, ``score``, and
+``score_screening`` experiments all accept explicit target-column runtime
+parameters.
+
+Bayesian conditional summaries
+------------------------------
+
+The ``bayesian`` experiment now builds a conditional probability table for any
+selected target column grouped by a configurable categorical parent column.
+
+.. code-block:: bash
+
+   poetry run python src/cli.py      --data data/patD.parquet      --experiment bayesian      --bayesian-target-column ana_dura      --bayesian-group-column sexo      --output-dir out
+
+Retargeting the studies to an alternative binary variable
+---------------------------------------------------------
+
+If you derive a binary label from ``anadutip`` (for example,
+``anadutip_binary`` with values such as ``Homocigoto`` and ``Heterocigoto``),
+you can reuse the current pipeline by passing the target and class labels
+through the CLI.
+
+.. code-block:: bash
+
+   poetry run python src/cli.py      --data data/patD.parquet      --experiment permutation      --permutation-target-column anadutip_binary      --permutation-positive-label "Homocigoto"      --permutation-negative-label "Heterocigoto"      --permutation-max-samples 800      --permutation-max-splits 2      --permutation-repeats 1      --permutation-estimators 10
+
+.. code-block:: bash
+
+   poetry run python src/cli.py      --data data/patD.parquet      --experiment contrast      --contrast-target-column anadutip_binary      --contrast-max-samples 300      --contrast-min-support 0.05      --contrast-min-confidence 0.40      --contrast-max-feature-cardinality 12      --contrast-max-features 48      --contrast-max-rule-size 3      --contrast-top-k-per-outcome 5      --contrast-workers 2      --output-dir out
 
 The association-rule explorer export includes:
 
@@ -206,7 +250,7 @@ The clinical score export includes four complementary outputs:
    of score/threshold/decision columns per enabled strategy.
 
 Clinical score screening for missing or unrequested studies
---------------------------------------------------------
+-----------------------------------------------------------
 
 The ``score_screening`` experiment trains the clinical score on the confirmed
 binary subset and then applies the resulting point cards to records labelled as

@@ -216,8 +216,12 @@ def main() -> None:
     parser.add_argument("--permutation-max-splits", type=int, default=2)
     parser.add_argument("--permutation-repeats", type=int, default=1)
     parser.add_argument("--permutation-estimators", type=int, default=10)
+    parser.add_argument("--permutation-target-column", type=str, default="ana_dura")
+    parser.add_argument("--permutation-positive-label", type=str, default="Buscada negativo")
+    parser.add_argument("--permutation-negative-label", type=str, default="Buscada positivo")
 
     parser.add_argument("--contrast-max-samples", type=int, default=300)
+    parser.add_argument("--contrast-target-column", type=str, default="ana_dura")
     parser.add_argument("--contrast-min-support", type=float, default=0.05)
     parser.add_argument("--contrast-min-confidence", type=float, default=0.4)
     parser.add_argument("--contrast-max-feature-cardinality", type=int, default=12)
@@ -237,6 +241,12 @@ def main() -> None:
     parser.add_argument("--clustering-n-clusters", type=int, default=3)
     parser.add_argument("--clustering-n-neighbors", type=int, default=15)
     parser.add_argument("--clustering-min-dist", type=float, default=0.1)
+    parser.add_argument(
+        "--clustering-color-rules-json",
+        type=str,
+        default=None,
+        help="Optional JSON file with rule-based color labels for exported and plotted UMAP points.",
+    )
 
     parser.add_argument("--association-max-samples", type=int, default=5000)
     parser.add_argument("--association-max-columns", type=int, default=20)
@@ -255,6 +265,9 @@ def main() -> None:
     parser.add_argument("--association-rules-sort-metric", type=str, default="leverage", choices=["leverage", "lift", "confidence", "support"])
     parser.add_argument("--association-rules-filter-column", type=str, default=None)
     parser.add_argument("--association-rules-filter-side", type=str, default="either", choices=["either", "antecedent", "consequent"])
+
+    parser.add_argument("--bayesian-target-column", type=str, default="ana_dura")
+    parser.add_argument("--bayesian-group-column", type=str, default="sexo")
 
     parser.add_argument("--score-target-column", type=str, default="ana_dura")
     parser.add_argument("--score-positive-label", type=str, default="Buscada positivo")

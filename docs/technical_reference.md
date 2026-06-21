@@ -34,7 +34,11 @@ where column C contains interpretable numeric criteria.
 The analytical layer now also includes exploratory categorical-association and
 open association-rule experiments, plus a ``score_screening`` workflow that can
 rank ``ana_dura`` cases marked as ``Missing`` or ``No buscada`` using both the
-bedside integer score and benchmark model probabilities for manual review.
+bedside integer score and benchmark model probabilities for manual review. The
+supervised research modules are no longer conceptually tied to ``ana_dura``: the
+CLI can now redirect permutation importance, contrast mining, Bayesian
+conditional summaries, and the score workflows toward an alternative target
+column when the dataset exposes a clinically meaningful derived label.
 
 ### State Transitions and Inter-Process Communication
 

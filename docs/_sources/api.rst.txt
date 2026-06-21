@@ -40,12 +40,27 @@ Experiments
    :undoc-members:
    :show-inheritance:
 
+.. automodule:: exp_categorical_association
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: exp_association_explorer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 .. automodule:: exp_bayesian_networks
    :members:
    :undoc-members:
    :show-inheritance:
 
 .. automodule:: exp_clinical_risk_score
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: exp_score_screening
    :members:
    :undoc-members:
    :show-inheritance:

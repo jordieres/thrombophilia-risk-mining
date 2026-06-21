@@ -1,0 +1,22 @@
+{
+  "default": "other",
+  "rules": [
+    {
+      "color": "positive_thrombophilia",
+      "var": "ana_dura",
+      "eq": "Buscada positivo"
+    },
+    {
+      "color": "cancer_and_immob",
+      "all": [
+        { "var": "fr_cance", "eq": "Sí" },
+        { "var": "fr_inmov", "eq": "Sí" }
+      ]
+    },
+    {
+      "color": "young",
+      "var": "edad",
+      "lt": 50
+    }
+  ]
+}

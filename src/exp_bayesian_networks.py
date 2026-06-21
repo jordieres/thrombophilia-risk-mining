@@ -1,17 +1,19 @@
 """Bayesian-style aggregation experiment.
 
-This module builds a simple conditional probability table for the diagnostic
-outcome grouped by sex. It does not learn a graphical model; instead, it offers
-a lightweight probabilistic summary suitable for exploratory reporting.
+This module builds a simple conditional probability table for a chosen target
+outcome grouped by a configurable categorical parent variable. It does not
+require a full graphical-model dependency to generate the exported summary.
 """
 
 from __future__ import annotations
+
+from typing import Any, Dict
+
 import pandas as pd
-from typing import Dict, Any, List
 import plotly.express as px
-from pgmpy.models import BayesianNetwork
-from pgmpy.estimators import MaximumLikelihoodEstimator
+
 from experiment_base import BaseExperiment
+
 
 class BayesianNetworkExperiment(BaseExperiment):
     """Study 4: Joint probability modeling and causal gatekeeping parameter estimations."""
@@ -22,24 +24,38 @@ class BayesianNetworkExperiment(BaseExperiment):
     def run(self, data: pd.DataFrame, config: Dict[str, Any]) -> None:
         """Models conditional probability distribution charts to isolate wasted testing indices."""
         df: pd.DataFrame = data.copy()
+        target_col: str = str(config.get("bayesian_target_column", "ana_dura"))
+        group_col: str = str(config.get("bayesian_group_column", "sexo"))
 
-        # Enforce categorical mapping standards safely
-        if 'sexo' not in df.columns:
-            df['sexo'] = 'Female'
-        df['sexo'] = df['sexo'].replace({'Male': 'Hombre', 'Female': 'Mujer'})
+        if target_col not in df.columns:
+            raise ValueError(f"Bayesian summary requires the target column '{target_col}'.")
+        if group_col not in df.columns:
+            df[group_col] = "Missing"
 
-        # Structure the targeted causal mapping infrastructure
-        model: BayesianNetwork = BayesianNetwork([('sexo', 'ana_dura')])
-        model.fit(df, estimator=MaximumLikelihoodEstimator)
+        if group_col == "sexo":
+            df[group_col] = df[group_col].replace({"Male": "Hombre", "Female": "Mujer"})
+
+        df[group_col] = df[group_col].astype("string").fillna("Missing")
+        df[target_col] = df[target_col].astype("string").fillna("Missing")
 
         cpt: pd.DataFrame = pd.crosstab(
-            index=[df['sexo']],
-            columns=df['ana_dura'],
-            normalize='index'
+            index=[df[group_col]],
+            columns=df[target_col],
+            normalize="index",
         ).reset_index()
 
-        self.latex_table = cpt.to_latex(index=False, caption="Conditional Probability Matrices for Patient Flow", label="tab:bayesian_cpt")
+        self.latex_table = cpt.to_latex(
+            index=False,
+            caption=f"Conditional Probability Table for {target_col} by {group_col}",
+            label="tab:bayesian_cpt",
+        )
 
-        melted_cpt: pd.DataFrame = cpt.melt(id_vars=['sexo'], var_name='Diagnostic_Outcome', value_name='Probability')
-        self.plotly_figure = px.bar(melted_cpt, x='sexo', y='Probability', color='Diagnostic_Outcome', barmode='group',
-                                    title="Conditional Influence Tracking Matrix Across Gender Classes")
+        melted_cpt: pd.DataFrame = cpt.melt(id_vars=[group_col], var_name="Target_Outcome", value_name="Probability")
+        self.plotly_figure = px.bar(
+            melted_cpt,
+            x=group_col,
+            y="Probability",
+            color="Target_Outcome",
+            barmode="group",
+            title=f"Conditional Probability of {target_col} Across {group_col}",
+        )

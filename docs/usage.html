@@ -94,7 +94,11 @@ folder that can be reused with <code class="docutils literal notranslate"><span 
 <p>The clustering workflow accepts configurable distance spaces for both
 agglomerative grouping and UMAP embedding. This is useful when Euclidean space
 is too sensitive to scale, and a Manhattan or cosine geometry better matches
-clinical trajectories.</p>
+clinical trajectories. The experiment also exports a reusable
+<code class="docutils literal notranslate"><span class="pre">umap_coordinates.csv</span></code> file containing the patient identifier, UMAP
+coordinates, cluster, and sampled source variables. An optional JSON ruleset
+can recolor the plot using clinical labels, with <code class="docutils literal notranslate"><span class="pre">other</span></code> (or another
+configured default) assigned to the remaining patients.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>src/cli.py<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--data<span class="w"> </span>data/patD.parquet<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--experiment<span class="w"> </span>clustering<span class="w"> </span><span class="se">\</span>
@@ -106,6 +110,99 @@ clinical trajectories.</p>
 <span class="w">  </span>--output-dir<span class="w"> </span>out
 </pre></div>
 </div>
+<p>To recolor an existing UMAP projection without recomputing the embedding, use
+<code class="docutils literal notranslate"><span class="pre">src/recolor_umap.py</span></code> against the exported <code class="docutils literal notranslate"><span class="pre">umap_coordinates.csv</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>src/recolor_umap.py<span class="w">      </span>--umap-csv<span class="w"> </span>out/umap_cosine_alt/umap_coordinates.csv<span class="w">      </span>--color-rules-json<span class="w"> </span>color_rules_v2.json<span class="w">      </span>--output-html<span class="w"> </span>out/umap_cosine_alt/recolored_umap_v2.html
+</pre></div>
+</div>
+</section>
+<section id="categorical-association-heatmap">
+<h2>Categorical association heatmap<a class="headerlink" href="#categorical-association-heatmap" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">categorical_association</span></code> experiment measures pairwise relationships
+between categorical variables using Cramer’s V, writes a full matrix export,
+and highlights the strongest variable pairs for exploratory review. It is the
+closest structured replacement for the categorical-correlation notebook work.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>src/cli.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--data<span class="w"> </span>data/patD_slim.parquet<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--experiment<span class="w"> </span>categorical_association<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--association-max-samples<span class="w"> </span><span class="m">5000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--association-max-columns<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--association-top-k<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output-dir<span class="w"> </span>out
+</pre></div>
+</div>
+<p>The categorical association export includes three complementary outputs:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">tab:categorical_association</span></code></dt><dd><p>Ranked top variable pairs ordered by descending Cramer’s V.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">categorical_association_matrix.csv</span></code></dt><dd><p>Full square matrix of pairwise Cramer’s V scores across the selected
+categorical variables.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">categorical_association_top_pairs.csv</span></code></dt><dd><p>Flat table with the strongest non-diagonal variable pairs.</p>
+</dd>
+</dl>
+</section>
+<section id="open-association-rule-explorer">
+<h2>Open association-rule explorer<a class="headerlink" href="#open-association-rule-explorer" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">association_explorer</span></code> experiment mines general association rules over
+bounded categorical variables. Unlike <code class="docutils literal notranslate"><span class="pre">contrast</span></code>, it is not restricted to a
+single outcome column, so it can be used to inspect what relationships emerge
+around any retained variable, including but not limited to <code class="docutils literal notranslate"><span class="pre">ana_dura</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>src/cli.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--data<span class="w"> </span>data/patD_slim.parquet<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--experiment<span class="w"> </span>association_explorer<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--association-rules-max-samples<span class="w"> </span><span class="m">5000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--association-rules-min-support<span class="w"> </span><span class="m">0</span>.01<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--association-rules-min-confidence<span class="w"> </span><span class="m">0</span>.40<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--association-rules-min-lift<span class="w"> </span><span class="m">1</span>.00<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--association-rules-max-feature-cardinality<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--association-rules-max-features<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--association-rules-max-rule-size<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--association-rules-top-k<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--association-rules-sort-metric<span class="w"> </span>leverage<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--association-rules-filter-column<span class="w"> </span>ana_dura<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--association-rules-filter-side<span class="w"> </span>either<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output-dir<span class="w"> </span>out
+</pre></div>
+</div>
+<p>The main supervised workflows can now be repointed to an alternative target
+column when the dataset supports it. For example, if you want to explore a
+binary encoding derived from <code class="docutils literal notranslate"><span class="pre">anadutip</span></code> instead of <code class="docutils literal notranslate"><span class="pre">ana_dura</span></code>, the
+<code class="docutils literal notranslate"><span class="pre">permutation</span></code>, <code class="docutils literal notranslate"><span class="pre">contrast</span></code>, <code class="docutils literal notranslate"><span class="pre">bayesian</span></code>, <code class="docutils literal notranslate"><span class="pre">score</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">score_screening</span></code> experiments all accept explicit target-column runtime
+parameters.</p>
+</section>
+<section id="bayesian-conditional-summaries">
+<h2>Bayesian conditional summaries<a class="headerlink" href="#bayesian-conditional-summaries" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">bayesian</span></code> experiment now builds a conditional probability table for any
+selected target column grouped by a configurable categorical parent column.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>src/cli.py<span class="w">      </span>--data<span class="w"> </span>data/patD.parquet<span class="w">      </span>--experiment<span class="w"> </span>bayesian<span class="w">      </span>--bayesian-target-column<span class="w"> </span>ana_dura<span class="w">      </span>--bayesian-group-column<span class="w"> </span>sexo<span class="w">      </span>--output-dir<span class="w"> </span>out
+</pre></div>
+</div>
+</section>
+<section id="retargeting-the-studies-to-an-alternative-binary-variable">
+<h2>Retargeting the studies to an alternative binary variable<a class="headerlink" href="#retargeting-the-studies-to-an-alternative-binary-variable" title="Link to this heading">¶</a></h2>
+<p>If you derive a binary label from <code class="docutils literal notranslate"><span class="pre">anadutip</span></code> (for example,
+<code class="docutils literal notranslate"><span class="pre">anadutip_binary</span></code> with values such as <code class="docutils literal notranslate"><span class="pre">Homocigoto</span></code> and <code class="docutils literal notranslate"><span class="pre">Heterocigoto</span></code>),
+you can reuse the current pipeline by passing the target and class labels
+through the CLI.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>src/cli.py<span class="w">      </span>--data<span class="w"> </span>data/patD.parquet<span class="w">      </span>--experiment<span class="w"> </span>permutation<span class="w">      </span>--permutation-target-column<span class="w"> </span>anadutip_binary<span class="w">      </span>--permutation-positive-label<span class="w"> </span><span class="s2">&quot;Homocigoto&quot;</span><span class="w">      </span>--permutation-negative-label<span class="w"> </span><span class="s2">&quot;Heterocigoto&quot;</span><span class="w">      </span>--permutation-max-samples<span class="w"> </span><span class="m">800</span><span class="w">      </span>--permutation-max-splits<span class="w"> </span><span class="m">2</span><span class="w">      </span>--permutation-repeats<span class="w"> </span><span class="m">1</span><span class="w">      </span>--permutation-estimators<span class="w"> </span><span class="m">10</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>src/cli.py<span class="w">      </span>--data<span class="w"> </span>data/patD.parquet<span class="w">      </span>--experiment<span class="w"> </span>contrast<span class="w">      </span>--contrast-target-column<span class="w"> </span>anadutip_binary<span class="w">      </span>--contrast-max-samples<span class="w"> </span><span class="m">300</span><span class="w">      </span>--contrast-min-support<span class="w"> </span><span class="m">0</span>.05<span class="w">      </span>--contrast-min-confidence<span class="w"> </span><span class="m">0</span>.40<span class="w">      </span>--contrast-max-feature-cardinality<span class="w"> </span><span class="m">12</span><span class="w">      </span>--contrast-max-features<span class="w"> </span><span class="m">48</span><span class="w">      </span>--contrast-max-rule-size<span class="w"> </span><span class="m">3</span><span class="w">      </span>--contrast-top-k-per-outcome<span class="w"> </span><span class="m">5</span><span class="w">      </span>--contrast-workers<span class="w"> </span><span class="m">2</span><span class="w">      </span>--output-dir<span class="w"> </span>out
+</pre></div>
+</div>
+<p>The association-rule explorer export includes:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">tab:association_explorer</span></code></dt><dd><p>Ranked rule table ordered by the configured metric.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">association_explorer_top_rules.csv</span></code></dt><dd><p>Flat export of the displayed top rules with support, confidence, lift,
+leverage, and itemset sizes.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">out/checkpoints/association_explorer_*/</span></code></dt><dd><p>Prepared sample, encoded transactions, frequent itemsets, and the full rule
+table for resumable inspection.</p>
+</dd>
+</dl>
 </section>
 <section id="clinical-integer-score-and-roc-benchmarking">
 <h2>Clinical integer score and ROC benchmarking<a class="headerlink" href="#clinical-integer-score-and-roc-benchmarking" title="Link to this heading">¶</a></h2>
@@ -149,6 +246,46 @@ strategy.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">clinical_risk_score_per_patient.csv</span></code></dt><dd><p>Patient-level export including the identifier, observed outcome, and one set
 of score/threshold/decision columns per enabled strategy.</p>
+</dd>
+</dl>
+</section>
+<section id="clinical-score-screening-for-missing-or-unrequested-studies">
+<h2>Clinical score screening for missing or unrequested studies<a class="headerlink" href="#clinical-score-screening-for-missing-or-unrequested-studies" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">score_screening</span></code> experiment trains the clinical score on the confirmed
+binary subset and then applies the resulting point cards to records labelled as
+<code class="docutils literal notranslate"><span class="pre">Missing</span></code> or <code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">buscada</span></code> in <code class="docutils literal notranslate"><span class="pre">ana_dura</span></code>. It also exports probability-based
+screening outputs from the same logistic and XGBoost benchmark families used in
+<code class="docutils literal notranslate"><span class="pre">score</span></code>, which is helpful when the bedside integer score is too blunt for
+prioritizing manual review. This is intended for review prioritization rather
+than definitive diagnosis.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>src/cli.py<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--data<span class="w"> </span>data/patD_slim.parquet<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--experiment<span class="w"> </span>score_screening<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--score-target-column<span class="w"> </span>ana_dura<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--score-positive-label<span class="w"> </span><span class="s2">&quot;Buscada positivo&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--score-negative-label<span class="w"> </span><span class="s2">&quot;Buscada negativo&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--screening-labels<span class="w"> </span>Missing<span class="w"> </span><span class="s2">&quot;No buscada&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--score-feature-strategy<span class="w"> </span>compare<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--score-benchmark-model<span class="w"> </span>both<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--score-max-samples<span class="w"> </span><span class="m">4000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--score-max-feature-cardinality<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--score-numeric-bins<span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--score-cv-splits<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--score-min-sensitivity<span class="w"> </span><span class="m">0</span>.90<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--score-min-feature-prevalence<span class="w"> </span><span class="m">0</span>.02<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--score-top-features<span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--score-xgboost-estimators<span class="w"> </span><span class="m">80</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output-dir<span class="w"> </span>out
+</pre></div>
+</div>
+<p>The screening export includes:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">tab:clinical_screening_roc</span></code></dt><dd><p>Training ROC metrics used to derive the screening thresholds.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">tab:clinical_screening_summary</span></code></dt><dd><p>Counts of flagged candidates among the requested screening labels.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">clinical_risk_score_screening_candidates.csv</span></code></dt><dd><p>Patient-level candidate list with integer scores, benchmark probabilities,
+thresholds, and predicted positive flags for review.</p>
 </dd>
 </dl>
 </section>
@@ -276,7 +413,12 @@ launched under <code class="docutils literal notranslate"><span class="pre">debu
 <li class="toctree-l2"><a class="reference internal" href="#configurable-experiment-budgets">Configurable experiment budgets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#contrast-mining-on-large-datasets">Contrast mining on large datasets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#metric-aware-clustering">Metric-aware clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#categorical-association-heatmap">Categorical association heatmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#open-association-rule-explorer">Open association-rule explorer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bayesian-conditional-summaries">Bayesian conditional summaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#retargeting-the-studies-to-an-alternative-binary-variable">Retargeting the studies to an alternative binary variable</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#clinical-integer-score-and-roc-benchmarking">Clinical integer score and ROC benchmarking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clinical-score-screening-for-missing-or-unrequested-studies">Clinical score screening for missing or unrequested studies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#multi-line-shell-commands">Multi-line shell commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#available-configuration-groups">Available configuration groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#artifact-locations">Artifact locations</a></li>
