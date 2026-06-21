@@ -1,0 +1,2068 @@
+{
+  "source_path": "data/patD.parquet",
+  "output_path": "data/patD_var157.parquet",
+  "source_row_count": 119449,
+  "output_row_count": 30875,
+  "row_count": 30875,
+  "column_count": 84,
+  "id_column": "id_pacie",
+  "target_columns": [
+    "var157"
+  ],
+  "feature_columns": [
+    "sexo",
+    "edad",
+    "raza",
+    "peso",
+    "talla",
+    "tension_",
+    "ant_inf",
+    "ant_isq",
+    "ant_clau",
+    "fum_act",
+    "diabetes",
+    "hip_art",
+    "insf_car",
+    "fibr_aur",
+    "trat_est",
+    "e_con_pp",
+    "e_con_cu",
+    "e_con_ec",
+    "e_con_lu",
+    "e_con_af",
+    "e_con_be",
+    "e_con_at",
+    "e_con_va",
+    "e_con_ar",
+    "e_con_ea",
+    "e_con_pr",
+    "e_con_ro",
+    "e_con_av",
+    "e_con_sm",
+    "sin_tvp_",
+    "var171",
+    "tv_l_esu",
+    "tvp_orig",
+    "tv_l_ein",
+    "tvp_prox",
+    "tv_l_vpo",
+    "tv_l_vme",
+    "tv_l_ves",
+    "tv_l_svc",
+    "tv_l_vre",
+    "tv_l_vrn",
+    "tv_l_vca",
+    "tv_l_yug",
+    "tv_l_ova",
+    "tv_l_sup",
+    "tv_l_pul",
+    "tv_l_ove",
+    "fr_cance",
+    "fr_cirug",
+    "fr_inmov",
+    "fr_tvp_a",
+    "fr_antfa",
+    "fr_tvs_a",
+    "fr_viaje",
+    "fr_estro",
+    "fr_embar",
+    "fr_varic",
+    "fr_antec",
+    "ana_hemo",
+    "ana_leuc",
+    "ana_neu",
+    "ana_plaq",
+    "ana_dime",
+    "protcrea",
+    "ana_crea",
+    "ana_trop",
+    "evn_defu",
+    "evn_reci",
+    "evn_rec2",
+    "evn_rec3",
+    "evn_rec4",
+    "evn_hemo",
+    "evn_hem2",
+    "evn_hem3",
+    "evn_hem4",
+    "eisq_art",
+    "eisq_inf",
+    "eisq_ang",
+    "eisq_cer",
+    "eisq_ei",
+    "eisq_ol",
+    "var155"
+  ],
+  "hard_failures": [],
+  "warnings": [],
+  "criteria_audit": {
+    "peso": {
+      "criteria": "entre 29 y 300",
+      "replacements_applied": 0,
+      "value_remapped_count": 0,
+      "dropped_row_count": 47,
+      "allowed_min": 29.0,
+      "allowed_max": 300.0,
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "tension_": {
+      "criteria": "Si el valor es 1, hay que considerarlo 0 (paciente fallecido, pero el sistema no deja poner 0). Hay algunos valores raros (5, 9\u2026). Vamos a incluir s\u00f3lo los que est\u00e9n por encima de 35, pero deber\u00eda ser una variable categ\u00f3rica (normal entre 100-140)",
+      "replacements_applied": 16,
+      "value_remapped_count": 0,
+      "dropped_row_count": 23,
+      "allowed_min": 35.0,
+      "allowed_max": null,
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "ana_hemo": {
+      "criteria": "vamos a quedarnos s\u00f3lo con los valores entre 4 y 20, el resto probablemente sean errores",
+      "replacements_applied": 0,
+      "value_remapped_count": 0,
+      "dropped_row_count": 58,
+      "allowed_min": 4.0,
+      "allowed_max": 20.0,
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "ana_leuc": {
+      "criteria": "hay muchos mal metidos, vamos a quedarnos ccon los que est\u00e9n entre 2 y 40",
+      "replacements_applied": 0,
+      "value_remapped_count": 0,
+      "dropped_row_count": 683,
+      "allowed_min": 2.0,
+      "allowed_max": 40.0,
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "ana_neu": {
+      "criteria": "nos quedamos con los que est\u00e9n entre 0.4 y 30",
+      "replacements_applied": 0,
+      "value_remapped_count": 0,
+      "dropped_row_count": 93,
+      "allowed_min": 0.4,
+      "allowed_max": 30.0,
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "ana_plaq": {
+      "criteria": "entre 10 y 1500",
+      "replacements_applied": 0,
+      "value_remapped_count": 0,
+      "dropped_row_count": 20,
+      "allowed_min": 10.0,
+      "allowed_max": 1500.0,
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "protcrea": {
+      "criteria": "aqu\u00ed hay much\u00edsimos missing porque la variable se a\u00f1adio m\u00e1s tarde. Vamos a quedarnos con los que haya hasta 200",
+      "replacements_applied": 0,
+      "value_remapped_count": 0,
+      "dropped_row_count": 3768,
+      "allowed_min": null,
+      "allowed_max": 200.0,
+      "min_inclusive": true,
+      "max_inclusive": true
+    },
+    "__overall__": {
+      "input_row_count": 119449,
+      "output_row_count": 114757,
+      "discarded_row_count": 4692
+    }
+  },
+  "missing_audit": {
+    "sexo": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "Missing"
+    },
+    "edad": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "NA"
+    },
+    "raza": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 69807,
+      "remaining_null_count": 0,
+      "applied_fill_value": "Missing"
+    },
+    "peso": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 7,
+      "applied_fill_value": "NA"
+    },
+    "talla": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 32883,
+      "applied_fill_value": "NA"
+    },
+    "tension_": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 5942,
+      "applied_fill_value": "NA"
+    },
+    "ant_inf": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 29400,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "ant_isq": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 29430,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "ant_clau": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 29719,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "fum_act": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 30582,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "diabetes": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 29023,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "hip_art": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 27818,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "insf_car": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 2312,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "fibr_aur": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 53159,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "trat_est": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 29937,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "e_con_pp": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "e_con_cu": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "e_con_ec": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "e_con_lu": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "e_con_af": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "e_con_be": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "e_con_at": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "e_con_va": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "e_con_ar": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "e_con_ea": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "e_con_pr": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "e_con_ro": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "e_con_av": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "e_con_sm": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "sin_tvp_": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "Missing"
+    },
+    "var171": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 7004,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "tv_l_esu": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 66077,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "tvp_orig": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 109432,
+      "remaining_null_count": 0,
+      "applied_fill_value": "Missing"
+    },
+    "tv_l_ein": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 35250,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "tvp_prox": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 49032,
+      "remaining_null_count": 0,
+      "applied_fill_value": "Missing"
+    },
+    "tv_l_vpo": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 76946,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "tv_l_vme": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 77152,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "tv_l_ves": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 77252,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "tv_l_svc": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 77769,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "tv_l_vre": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 80458,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "tv_l_vrn": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 80182,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "tv_l_vca": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 94834,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "tv_l_yug": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 95227,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "tv_l_ova": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 95418,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "tv_l_sup": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 95363,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "tv_l_pul": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 95387,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "tv_l_ove": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 80220,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "fr_cance": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 1,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "fr_cirug": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 1,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "fr_inmov": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 1,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "fr_tvp_a": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 1,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "fr_antfa": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 74099,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "fr_tvs_a": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 57533,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "fr_viaje": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 3737,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "fr_estro": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 3712,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "fr_embar": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "fr_varic": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 10029,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "fr_antec": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 521,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "ana_hemo": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 251,
+      "applied_fill_value": "NA"
+    },
+    "ana_leuc": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 280,
+      "applied_fill_value": "NA"
+    },
+    "ana_neu": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 93088,
+      "applied_fill_value": "NA"
+    },
+    "ana_plaq": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 262,
+      "applied_fill_value": "NA"
+    },
+    "ana_dime": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 13918,
+      "remaining_null_count": 0,
+      "applied_fill_value": "Missing"
+    },
+    "protcrea": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 0,
+      "remaining_null_count": 114757,
+      "applied_fill_value": "NA"
+    },
+    "ana_crea": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 5787,
+      "remaining_null_count": 0,
+      "applied_fill_value": "Missing"
+    },
+    "ana_trop": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 77952,
+      "remaining_null_count": 0,
+      "applied_fill_value": "Missing"
+    },
+    "evn_defu": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 4,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "evn_reci": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 5,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "evn_rec2": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 113435,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "evn_rec3": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 114627,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "evn_rec4": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 114737,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "evn_hemo": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 6,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "evn_hem2": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 112746,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "evn_hem3": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 114488,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "evn_hem4": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 114696,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "eisq_art": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 34769,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "eisq_inf": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 113549,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "eisq_ang": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 113678,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "eisq_cer": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 113512,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "eisq_ei": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 113727,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "eisq_ol": {
+      "strategy": "No",
+      "remapped_count": 0,
+      "filled_count": 113940,
+      "remaining_null_count": 0,
+      "applied_fill_value": "No"
+    },
+    "var155": {
+      "strategy": "missing",
+      "remapped_count": 0,
+      "filled_count": 83954,
+      "remaining_null_count": 0,
+      "applied_fill_value": "Missing"
+    }
+  },
+  "row_filter_audit": {
+    "filter_column": "var157",
+    "allowed_values": [
+      "S\u00ed",
+      "No"
+    ],
+    "input_row_count": 114757,
+    "output_row_count": 30875,
+    "discarded_row_count": 83882
+  },
+  "columns": {
+    "sexo": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "missing",
+      "allowed_values": [
+        "Hombre",
+        "Missing",
+        "Mujer"
+      ],
+      "observed_values": [
+        "Hombre",
+        "Mujer"
+      ],
+      "invalid_values": []
+    },
+    "edad": {
+      "dtype": "Float64",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "todo ok",
+      "missing_strategy": "missing"
+    },
+    "raza": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "missing",
+      "allowed_values": [
+        "Am\u00e9rica Latina",
+        "Ar\u00e1bica",
+        "Asi\u00e1tica",
+        "Cauc\u00e1sica",
+        "Missing",
+        "Negra",
+        "Otras",
+        "Roman\u00ed"
+      ],
+      "observed_values": [
+        "Am\u00e9rica Latina",
+        "Ar\u00e1bica",
+        "Asi\u00e1tica",
+        "Cauc\u00e1sica",
+        "Missing",
+        "Negra",
+        "Otras",
+        "Roman\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "peso": {
+      "dtype": "Float64",
+      "non_null_count": 30873,
+      "null_count": 2,
+      "criteria": "entre 29 y 300",
+      "missing_strategy": "missing",
+      "threshold_validation": {
+        "kind": "between",
+        "non_null_numeric_count": 30873,
+        "min": 29.0,
+        "max": 217.0,
+        "lower": 29.0,
+        "upper": 300.0,
+        "below_count": 0,
+        "within_count": 30873,
+        "above_count": 0
+      }
+    },
+    "talla": {
+      "dtype": "Float64",
+      "non_null_count": 21176,
+      "null_count": 9699,
+      "criteria": "todo ok",
+      "missing_strategy": "missing"
+    },
+    "tension_": {
+      "dtype": "Float64",
+      "non_null_count": 30012,
+      "null_count": 863,
+      "criteria": "Si el valor es 1, hay que considerarlo 0 (paciente fallecido, pero el sistema no deja poner 0). Hay algunos valores raros (5, 9\u2026). Vamos a incluir s\u00f3lo los que est\u00e9n por encima de 35, pero deber\u00eda ser una variable categ\u00f3rica (normal entre 100-140)",
+      "missing_strategy": "missing",
+      "threshold_validation": {
+        "kind": "gt",
+        "non_null_numeric_count": 30012,
+        "min": 40.0,
+        "max": 255.0,
+        "lower": 35.0,
+        "within_count": 30012,
+        "below_count": 0
+      }
+    },
+    "ant_inf": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "ant_isq": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "ant_clau": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "fum_act": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "diabetes": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "hip_art": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "insf_car": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "fibr_aur": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "trat_est": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "e_con_pp": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "e_con_cu": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "e_con_ec": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "e_con_lu": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "e_con_af": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "e_con_be": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "e_con_at": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "e_con_va": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "e_con_ar": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "e_con_ea": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "e_con_pr": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "e_con_ro": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "e_con_av": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "e_con_sm": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "sin_tvp_": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "missing",
+      "allowed_values": [
+        "Asintom\u00e1tico",
+        "EP",
+        "EP+TVP",
+        "Missing",
+        "TVP",
+        "TVP/EP",
+        "TVS"
+      ],
+      "observed_values": [
+        "Asintom\u00e1tico",
+        "EP",
+        "EP+TVP",
+        "TVP"
+      ],
+      "invalid_values": []
+    },
+    "var171": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "tv_l_esu": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "tvp_orig": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "missing",
+      "allowed_values": [
+        "Missing",
+        "No secundaria a cat\u00e9ter",
+        "Secundaria a cat\u00e9ter"
+      ],
+      "observed_values": [
+        "Missing",
+        "No secundaria a cat\u00e9ter",
+        "Secundaria a cat\u00e9ter"
+      ],
+      "invalid_values": []
+    },
+    "tv_l_ein": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "tvp_prox": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "missing",
+      "allowed_values": [
+        "Distal",
+        "Distal (excluyendo la vena popl\u00edtea)",
+        "Missing",
+        "Proximal",
+        "Proximal (incluyendo la vena popl\u00edtea)"
+      ],
+      "observed_values": [
+        "Distal (excluyendo la vena popl\u00edtea)",
+        "Missing",
+        "Proximal (incluyendo la vena popl\u00edtea)"
+      ],
+      "invalid_values": []
+    },
+    "tv_l_vpo": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "tv_l_vme": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "tv_l_ves": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "tv_l_svc": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "tv_l_vre": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "tv_l_vrn": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "tv_l_vca": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "tv_l_yug": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "tv_l_ova": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "tv_l_sup": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "tv_l_pul": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "tv_l_ove": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "fr_cance": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "fr_cirug": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "fr_inmov": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "fr_tvp_a": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "fr_antfa": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "fr_tvs_a": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "fr_viaje": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "fr_estro": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "fr_embar": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "fr_varic": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "fr_antec": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "ana_hemo": {
+      "dtype": "Float64",
+      "non_null_count": 30860,
+      "null_count": 15,
+      "criteria": "vamos a quedarnos s\u00f3lo con los valores entre 4 y 20, el resto probablemente sean errores",
+      "missing_strategy": "missing",
+      "threshold_validation": {
+        "kind": "between",
+        "non_null_numeric_count": 30860,
+        "min": 4.3,
+        "max": 20.0,
+        "lower": 4.0,
+        "upper": 20.0,
+        "below_count": 0,
+        "within_count": 30860,
+        "above_count": 0
+      }
+    },
+    "ana_leuc": {
+      "dtype": "Float64",
+      "non_null_count": 30860,
+      "null_count": 15,
+      "criteria": "hay muchos mal metidos, vamos a quedarnos ccon los que est\u00e9n entre 2 y 40",
+      "missing_strategy": "missing",
+      "threshold_validation": {
+        "kind": "between",
+        "non_null_numeric_count": 30860,
+        "min": 2.0,
+        "max": 40.0,
+        "lower": 2.0,
+        "upper": 40.0,
+        "below_count": 0,
+        "within_count": 30860,
+        "above_count": 0
+      }
+    },
+    "ana_neu": {
+      "dtype": "Float64",
+      "non_null_count": 1074,
+      "null_count": 29801,
+      "criteria": "nos quedamos con los que est\u00e9n entre 0.4 y 30",
+      "missing_strategy": "missing",
+      "threshold_validation": {
+        "kind": "between",
+        "non_null_numeric_count": 1074,
+        "min": 1.5,
+        "max": 24.5,
+        "lower": 0.4,
+        "upper": 30.0,
+        "below_count": 0,
+        "within_count": 1074,
+        "above_count": 0
+      }
+    },
+    "ana_plaq": {
+      "dtype": "Float64",
+      "non_null_count": 30858,
+      "null_count": 17,
+      "criteria": "entre 10 y 1500",
+      "missing_strategy": "missing",
+      "threshold_validation": {
+        "kind": "between",
+        "non_null_numeric_count": 30858,
+        "min": 15.0,
+        "max": 1364.0,
+        "lower": 10.0,
+        "upper": 1500.0,
+        "below_count": 0,
+        "within_count": 30858,
+        "above_count": 0
+      }
+    },
+    "ana_dime": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "missing",
+      "allowed_values": [
+        "Missing",
+        "Negativo",
+        "No practicado",
+        "Positivo"
+      ],
+      "observed_values": [
+        "Missing",
+        "Negativo",
+        "No practicado",
+        "Positivo"
+      ],
+      "invalid_values": []
+    },
+    "protcrea": {
+      "dtype": "Float64",
+      "non_null_count": 0,
+      "null_count": 30875,
+      "criteria": "aqu\u00ed hay much\u00edsimos missing porque la variable se a\u00f1adio m\u00e1s tarde. Vamos a quedarnos con los que haya hasta 200",
+      "missing_strategy": "missing",
+      "threshold_validation": {
+        "kind": "le",
+        "non_null_numeric_count": 0,
+        "upper": 200.0,
+        "within_count": 0,
+        "above_count": 0
+      }
+    },
+    "ana_crea": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "missing"
+    },
+    "ana_trop": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "missing"
+    },
+    "evn_defu": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "evn_reci": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "evn_rec2": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "evn_rec3": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "evn_rec4": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "evn_hemo": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "evn_hem2": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "evn_hem3": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "evn_hem4": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "eisq_art": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "eisq_inf": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "eisq_ang": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "eisq_cer": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "eisq_ei": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "eisq_ol": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "No",
+      "allowed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "observed_values": [
+        "No",
+        "S\u00ed"
+      ],
+      "invalid_values": []
+    },
+    "var155": {
+      "dtype": "object",
+      "non_null_count": 30875,
+      "null_count": 0,
+      "criteria": "",
+      "missing_strategy": "missing"
+    }
+  }
+}
