@@ -1,0 +1,16 @@
+{
+  "association_rules_filter_column": "var161",
+  "association_rules_filter_side": "either",
+  "association_rules_max_feature_cardinality": 12,
+  "association_rules_max_features": 24,
+  "association_rules_max_rule_size": 3,
+  "association_rules_max_samples": 22000,
+  "association_rules_min_confidence": 0.4,
+  "association_rules_min_lift": 1.0,
+  "association_rules_min_support": 0.01,
+  "association_rules_sort_metric": "leverage",
+  "association_rules_target_column": null,
+  "association_rules_target_valid_labels": [],
+  "association_rules_top_k": 50,
+  "data": "data/patD.parquet"
+}

@@ -222,6 +222,7 @@ def main() -> None:
 
     parser.add_argument("--contrast-max-samples", type=int, default=300)
     parser.add_argument("--contrast-target-column", type=str, default="ana_dura")
+    parser.add_argument("--contrast-target-valid-labels", nargs="*", default=[])
     parser.add_argument("--contrast-min-support", type=float, default=0.05)
     parser.add_argument("--contrast-min-confidence", type=float, default=0.4)
     parser.add_argument("--contrast-max-feature-cardinality", type=int, default=12)
@@ -253,6 +254,7 @@ def main() -> None:
     parser.add_argument("--association-top-k", type=int, default=20)
     parser.add_argument("--association-include-target", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--association-target-column", type=str, default="ana_dura")
+    parser.add_argument("--association-target-valid-labels", nargs="*", default=[])
 
     parser.add_argument("--association-rules-max-samples", type=int, default=5000)
     parser.add_argument("--association-rules-min-support", type=float, default=0.01)
@@ -265,9 +267,12 @@ def main() -> None:
     parser.add_argument("--association-rules-sort-metric", type=str, default="leverage", choices=["leverage", "lift", "confidence", "support"])
     parser.add_argument("--association-rules-filter-column", type=str, default=None)
     parser.add_argument("--association-rules-filter-side", type=str, default="either", choices=["either", "antecedent", "consequent"])
+    parser.add_argument("--association-rules-target-column", type=str, default=None)
+    parser.add_argument("--association-rules-target-valid-labels", nargs="*", default=[])
 
     parser.add_argument("--bayesian-target-column", type=str, default="ana_dura")
     parser.add_argument("--bayesian-group-column", type=str, default="sexo")
+    parser.add_argument("--bayesian-target-valid-labels", nargs="*", default=[])
 
     parser.add_argument("--score-target-column", type=str, default="ana_dura")
     parser.add_argument("--score-positive-label", type=str, default="Buscada positivo")

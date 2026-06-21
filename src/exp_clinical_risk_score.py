@@ -240,7 +240,9 @@ class ClinicalRiskScoreExperiment(BaseExperiment):
             identifier_col=identifier_col,
             target_col=target_col,
         )
+        threshold_profiles_df: pd.DataFrame = self._build_threshold_profiles(results=results)
         self._export_patient_scores(patient_scores_df=export_df, output_dir=output_dir)
+        self._export_threshold_profiles(threshold_profiles_df=threshold_profiles_df, output_dir=output_dir)
 
         self.latex_table = "\n\n".join(
             [
@@ -790,6 +792,65 @@ class ClinicalRiskScoreExperiment(BaseExperiment):
             )
         return pd.DataFrame(rows)
 
+
+    def _build_threshold_profiles(self, results: Sequence[StrategyResult]) -> pd.DataFrame:
+        """Builds threshold-wise operating metrics for each integer-score strategy."""
+        profile_frames: List[pd.DataFrame] = []
+        for result in results:
+            profile_frames.append(
+                self._build_threshold_profile(
+                    scores=result.evaluation.scores,
+                    y_true=result.evaluation.y_true,
+                    model_name=result.strategy_name,
+                    positive_if_score_at_most=result.evaluation.positive_if_score_at_most,
+                    selected_threshold=result.evaluation.selected_threshold,
+                )
+            )
+        if not profile_frames:
+            return pd.DataFrame()
+        return pd.concat(profile_frames, ignore_index=True)
+
+    def _build_threshold_profile(
+        self,
+        scores: np.ndarray,
+        y_true: np.ndarray,
+        model_name: str,
+        positive_if_score_at_most: bool,
+        selected_threshold: float,
+    ) -> pd.DataFrame:
+        """Computes confusion-matrix metrics across the observed integer thresholds."""
+        unique_thresholds = np.sort(np.unique(scores.astype(float)))
+        rows: List[Dict[str, Any]] = []
+        for threshold in unique_thresholds:
+            predicted_positive = scores <= threshold if positive_if_score_at_most else scores >= threshold
+            tp = int(np.sum((predicted_positive == 1) & (y_true == 1)))
+            fp = int(np.sum((predicted_positive == 1) & (y_true == 0)))
+            tn = int(np.sum((predicted_positive == 0) & (y_true == 0)))
+            fn = int(np.sum((predicted_positive == 0) & (y_true == 1)))
+            sensitivity = tp / (tp + fn) if (tp + fn) else float('nan')
+            specificity = tn / (tn + fp) if (tn + fp) else float('nan')
+            ppv = tp / (tp + fp) if (tp + fp) else float('nan')
+            npv = tn / (tn + fn) if (tn + fn) else float('nan')
+            rows.append(
+                {
+                    "Model": model_name,
+                    "Threshold": float(threshold),
+                    "Decision_Rule": "score <= threshold" if positive_if_score_at_most else "score >= threshold",
+                    "Selected_Threshold": bool(np.isclose(threshold, selected_threshold)),
+                    "TP": tp,
+                    "FP": fp,
+                    "TN": tn,
+                    "FN": fn,
+                    "Sensitivity": float(sensitivity),
+                    "Specificity": float(specificity),
+                    "PPV": float(ppv),
+                    "NPV": float(npv),
+                    "Predicted_Positive_Count": int(np.sum(predicted_positive)),
+                    "Predicted_Negative_Count": int(np.sum(~predicted_positive)),
+                }
+            )
+        return pd.DataFrame(rows)
+
     def _merge_patient_score_exports(
         self,
         automatic_result: StrategyResult | None,
@@ -890,3 +951,10 @@ class ClinicalRiskScoreExperiment(BaseExperiment):
         """Writes a patient-level clinical score file for downstream review."""
         export_path: Path = output_dir / "clinical_risk_score_per_patient.csv"
         patient_scores_df.to_csv(export_path, index=False)
+
+    def _export_threshold_profiles(self, threshold_profiles_df: pd.DataFrame, output_dir: Path) -> None:
+        """Writes threshold-wise performance metrics for each integer score."""
+        if threshold_profiles_df.empty:
+            return
+        export_path: Path = output_dir / "clinical_score_threshold_performance.csv"
+        threshold_profiles_df.to_csv(export_path, index=False)

@@ -14,8 +14,10 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 from sklearn.compose import ColumnTransformer
+from sklearn.impute import SimpleImputer
 from sklearn.inspection import permutation_importance
 from sklearn.model_selection import StratifiedKFold
+from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 from xgboost import XGBClassifier
 
@@ -70,16 +72,38 @@ class PermutationImportanceExperiment(BaseExperiment):
         if not features:
             raise ValueError("Permutation importance found no eligible predictor columns after exclusions.")
 
-        X: pd.DataFrame = df[features]
+        X: pd.DataFrame = df[features].copy()
         y: np.ndarray = np.where(df[target_col] == positive_label, 1, 0)
 
         cat_cols: List[str] = X.select_dtypes(include=["object", "category", "string"]).columns.tolist()
         num_cols: List[str] = X.select_dtypes(include=[np.number]).columns.tolist()
 
+        for column in cat_cols:
+            X[column] = X[column].astype("string")
+        for column in num_cols:
+            X[column] = pd.to_numeric(X[column], errors="coerce").astype(float)
+
         preprocessor: ColumnTransformer = ColumnTransformer(
             transformers=[
-                ("cat", OneHotEncoder(handle_unknown="ignore", sparse_output=False), cat_cols),
-                ("num", "passthrough", num_cols),
+                (
+                    "cat",
+                    Pipeline(
+                        steps=[
+                            ("imputer", SimpleImputer(strategy="constant", fill_value="Missing")),
+                            ("encoder", OneHotEncoder(handle_unknown="ignore", sparse_output=False)),
+                        ]
+                    ),
+                    cat_cols,
+                ),
+                (
+                    "num",
+                    Pipeline(
+                        steps=[
+                            ("imputer", SimpleImputer(strategy="median")),
+                        ]
+                    ),
+                    num_cols,
+                ),
             ]
         )
 

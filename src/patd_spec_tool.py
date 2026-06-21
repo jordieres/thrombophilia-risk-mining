@@ -386,13 +386,17 @@ def build_validation_report(
     target_columns: list[str],
     source_path: Path,
     output_path: Path,
+    source_row_count: int,
     criteria_audit: dict[str, Any],
     missing_audit: dict[str, Any],
+    row_filter_audit: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Builds a detailed validation report for the transformed dataset."""
     report: dict[str, Any] = {
         "source_path": str(source_path),
         "output_path": str(output_path),
+        "source_row_count": source_row_count,
+        "output_row_count": int(len(df)),
         "row_count": int(len(df)),
         "column_count": int(df.shape[1]),
         "id_column": id_column,
@@ -402,6 +406,7 @@ def build_validation_report(
         "warnings": [],
         "criteria_audit": criteria_audit,
         "missing_audit": missing_audit,
+        "row_filter_audit": row_filter_audit or {},
         "columns": {},
     }
 
@@ -485,11 +490,14 @@ def transform_patd_dataset(
     report_path: Path,
     id_column: str = DEFAULT_ID_COLUMN,
     target_columns: tuple[str, ...] = DEFAULT_TARGET_COLUMNS,
+    filter_column: str | None = None,
+    filter_allowed_values: tuple[str, ...] = (),
     fail_on_validation_issues: bool = True,
 ) -> dict[str, Any]:
     """Transforms patD using the Excel spec, writes the subset parquet and validation report."""
     spec = load_variable_spec(spec_path)
     source_df = pd.read_parquet(input_path)
+    source_row_count = int(len(source_df))
 
     retained_target_columns = [column for column in target_columns if column and column in source_df.columns]
     required_columns = [id_column, *retained_target_columns, *spec["variable"].tolist()]
@@ -501,6 +509,25 @@ def transform_patd_dataset(
     transformed_df = normalize_selected_columns(source_df.loc[:, required_columns])
     transformed_df, criteria_audit = apply_column_c_rules(transformed_df, spec)
     transformed_df, missing_audit = apply_missing_strategies(transformed_df, spec)
+    row_filter_audit: dict[str, Any] | None = None
+    if filter_column:
+        if filter_column not in transformed_df.columns:
+            raise ValueError(f"Filter column '{filter_column}' is not present in the transformed dataset.")
+        if not filter_allowed_values:
+            raise ValueError("filter_allowed_values must contain at least one value when filter_column is provided.")
+        pre_filter_row_count = int(len(transformed_df))
+        allowed_values = [value.strip() for value in filter_allowed_values if value.strip()]
+        if not allowed_values:
+            raise ValueError("filter_allowed_values must contain at least one non-empty value.")
+        filter_mask = transformed_df[filter_column].astype("string").isin(allowed_values)
+        transformed_df = transformed_df.loc[filter_mask].reset_index(drop=True)
+        row_filter_audit = {
+            "filter_column": filter_column,
+            "allowed_values": allowed_values,
+            "input_row_count": pre_filter_row_count,
+            "output_row_count": int(len(transformed_df)),
+            "discarded_row_count": int(pre_filter_row_count - len(transformed_df)),
+        }
     transformed_df.to_parquet(output_path, index=False)
 
     report = build_validation_report(
@@ -510,8 +537,10 @@ def transform_patd_dataset(
         target_columns=retained_target_columns,
         source_path=input_path,
         output_path=output_path,
+        source_row_count=source_row_count,
         criteria_audit=criteria_audit,
         missing_audit=missing_audit,
+        row_filter_audit=row_filter_audit,
     )
     report_path.write_text(json.dumps(report, indent=2, ensure_ascii=True), encoding="utf-8")
 
@@ -558,6 +587,17 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Target columns to preserve even if they are not listed in the Excel variable spec.",
     )
     parser.add_argument(
+        "--filter-column",
+        default=None,
+        help="Optional retained column used to filter rows after applying the Excel-driven transformations.",
+    )
+    parser.add_argument(
+        "--filter-allowed-values",
+        nargs="*",
+        default=[],
+        help="Allowed values for --filter-column. Rows outside this set are discarded after transformation.",
+    )
+    parser.add_argument(
         "--allow-validation-issues",
         action="store_true",
         help="Write outputs even if categorical validation finds values outside the expected sets.",
@@ -582,12 +622,21 @@ def main() -> None:
         report_path=report_path,
         id_column=args.id_column,
         target_columns=tuple(args.target_columns),
+        filter_column=args.filter_column,
+        filter_allowed_values=tuple(args.filter_allowed_values),
         fail_on_validation_issues=not args.allow_validation_issues,
     )
 
     print(f"Subset written to {output_path}")
     print(f"Validation report written to {report_path}")
-    print(f"Rows: {report['row_count']}")
+    print(f"Input rows: {report['source_row_count']}")
+    criteria_overall = report.get('criteria_audit', {}).get('__overall__', {})
+    if criteria_overall:
+        print(f"Rows after Excel criteria: {criteria_overall.get('output_row_count', report['output_row_count'])}")
+    row_filter_audit = report.get('row_filter_audit', {})
+    if row_filter_audit:
+        print(f"Rows after value filter: {row_filter_audit.get('output_row_count', report['output_row_count'])}")
+    print(f"Output rows: {report['output_row_count']}")
     print(f"Feature columns (excluding {report['id_column']}): {len(report['feature_columns'])}")
     if report["hard_failures"]:
         print(f"Validation issues detected: {len(report['hard_failures'])}")

@@ -17,7 +17,7 @@ def _build_mock_df() -> pd.DataFrame:
             {
                 'id_pacie': idx,
                 'ana_dura': 'Buscada positivo' if idx < 6 else 'Buscada negativo',
-                'alt_target': 'Homocigoto' if idx < 6 else 'Heterocigoto',
+                'alt_target': 'Homocigoto' if idx < 6 else ('Heterocigoto' if idx < 10 else 'Missing'),
                 'sexo': 'Female' if idx % 2 == 0 else 'Male',
                 'fr_history': 'Yes' if idx < 6 else 'No',
                 'lab_band': 'High' if idx < 6 else 'Low',
@@ -57,6 +57,7 @@ def test_run_creates_checkpointed_rules_and_outputs(tmp_path: Path) -> None:
         'contrast_top_k_per_outcome': 3,
         'contrast_workers': 2,
         'contrast_target_column': 'alt_target',
+        'contrast_target_valid_labels': ['Homocigoto', 'Heterocigoto'],
         'resume': False,
     }
 

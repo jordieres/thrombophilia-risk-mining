@@ -29,4 +29,19 @@ python -m src.patd_spec_tool \
   --spec-xlsx "/tmp/varibeles explained.xlsx" \
   --output-parquet out/patD_spec_subset.parquet \
   --report-json out/patD_spec_subset_validation.json
+
+python -m src.patd_spec_tool \
+  --input-parquet data/patD.parquet \
+  --spec-xlsx "/tmp/varibeles explained.xlsx" \
+  --target-columns var161 \
+  --filter-column var161 \
+  --filter-allowed-values Sí No \
+  --output-parquet data/patD_var161.parquet \
+  --report-json out/patD_var161_validation.json
 ```
+
+The command-line summary now reports the full row trace: input rows, rows
+after applying the Excel criteria, rows after the optional value filter, and
+final output rows written to the parquet. The JSON validation report mirrors
+this with `source_row_count`, `output_row_count`, `criteria_audit`, and
+`row_filter_audit`.

@@ -16,12 +16,13 @@ def test_run_supports_custom_target_and_group_columns() -> None:
         {
             'sexo': ['Male', 'Female', 'Female', 'Male'],
             'hospital': ['A', 'A', 'B', 'B'],
-            'alt_target': ['Homocigoto', 'Heterocigoto', 'Homocigoto', 'Heterocigoto'],
+            'alt_target': ['Homocigoto', 'Heterocigoto', 'Missing', 'Heterocigoto'],
         }
     )
     config = {
         'bayesian_target_column': 'alt_target',
         'bayesian_group_column': 'hospital',
+        'bayesian_target_valid_labels': ['Homocigoto', 'Heterocigoto'],
     }
 
     experiment.run(df, config)

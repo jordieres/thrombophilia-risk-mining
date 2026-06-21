@@ -32,8 +32,10 @@ class CategoricalAssociationExperiment(BaseExperiment):
         output_dir: Path = Path(str(config.get("output_dir", ".")))
         include_target: bool = bool(config.get("association_include_target", True))
         target_col: str = str(config.get("association_target_column", "ana_dura"))
+        valid_target_labels = [str(label) for label in config.get("association_target_valid_labels", [])]
 
-        categorical_df: pd.DataFrame = data.select_dtypes(include=["object", "category"]).copy()
+        filtered_data = self._filter_target_rows(data, target_col=target_col, valid_target_labels=valid_target_labels)
+        categorical_df: pd.DataFrame = filtered_data.select_dtypes(include=["object", "category", "string"]).copy()
         categorical_df = categorical_df.drop(columns=["id_pacie"], errors="ignore")
         categorical_df = categorical_df.dropna(axis=1, how="all")
 
@@ -93,6 +95,18 @@ class CategoricalAssociationExperiment(BaseExperiment):
             xaxis_title="Variable",
             yaxis_title="Variable",
         )
+
+    def _filter_target_rows(self, data: pd.DataFrame, target_col: str, valid_target_labels: List[str]) -> pd.DataFrame:
+        if not valid_target_labels:
+            return data.copy()
+        if target_col not in data.columns:
+            raise ValueError(f"Categorical association requires the target column '{target_col}' when target filtering is requested.")
+        filtered_df = data.copy()
+        filtered_df[target_col] = filtered_df[target_col].astype("string")
+        filtered_df = filtered_df[filtered_df[target_col].isin(valid_target_labels)].reset_index(drop=True)
+        if filtered_df.empty:
+            raise ValueError(f"No rows matched association_target_valid_labels for target column '{target_col}'.")
+        return filtered_df
 
     def _build_cramers_v_matrix(self, data: pd.DataFrame) -> pd.DataFrame:
         """Computes the symmetric pairwise Cramer's V matrix."""

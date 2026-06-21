@@ -76,6 +76,7 @@ class ContrastPatternMiningExperiment(BaseExperiment):
     def run(self, data: pd.DataFrame, config: Dict[str, Any]) -> None:
         """Extracts targeted contrast rules while checkpointing each major stage."""
         target_col: str = str(config.get('contrast_target_column', 'ana_dura'))
+        valid_target_labels = [str(label) for label in config.get('contrast_target_valid_labels', [])]
         max_samples: int = int(config.get('contrast_max_samples', 300))
         min_support: float = float(config.get('contrast_min_support', 0.05))
         min_confidence: float = float(config.get('contrast_min_confidence', 0.4))
@@ -92,6 +93,8 @@ class ContrastPatternMiningExperiment(BaseExperiment):
             checkpoint_dir / 'run_config.json',
             {
                 'data': config.get('data'),
+                'contrast_target_column': target_col,
+                'contrast_target_valid_labels': valid_target_labels,
                 'contrast_max_samples': max_samples,
                 'contrast_min_support': min_support,
                 'contrast_min_confidence': min_confidence,
@@ -100,7 +103,6 @@ class ContrastPatternMiningExperiment(BaseExperiment):
                 'contrast_max_rule_size': max_rule_size,
                 'contrast_top_k_per_outcome': top_k,
                 'contrast_workers': requested_workers,
-                'contrast_target_column': target_col,
             },
         )
 
@@ -113,7 +115,8 @@ class ContrastPatternMiningExperiment(BaseExperiment):
         if resume and prepared_path.exists():
             prepared_df = pd.read_parquet(prepared_path)
         else:
-            sampled_df = self._sample_rows(data, target_col=target_col, max_samples=max_samples)
+            filtered_df = self._filter_target_rows(data, target_col=target_col, valid_target_labels=valid_target_labels)
+            sampled_df = self._sample_rows(filtered_df, target_col=target_col, max_samples=max_samples)
             prepared_df, feature_profile = self._prepare_feature_frame(
                 sampled_df,
                 target_col=target_col,
@@ -170,6 +173,8 @@ class ContrastPatternMiningExperiment(BaseExperiment):
         dataset_label: str = Path(str(config.get('data', 'dataset'))).stem
         fingerprint_fields: Dict[str, Any] = {
             'data': str(config.get('data', 'dataset')),
+            'contrast_target_column': config.get('contrast_target_column', 'ana_dura'),
+            'contrast_target_valid_labels': config.get('contrast_target_valid_labels', []),
             'contrast_max_samples': config.get('contrast_max_samples', 300),
             'contrast_min_support': config.get('contrast_min_support', 0.05),
             'contrast_min_confidence': config.get('contrast_min_confidence', 0.4),
@@ -179,6 +184,18 @@ class ContrastPatternMiningExperiment(BaseExperiment):
         }
         fingerprint: str = hashlib.sha1(json.dumps(fingerprint_fields, sort_keys=True).encode('utf-8')).hexdigest()[:12]
         return checkpoint_root / f"contrast_pattern_mining_{dataset_label}_{fingerprint}"
+
+    def _filter_target_rows(self, data: pd.DataFrame, target_col: str, valid_target_labels: List[str]) -> pd.DataFrame:
+        if target_col not in data.columns:
+            raise ValueError(f"Contrast mining requires the target column '{target_col}'.")
+        if not valid_target_labels:
+            return data.copy()
+        filtered_df = data.copy()
+        filtered_df[target_col] = filtered_df[target_col].astype('string')
+        filtered_df = filtered_df[filtered_df[target_col].isin(valid_target_labels)].reset_index(drop=True)
+        if filtered_df.empty:
+            raise ValueError(f"No rows matched contrast_target_valid_labels for target column '{target_col}'.")
+        return filtered_df
 
     def _sample_rows(self, data: pd.DataFrame, target_col: str, max_samples: int) -> pd.DataFrame:
         """Samples rows while preserving outcome proportions when possible."""

@@ -39,6 +39,8 @@ class AssociationExplorerExperiment(BaseExperiment):
         output_dir: Path = Path(str(config.get("output_dir", ".")))
         filter_column: str | None = config.get("association_rules_filter_column")
         filter_side: str = str(config.get("association_rules_filter_side", "either"))
+        target_col: str | None = config.get("association_rules_target_column")
+        valid_target_labels = [str(label) for label in config.get("association_rules_target_valid_labels", [])]
         resume: bool = bool(config.get("resume", False))
 
         if filter_side not in {"either", "antecedent", "consequent"}:
@@ -63,6 +65,8 @@ class AssociationExplorerExperiment(BaseExperiment):
                 "association_rules_sort_metric": sort_metric,
                 "association_rules_filter_column": filter_column,
                 "association_rules_filter_side": filter_side,
+                "association_rules_target_column": target_col,
+                "association_rules_target_valid_labels": valid_target_labels,
             },
         )
 
@@ -74,7 +78,8 @@ class AssociationExplorerExperiment(BaseExperiment):
         if resume and prepared_path.exists():
             prepared_df = pd.read_parquet(prepared_path)
         else:
-            sampled_df = self._sample_rows(data, max_samples=max_samples)
+            filtered_df = self._filter_target_rows(data, target_col=target_col, valid_target_labels=valid_target_labels)
+            sampled_df = self._sample_rows(filtered_df, max_samples=max_samples)
             prepared_df, feature_profile = self._prepare_feature_frame(
                 sampled_df,
                 max_feature_cardinality=max_feature_cardinality,
@@ -131,9 +136,23 @@ class AssociationExplorerExperiment(BaseExperiment):
             "association_rules_max_rule_size": config.get("association_rules_max_rule_size", 3),
             "association_rules_filter_column": config.get("association_rules_filter_column"),
             "association_rules_filter_side": config.get("association_rules_filter_side", "either"),
+            "association_rules_target_column": config.get("association_rules_target_column"),
+            "association_rules_target_valid_labels": config.get("association_rules_target_valid_labels", []),
         }
         fingerprint = hashlib.sha1(json.dumps(fingerprint_fields, sort_keys=True).encode("utf-8")).hexdigest()[:12]
         return checkpoint_root / f"association_explorer_{dataset_label}_{fingerprint}"
+
+    def _filter_target_rows(self, data: pd.DataFrame, target_col: str | None, valid_target_labels: List[str]) -> pd.DataFrame:
+        if not target_col or not valid_target_labels:
+            return data.copy()
+        if target_col not in data.columns:
+            raise ValueError(f"Association explorer requires the target column '{target_col}' when target filtering is requested.")
+        filtered_df = data.copy()
+        filtered_df[target_col] = filtered_df[target_col].astype("string")
+        filtered_df = filtered_df[filtered_df[target_col].isin(valid_target_labels)].reset_index(drop=True)
+        if filtered_df.empty:
+            raise ValueError(f"No rows matched association_rules_target_valid_labels for target column '{target_col}'.")
+        return filtered_df
 
     def _sample_rows(self, data: pd.DataFrame, max_samples: int) -> pd.DataFrame:
         if len(data) <= max_samples:
@@ -147,7 +166,7 @@ class AssociationExplorerExperiment(BaseExperiment):
         max_features: int,
         required_columns: List[str] | None = None,
     ) -> tuple[pd.DataFrame, Dict[str, Any]]:
-        categorical_df = data.select_dtypes(include=["object", "category"]).copy()
+        categorical_df = data.select_dtypes(include=["object", "category", "string"]).copy()
         categorical_df = categorical_df.drop(columns=["id_pacie"], errors="ignore")
         categorical_df = categorical_df.dropna(axis=1, how="all")
         candidates: List[Dict[str, Any]] = []

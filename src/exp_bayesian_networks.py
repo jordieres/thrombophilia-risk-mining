@@ -26,11 +26,18 @@ class BayesianNetworkExperiment(BaseExperiment):
         df: pd.DataFrame = data.copy()
         target_col: str = str(config.get("bayesian_target_column", "ana_dura"))
         group_col: str = str(config.get("bayesian_group_column", "sexo"))
+        valid_target_labels = [str(label) for label in config.get("bayesian_target_valid_labels", [])]
 
         if target_col not in df.columns:
             raise ValueError(f"Bayesian summary requires the target column '{target_col}'.")
         if group_col not in df.columns:
             df[group_col] = "Missing"
+
+        if valid_target_labels:
+            df[target_col] = df[target_col].astype("string")
+            df = df[df[target_col].isin(valid_target_labels)].reset_index(drop=True)
+            if df.empty:
+                raise ValueError(f"No rows matched bayesian_target_valid_labels for target column '{target_col}'.")
 
         if group_col == "sexo":
             df[group_col] = df[group_col].replace({"Male": "Hombre", "Female": "Mujer"})

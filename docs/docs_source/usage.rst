@@ -169,6 +169,30 @@ selected target column grouped by a configurable categorical parent column.
 
    poetry run python src/cli.py      --data data/patD.parquet      --experiment bayesian      --bayesian-target-column ana_dura      --bayesian-group-column sexo      --output-dir out
 
+Filtering a target to explicit valid labels
+-------------------------------------------
+
+When the target column contains many ``Missing`` rows, you can now restrict the
+analysis to an explicit set of valid labels before rule mining, categorical
+association, or Bayesian summaries. This is especially useful for variables
+such as ``var161`` that should be studied as ``Sí`` versus ``No`` only.
+
+.. code-block:: bash
+
+   poetry run python src/cli.py      --data data/patD.parquet      --experiment categorical_association      --association-target-column var161      --association-target-valid-labels Sí No      --association-max-samples 5000      --association-max-columns 20      --association-top-k 25      --output-dir out/var161_assoc
+
+.. code-block:: bash
+
+   poetry run python src/cli.py      --data data/patD.parquet      --experiment association_explorer      --association-rules-target-column var161      --association-rules-target-valid-labels Sí No      --association-rules-filter-column var161      --association-rules-filter-side either      --association-rules-max-samples 22000      --association-rules-min-support 0.01      --association-rules-min-confidence 0.40      --association-rules-min-lift 1.00      --association-rules-max-feature-cardinality 12      --association-rules-max-features 24      --association-rules-max-rule-size 3      --association-rules-top-k 50      --association-rules-sort-metric leverage      --output-dir out/var161_rules
+
+.. code-block:: bash
+
+   poetry run python src/cli.py      --data data/patD.parquet      --experiment contrast      --contrast-target-column var161      --contrast-target-valid-labels Sí No      --contrast-max-samples 22000      --contrast-min-support 0.02      --contrast-min-confidence 0.35      --contrast-max-feature-cardinality 22      --contrast-max-features 60      --contrast-max-rule-size 3      --contrast-top-k-per-outcome 15      --contrast-workers 2      --output-dir out/var161_contrast
+
+.. code-block:: bash
+
+   poetry run python src/cli.py      --data data/patD.parquet      --experiment bayesian      --bayesian-target-column var161      --bayesian-target-valid-labels Sí No      --bayesian-group-column sexo      --output-dir out/var161_bayesian
+
 Retargeting the studies to an alternative binary variable
 ---------------------------------------------------------
 
@@ -385,6 +409,29 @@ Behavior summary:
      --output-parquet out/patD_spec_subset.parquet \
      --report-json out/patD_spec_subset_validation.json
 
+To produce a cohort-specific parquet in one step, keep the target column and
+then filter the transformed rows to the allowed labels:
+
+.. code-block:: bash
+
+   python -m src.patd_spec_tool \
+     --input-parquet data/patD.parquet \
+     --spec-xlsx "/tmp/varibeles explained.xlsx" \
+     --target-columns var161 \
+     --filter-column var161 \
+     --filter-allowed-values Sí No \
+     --output-parquet data/patD_var161.parquet \
+     --report-json out/patD_var161_validation.json
+
+Runtime summary:
+
+* ``Input rows``: records loaded from the source parquet.
+* ``Rows after Excel criteria``: rows remaining after column-C validation and
+  row-discard rules.
+* ``Rows after value filter``: rows remaining after ``--filter-column`` and
+  ``--filter-allowed-values`` when those options are used.
+* ``Output rows``: final rows written to the output parquet.
+
 Generated artifacts:
 
 ``out/patD_spec_subset.parquet``
@@ -392,8 +439,10 @@ Generated artifacts:
    variables.
 
 ``out/patD_spec_subset_validation.json``
-   Validation trace with row count, feature list, allowed categorical values,
-   observed values, and any detected issues.
+   Validation trace with source and output row counts, feature list, allowed
+   categorical values, observed values, and any detected issues. When a value
+   filter is requested, the report also records ``row_filter_audit`` with the
+   retained labels and discarded-row count.
 
 VS Code debugging
 -----------------
