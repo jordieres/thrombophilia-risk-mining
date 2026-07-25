@@ -45,3 +45,22 @@ after applying the Excel criteria, rows after the optional value filter, and
 final output rows written to the parquet. The JSON validation report mirrors
 this with `source_row_count`, `output_row_count`, `criteria_audit`, and
 `row_filter_audit`.
+
+## Manuscript Review Support
+
+The repository now includes a manuscript-oriented audit helper that rebuilds the
+main methodological checks raised during peer review directly from the local
+registry snapshot. It creates mutually exclusive `tested` vs `not tested`
+cohort tables, outcome prevalence summaries restricted to tested patients,
+selected-threshold confusion matrices, calibration summaries, temporal
+validation outputs, and a ready-to-share Markdown response in `out/`.
+
+```bash
+python src/manuscript_support.py \
+  --data data/patD.parquet \
+  --output-dir out
+```
+
+Key artifacts include `out/coauthor_response_review.md`,
+`out/tested_vs_not_tested_baseline.csv`, `out/score_clinical_utility_summary.csv`,
+and `out/temporal_validation_summary.csv`.

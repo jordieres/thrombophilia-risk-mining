@@ -82,6 +82,13 @@ class ClinicalRiskScoreExperiment(BaseExperiment):
 
     def __init__(self) -> None:
         super().__init__("Clinical Risk Score")
+        self.strategy_results: List[StrategyResult] = []
+        self.evaluations: List[ModelEvaluation] = []
+        self.metrics_table_df: pd.DataFrame = pd.DataFrame()
+        self.score_summary_df: pd.DataFrame = pd.DataFrame()
+        self.points_table_df: pd.DataFrame = pd.DataFrame()
+        self.patient_scores_df: pd.DataFrame = pd.DataFrame()
+        self.threshold_profiles_df: pd.DataFrame = pd.DataFrame()
 
     def run(self, data: pd.DataFrame, config: Dict[str, Any]) -> None:
         """Builds one or more integer-point clinical scores and evaluates ROC performance."""
@@ -241,6 +248,13 @@ class ClinicalRiskScoreExperiment(BaseExperiment):
             target_col=target_col,
         )
         threshold_profiles_df: pd.DataFrame = self._build_threshold_profiles(results=results)
+        self.strategy_results = results
+        self.evaluations = evaluations
+        self.metrics_table_df = metrics_table.copy()
+        self.score_summary_df = combined_score_summary.copy()
+        self.points_table_df = combined_points_table.copy()
+        self.patient_scores_df = export_df.copy()
+        self.threshold_profiles_df = threshold_profiles_df.copy()
         self._export_patient_scores(patient_scores_df=export_df, output_dir=output_dir)
         self._export_threshold_profiles(threshold_profiles_df=threshold_profiles_df, output_dir=output_dir)
 

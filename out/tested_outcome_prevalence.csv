@@ -1,0 +1,6 @@
+Outcome,Column,Tested_N,Positive_N,Positive_%
+Antiphospholipid syndrome,var161,10710,1908,17.81512605042017
+Factor V Leiden,var156,10638,2048,19.251739048693363
+Protein C deficiency,var154,10275,356,3.464720194647202
+Protein S deficiency,var155,10315,757,7.338826951042171
+Prothrombin G20210A,var157,10376,1602,15.43947571318427

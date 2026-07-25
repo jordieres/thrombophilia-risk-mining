@@ -1,0 +1,10 @@
+Outcome,Model,Mean_Absolute_Calibration_Error
+Antiphospholipid syndrome,Automatic Integer Score,0.09309976772221809
+Factor V Leiden,Association-Guided Integer Score,0.35484176293348335
+Factor V Leiden,Automatic Integer Score,0.26759372381101904
+Protein C deficiency,Association-Guided Integer Score,0.439337338195352
+Protein C deficiency,Automatic Integer Score,0.3169117188839096
+Protein S deficiency,Association-Guided Integer Score,0.42621874327879333
+Protein S deficiency,Automatic Integer Score,0.3248155945754343
+Prothrombin G20210A,Association-Guided Integer Score,0.3764952641725382
+Prothrombin G20210A,Automatic Integer Score,0.28787766173383317
