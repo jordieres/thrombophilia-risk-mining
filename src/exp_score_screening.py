@@ -42,7 +42,7 @@ class ClinicalScoreScreeningExperiment(ClinicalRiskScoreExperiment):
         benchmark_model: str = str(config.get("score_benchmark_model", "both"))
         xgboost_estimators: int = int(config.get("score_xgboost_estimators", 80))
         output_dir: Path = Path(str(config.get("output_dir", ".")))
-        screening_labels_raw = config.get("screening_labels", ["Missing", "No buscada"])
+        screening_labels_raw = config.get("screening_labels", ["No buscada"])
         screening_labels: List[str] = [str(label) for label in screening_labels_raw]
 
         if feature_strategy not in {"automatic", "association", "compare"}:
@@ -260,7 +260,7 @@ class ClinicalScoreScreeningExperiment(ClinicalRiskScoreExperiment):
                 ),
                 screening_summary_df.to_latex(
                     index=False,
-                    caption="Counts of Positive Screening Flags Among Missing or Unrequested Studies",
+                    caption="Counts of Positive Screening Flags Among Not-Searched Studies",
                     label="tab:clinical_screening_summary",
                 ),
             ]
@@ -280,7 +280,7 @@ class ClinicalScoreScreeningExperiment(ClinicalRiskScoreExperiment):
         if target_col not in data.columns:
             raise ValueError(f"The clinical score screening experiment requires the target column '{target_col}'.")
         df = data.copy()
-        df[target_col] = df[target_col].astype("string").fillna("Missing")
+        df[target_col] = df[target_col].astype("string").fillna("No buscada")
         df = df[df[target_col].isin(screening_labels)].reset_index(drop=True)
         if df.empty:
             raise ValueError("No rows matched the requested screening labels for the clinical score screening experiment.")

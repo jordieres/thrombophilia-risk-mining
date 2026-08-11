@@ -83,6 +83,15 @@ class ClinicalDataProcessor:
             else:
                 df['sexo'] = df['sexo'].astype(str).replace({'Hombre': 'Male', 'Mujer': 'Female'})
 
+        # Missing thrombophilia study labels are treated as not searched downstream.
+        if 'ana_dura' in df.columns:
+            if isinstance(df['ana_dura'].dtype, pd.CategoricalDtype):
+                if 'No buscada' not in df['ana_dura'].cat.categories:
+                    df['ana_dura'] = df['ana_dura'].cat.add_categories(['No buscada'])
+                df['ana_dura'] = df['ana_dura'].fillna('No buscada')
+            else:
+                df['ana_dura'] = df['ana_dura'].astype('string').fillna('No buscada')
+
         # Defensive missingness imputation checking for formal CategoricalDtype constraints dynamically
         history_cols: List[str] = [col for col in df.columns if col.startswith('fr_') or col.startswith('sin_') or col.startswith('ant_')]
         for col in history_cols:

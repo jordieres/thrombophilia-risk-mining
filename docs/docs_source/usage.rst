@@ -226,7 +226,7 @@ Clinical integer score and ROC benchmarking
 -------------------------------------------
 
 The ``score`` experiment filters the cohort to the binary diagnostic criterion,
-removes ``Missing`` and ``No buscada`` outcomes, and can now compare two
+removes ``No buscada`` outcomes, and can now compare two
 feature-selection strategies: an automatic low-cardinality discovery workflow
 and an association-guided preset based on rule-mining findings (female sex,
 younger age bands, no prior DVT, normal hemoglobin, negative D-dimer, no
@@ -278,7 +278,8 @@ Clinical score screening for missing or unrequested studies
 
 The ``score_screening`` experiment trains the clinical score on the confirmed
 binary subset and then applies the resulting point cards to records labelled as
-``Missing`` or ``No buscada`` in ``ana_dura``. It also exports probability-based
+``No buscada`` in ``ana_dura`` after preprocessing has folded missing study
+labels into that category. It also exports probability-based
 screening outputs from the same logistic and XGBoost benchmark families used in
 ``score``, which is helpful when the bedside integer score is too blunt for
 prioritizing manual review. This is intended for review prioritization rather
@@ -292,7 +293,7 @@ than definitive diagnosis.
      --score-target-column ana_dura \
      --score-positive-label "Buscada positivo" \
      --score-negative-label "Buscada negativo" \
-     --screening-labels Missing "No buscada" \
+     --screening-labels "No buscada" \
      --score-feature-strategy compare \
      --score-benchmark-model both \
      --score-max-samples 4000 \

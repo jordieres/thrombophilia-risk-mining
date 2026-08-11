@@ -293,7 +293,7 @@ def main() -> None:
     parser.add_argument("--score-min-sensitivity", type=float, default=0.90)
     parser.add_argument("--score-min-feature-prevalence", type=float, default=0.02)
     parser.add_argument("--score-xgboost-estimators", type=int, default=80)
-    parser.add_argument("--screening-labels", nargs="*", default=["Missing", "No buscada"])
+    parser.add_argument("--screening-labels", nargs="*", default=["No buscada"])
 
     parser.add_argument("--edas-column", type=str, default="DimeroD")
     parser.add_argument(

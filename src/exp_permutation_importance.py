@@ -79,7 +79,7 @@ class PermutationImportanceExperiment(BaseExperiment):
         num_cols: List[str] = X.select_dtypes(include=[np.number]).columns.tolist()
 
         for column in cat_cols:
-            X[column] = X[column].astype("string")
+            X[column] = X[column].astype("object").where(X[column].notna(), "Missing").astype(str)
         for column in num_cols:
             X[column] = pd.to_numeric(X[column], errors="coerce").astype(float)
 

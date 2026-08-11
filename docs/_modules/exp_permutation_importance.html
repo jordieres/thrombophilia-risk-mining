@@ -46,8 +46,10 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.compose</span><span class="w"> </span><span class="kn">import</span> <span class="n">ColumnTransformer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.impute</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleImputer</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.inspection</span><span class="w"> </span><span class="kn">import</span> <span class="n">permutation_importance</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">StratifiedKFold</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">OneHotEncoder</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">xgboost</span><span class="w"> </span><span class="kn">import</span> <span class="n">XGBClassifier</span>
 
@@ -106,16 +108,38 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">features</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Permutation importance found no eligible predictor columns after exclusions.&quot;</span><span class="p">)</span>
 
-        <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
+        <span class="n">X</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span> <span class="o">==</span> <span class="n">positive_label</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
         <span class="n">cat_cols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">,</span> <span class="s2">&quot;category&quot;</span><span class="p">,</span> <span class="s2">&quot;string&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
         <span class="n">num_cols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 
+        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">cat_cols</span><span class="p">:</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;string&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">num_cols</span><span class="p">:</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">column</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
         <span class="n">preprocessor</span><span class="p">:</span> <span class="n">ColumnTransformer</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
             <span class="n">transformers</span><span class="o">=</span><span class="p">[</span>
-                <span class="p">(</span><span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">sparse_output</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">cat_cols</span><span class="p">),</span>
-                <span class="p">(</span><span class="s2">&quot;num&quot;</span><span class="p">,</span> <span class="s2">&quot;passthrough&quot;</span><span class="p">,</span> <span class="n">num_cols</span><span class="p">),</span>
+                <span class="p">(</span>
+                    <span class="s2">&quot;cat&quot;</span><span class="p">,</span>
+                    <span class="n">Pipeline</span><span class="p">(</span>
+                        <span class="n">steps</span><span class="o">=</span><span class="p">[</span>
+                            <span class="p">(</span><span class="s2">&quot;imputer&quot;</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="s2">&quot;Missing&quot;</span><span class="p">)),</span>
+                            <span class="p">(</span><span class="s2">&quot;encoder&quot;</span><span class="p">,</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">sparse_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)),</span>
+                        <span class="p">]</span>
+                    <span class="p">),</span>
+                    <span class="n">cat_cols</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="p">(</span>
+                    <span class="s2">&quot;num&quot;</span><span class="p">,</span>
+                    <span class="n">Pipeline</span><span class="p">(</span>
+                        <span class="n">steps</span><span class="o">=</span><span class="p">[</span>
+                            <span class="p">(</span><span class="s2">&quot;imputer&quot;</span><span class="p">,</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s2">&quot;median&quot;</span><span class="p">)),</span>
+                        <span class="p">]</span>
+                    <span class="p">),</span>
+                    <span class="n">num_cols</span><span class="p">,</span>
+                <span class="p">),</span>
             <span class="p">]</span>
         <span class="p">)</span>
 

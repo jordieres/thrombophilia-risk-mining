@@ -226,7 +226,7 @@ Clinical integer score and ROC benchmarking
 -------------------------------------------
 
 The ``score`` experiment filters the cohort to the binary diagnostic criterion,
-removes ``Missing`` and ``No buscada`` outcomes, and can now compare two
+removes ``No buscada`` outcomes, and can now compare two
 feature-selection strategies: an automatic low-cardinality discovery workflow
 and an association-guided preset based on rule-mining findings (female sex,
 younger age bands, no prior DVT, normal hemoglobin, negative D-dimer, no
@@ -278,7 +278,8 @@ Clinical score screening for missing or unrequested studies
 
 The ``score_screening`` experiment trains the clinical score on the confirmed
 binary subset and then applies the resulting point cards to records labelled as
-``Missing`` or ``No buscada`` in ``ana_dura``. It also exports probability-based
+``No buscada`` in ``ana_dura`` after preprocessing has folded missing study
+labels into that category. It also exports probability-based
 screening outputs from the same logistic and XGBoost benchmark families used in
 ``score``, which is helpful when the bedside integer score is too blunt for
 prioritizing manual review. This is intended for review prioritization rather
@@ -292,7 +293,7 @@ than definitive diagnosis.
      --score-target-column ana_dura \
      --score-positive-label "Buscada positivo" \
      --score-negative-label "Buscada negativo" \
-     --screening-labels Missing "No buscada" \
+     --screening-labels "No buscada" \
      --score-feature-strategy compare \
      --score-benchmark-model both \
      --score-max-samples 4000 \
@@ -409,6 +410,29 @@ Behavior summary:
      --output-parquet out/patD_spec_subset.parquet \
      --report-json out/patD_spec_subset_validation.json
 
+To produce a cohort-specific parquet in one step, keep the target column and
+then filter the transformed rows to the allowed labels:
+
+.. code-block:: bash
+
+   python -m src.patd_spec_tool \
+     --input-parquet data/patD.parquet \
+     --spec-xlsx "/tmp/varibeles explained.xlsx" \
+     --target-columns var161 \
+     --filter-column var161 \
+     --filter-allowed-values Sí No \
+     --output-parquet data/patD_var161.parquet \
+     --report-json out/patD_var161_validation.json
+
+Runtime summary:
+
+* ``Input rows``: records loaded from the source parquet.
+* ``Rows after Excel criteria``: rows remaining after column-C validation and
+  row-discard rules.
+* ``Rows after value filter``: rows remaining after ``--filter-column`` and
+  ``--filter-allowed-values`` when those options are used.
+* ``Output rows``: final rows written to the output parquet.
+
 Generated artifacts:
 
 ``out/patD_spec_subset.parquet``
@@ -416,8 +440,10 @@ Generated artifacts:
    variables.
 
 ``out/patD_spec_subset_validation.json``
-   Validation trace with row count, feature list, allowed categorical values,
-   observed values, and any detected issues.
+   Validation trace with source and output row counts, feature list, allowed
+   categorical values, observed values, and any detected issues. When a value
+   filter is requested, the report also records ``row_filter_audit`` with the
+   retained labels and discarded-row count.
 
 VS Code debugging
 -----------------

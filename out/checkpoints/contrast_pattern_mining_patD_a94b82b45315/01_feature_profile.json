@@ -1,0 +1,804 @@
+{
+  "candidate_profile": [
+    {
+      "cardinality": 2,
+      "column": "ant_clau",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "ant_inf",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "ant_isq",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "e_con_ar",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "e_con_at",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "e_con_av",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "e_con_be",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "e_con_cu",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "e_con_ea",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "e_con_ec",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "e_con_pp",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "e_con_pr",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "e_con_va",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "e_h3_fec",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "eisq_fol",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "eisqfang",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "evn_defu",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "evn_hemo",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "evn_re2f",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "evn_reci",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "fr_antec",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "fr_antfa",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "fr_antgr",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "fr_cance",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "fr_cirug",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "fr_estro",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "fr_inmov",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "fr_tvp_a",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "fr_tvs_a",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "fr_varic",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "fr_viaje",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "sexo",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 2,
+      "column": "ana_port",
+      "missing_rate": 0.10666666666666667
+    },
+    {
+      "cardinality": 2,
+      "column": "tv_l_vrn",
+      "missing_rate": 0.6966666666666667
+    },
+    {
+      "cardinality": 2,
+      "column": "var158",
+      "missing_rate": 0.76
+    },
+    {
+      "cardinality": 2,
+      "column": "tv_l_pul",
+      "missing_rate": 0.8266666666666667
+    },
+    {
+      "cardinality": 2,
+      "column": "tv_l_sup",
+      "missing_rate": 0.8266666666666667
+    },
+    {
+      "cardinality": 2,
+      "column": "anadutip",
+      "missing_rate": 0.97
+    },
+    {
+      "cardinality": 2,
+      "column": "tvpocaef",
+      "missing_rate": 0.9833333333333333
+    },
+    {
+      "cardinality": 2,
+      "column": "andujak2",
+      "missing_rate": 0.9866666666666667
+    },
+    {
+      "cardinality": 2,
+      "column": "eisq_cer",
+      "missing_rate": 0.9933333333333333
+    },
+    {
+      "cardinality": 2,
+      "column": "eisq_ei",
+      "missing_rate": 0.9933333333333333
+    },
+    {
+      "cardinality": 2,
+      "column": "eisq_inf",
+      "missing_rate": 0.9933333333333333
+    },
+    {
+      "cardinality": 2,
+      "column": "eisq_ol",
+      "missing_rate": 0.9966666666666667
+    },
+    {
+      "cardinality": 2,
+      "column": "ev_hm3_f",
+      "missing_rate": 0.9966666666666667
+    },
+    {
+      "cardinality": 2,
+      "column": "ev_hm3_l",
+      "missing_rate": 0.9966666666666667
+    },
+    {
+      "cardinality": 2,
+      "column": "evn_hem3",
+      "missing_rate": 0.9966666666666667
+    },
+    {
+      "cardinality": 3,
+      "column": "e_h2_fec",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 3,
+      "column": "insf_car",
+      "missing_rate": 0.023333333333333334
+    },
+    {
+      "cardinality": 3,
+      "column": "ana_crea",
+      "missing_rate": 0.04666666666666667
+    },
+    {
+      "cardinality": 3,
+      "column": "var171",
+      "missing_rate": 0.07666666666666666
+    },
+    {
+      "cardinality": 3,
+      "column": "tvp_ecog",
+      "missing_rate": 0.11333333333333333
+    },
+    {
+      "cardinality": 3,
+      "column": "hip_art",
+      "missing_rate": 0.20666666666666667
+    },
+    {
+      "cardinality": 3,
+      "column": "diabetes",
+      "missing_rate": 0.22333333333333333
+    },
+    {
+      "cardinality": 3,
+      "column": "fum_act",
+      "missing_rate": 0.22666666666666666
+    },
+    {
+      "cardinality": 3,
+      "column": "trat_est",
+      "missing_rate": 0.24666666666666667
+    },
+    {
+      "cardinality": 3,
+      "column": "ep_tac",
+      "missing_rate": 0.25
+    },
+    {
+      "cardinality": 3,
+      "column": "tvp_eco_",
+      "missing_rate": 0.26
+    },
+    {
+      "cardinality": 3,
+      "column": "eisq_art",
+      "missing_rate": 0.29333333333333333
+    },
+    {
+      "cardinality": 3,
+      "column": "tv_l_ein",
+      "missing_rate": 0.30333333333333334
+    },
+    {
+      "cardinality": 3,
+      "column": "ep_ecoca",
+      "missing_rate": 0.37
+    },
+    {
+      "cardinality": 3,
+      "column": "ddunidad",
+      "missing_rate": 0.37666666666666665
+    },
+    {
+      "cardinality": 3,
+      "column": "tvp_prox",
+      "missing_rate": 0.44
+    },
+    {
+      "cardinality": 3,
+      "column": "fibr_aur",
+      "missing_rate": 0.4666666666666667
+    },
+    {
+      "cardinality": 3,
+      "column": "ep_tac_r",
+      "missing_rate": 0.5033333333333333
+    },
+    {
+      "cardinality": 3,
+      "column": "tv_l_esu",
+      "missing_rate": 0.55
+    },
+    {
+      "cardinality": 3,
+      "column": "tv_l_vpo",
+      "missing_rate": 0.66
+    },
+    {
+      "cardinality": 3,
+      "column": "tv_l_vme",
+      "missing_rate": 0.6633333333333333
+    },
+    {
+      "cardinality": 3,
+      "column": "tv_l_ves",
+      "missing_rate": 0.6666666666666666
+    },
+    {
+      "cardinality": 3,
+      "column": "ana_trop",
+      "missing_rate": 0.67
+    },
+    {
+      "cardinality": 3,
+      "column": "tv_l_svc",
+      "missing_rate": 0.67
+    },
+    {
+      "cardinality": 3,
+      "column": "tv_l_vre",
+      "missing_rate": 0.6966666666666667
+    },
+    {
+      "cardinality": 3,
+      "column": "tv_l_ove",
+      "missing_rate": 0.7066666666666667
+    },
+    {
+      "cardinality": 3,
+      "column": "var156",
+      "missing_rate": 0.7566666666666667
+    },
+    {
+      "cardinality": 3,
+      "column": "var157",
+      "missing_rate": 0.7566666666666667
+    },
+    {
+      "cardinality": 3,
+      "column": "var154",
+      "missing_rate": 0.76
+    },
+    {
+      "cardinality": 3,
+      "column": "var155",
+      "missing_rate": 0.76
+    },
+    {
+      "cardinality": 3,
+      "column": "var159",
+      "missing_rate": 0.76
+    },
+    {
+      "cardinality": 3,
+      "column": "var160",
+      "missing_rate": 0.76
+    },
+    {
+      "cardinality": 3,
+      "column": "var161",
+      "missing_rate": 0.76
+    },
+    {
+      "cardinality": 3,
+      "column": "var162",
+      "missing_rate": 0.7666666666666667
+    },
+    {
+      "cardinality": 3,
+      "column": "ep_eco_v",
+      "missing_rate": 0.77
+    },
+    {
+      "cardinality": 3,
+      "column": "var52",
+      "missing_rate": 0.7733333333333333
+    },
+    {
+      "cardinality": 3,
+      "column": "ep_ec_pr",
+      "missing_rate": 0.7866666666666666
+    },
+    {
+      "cardinality": 3,
+      "column": "seco",
+      "missing_rate": 0.7966666666666666
+    },
+    {
+      "cardinality": 3,
+      "column": "ep_t_reg",
+      "missing_rate": 0.8133333333333334
+    },
+    {
+      "cardinality": 3,
+      "column": "tv_l_vca",
+      "missing_rate": 0.82
+    },
+    {
+      "cardinality": 3,
+      "column": "tv_l_ova",
+      "missing_rate": 0.8233333333333334
+    },
+    {
+      "cardinality": 3,
+      "column": "tv_l_yug",
+      "missing_rate": 0.8233333333333334
+    },
+    {
+      "cardinality": 3,
+      "column": "secopri",
+      "missing_rate": 0.85
+    },
+    {
+      "cardinality": 3,
+      "column": "secopres",
+      "missing_rate": 0.8533333333333334
+    },
+    {
+      "cardinality": 3,
+      "column": "var139",
+      "missing_rate": 0.8766666666666667
+    },
+    {
+      "cardinality": 3,
+      "column": "var195",
+      "missing_rate": 0.9466666666666667
+    },
+    {
+      "cardinality": 3,
+      "column": "eptacven",
+      "missing_rate": 0.95
+    },
+    {
+      "cardinality": 3,
+      "column": "tvp_orig",
+      "missing_rate": 0.95
+    },
+    {
+      "cardinality": 3,
+      "column": "tv_l_vfe",
+      "missing_rate": 0.97
+    },
+    {
+      "cardinality": 3,
+      "column": "tv_l_vpp",
+      "missing_rate": 0.97
+    },
+    {
+      "cardinality": 3,
+      "column": "tv_l_vil",
+      "missing_rate": 0.9733333333333334
+    },
+    {
+      "cardinality": 3,
+      "column": "epecoddv",
+      "missing_rate": 0.98
+    },
+    {
+      "cardinality": 3,
+      "column": "evn_hem2",
+      "missing_rate": 0.9833333333333333
+    },
+    {
+      "cardinality": 3,
+      "column": "tv_l_vrp",
+      "missing_rate": 0.9866666666666667
+    },
+    {
+      "cardinality": 3,
+      "column": "tv_l_vrt",
+      "missing_rate": 0.9866666666666667
+    },
+    {
+      "cardinality": 3,
+      "column": "eisq_ang",
+      "missing_rate": 0.9933333333333333
+    },
+    {
+      "cardinality": 3,
+      "column": "ev_hm2_f",
+      "missing_rate": 0.9933333333333333
+    },
+    {
+      "cardinality": 3,
+      "column": "ev_hm2_l",
+      "missing_rate": 0.9933333333333333
+    },
+    {
+      "cardinality": 3,
+      "column": "evn_rec2",
+      "missing_rate": 0.9933333333333333
+    },
+    {
+      "cardinality": 3,
+      "column": "metacere",
+      "missing_rate": 0.9933333333333333
+    },
+    {
+      "cardinality": 4,
+      "column": "fr_can_e",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 4,
+      "column": "fr_est_v",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 4,
+      "column": "fr_tvp_p",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 4,
+      "column": "sin_tvp_",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 4,
+      "column": "ana_dime",
+      "missing_rate": 0.13333333333333333
+    },
+    {
+      "cardinality": 4,
+      "column": "ep_tls",
+      "missing_rate": 0.6933333333333334
+    },
+    {
+      "cardinality": 4,
+      "column": "ep_tll",
+      "missing_rate": 0.7266666666666667
+    },
+    {
+      "cardinality": 4,
+      "column": "ep_tlp",
+      "missing_rate": 0.7333333333333333
+    },
+    {
+      "cardinality": 4,
+      "column": "ep_tlss",
+      "missing_rate": 0.7366666666666667
+    },
+    {
+      "cardinality": 4,
+      "column": "ep_tlce",
+      "missing_rate": 0.7466666666666667
+    },
+    {
+      "cardinality": 4,
+      "column": "var186",
+      "missing_rate": 0.9566666666666667
+    },
+    {
+      "cardinality": 4,
+      "column": "tvpocatt",
+      "missing_rate": 0.9766666666666667
+    },
+    {
+      "cardinality": 5,
+      "column": "fr_inm_t",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 5,
+      "column": "raza",
+      "missing_rate": 0.5833333333333334
+    },
+    {
+      "cardinality": 5,
+      "column": "protcrea",
+      "missing_rate": 0.9866666666666667
+    },
+    {
+      "cardinality": 7,
+      "column": "fr_est_m",
+      "missing_rate": 0.0
+    },
+    {
+      "cardinality": 9,
+      "column": "var196",
+      "missing_rate": 0.9466666666666667
+    },
+    {
+      "cardinality": 11,
+      "column": "fr_inm_m",
+      "missing_rate": 0.0
+    }
+  ],
+  "dropped_high_cardinality_columns": [
+    "edad",
+    "raza",
+    "peso",
+    "talla",
+    "tension_",
+    "fecha_di",
+    "f_alta_h",
+    "fum_act",
+    "diabetes",
+    "hip_art",
+    "insf_car",
+    "fibr_aur",
+    "trat_est",
+    "e_con_lu",
+    "e_con_af",
+    "e_con_ro",
+    "e_con_sm",
+    "sin_tvp_",
+    "var171",
+    "ep_tac",
+    "ep_tac_r",
+    "ep_tlss",
+    "ep_tls",
+    "ep_tll",
+    "ep_tlp",
+    "ep_tlce",
+    "eptacven",
+    "ep_t_reg",
+    "ep_ecoca",
+    "ep_ec_pr",
+    "ep_eco_p",
+    "ep_eco_v",
+    "var52",
+    "epecoddv",
+    "tvp_ecog",
+    "tvp_eco_",
+    "tv_l_esu",
+    "tvp_orig",
+    "tvpocatt",
+    "tv_l_ein",
+    "tvp_prox",
+    "tv_l_vil",
+    "tv_l_vfe",
+    "tv_l_vpp",
+    "tv_l_vpo",
+    "tv_l_vme",
+    "tv_l_ves",
+    "tv_l_svc",
+    "tv_l_vre",
+    "tv_l_vrt",
+    "tv_l_vrp",
+    "tv_l_vca",
+    "tv_l_yug",
+    "tv_l_ova",
+    "tv_l_ove",
+    "fr_can_l",
+    "fr_can_e",
+    "metacere",
+    "fr_inm_m",
+    "fr_inm_t",
+    "fr_tvp_p",
+    "fr_est_m",
+    "fr_est_v",
+    "fr_embar",
+    "fr_emb_s",
+    "ana_hemo",
+    "ana_leuc",
+    "ana_neu",
+    "ana_plaq",
+    "ana_dime",
+    "ddunidad",
+    "var130",
+    "ddvalmcg",
+    "protcrea",
+    "ana_crea",
+    "var139",
+    "ana_trop",
+    "var141",
+    "var154",
+    "var155",
+    "var156",
+    "var159",
+    "var160",
+    "var161",
+    "var157",
+    "var162",
+    "evn_fina",
+    "evn_def_",
+    "var181",
+    "evn_rec_",
+    "var186",
+    "evn_rec2",
+    "e_rec2_t",
+    "evn_rec3",
+    "evn_re3f",
+    "e_rec3_t",
+    "evn_rec4",
+    "evn_re4f",
+    "e_rec4_t",
+    "var194",
+    "var195",
+    "var196",
+    "evn_hem2",
+    "ev_hm2_f",
+    "ev_hm2_l",
+    "evn_hem4",
+    "e_h4_fec",
+    "ev_hm4_f",
+    "ev_hm4_l",
+    "eisq_art",
+    "eisqfinf",
+    "eisq_ang",
+    "eisqfcer",
+    "eisq_fei",
+    "seco",
+    "secopri",
+    "f_secop",
+    "secopres"
+  ],
+  "max_feature_cardinality": 12,
+  "max_features": 48,
+  "selected_columns": [
+    "ana_dura",
+    "ant_clau",
+    "ant_inf",
+    "ant_isq",
+    "e_con_ar",
+    "e_con_at",
+    "e_con_av",
+    "e_con_be",
+    "e_con_cu",
+    "e_con_ea",
+    "e_con_ec",
+    "e_con_pp",
+    "e_con_pr",
+    "e_con_va",
+    "e_h3_fec",
+    "eisq_fol",
+    "eisqfang",
+    "evn_defu",
+    "evn_hemo",
+    "evn_re2f",
+    "evn_reci",
+    "fr_antec",
+    "fr_antfa",
+    "fr_antgr",
+    "fr_cance",
+    "fr_cirug",
+    "fr_estro",
+    "fr_inmov",
+    "fr_tvp_a",
+    "fr_tvs_a",
+    "fr_varic",
+    "fr_viaje",
+    "sexo",
+    "ana_port",
+    "tv_l_vrn",
+    "var158",
+    "tv_l_pul",
+    "tv_l_sup",
+    "anadutip",
+    "tvpocaef",
+    "andujak2",
+    "eisq_cer",
+    "eisq_ei",
+    "eisq_inf",
+    "eisq_ol",
+    "ev_hm3_f",
+    "ev_hm3_l",
+    "evn_hem3",
+    "e_h2_fec"
+  ],
+  "selected_feature_count": 48,
+  "target_column": "ana_dura"
+}

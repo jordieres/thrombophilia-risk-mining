@@ -50,10 +50,13 @@ this with `source_row_count`, `output_row_count`, `criteria_audit`, and
 
 The repository now includes a manuscript-oriented audit helper that rebuilds the
 main methodological checks raised during peer review directly from the local
-registry snapshot. It creates mutually exclusive `tested` vs `not tested`
-cohort tables, outcome prevalence summaries restricted to tested patients,
-selected-threshold confusion matrices, calibration summaries, temporal
-validation outputs, and a ready-to-share Markdown response in `out/`.
+registry snapshot. During preprocessing, missing `ana_dura` values are
+normalized to `No buscada`, so every downstream cohort split treats unlabeled
+thrombophilia-study rows as not searched. The helper creates mutually exclusive
+`tested` vs `not tested` cohort tables, outcome prevalence summaries restricted
+to tested patients, selected-threshold confusion matrices, calibration
+summaries, temporal validation outputs, and a ready-to-share Markdown response
+in `out/`.
 
 ```bash
 python src/manuscript_support.py \

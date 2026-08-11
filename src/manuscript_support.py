@@ -361,7 +361,7 @@ def generate_review_package(data_path: Path, output_dir: Path) -> Path:
         "",
         f"- Full registry rows: **{len(data):,}**.",
         f"- Patients with mutually exclusive `tested` status (`{SEARCHED_POSITIVE}` or `{SEARCHED_NEGATIVE}`): **{int(data['ana_dura'].astype('string').isin([SEARCHED_POSITIVE, SEARCHED_NEGATIVE]).sum()):,}**.",
-        f"- Patients explicitly marked as `{NOT_SEARCHED}`: **{int((data['ana_dura'].astype('string') == NOT_SEARCHED).sum()):,}**.",
+        f"- Patients classified as `{NOT_SEARCHED}` after preprocessing normalization of missing study labels: **{int((data['ana_dura'].astype('string') == NOT_SEARCHED).sum()):,}**.",
         "- Consequently, all reported discrimination, calibration, and threshold metrics should be framed as the probability of a positive thrombophilia result among already selected patients, rather than the prevalence of thrombophilia among all VTE patients.",
         "",
         "### Tested vs not tested baseline comparison",
@@ -371,7 +371,7 @@ def generate_review_package(data_path: Path, output_dir: Path) -> Path:
         _render_markdown_table(prevalence_table, float_digits=2),
         "",
         "## 2. Outcome-definition caveats",
-        "- The available repository data identify whether thrombophilia was already known, not searched, searched and negative, or searched and positive, but they do not expose treatment-at-testing timestamps for heparin, VKAs, or DOACs.",
+        "- The preprocessing pipeline normalizes missing `ana_dura` values to `No buscada`, so the not-tested cohort combines explicitly unrequested and previously unlabeled thrombophilia-study rows. The repository still does not expose treatment-at-testing timestamps for heparin, VKAs, or DOACs.",
         "- The available dataset also does not document confirmatory repeat testing for antiphospholipid antibodies, so APS classification should be described as registry-defined rather than laboratory-adjudicated persistent APS.",
         "",
         "## 3. Confusion-matrix audit, calibration, and clinical utility",
@@ -405,7 +405,13 @@ def generate_review_package(data_path: Path, output_dir: Path) -> Path:
         }
         with TemporaryDirectory() as tmp_dir:
             config["output_dir"] = tmp_dir
-            experiment.run(subset, config)
+            try:
+                experiment.run(subset, config)
+            except ValueError as exc:
+                if "no eligible coefficients" not in str(exc).lower():
+                    raise
+                config["score_feature_strategy"] = "automatic"
+                experiment.run(subset, config)
 
         profile_df = experiment.threshold_profiles_df.copy()
         profile_df.to_csv(output_dir / f"{spec.column}_threshold_audit.csv", index=False)
