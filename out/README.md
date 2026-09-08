@@ -10,11 +10,11 @@ Predictor missingness and prior-known-thrombophilia exclusions are separate.
 
 ## Alternative interpretation and initial audit
 
-`manuscript_reanalysis_2026-09-07/` is the completed explicit-results alternative:
+`archive/manuscript_reanalysis_2026-09-07/` is the completed explicit-results alternative:
 all missing subtype outcomes were excluded. Its numerical results are preserved
 and clearly labelled; it is no longer the principal manuscript result.
 
-`manuscript_audit_2026-09-07/` preserves the initial comparison of Word drafts
+`archive/manuscript_audit_2026-09-07/` preserves the initial comparison of Word drafts
 with historical analyses. It documents what was known before the clarification.
 
 ## Historical exploration
@@ -35,3 +35,13 @@ local. Public `outputs_sha256` inventories verify a clone independently of
 
 Files removed from the latest Git tree still exist in earlier commits. This
 cleanup does not rewrite history; local research copies are preserved.
+
+## Checkpoint lifecycle
+
+`archive/checkpoints/` holds the historical association and contrast experiments.
+Their tracked JSON files document configuration and feature profiles; intermediate
+Parquet files remain local. To resume one deliberately, pass
+`--checkpoint-dir out/archive/checkpoints --resume` with the original experiment
+settings. New exploratory runs still default to `out/checkpoints/`, created on
+demand. The current manuscript's outcome-level `completed.json` files remain
+inside its analysis directory and continue to support manuscript `--resume`.

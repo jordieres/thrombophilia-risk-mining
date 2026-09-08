@@ -97,7 +97,7 @@ Repository layout
 ``out/manuscript_reanalysis_2026-09-08/``
    Completed numerical evidence, generated English replies/text and figures.
 
-``out/manuscript_audit_2026-09-07/``
+``out/archive/manuscript_audit_2026-09-07/``
    Initial audit of the supplied documents and historical outputs.
 
 ``data/``

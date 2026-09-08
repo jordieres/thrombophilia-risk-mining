@@ -1,4 +1,4 @@
-> **SUPERSEDED FOR MANUSCRIPT REPORTING.** This historical response contains invalid model-cohort claims and is retained only for audit provenance. Use `manuscript_reanalysis_2026-09-07/coauthor_responses.md` and its newly generated results. See `out/README.md`.
+> **SUPERSEDED FOR MANUSCRIPT REPORTING.** This historical response contains invalid model-cohort claims and is retained only for audit provenance. Use `out/manuscript_reanalysis_2026-09-08/coauthor_responses.md` and its newly generated results. See `out/README.md`.
 
 # Response to Methodological Comments
 

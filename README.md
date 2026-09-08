@@ -21,7 +21,9 @@ The 8 September analysis interprets missing FVL, prothrombin, APS, protein C,
 protein S and antithrombin outcomes as negative only within documented global
 testing, as specified by the investigators. JAK2 remains explicit positive/negative
 only. The 7 September explicit-results run is retained as an alternative policy
-analysis. Historical top-level results have moved to `out/archive/legacy_top_level/`. The original Word documents are preserved locally and the September audit
+analysis under `out/archive/manuscript_reanalysis_2026-09-07/`. The initial audit
+is under `out/archive/manuscript_audit_2026-09-07/`; previous exploratory
+checkpoints are under `out/archive/checkpoints/`. Historical top-level results have moved to `out/archive/legacy_top_level/`. The original Word documents are preserved locally and the September audit
 is retained; legacy outputs are not inputs to the new models. Results are
 exploratory research estimates, not clinical deployment validation.
 

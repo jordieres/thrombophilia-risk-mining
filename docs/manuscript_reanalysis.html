@@ -458,7 +458,7 @@ not merely against the set of eligible IDs. Predictor missingness is an entirely
 separate issue and retains the complete-case/native-missing strategies below.</p>
 <p>The alternative <code class="docutils literal notranslate"><span class="pre">--outcome-policy</span> <span class="pre">explicit-results</span></code> excludes missing subtype
 results for all subtypes. The preserved run in
-<code class="docutils literal notranslate"><span class="pre">out/manuscript_reanalysis_2026-09-07/</span></code> uses that earlier interpretation. The
+<code class="docutils literal notranslate"><span class="pre">out/archive/manuscript_reanalysis_2026-09-07/</span></code> uses that earlier interpretation. The
 current principal run is <code class="docutils literal notranslate"><span class="pre">out/manuscript_reanalysis_2026-09-08/</span></code>. Composite and
 JAK2 eligibility are identical under both policies; the six routine outcomes
 change. Re-running a different policy requires a new output directory.</p>
@@ -894,6 +894,19 @@ comparisons describe different label definitions and patient populations; they
 do not isolate an algorithm improvement. Regenerate the reports afterwards so
 the public artifact inventory includes these comparison files.</p>
 </section>
+<section id="archived-evidence-and-checkpoints">
+<h2>Archived evidence and checkpoints<a class="headerlink" href="#archived-evidence-and-checkpoints" title="Link to this heading">¶</a></h2>
+<p>The initial audit and explicit-results alternative are retained under
+<code class="docutils literal notranslate"><span class="pre">out/archive/manuscript_audit_2026-09-07/</span></code> and
+<code class="docutils literal notranslate"><span class="pre">out/archive/manuscript_reanalysis_2026-09-07/</span></code>. The policy-comparison command
+uses the archived alternative by default. Public manifest checks cover both
+current and archived runs. Numerical results and run signatures are unchanged.</p>
+<p>Historical association and contrast checkpoints are in
+<code class="docutils literal notranslate"><span class="pre">out/archive/checkpoints/</span></code>. Use that path explicitly with the original
+exploratory settings and <code class="docutils literal notranslate"><span class="pre">--resume</span></code> when needed. New exploratory runs retain
+<code class="docutils literal notranslate"><span class="pre">out/checkpoints/</span></code> as their on-demand default. Current manuscript outcome
+<code class="docutils literal notranslate"><span class="pre">completed.json</span></code> files stay in place for the supported manuscript resume flow.</p>
+</section>
 </section>
 
         </article>
@@ -978,6 +991,7 @@ the public artifact inventory includes these comparison files.</p>
 <li><a class="reference internal" href="#implementation-map">Implementation map</a></li>
 <li><a class="reference internal" href="#technical-sources">Technical sources</a></li>
 <li><a class="reference internal" href="#comparing-outcome-policies">Comparing outcome policies</a></li>
+<li><a class="reference internal" href="#archived-evidence-and-checkpoints">Archived evidence and checkpoints</a></li>
 </ul>
 </li>
 </ul>

@@ -43,7 +43,7 @@ def check_repository(root: Path = ROOT) -> list[str]:
             notebook=json.loads(path.read_text())
             if any(cell.get('outputs') for cell in notebook.get('cells',[])):
                 errors.append(f'Executed notebook outputs are tracked: {name}')
-        if name.endswith('/run_manifest.json') and name.startswith('out/manuscript_reanalysis_'):
+        if name.startswith('out/') and path.name == 'run_manifest.json' and path.parent.name.startswith('manuscript_reanalysis_'):
             manifest=json.loads(path.read_text())
             if manifest.get('status')!='complete':errors.append(f'Incomplete published run: {name}')
             if manifest.get('artifact_schema_version')!=2:errors.append(f'Unsplit artifact manifest: {name}')

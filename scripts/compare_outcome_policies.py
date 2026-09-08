@@ -83,7 +83,7 @@ def compare(previous: Path, current: Path) -> Path:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--previous', type=Path, default=Path('out/manuscript_reanalysis_2026-09-07'))
+    parser.add_argument('--previous', type=Path, default=Path('out/archive/manuscript_reanalysis_2026-09-07'))
     parser.add_argument('--current', type=Path, default=Path('out/manuscript_reanalysis_2026-09-08'))
     args = parser.parse_args()
     print(compare(args.previous, args.current))

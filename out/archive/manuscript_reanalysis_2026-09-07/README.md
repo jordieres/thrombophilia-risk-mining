@@ -5,7 +5,7 @@ clarified routine-panel coding. It excludes missing subtype outcomes for all
 subtypes. Keep it as the explicit-results alternative; it is not the principal
 paper result after the 8 September clarification.
 
-The current routine-panel analysis is in `../manuscript_reanalysis_2026-09-08/`.
+The current routine-panel analysis is in `../../manuscript_reanalysis_2026-09-08/`.
 Its six routine subtypes interpret missing results as negative only inside
 documented global testing. JAK2 remains explicit-only in both analyses.
 

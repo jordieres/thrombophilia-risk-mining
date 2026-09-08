@@ -224,7 +224,7 @@ separate issue and retains the complete-case/native-missing strategies below.
 
 The alternative ``--outcome-policy explicit-results`` excludes missing subtype
 results for all subtypes. The preserved run in
-``out/manuscript_reanalysis_2026-09-07/`` uses that earlier interpretation. The
+``out/archive/manuscript_reanalysis_2026-09-07/`` uses that earlier interpretation. The
 current principal run is ``out/manuscript_reanalysis_2026-09-08/``. Composite and
 JAK2 eligibility are identical under both policies; the six routine outcomes
 change. Re-running a different policy requires a new output directory.
@@ -643,3 +643,18 @@ composite and JAK2 aggregate metric remains exactly unchanged. Routine subtype
 comparisons describe different label definitions and patient populations; they
 do not isolate an algorithm improvement. Regenerate the reports afterwards so
 the public artifact inventory includes these comparison files.
+
+Archived evidence and checkpoints
+---------------------------------
+
+The initial audit and explicit-results alternative are retained under
+``out/archive/manuscript_audit_2026-09-07/`` and
+``out/archive/manuscript_reanalysis_2026-09-07/``. The policy-comparison command
+uses the archived alternative by default. Public manifest checks cover both
+current and archived runs. Numerical results and run signatures are unchanged.
+
+Historical association and contrast checkpoints are in
+``out/archive/checkpoints/``. Use that path explicitly with the original
+exploratory settings and ``--resume`` when needed. New exploratory runs retain
+``out/checkpoints/`` as their on-demand default. Current manuscript outcome
+``completed.json`` files stay in place for the supported manuscript resume flow.

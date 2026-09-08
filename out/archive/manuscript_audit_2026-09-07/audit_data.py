@@ -2,7 +2,7 @@ from pathlib import Path
 import sys, json
 import pandas as pd
 import numpy as np
-ROOT=Path(__file__).resolve().parents[2]; sys.path.insert(0,str(ROOT/'src'))
+ROOT=Path(__file__).resolve().parents[3]; sys.path.insert(0,str(ROOT/'src'))
 from data_processor import ClinicalDataProcessor
 out=Path(__file__).parent
 raw=pd.read_parquet(ROOT/'data/patD.parquet'); clean=ClinicalDataProcessor(str(ROOT/'data/patD.parquet')).transform_pipeline(); slim=pd.read_parquet(ROOT/'data/patD_slim.parquet')
@@ -43,7 +43,7 @@ for label,n,p,se,sp,ppv,npv in [('Composite XGB',22874,8345,.900,.187,.402,.755)
 pd.DataFrame(a).to_csv(out/'table5_arithmetic_check_NOT_model_results.csv',index=False)
 # Link historical score outputs to source cohort labels, without publishing patient data.
 links=[]
-for f in [ROOT/'out/clinical_risk_score_per_patient.csv',*sorted((ROOT/'out/archive').glob('*_score/clinical_risk_score_per_patient.csv'))]:
+for f in [ROOT/'out/archive/legacy_top_level/clinical_risk_score_per_patient.csv',*sorted((ROOT/'out/archive').glob('*_score/clinical_risk_score_per_patient.csv'))]:
  d=pd.read_csv(f); target=next((c for c in ['ana_dura','var154','var155','var156','var157','var161'] if c in d),None)
  if 'id_pacie' not in d: continue
  joined=d[['id_pacie']].merge(raw[['id_pacie','ana_dura']],on='id_pacie',how='left',validate='many_to_one'); status=joined.ana_dura.isin(['Buscada positivo','Buscada negativo'])
