@@ -1,0 +1,8 @@
+variable,category,coefficient,points,label
+ant_isq,Yes,-0.7543709676712308,-11,Prior cerebral ischemia
+e_con_ar,Yes,-0.2871123129660414,-4,Rheumatoid arthritis
+fr_cance,Yes,0.5374319819308746,8,Active cancer
+fr_inmov,Yes,-0.5184057474997178,-8,Recent immobilization
+ana_dime,Not performed,-0.7713564470261476,-11,Recorded categorical D-dimer
+ana_dime,Positive,-0.06782754548827526,-1,Recorded categorical D-dimer
+tension_,≥100,-0.6255449525614629,-9,Systolic BP (mmHg)

@@ -1,0 +1,7 @@
+variable,category,coefficient,points,label
+sexo,Male,-0.12575154823465415,-452,Sex
+sin_tvp_,PE,-0.0751706116350993,-270,Index VTE presentation
+ana_dime,Not performed,-0.12666502430616247,-455,Recorded categorical D-dimer
+edad,≥70,0.00027835586442737114,1,Age (years)
+tension_,≥100,-0.37016211696466483,-1330,Systolic BP (mmHg)
+ana_hemo,≥12,-0.39209883641788756,-1409,Hemoglobin (g/dL)

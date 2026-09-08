@@ -1,0 +1,21 @@
+variable,category,coefficient,points,label
+sexo,Male,0.1768736700816254,4,Sex
+fum_act,Yes,0.12433159341045733,3,Current smoking
+diabetes,Yes,-0.2967684991559507,-6,Diabetes
+insf_car,Yes,-0.11659323066935587,-2,Heart failure
+e_con_ec,Yes,0.5587164548082095,12,Crohn disease
+e_con_lu,Yes,2.3032635307033797,49,Known lupus
+e_con_be,Yes,0.8358669994278289,18,Behcet disease
+e_con_pr,Yes,-0.587172222448273,-12,Polymyalgia rheumatica
+tvp_prox,Proximal (incluyendo la vena poplítea),0.15620201917452503,3,DVT proximal/distal location
+fr_cance,Yes,-0.365947557166491,-8,Active cancer
+fr_cirug,Yes,-0.35995293854826144,-8,Recent surgery
+fr_inmov,Yes,-0.21935324349192778,-5,Recent immobilization
+fr_estro,Yes,-0.4489108014755917,-10,Recent hormone exposure
+ana_dime,Not performed,-0.6293119957415918,-13,Recorded categorical D-dimer
+ana_dime,Positive,-0.09751029409454866,-2,Recorded categorical D-dimer
+edad,<50,0.08269671174286664,2,Age (years)
+edad,≥70,-0.10559344312381873,-2,Age (years)
+tension_,≥100,0.488339587381144,10,Systolic BP (mmHg)
+ana_hemo,≥12,0.0470499325609081,1,Hemoglobin (g/dL)
+ana_plaq,<144,0.45391970793054204,10,Platelets (10^9/L)

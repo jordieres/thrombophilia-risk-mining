@@ -1,0 +1,38 @@
+bin,n,predicted,observed,absolute_error,outcome,analysis,validation,model
+0,628,0.0182087678108862,0.01751592356687898,0.0006928442440072187,andujak2,primary_complete_case,nested_cv,Logistic LASSO
+1,12,0.13398150620049967,0.08333333333333333,0.050648172867166344,andujak2,primary_complete_case,nested_cv,Logistic LASSO
+2,6,0.26318596250044507,0.3333333333333333,0.07014737083288825,andujak2,primary_complete_case,nested_cv,Logistic LASSO
+3,1,0.38310429408243063,1.0,0.6168957059175694,andujak2,primary_complete_case,nested_cv,Logistic LASSO
+4,1,0.4492243010426933,0.0,0.4492243010426933,andujak2,primary_complete_case,nested_cv,Logistic LASSO
+0,619,0.013065051047947834,0.017770597738287562,0.004705546690339728,andujak2,primary_complete_case,nested_cv,Automatic integer score
+1,19,0.13402527113045992,0.0,0.13402527113045992,andujak2,primary_complete_case,nested_cv,Automatic integer score
+2,2,0.23419581709330853,0.5,0.2658041829066915,andujak2,primary_complete_case,nested_cv,Automatic integer score
+3,5,0.37870404572703614,0.4,0.02129595427296388,andujak2,primary_complete_case,nested_cv,Automatic integer score
+4,1,0.46358263223436197,0.0,0.46358263223436197,andujak2,primary_complete_case,nested_cv,Automatic integer score
+5,1,0.5982894461350016,1.0,0.40171055386499843,andujak2,primary_complete_case,nested_cv,Automatic integer score
+6,1,0.675154388859868,0.0,0.675154388859868,andujak2,primary_complete_case,nested_cv,Automatic integer score
+0,50,0.018974768552477927,0.06,0.04102523144752207,andujak2,primary_complete_case,temporal_holdout,Logistic LASSO
+1,4,0.138408996035315,0.75,0.611591003964685,andujak2,primary_complete_case,temporal_holdout,Logistic LASSO
+0,50,0.015476920864640446,0.06,0.04452307913535955,andujak2,primary_complete_case,temporal_holdout,Automatic integer score
+1,3,0.15459568346125915,1.0,0.8454043165387408,andujak2,primary_complete_case,temporal_holdout,Automatic integer score
+2,1,0.21870297946003484,0.0,0.21870297946003484,andujak2,primary_complete_case,temporal_holdout,Automatic integer score
+0,636,0.025140415475141467,0.01729559748427673,0.007844817990864738,andujak2,primary_complete_case,nested_cv,XGBoost
+1,10,0.14413736686110495,0.3,0.15586263313889503,andujak2,primary_complete_case,nested_cv,XGBoost
+2,1,0.2812814712524414,1.0,0.7187185287475586,andujak2,primary_complete_case,nested_cv,XGBoost
+3,1,0.3148435652256012,0.0,0.3148435652256012,andujak2,primary_complete_case,nested_cv,XGBoost
+0,52,0.032701849579237975,0.07692307692307693,0.04422122734383895,andujak2,primary_complete_case,temporal_holdout,XGBoost
+1,2,0.1559259593486786,1.0,0.8440740406513214,andujak2,primary_complete_case,temporal_holdout,XGBoost
+0,2014,0.02374343530452036,0.014399205561072492,0.009344229743447868,andujak2,sensitivity_native_missing,nested_cv,XGBoost
+1,51,0.14223712375935385,0.09803921568627451,0.04419790807307934,andujak2,sensitivity_native_missing,nested_cv,XGBoost
+2,15,0.2350637674331665,0.3333333333333333,0.0982695659001668,andujak2,sensitivity_native_missing,nested_cv,XGBoost
+3,8,0.3386453576385975,0.5,0.1613546423614025,andujak2,sensitivity_native_missing,nested_cv,XGBoost
+4,5,0.4197717189788818,0.6,0.18022828102111815,andujak2,sensitivity_native_missing,nested_cv,XGBoost
+5,3,0.5443039337793986,1.0,0.45569606622060144,andujak2,sensitivity_native_missing,nested_cv,XGBoost
+6,2,0.6462116539478302,1.0,0.3537883460521698,andujak2,sensitivity_native_missing,nested_cv,XGBoost
+0,130,0.018600376883450037,0.038461538461538464,0.019861161578088427,andujak2,sensitivity_native_missing,temporal_holdout,XGBoost
+1,5,0.12979145646095275,0.2,0.07020854353904726,andujak2,sensitivity_native_missing,temporal_holdout,XGBoost
+2,1,0.22724275290966034,0.0,0.22724275290966034,andujak2,sensitivity_native_missing,temporal_holdout,XGBoost
+4,1,0.4530022144317627,1.0,0.5469977855682373,andujak2,sensitivity_native_missing,temporal_holdout,XGBoost
+5,1,0.5607576966285706,1.0,0.43924230337142944,andujak2,sensitivity_native_missing,temporal_holdout,XGBoost
+6,1,0.6061148047447205,1.0,0.39388519525527954,andujak2,sensitivity_native_missing,temporal_holdout,XGBoost
+7,2,0.7755590379238129,0.5,0.27555903792381287,andujak2,sensitivity_native_missing,temporal_holdout,XGBoost

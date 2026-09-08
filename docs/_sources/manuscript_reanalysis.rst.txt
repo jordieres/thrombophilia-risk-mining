@@ -15,13 +15,17 @@ Word documents and the additional inconsistencies identified by the September
 2026 audit. The output includes replacement Methods/Results, a regenerated
 supplement, individual comment replies, standalone figures and machine-readable
 numerical evidence. All new user documentation, technical descriptions and
-responses are in English. The original Word documents are preserved.
+responses are in English. The original Word documents are preserved locally.
 
 What has changed scientifically
 -----------------------------------
 
-* Subtype-negative controls must belong to the globally tested population.
-  An outcome-specific binary value alone is no longer sufficient.
+* Every subtype analysis requires documented global testing. On 8 September
+  2026, the study investigators clarified that FVL, prothrombin, APS, protein C,
+  protein S and antithrombin are routine panel components: their missing results
+  are interpreted as negative within that tested group. JAK2 is not routine and
+  always requires explicit positive/negative results. No untested/unknown global
+  study record is admitted by the missing-to-negative convention.
 * Positive known-carrier status and previously known APS exclude patients from
   predictive analyses. They do not remove patients from registry descriptions.
 * A source-code allowlist excludes test results and follow-up information from
@@ -94,6 +98,9 @@ The defaults are:
    * - Argument
      - Default
      - Meaning
+   * - ``--outcome-policy``
+     - routine-panel
+     - Six routine missing outcomes become negative within global testing; JAK2 stays explicit. Use explicit-results for the alternative analysis.
    * - ``--cutoff-year``
      - 2021
      - Development through 2021; later diagnoses are held out.
@@ -161,8 +168,11 @@ Reports can be regenerated from finished numerical outputs:
 
    python src/manuscript_reporting.py out/my_reanalysis
 
-The report command writes English Markdown, PNG/SVG figures and DOCX if Pandoc
-is available. It does not retrain models. The numerical analysis signature and
+The report command writes English Markdown, PNG/SVG figures and local DOCX if
+Pandoc is available. It does not retrain models. When patient predictions are
+absent from a Git clone, it reuses the already published aggregate figures;
+missing predictions and missing figure files produce an explicit error for an
+analysed outcome rather than silently dropping its plots. The numerical analysis signature and
 report-generation source hash are separate provenance items.
 
 The compatibility command ``python src/manuscript_support.py`` delegates to
@@ -192,18 +202,44 @@ model predictors.
 Predictive eligibility
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-A patient must have documented global testing, no explicit prior carrier or
-known APS label, and a binary value for the requested outcome. Missing carrier
-status is retained as unknown, not described as proven absence. The composite
-uses the positive/negative global labels. Subtypes use ``Sí``/``No`` without
-filling missing outcomes. The outcome-denominator export gives raw availability,
-known-carrier exclusions and resulting eligibility separately.
+A patient must have documented global testing and no explicit prior carrier or
+known APS label. Unknown carrier status is retained as unknown, not described
+as proven absence. The composite uses the original positive/negative global
+labels and is unaffected by the subtype policy.
 
-The extract has no independent assay-performed indicator. Therefore, the valid
-wording is **registered binary subtype result among globally tested patients**.
-Even the corrected filter cannot certify that every negative field represents
-a completed laboratory assay. No retrospective patient-level laboratory
-adjudication is invented.
+The default ``--outcome-policy routine-panel`` implements the investigators'
+8 September 2026 clarification. FVL (var156), prothrombin (var157), APS (var161),
+protein C (var154), protein S (var155) and antithrombin (var158) are interpreted
+as routinely included when the global study is performed. Their null, blank or
+literal ``Missing`` results become ``No`` **only** when ``ana_dura`` is explicitly
+positive or negative. Other nonbinary labels are not converted. JAK2
+(``andujak2``) never receives this replacement: missing remains missing and only
+explicit positive/negative JAK2 results are eligible.
+
+``outcome_labels`` returns a derived label series; it does not mutate the raw
+registry. Outcome masking, training targets and integrity checks all use this
+same policy. Prediction labels are checked against the declared interpretation,
+not merely against the set of eligible IDs. Predictor missingness is an entirely
+separate issue and retains the complete-case/native-missing strategies below.
+
+The alternative ``--outcome-policy explicit-results`` excludes missing subtype
+results for all subtypes. The preserved run in
+``out/manuscript_reanalysis_2026-09-07/`` uses that earlier interpretation. The
+current principal run is ``out/manuscript_reanalysis_2026-09-08/``. Composite and
+JAK2 eligibility are identical under both policies; the six routine outcomes
+change. Re-running a different policy requires a new output directory.
+
+The outcome table separates raw binary availability, original missing results,
+missing-to-negative interpretations, remaining unavailable results, known-carrier
+exclusions and predictive eligibility. ``interpreted_tested_n`` is the denominator
+for policy-specific descriptive positivity before predictive exclusions;
+``eligible_n`` is after exclusions. Model metrics use their own development or
+holdout population, after any predictor completeness criteria.
+
+The routine-panel rule is an explicit investigator-supplied interpretation of
+registry coding. The extract does not independently adjudicate laboratory assay
+completion or repeat-confirmed APS. Report the assumption and its provenance;
+do not claim that every inferred negative was individually laboratory-verified.
 
 Primary complete-case population
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -466,13 +502,13 @@ Output catalogue
    * - ``recalculated_supplement.md/.docx``
      - Definitions, missingness, performance, calibration and final cards.
    * - ``run_manifest.json``
-     - Numerical signature, settings, versions, status and artifact hashes.
+     - Numerical signature/settings, policy, versions/status, and separate public/local/optional artifact hashes.
    * - ``report_manifest.json``
      - Report source hash and generated document/figure identities.
    * - ``registry_flow.json``
      - Full registry and mutually exclusive global testing groups.
    * - ``supplement_outcome_denominators.csv``
-     - Raw binary availability, missing results and carrier exclusions.
+     - Raw binary availability, interpreted negatives, remaining missing results and carrier exclusions.
    * - ``model_cohort_flow.csv``
      - Eligible, development, complete-case and temporal counts by outcome.
    * - ``table1_baseline.csv`` / ``table2_positive_negative.csv``
@@ -496,14 +532,37 @@ Output catalogue
    * - ``figures/``
      - Standalone PNG/SVG cohort, ROC, calibration and distribution figures.
 
-Each outcome subdirectory contains ``predictions.parquet``, ``metrics.csv``,
+Each full local research outcome directory contains ``predictions.parquet``, ``metrics.csv``,
 ``calibration.csv``, ``candidate_availability.csv``, ``missingness.csv``,
 ``included_vs_excluded.csv``, ``development_vs_temporal.csv``,
 ``nested_hyperparameter_search.csv``, ``final_models.json``, final search/point/
 screen CSVs, serialized development models and ``quality_checks.json``.
 
-``predictions.parquet`` contains local registry IDs for auditability. These are
-research artifacts, not manuscript tables. A final model bundle stores the
+``predictions.parquet`` contains local registry IDs for auditability. It and
+patient-level CSVs are excluded from Git. Fitted model binaries are also local.
+Only aggregate CSV/JSON, English narrative Markdown and aggregate PNG/SVG figures
+are versioned. DOCX/PDF copies are optional local exports. Notebook sources are
+versioned with outputs cleared; executed copies are preserved under ignored
+``out/archive/notebook_executed_copies/``. Generated Sphinx caches are not tracked.
+
+Version-2 manifests separate ``outputs_sha256`` (public aggregate artifacts),
+``local_artifacts`` (patient/model/operational files) and ``optional_exports``
+(Word/PDF). A public clone can verify every public checksum without local data
+or optional exports. The historical 7 September manifest was migrated to this
+inventory schema without changing numerical results; hashes of deleted optional
+Word files remain in the optional inventory, not as required public files.
+
+Run ``python scripts/check_repository_artifacts.py`` after staging changes and
+before publishing. It checks the Git index and working files for local-only
+outputs, individual CSV headers, executed notebook outputs, build caches,
+incomplete public runs and broken public manifest references. It never prints
+patient values. It does not inspect or rewrite Git history: removing a file from
+the current tree does not remove it from previous commits.
+
+Legacy former top-level outputs are under ``out/archive/legacy_top_level/``;
+``path_map.json`` preserves their original locations for the initial audit.
+Executed notebooks and legacy interactive figures stay local. No historical
+output is used to fit the new models. A final model bundle stores the
 estimator, its columns, thresholds and outcome. Use only trusted model bundles;
 serialization is for this local reproducibility workflow. Final fitted models
 are not a substitute for held-out validation predictions.
@@ -518,7 +577,8 @@ integer/probability threshold decisions. Outcome completion markers are written
 only after these checks pass. Unsupported/empty outcome lists, invalid bounds,
 missing cohort columns and inadequate class counts fail explicitly.
 
-Regression tests cover unknown-to-No prevention, assay-control eligibility,
+Regression tests cover the routine-panel exception, JAK2 missing preservation,
+predictor unknown-to-No prevention, assay-control eligibility,
 source-field leakage, exact clinical boundaries, dense missing encoding,
 training-only threshold use and metric identities. A real-data compact
 integration run exercises the full output path; the full production execution
@@ -531,6 +591,12 @@ Implementation map
 ``src/manuscript_cohort.py``
    Raw schema validation, predictor allowlist, fixed transformations, cohort
    masks, known-carrier policy and missingness export.
+
+``src/manuscript_artifacts.py``
+   Public/local/optional inventory separation and public checksum verification.
+
+``scripts/check_repository_artifacts.py``
+   Git-index publication checks for local-only outputs and public manifests.
 
 ``src/manuscript_models.py``
    Category encoders, univariable screening, LASSO/point and tree estimators,
@@ -560,3 +626,20 @@ The dense-zero versus sparse-missing distinction is documented in the official
 `XGBoost FAQ <https://xgboost.readthedocs.io/en/release_2.0.0/faq.html>`_.
 These sources explain implementation semantics; they do not supply clinical
 results or justify assay eligibility that is absent from this registry extract.
+
+Comparing outcome policies
+--------------------------
+
+The preserved 7 September run uses explicit results. The principal 8 September
+run applies the investigator-confirmed routine-panel interpretation. After both
+numerical runs finish, generate their aggregate comparison with::
+
+   python scripts/compare_outcome_policies.py
+
+This writes ``outcome_policy_comparison.csv``, an English Markdown explanation
+and source-hash provenance into the principal output directory. It requires
+matching registry hashes and modelling settings, and verifies that every
+composite and JAK2 aggregate metric remains exactly unchanged. Routine subtype
+comparisons describe different label definitions and patient populations; they
+do not isolate an algorithm improvement. Regenerate the reports afterwards so
+the public artifact inventory includes these comparison files.

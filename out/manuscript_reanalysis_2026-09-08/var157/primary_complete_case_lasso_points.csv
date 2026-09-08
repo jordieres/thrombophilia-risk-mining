@@ -1,0 +1,20 @@
+variable,category,coefficient,points,label
+ant_inf,Yes,-0.30737227183212873,-51921,Prior myocardial ischemia
+diabetes,Yes,-0.11676567395968059,-19724,Diabetes
+hip_art,Yes,-0.01654420933235783,-2795,Hypertension
+insf_car,Yes,-0.0985972220650438,-16655,Heart failure
+e_con_be,Yes,-0.5582044270721486,-94291,Behcet disease
+e_con_ea,Yes,0.8164131291828638,137907,Ankylosing spondylitis
+tvp_prox,Proximal (incluyendo la vena poplítea),0.6007553113520442,101478,DVT proximal/distal location
+fr_embar,Yes,0.4925329244944783,83198,Pregnancy
+fr_varic,Yes,-0.10286241876503262,-17375,Varicose veins
+fr_antec,Yes,0.30054426853597993,50767,Recent delivery
+ana_crea,Normal,0.4116401959857779,69533,Recorded creatinine category
+edad,<50,0.06064832858180109,10245,Age (years)
+edad,≥70,-0.21663848094047786,-36594,Age (years)
+tension_,≥100,0.2558552269596609,43219,Systolic BP (mmHg)
+ana_plaq,<144,-0.3232752913167789,-54607,Platelets (10^9/L)
+ana_plaq,>400,0.06082977816882604,10275,Platelets (10^9/L)
+ana_leuc,<4,-0.9045382995258131,-152793,Leukocytes (10^9/L)
+ana_leuc,>11,-0.04794113570636762,-8098,Leukocytes (10^9/L)
+female_under45,Yes,5.92003813719748e-06,1,Female and age <45

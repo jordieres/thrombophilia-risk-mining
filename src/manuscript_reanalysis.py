@@ -24,7 +24,8 @@ from scipy.stats import chi2_contingency, fisher_exact, ttest_ind
 from sklearn.metrics import roc_auc_score
 
 from manuscript_cohort import (OUTCOMES, LABELS, NUMERIC, Outcome, load_registry,
-    prepare_features, tested_mask, known_thrombophilia_mask, outcome_mask, missingness_table)
+    prepare_features, tested_mask, known_thrombophilia_mask, outcome_mask, outcome_labels, OUTCOME_POLICIES, ROUTINE_SUBTYPES, missingness_table)
+from manuscript_artifacts import artifact_inventory
 from manuscript_models import (LASSO_GRID, XGB_GRID, fit_tuned, nested_predictions,
                                metric_row, calibration_bins, wilson)
 
@@ -98,7 +99,7 @@ def baseline_table(raw: pd.DataFrame, first: pd.Series, second: pd.Series,
     return pd.DataFrame(rows)
 
 
-def descriptive_exports(raw: pd.DataFrame, X: pd.DataFrame, output: Path) -> None:
+def descriptive_exports(raw: pd.DataFrame, X: pd.DataFrame, output: Path, policy: str = "routine-panel") -> None:
     """Rebuild mutually exclusive baselines, subtype denominators and sex summaries."""
     tested=tested_mask(raw); known=known_thrombophilia_mask(raw)
     baseline_table(raw,tested,~tested,'Tested','Not tested or unknown').to_csv(output/'table1_baseline.csv',index=False)
@@ -110,12 +111,20 @@ def descriptive_exports(raw: pd.DataFrame, X: pd.DataFrame, output: Path) -> Non
     for o in OUTCOMES:
         neg='Buscada negativo' if o.column=='ana_dura' else 'No'
         binary=raw[o.column].astype('string').isin([o.positive,neg]);s=raw[o.column].astype('string')
-        m=outcome_mask(raw,o)
+        labels=outcome_labels(raw,o,policy)
+        effective_binary=labels.isin([o.positive,neg])
+        m=outcome_mask(raw,o,policy)
+        original=outcome_labels(raw,o,"explicit-results")
+        converted=tested & original.isna() & labels.eq("No").fillna(False)
         cohort.append(dict(outcome=o.column,label=o.label,priority=o.priority,registry_n=len(raw),
             tested_n=int(tested.sum()),tested_binary_n=int((tested&binary).sum()),
             tested_positive_n=int((tested&s.eq(o.positive).fillna(False)).sum()),
             tested_unavailable_n=int((tested&~binary).sum()),outside_tested_binary_n=int((~tested&binary).sum()),
-            known_excluded_n=int((tested&binary&known).sum()),eligible_n=int(m.sum()),
+            outcome_policy=policy,interpreted_tested_n=int((tested&effective_binary).sum()),
+            missing_interpreted_negative_n=int(converted.sum()),
+            missing_interpreted_negative_eligible_n=int((converted&~known).sum()),
+            remaining_unavailable_n=int((tested&~effective_binary).sum()),
+            known_excluded_n=int((tested&effective_binary&known).sum()),eligible_n=int(m.sum()),
             eligible_positive_n=int(s.loc[m].eq(o.positive).sum())))
     pd.DataFrame(cohort).to_csv(output/'supplement_outcome_denominators.csv',index=False)
     sex=[]
@@ -193,7 +202,9 @@ def run_outcome(raw: pd.DataFrame, features: pd.DataFrame, outcome: Outcome,
                 output: Path, config: dict) -> None:
     """Train primary paired models and an incomplete-data tree sensitivity analysis."""
     output.mkdir(parents=True,exist_ok=True)
-    mask=outcome_mask(raw,outcome);year=pd.to_datetime(raw.fecha_di,errors='coerce').dt.year
+    policy=config["outcome_policy"]
+    labels=outcome_labels(raw,outcome,policy)
+    mask=outcome_mask(raw,outcome,policy);year=pd.to_datetime(raw.fecha_di,errors='coerce').dt.year
     development=mask&year.le(config['cutoff_year']);holdout=mask&year.gt(config['cutoff_year'])
     availability=features.loc[development].isna().mean();variable=features.loc[development].nunique().gt(1)
     columns=availability.index[(availability<=config['max_missing'])&variable].tolist()
@@ -205,11 +216,14 @@ def run_outcome(raw: pd.DataFrame, features: pd.DataFrame, outcome: Outcome,
     baseline_table(raw,complete,mask&~complete,'Complete cases','Excluded for missing predictors').to_csv(output/'included_vs_excluded.csv',index=False)
     baseline_table(raw,development,holdout,'Development eligible','Temporal eligible').to_csv(output/'development_vs_temporal.csv',index=False)
     missingness_table(raw,features,mask,outcome.label).to_csv(output/'missingness.csv',index=False)
-    flow=dict(outcome=outcome.column,label=outcome.label,priority=outcome.priority,eligible_n=int(mask.sum()),
-        eligible_positive_n=int(raw.loc[mask,outcome.column].eq(outcome.positive).sum()),
+    original=outcome_labels(raw,outcome,"explicit-results")
+    flow=dict(outcome=outcome.column,label=outcome.label,priority=outcome.priority,outcome_policy=policy,
+        outcome_missing_interpreted_negative_n=int((mask&original.isna()&labels.eq("No").fillna(False)).sum()),
+        eligible_n=int(mask.sum()),
+        eligible_positive_n=int(labels.loc[mask].eq(outcome.positive).sum()),
         development_eligible_n=int(development.sum()),temporal_eligible_n=int(holdout.sum()),
         missing_date_n=int((mask&year.isna()).sum()),candidate_n=len(columns),complete_case_n=int(complete.sum()),
-        complete_case_positive_n=int(raw.loc[complete,outcome.column].eq(outcome.positive).sum()),
+        complete_case_positive_n=int(labels.loc[complete].eq(outcome.positive).sum()),
         missing_excluded_n=int((mask&~complete).sum()),development_complete_n=int((development&complete).sum()),
         temporal_complete_n=int((holdout&complete).sum()),cutoff_year=config['cutoff_year'])
     write_json(output/'cohort_flow.json',flow)
@@ -225,7 +239,7 @@ def run_outcome(raw: pd.DataFrame, features: pd.DataFrame, outcome: Outcome,
     for analysis,kind,dev,val,cols in experiments:
         label=f'{outcome.column}/{analysis}/{kind}'
         log(f'{label}: development n={int(dev.sum())}, holdout n={int(val.sum())}, predictors={len(cols)}')
-        X=features.loc[dev,cols].reset_index(drop=True);y=raw.loc[dev,outcome.column].eq(outcome.positive).to_numpy(dtype=int)
+        X=features.loc[dev,cols].reset_index(drop=True);y=labels.loc[dev].eq(outcome.positive).to_numpy(dtype=int)
         ids=raw.loc[dev,'id_pacie'].to_numpy()
         if min(np.bincount(y,minlength=2))<3:
             raise ValueError(f'{label}: fewer than three development events or nonevents.')
@@ -249,7 +263,7 @@ def run_outcome(raw: pd.DataFrame, features: pd.DataFrame, outcome: Outcome,
                         integer_cutoff=fit.estimator.integer_cutoff(fit.thresholds['Automatic integer score']))
         final_metadata.append(meta)
         if val.any():
-            vx=features.loc[val,cols];vy=raw.loc[val,outcome.column].eq(outcome.positive).to_numpy(dtype=int)
+            vx=features.loc[val,cols];vy=labels.loc[val].eq(outcome.positive).to_numpy(dtype=int)
             for name,p in fit.estimator.probabilities(vx).items():
                 score=fit.estimator.point_scores(vx) if name=='Automatic integer score' else p
                 cutoff=fit.estimator.integer_cutoff(fit.thresholds[name]) if name=='Automatic integer score' else np.nan
@@ -269,16 +283,18 @@ def run_outcome(raw: pd.DataFrame, features: pd.DataFrame, outcome: Outcome,
         metrics.append(row);calibrations.append(bins.assign(outcome=outcome.column,analysis=analysis,validation=validation,model=model))
     pd.DataFrame(metrics).to_csv(output/'metrics.csv',index=False)
     pd.concat(calibrations,ignore_index=True).to_csv(output/'calibration.csv',index=False)
-    checks=validate_predictions(predictions,pd.DataFrame(metrics),raw,outcome,config['cutoff_year'])
+    checks=validate_predictions(predictions,pd.DataFrame(metrics),raw,outcome,config['cutoff_year'],policy)
     write_json(output/'quality_checks.json',checks)
     log(f'{outcome.column}: completed; all numerical integrity checks passed')
 
 
 def validate_predictions(predictions: pd.DataFrame, metrics: pd.DataFrame,
-                         raw: pd.DataFrame, outcome: Outcome, cutoff_year: int) -> dict:
+                         raw: pd.DataFrame, outcome: Outcome, cutoff_year: int, policy: str = "routine-panel") -> dict:
     """Fail on cohort leakage, duplicate predictions, broken counts or nonfinite risk."""
-    eligible=set(raw.loc[outcome_mask(raw,outcome),'id_pacie'])
+    eligible=set(raw.loc[outcome_mask(raw,outcome,policy),'id_pacie'])
     assert set(predictions.id_pacie).issubset(eligible), 'Prediction outside eligible tested cohort'
+    expected=pd.Series(outcome_labels(raw,outcome,policy).eq(outcome.positive).fillna(False).to_numpy(dtype=int),index=raw.id_pacie)
+    assert np.array_equal(predictions.y_true.to_numpy(),expected.loc[predictions.id_pacie].to_numpy()), 'Outcome labels differ from declared policy'
     assert np.isfinite(predictions.probability).all() and predictions.probability.between(0,1).all()
     assert not predictions.duplicated(['id_pacie','analysis','validation','model']).any()
     years=pd.to_datetime(raw.set_index('id_pacie').fecha_di).dt.year
@@ -304,13 +320,15 @@ def run_reanalysis(data: Path, output: Path, *, outcomes: list[str] | None = Non
                    cutoff_year: int = 2021, max_missing: float = .4, seed: int = 42,
                    outer_splits: int = 5, inner_splits: int = 5, min_sensitivity: float = .9,
                    threads: int = 2, bootstrap: int = 200, compact: bool = False,
-                   resume: bool = False, reports: bool = True) -> Path:
+                   resume: bool = False, reports: bool = True, outcome_policy: str = "routine-panel") -> Path:
     """Run the evidence pipeline and write an auditable, self-contained result package.
 
     ``compact`` reduces search grids for integration testing only and marks the
     manifest accordingly. It never silently samples patients. Resume requires
     matching raw-data, analysis-code and configuration hashes.
     """
+    if outcome_policy not in OUTCOME_POLICIES:
+        raise ValueError(f'Unknown outcome policy: {outcome_policy}')
     if not 0<=max_missing<1 or not 0<min_sensitivity<=1:
         raise ValueError('Invalid missingness or sensitivity bound.')
     if outer_splits<2 or inner_splits<2 or threads<1 or bootstrap<0:
@@ -320,17 +338,23 @@ def run_reanalysis(data: Path, output: Path, *, outcomes: list[str] | None = Non
         raise ValueError('Unknown or empty outcome selection.')
     output.mkdir(parents=True,exist_ok=True)
     config=dict(cutoff_year=cutoff_year,max_missing=max_missing,seed=seed,outer_splits=outer_splits,
-                inner_splits=inner_splits,min_sensitivity=min_sensitivity,threads=threads,bootstrap=bootstrap,compact=compact)
-    code={p.name:hash_file(p) for p in [Path(__file__),Path(__file__).with_name('manuscript_models.py'),Path(__file__).with_name('manuscript_cohort.py')]}
+                inner_splits=inner_splits,min_sensitivity=min_sensitivity,threads=threads,bootstrap=bootstrap,compact=compact,outcome_policy=outcome_policy)
+    code={p.name:hash_file(p) for p in [Path(__file__),Path(__file__).with_name('manuscript_models.py'),Path(__file__).with_name('manuscript_cohort.py'),Path(__file__).with_name('manuscript_artifacts.py')]}
     source_hash=hash_file(data);signature=hashlib.sha256(json.dumps(dict(config=config,code=code,data=source_hash),sort_keys=True).encode()).hexdigest()
     manifest=dict(status='running',started_utc=datetime.now(timezone.utc).isoformat(),data_path=str(data.resolve()),
         data_sha256=source_hash,analysis_code_sha256=code,signature=signature,config=config,
         outcomes=[o.column for o in selected],lasso_grid=LASSO_GRID,xgboost_grid=XGB_GRID,
         versions={p:importlib.metadata.version(p) for p in ['numpy','pandas','scipy','scikit-learn','xgboost','mlxtend','joblib']})
+    # Refuse incompatible reuse before touching a completed run or its reports.
+    previous=output/'run_manifest.json'
+    if previous.exists():
+        previous_manifest=json.loads(previous.read_text())
+        if not resume or previous_manifest.get('signature') != signature or previous_manifest.get('outcomes') != manifest['outcomes']:
+            raise ValueError('Existing run differs or --resume was not supplied; use a new output directory.')
     write_json(output/'run_manifest.json',manifest)
     raw=load_registry(data);features,quality=prepare_features(raw)
     quality.to_csv(output/'numeric_and_category_quality.csv',index=False)
-    descriptive_exports(raw,features,output);association_exports(raw,features,output)
+    descriptive_exports(raw,features,output,outcome_policy);association_exports(raw,features,output)
     try:
         for outcome in selected:
             directory=output/outcome.column; checkpoint=directory/'completed.json'
@@ -339,7 +363,7 @@ def run_reanalysis(data: Path, output: Path, *, outcomes: list[str] | None = Non
                 if old.get('signature')!=signature:
                     raise ValueError(f'{outcome.column}: checkpoint signature differs; use a new output directory.')
                 log(f'{outcome.column}: reusing verified checkpoint')
-                validate_predictions(pd.read_parquet(directory/'predictions.parquet'),pd.read_csv(directory/'metrics.csv'),raw,outcome,cutoff_year)
+                validate_predictions(pd.read_parquet(directory/'predictions.parquet'),pd.read_csv(directory/'metrics.csv'),raw,outcome,cutoff_year,outcome_policy)
                 continue
             if checkpoint.exists():
                 raise FileExistsError(f'{checkpoint} exists. Use --resume or a new output directory.')
@@ -356,7 +380,7 @@ def run_reanalysis(data: Path, output: Path, *, outcomes: list[str] | None = Non
             from manuscript_reporting import generate_reports
             generate_reports(output)
         manifest.update(status='complete',completed_utc=datetime.now(timezone.utc).isoformat(),
-                        outputs_sha256={str(p.relative_to(output)):hash_file(p) for p in output.rglob('*') if p.is_file() and p.name!='run_manifest.json'})
+                        **artifact_inventory(output))
         write_json(output/'run_manifest.json',manifest)
     except Exception as exc:
         manifest.update(status='failed',error=f'{type(exc).__name__}: {exc}')
@@ -369,8 +393,9 @@ def main() -> None:
     """Parse reproducible analysis settings; manuscript defaults use five-by-five CV."""
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--data',type=Path,default=Path('data/patD.parquet'))
-    parser.add_argument('--output-dir',type=Path,default=Path('out/manuscript_reanalysis_2026-09-07'))
+    parser.add_argument('--output-dir',type=Path,default=Path('out/manuscript_reanalysis_2026-09-08'))
     parser.add_argument('--outcomes',nargs='+',choices=[o.column for o in OUTCOMES])
+    parser.add_argument('--outcome-policy',choices=OUTCOME_POLICIES,default='routine-panel',help='Routine-panel fills missing routine subtypes only within globally tested patients; JAK2 stays explicit.')
     parser.add_argument('--cutoff-year',type=int,default=2021)
     parser.add_argument('--max-missing',type=float,default=.4,help='Development-only candidate missingness ceiling; primary complete cases use retained candidates.')
     parser.add_argument('--seed',type=int,default=42)
@@ -386,7 +411,7 @@ def main() -> None:
     path=run_reanalysis(args.data,args.output_dir,outcomes=args.outcomes,cutoff_year=args.cutoff_year,
         max_missing=args.max_missing,seed=args.seed,outer_splits=args.outer_splits,inner_splits=args.inner_splits,
         min_sensitivity=args.min_sensitivity,threads=args.threads,bootstrap=args.bootstrap,compact=args.compact,
-        resume=args.resume,reports=not args.no_reports)
+        resume=args.resume,reports=not args.no_reports,outcome_policy=args.outcome_policy)
     log(f'Completed result directory: {path.parent}')
 
 if __name__=='__main__':

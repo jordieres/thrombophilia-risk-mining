@@ -1,0 +1,64 @@
+group,variable,label,n,source_null_n,missing_n,missing_pct,not_performed_n
+Composite thrombophilia,sexo,Sex,22847,0,0,0.0,0
+Composite thrombophilia,raza,Recorded ethnicity,22847,13417,13417,58.72543441152012,0
+Composite thrombophilia,ant_inf,Prior myocardial ischemia,22847,5464,5464,23.915612553070424,0
+Composite thrombophilia,ant_isq,Prior cerebral ischemia,22847,5476,5476,23.968135860288005,0
+Composite thrombophilia,ant_clau,Peripheral arterial disease,22847,5491,5491,24.033789994309977,0
+Composite thrombophilia,fum_act,Current smoking,22847,5644,5644,24.70346216133409,0
+Composite thrombophilia,diabetes,Diabetes,22847,5438,5438,23.801812054099006,0
+Composite thrombophilia,hip_art,Hypertension,22847,5283,5283,23.123386002538627,0
+Composite thrombophilia,insf_car,Heart failure,22847,186,186,0.8141112618724559,0
+Composite thrombophilia,fibr_aur,Atrial fibrillation,22847,11571,11571,50.64559898454939,0
+Composite thrombophilia,trat_est,Statin treatment,22847,5547,5547,24.278898761325337,0
+Composite thrombophilia,e_con_pp,Chronic lung disease,22847,0,0,0.0,0
+Composite thrombophilia,e_con_cu,Ulcerative colitis,22847,0,0,0.0,0
+Composite thrombophilia,e_con_ec,Crohn disease,22847,0,0,0.0,0
+Composite thrombophilia,e_con_lu,Known lupus,22847,0,0,0.0,0
+Composite thrombophilia,e_con_be,Behcet disease,22847,0,0,0.0,0
+Composite thrombophilia,e_con_at,Temporal arteritis,22847,0,0,0.0,0
+Composite thrombophilia,e_con_va,Other vasculitis,22847,0,0,0.0,0
+Composite thrombophilia,e_con_ar,Rheumatoid arthritis,22847,0,0,0.0,0
+Composite thrombophilia,e_con_ea,Ankylosing spondylitis,22847,0,0,0.0,0
+Composite thrombophilia,e_con_pr,Polymyalgia rheumatica,22847,0,0,0.0,0
+Composite thrombophilia,e_con_ro,Rendu-Osler disease,22847,0,0,0.0,0
+Composite thrombophilia,e_con_av,Vena cava agenesis,22847,0,0,0.0,0
+Composite thrombophilia,e_con_sm,May-Thurner syndrome,22847,0,0,0.0,0
+Composite thrombophilia,sin_tvp_,Index VTE presentation,22847,0,0,0.0,0
+Composite thrombophilia,var171,Syncope,22847,1006,1006,4.403203921740272,0
+Composite thrombophilia,tv_l_esu,Upper-extremity thrombosis,22847,12864,12864,56.30498533724341,0
+Composite thrombophilia,tvp_orig,Upper-extremity catheter relationship,22847,21804,21804,95.43484921433887,0
+Composite thrombophilia,tv_l_ein,Lower-extremity thrombosis,22847,5938,5938,25.99028318816475,0
+Composite thrombophilia,tvp_prox,DVT proximal/distal location,22847,8937,8937,39.11673305029107,0
+Composite thrombophilia,tv_l_svc,Cerebral sinus thrombosis,22847,14686,14686,64.27977414977897,0
+Composite thrombophilia,tv_l_vre,Retinal vein thrombosis,22847,15441,15441,67.58436556221822,0
+Composite thrombophilia,tv_l_vrn,Renal vein thrombosis,22847,15381,15381,67.32174902613035,0
+Composite thrombophilia,tv_l_vca,Vena cava thrombosis,22847,18944,18944,82.91679432748282,0
+Composite thrombophilia,tv_l_yug,Jugular vein thrombosis,22847,19073,19073,83.48141988007178,0
+Composite thrombophilia,tv_l_ova,Ovarian vein thrombosis,22847,19088,19088,83.54707401409375,0
+Composite thrombophilia,tv_l_sup,Suprahepatic vein thrombosis,22847,19078,19078,83.50330459141244,0
+Composite thrombophilia,tv_l_pul,Pulmonary vein thrombosis,22847,19083,19083,83.5251893027531,0
+Composite thrombophilia,tv_l_ove,Other vein thrombosis,22847,15401,15401,67.40928787149298,0
+Composite thrombophilia,fr_cance,Active cancer,22847,0,0,0.0,0
+Composite thrombophilia,fr_cirug,Recent surgery,22847,0,0,0.0,0
+Composite thrombophilia,fr_inmov,Recent immobilization,22847,0,0,0.0,0
+Composite thrombophilia,fr_tvp_a,Prior VTE,22847,0,0,0.0,0
+Composite thrombophilia,fr_antfa,Family history of VTE,22847,15828,15828,69.27824221998512,0
+Composite thrombophilia,fr_tvs_a,Prior superficial thrombosis,22847,12310,12310,53.88015932069856,0
+Composite thrombophilia,fr_viaje,Recent prolonged travel,22847,395,395,1.7288921959119359,0
+Composite thrombophilia,fr_estro,Recent hormone exposure,22847,283,283,1.2386746618812097,0
+Composite thrombophilia,fr_embar,Pregnancy,22847,0,0,0.0,0
+Composite thrombophilia,fr_varic,Varicose veins,22847,814,814,3.5628310062590276,0
+Composite thrombophilia,fr_antec,Recent delivery,22847,94,94,0.41143257320435944,0
+Composite thrombophilia,ana_dime,Recorded categorical D-dimer,22847,1597,1597,6.9899768022059785,5057
+Composite thrombophilia,ana_crea,Recorded creatinine category,22847,751,751,3.2870836433667443,0
+Composite thrombophilia,ana_trop,Recorded troponin category,22847,15150,15150,66.31067536219197,0
+Composite thrombophilia,edad,Age (years),22847,0,0,0.0,0
+Composite thrombophilia,peso,Weight (kg),22847,0,20,0.08753884536262967,0
+Composite thrombophilia,tension_,Systolic BP (mmHg),22847,0,1042,4.560773843393005,0
+Composite thrombophilia,ana_hemo,Hemoglobin (g/dL),22847,38,52,0.2276009979428371,0
+Composite thrombophilia,ana_plaq,Platelets (10^9/L),22847,37,40,0.17507769072525933,0
+Composite thrombophilia,ana_leuc,Leukocytes (10^9/L),22847,38,110,0.4814636494944632,0
+Composite thrombophilia,ana_neu,Neutrophils (10^9/L),22847,18921,18924,82.82925548212019,0
+Composite thrombophilia,protcrea,C-reactive protein (mg/dL),22847,22193,22213,97.22501860200464,0
+Composite thrombophilia,female_under45,Female and age <45,22847,0,0,0.0,0
+Composite thrombophilia,splanchnic,Splanchnic thrombosis,22847,14556,14556,63.71077165492187,0

@@ -1,24 +1,37 @@
 # Analysis outputs and provenance
 
-## Authoritative manuscript outputs
+## Current principal manuscript analysis
 
-Use `manuscript_reanalysis_2026-09-07/` for the corrected paper analysis, all 14
-coauthor replies, replacement manuscript sections, supplementary material,
-figures and reproducibility manifests. Its README explains the individual files.
+Use `manuscript_reanalysis_2026-09-08/` for the investigator-confirmed routine-panel
+interpretation, all 14 coauthor replies, replacement manuscript sections,
+supplementary material and figures. Its six routine outcomes interpret missing
+as negative only inside documented global testing. JAK2 stays explicit-only.
+Predictor missingness and prior-known-thrombophilia exclusions are separate.
 
-`manuscript_audit_2026-09-07/` preserves the initial comparison of the supplied Word
-documents with historical code and results. It is the diagnostic audit, not the
-new model run.
+## Alternative interpretation and initial audit
 
-## Historical outputs: superseded for manuscript reporting
+`manuscript_reanalysis_2026-09-07/` is the completed explicit-results alternative:
+all missing subtype outcomes were excluded. Its numerical results are preserved
+and clearly labelled; it is no longer the principal manuscript result.
 
-All older top-level model CSV/HTML files and `coauthor_response_review.md` are
-historical. In particular, the former audit model loop included controls outside
-the globally tested cohort and allowed outcome-related predictors; its
-calibration, thresholds, utility and temporal results are not valid substitutes
-for the corrected analysis. Some descriptive counts remain correct, but the new
-run regenerates them with explicit definitions and missing denominators.
+`manuscript_audit_2026-09-07/` preserves the initial comparison of Word drafts
+with historical analyses. It documents what was known before the clarification.
 
-`archive/` preserves earlier experiments and intermediate exports. These files
-are retained for traceability and are never loaded as new model evidence.
-No output here is evidence of clinical deployment validation.
+## Historical exploration
+
+`archive/legacy_top_level/` contains the former top-level outputs;
+`path_map.json` maps old to new locations. Other earlier experiments remain under
+`archive/`. None supplies new model evidence. Aggregate tables are versioned;
+legacy interactive figures and individual records are local-only.
+
+## What belongs in Git
+
+Version aggregate CSV/JSON, English Markdown, standalone aggregate figures,
+source code and documentation. Keep predictions, patient-level CSVs, fitted
+model binaries, notebook outputs, Sphinx caches and optional DOCX/PDF exports
+local. Public `outputs_sha256` inventories verify a clone independently of
+`local_artifacts` and `optional_exports`. Use
+`python scripts/check_repository_artifacts.py` before publishing.
+
+Files removed from the latest Git tree still exist in earlier commits. This
+cleanup does not rewrite history; local research copies are preserved.

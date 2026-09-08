@@ -1,0 +1,28 @@
+{
+  "complete_outcomes": 8,
+  "numerical_source_and_registry_hashes_match": true,
+  "all_outcome_quality_checks_pass": true,
+  "word_comment_responses": 14,
+  "reports": {
+    "coauthor_responses": {
+      "valid_docx": true,
+      "tables": 3,
+      "embedded_images": 0
+    },
+    "replacement_manuscript_sections": {
+      "valid_docx": true,
+      "tables": 9,
+      "embedded_images": 9
+    },
+    "recalculated_supplement": {
+      "valid_docx": true,
+      "tables": 15,
+      "embedded_images": 0
+    }
+  },
+  "composite_and_jak2_metrics_exactly_unchanged": true,
+  "routine_eligible_n": 22847,
+  "jak2_eligible_n": 2239,
+  "figure_count": 18,
+  "cohort_flow_figure_visually_reviewed": true
+}

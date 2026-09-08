@@ -1,6 +1,7 @@
 """English manuscript sections, coauthor replies, and standalone research figures.
 
-Reports consume only the completed reanalysis CSV/JSON files. No old AUC,
+Reports consume completed reanalysis CSV/JSON files and reuse published figures
+when local patient predictions are unavailable. No old AUC,
 threshold, point card, or denominator is copied from exploratory output. Pandoc
 and matplotlib are optional export dependencies; Markdown/CSV remain canonical.
 """
@@ -18,6 +19,7 @@ import numpy as np
 import pandas as pd
 
 from manuscript_cohort import OUTCOMES, LABELS, NUMERIC
+from manuscript_artifacts import artifact_inventory
 
 
 def table(frame: pd.DataFrame, columns: list[str] | None = None, digits: int = 3) -> str:
@@ -72,9 +74,28 @@ def concise_baseline(csv: Path) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def outcome_policy_text(config: dict) -> str:
+    """State the actual outcome interpretation, including the JAK2 exception."""
+    if config.get('outcome_policy', 'explicit-results') == 'routine-panel':
+        return ('According to the study investigators’ routine-panel interpretation clarified on '
+                '8 September 2026, globally tested patients are assumed to have had FVL, '
+                'prothrombin G20210A, APS, protein C, protein S and antithrombin assessed. '
+                'Missing results for those six subtypes were therefore interpreted as negative, '
+                'only when ana_dura was explicitly positive or negative. JAK2 was not considered '
+                'routine: its missing results remained missing and only explicit positive/negative '
+                'JAK2 results were eligible. Source labels were preserved and all interpreted '
+                'negatives were counted separately. This is an explicit clinical registry-coding '
+                'assumption, not patient-level laboratory adjudication. Nonbinary labels other '
+                'than missing were not converted to negative.')
+    return ('This explicit-results sensitivity analysis requires a recorded positive or negative '
+            'subtype result within globally tested patients. Missing subtype outcomes remain '
+            'excluded, including JAK2. It intentionally does not apply the investigators’ '
+            'routine-panel missing-as-negative interpretation.')
+
+
 def methods_text(config: dict) -> str:
     """Describe the implemented workflow and its unavoidable extract-level limitations."""
-    return f'''The full registry was used for descriptive comparisons. Documented thrombophilia testing was defined by a positive or negative global testing label. Explicitly untested records and records with unknown global testing status were combined for the descriptive not-tested/unknown group, with their component counts reported separately. Predictive analyses required documented global testing; subtype analyses additionally required a binary registered result for that subtype. Patients with explicitly documented prior carrier status or known APS were excluded from predictive analyses. Unknown prior-carrier status was not equated with confirmed absence. The extract contains no independent assay-performed flag; consequently, this operational definition cannot independently establish laboratory testing for every subtype-negative record.
+    return f'''The full registry was used for descriptive comparisons. Documented thrombophilia testing was defined by a positive or negative global testing label. Explicitly untested records and records with unknown global testing status were combined for the descriptive not-tested/unknown group, with their component counts reported separately. Predictive analyses required documented global testing. {outcome_policy_text(config)} Patients with explicitly documented prior carrier status or known APS were excluded from predictive analyses. Unknown prior-carrier status was not equated with confirmed absence. The extract contains no independent assay-performed flag; consequently, this operational definition cannot independently establish laboratory testing for every subtype-negative record.
 
 Only an explicit allowlist of index-event demographic, presentation, history and laboratory variables was eligible. Thrombophilia results, global testing status, previously known APS, quantitative D-dimer, follow-up events and identifiers were excluded as predictors. Statin treatment (trat_est) and recent hormone exposure (fr_estro) were treated as distinct variables. Numeric quality failures were set to missing without deleting registry rows. Fixed clinical categories replaced sample-derived quantiles: age <50/50–69/≥70 years; hemoglobin <12/≥12 g/dL; platelets <144/144–400/>400 ×10^9/L; leukocytes <4/4–11/>11 ×10^9/L; and the additional categories in Supplementary Table S1. Categorical D-dimer used the recorded result; explicitly not performed and unknown remained distinct. Missing history was not assumed absent. Quantitative D-dimer was not used or converted to an assay-independent threshold.
 
@@ -103,7 +124,14 @@ def generate_figures(output: Path) -> list[str]:
     created=[]
     for o in OUTCOMES:
         path=output/o.column/'predictions.parquet'
-        if not path.exists():continue
+        if not path.exists():
+            if not (output/o.column/'metrics.csv').exists():
+                continue
+            cached=[figure_dir/f'{o.column}_validation.{ext}' for ext in ['png','svg']]
+            if not all(f.is_file() for f in cached):
+                raise FileNotFoundError(f'{o.column}: local predictions or both published aggregate figures are required to generate reports.')
+            created.extend(str(f.relative_to(output)) for f in cached)
+            continue
         d=pd.read_parquet(path);primary=d.query("analysis=='primary_complete_case' and validation=='nested_cv'")
         fig,axes=plt.subplots(1,3,figsize=(15,4.3),constrained_layout=True)
         for model,g in primary.groupby('model'):
@@ -132,7 +160,7 @@ def generate_figures(output: Path) -> list[str]:
     box(.5,.93,f"Full registry: {flow['registry_n']:,}")
     box(.22,.71,f"Not tested / unknown: {flow['not_tested_or_unknown_n']:,}\nExplicit: {flow['explicitly_not_tested_n']:,}; unknown: {flow['unknown_testing_n']:,}")
     box(.73,.71,f"Documented testing: {flow['tested_n']:,}\nPositive: {flow['positive_n']:,}; negative: {flow['negative_n']:,}")
-    box(.73,.49,f"Exclude known pre-existing thrombophilia: {flow['known_thrombophilia_tested_n']:,}\nRequire binary registered outcome")
+    box(.73,.49,f"Exclude known pre-existing thrombophilia: {flow['known_thrombophilia_tested_n']:,}\nApply declared outcome interpretation")
     text='Outcome: eligible → development complete / temporal complete\n'+'\n'.join(f'{r.label}: {r.eligible_n:,} → {r.development_complete_n:,} / {r.temporal_complete_n:,}' for r in cohorts.itertuples())
     box(.5,.16,text)
     for a,b in [((.5,.87),(.22,.79)),((.5,.87),(.73,.79)),((.73,.63),(.73,.57)),((.73,.41),(.5,.34))]:ax.annotate('',xy=b,xytext=a,arrowprops=dict(arrowstyle='->'))
@@ -159,12 +187,16 @@ def generate_reports(output: Path) -> None:
     pd.DataFrame(cpd).to_csv(output/'testing_pattern_bayesian_cpd.csv',index=False)
     figures=generate_figures(output)
     method=methods_text(config)
+    policy_text=outcome_policy_text(config)
+    principal = config.get('outcome_policy', 'explicit-results') == 'routine-panel'
+    policy_role = ('This routine-panel interpretation is the principal paper analysis.' if principal
+                   else 'This explicit-results interpretation is an alternative policy analysis.')
     sections=['# Replacement manuscript sections — recalculated analysis','',
         'These sections and tables supersede the numerical statements in the supplied draft. They describe the executed analysis, not a reproduction of the old AUCs. JAK2 remains descriptive. All confidence intervals are conditional on the stored predictions.','',
-        '## Methods','',method,'','## Results','',
+        '## Outcome interpretation','',policy_text,'','## Methods','',method,'','## Results','',
         f"The registry included {registry['registry_n']:,} unique patients. Global thrombophilia testing was documented in {registry['tested_n']:,} ({100*registry['tested_n']/registry['registry_n']:.1f}%), including {registry['positive_n']:,} positive and {registry['negative_n']:,} negative evaluations. There were {registry['explicitly_not_tested_n']:,} explicitly untested records and {registry['unknown_testing_n']:,} records with unknown global testing status. Predictive eligibility excluded {registry['known_thrombophilia_tested_n']:,} tested patients with explicitly known pre-existing thrombophilia/APS.",
         '',table(flows,['label','eligible_n','eligible_positive_n','candidate_n','development_complete_n','temporal_complete_n','missing_excluded_n']),
-        '', 'The complete-case losses materially limit representativeness. Subtype denominators describe registered binary outcomes within globally tested patients; they do not establish independent assay completion. Native-missing analyses are reported separately and must not be substituted into the paired complete-case comparison.',
+        '', 'The complete-case losses materially limit representativeness. Subtype denominators follow the declared outcome policy within globally tested patients. For the routine-panel analysis, interpreted negatives are included for the six routine tests but never for JAK2; independent assay completion is not adjudicated. Native-missing analyses are reported separately and must not be substituted into the paired complete-case comparison.',
         '', '### Table 1. Tested versus not tested/unknown','',table(concise_baseline(output/'table1_baseline.csv')),
         '', 'Percentages use observed values; missing counts are separate. Continuous age is mean ± SD and median [IQR]. P-values are descriptive and not used for model selection.',
         '', '### Table 2. Positive versus negative global evaluations','',table(concise_baseline(output/'table2_positive_negative.csv')),
@@ -190,7 +222,7 @@ def generate_reports(output: Path) -> None:
           'This supplement belongs exclusively to this reanalysis. All model denominators differ from raw outcome availability when complete cases are required.','',
           '## Table S1. Predictor definitions and quality rules','',table(pd.read_csv(output/'numeric_and_category_quality.csv')),
           '', 'Derived female-under-45 status requires recorded sex and age. Splanchnic thrombosis combines portal, mesenteric and splenic sites; absence requires all three explicitly negative. Quantitative D-dimer, height without a specified clinical category, known APS, thrombophilia results and follow-up variables are excluded. The platelet boundary of 144 follows the supplied supplementary table and is a prespecified analysis convention, not a claim of harmonized local reference ranges.',
-          '', '## Table S2. Registered subtype availability before and after known-carrier exclusion','',table(den),
+          '', '## Table S2. Recorded availability, interpreted negatives and predictive eligibility','',policy_text,'',table(den),
           '', '## Table S3. Predictor missingness in globally tested patients','',table(pd.read_csv(output/'supplement_missingness.csv').query("group=='Globally tested'")),
           '', '## Table S4. Native-missing XGBoost sensitivity analysis','',table(display_performance(native)),
           '', '## Table S5. Temporal validation, primary models','',table(display_performance(temporal)),
@@ -210,9 +242,9 @@ def generate_reports(output: Path) -> None:
     # Each reply is evidence-grounded and keeps its original Word comment identity.
     replies={
       0: ('Missing-data reporting',
-          'We have now recalculated missingness before modelling, separating unknown from explicitly not-performed values. The full table is supplement_missingness.csv and each outcome has its own missingness.csv. The primary comparison uses complete cases for the development-defined candidate set after excluding predictors with >40% missingness; LASSO uses no imputation. XGBoost on the same complete cases provides a paired comparison. A separate XGBoost analysis includes incomplete observations using true NaN blocks and native missing handling. Included/excluded comparisons are exported for every outcome. No unknown history is silently coded as absent. See model_cohort_flow.csv for the actual analytical denominators.'),
+          'We distinguish missing outcome labels from missing predictors. Routine subtype outcomes are interpreted according to the declared policy, with JAK2 always requiring explicit results. Predictor missingness has now been recalculated before modelling, separating unknown from explicitly not-performed values. The full table is supplement_missingness.csv and each outcome has its own missingness.csv. The primary comparison uses complete cases for the development-defined candidate set after excluding predictors with >40% missingness; LASSO uses no imputation. XGBoost on the same complete cases provides a paired comparison. A separate XGBoost analysis includes incomplete observations using true NaN blocks and native missing handling. Included/excluded comparisons are exported for every outcome. No unknown history is silently coded as absent. See model_cohort_flow.csv for the actual analytical denominators.'),
       1: ('Confirm subtype-specific tested controls',
-          'The historical statement was not supported, but the code now requires both a documented global testing label and a binary registered subtype result, and excludes explicit prior carrier status/known APS. Prediction IDs are checked against that eligibility definition. However, the extract has no separate assay-performed flag: we must say “binary registered subtype results among globally tested patients”, not claim independently verified performance of every assay. The new denominators and results are in supplement_outcome_denominators.csv and table5_primary_performance.csv.'),
+          policy_text + ' ' + policy_role + ' Explicit prior carrier status/known APS remains excluded. Prediction IDs and their outcome labels are checked against this declared definition. Neither policy admits patients outside documented global testing. The raw, interpreted and analytical denominators are reported separately in supplement_outcome_denominators.csv and table5_primary_performance.csv.'),
       2: ('Confirm Figure 1 numbers',
           f"The complete registry contains {registry['registry_n']:,} patients; {registry['tested_n']:,} have documented testing, with {registry['positive_n']:,} positive and {registry['negative_n']:,} negative global evaluations. The remaining {registry['not_tested_or_unknown_n']:,} are explicitly untested or unknown. These counts reconcile exactly. The new figure separates the {registry['known_thrombophilia_tested_n']:,} known-carrier/known-APS exclusions and the outcome-specific complete-case development and temporal samples. Use figures/cohort_flow.png and model_cohort_flow.csv. The old 8,345/13,770 counts should not be combined with the full-registry tested count."),
       3: ('Perform missingness analyses or remove the sentence',
@@ -238,18 +270,23 @@ def generate_reports(output: Path) -> None:
     }
     reply_sections=['# Responses to all Word comments — recalculated analysis','',
         'All replies below refer to the completed reanalysis directory containing this document. Original comment IDs are preserved (zero-based). The source Word files were not edited in place.','',
-        '## Current analysis populations','',table(flows,['label','eligible_n','development_complete_n','temporal_complete_n','missing_excluded_n']),
+        '## Applied outcome interpretation','',policy_text,'','## Current analysis populations','',table(flows,['label','eligible_n','development_complete_n','temporal_complete_n','missing_excluded_n']),
         '', '## Current primary performance','',table(display_performance(primary))]
     for id,(title,text) in replies.items():
         reply_sections += ['',f'## Article comment {id}: {title}','',text]
-    subtype=den[den.outcome!='ana_dura'].copy();subtype['positive_percent']=100*subtype.tested_positive_n/subtype.tested_binary_n
+    subtype=den[den.outcome!='ana_dura'].copy()
+    effective='interpreted_tested_n' if 'interpreted_tested_n' in subtype else 'tested_binary_n'
+    subtype['positive_percent']=100*subtype.tested_positive_n/subtype[effective]
+    subtype_columns=['label','tested_binary_n','tested_positive_n',effective,'positive_percent','tested_unavailable_n','known_excluded_n','eligible_n']
+    subtype_columns=list(dict.fromkeys(subtype_columns))
+    if 'missing_interpreted_negative_n' in subtype:subtype_columns.insert(3,'missing_interpreted_negative_n')
     reply_sections += ['', '## Supplement comment 0: Missing values in subtype distribution','',
-        'Supplementary Table S2 now separates globally tested patients with a binary subtype result, positive counts, unavailable subtype results and the further known-carrier exclusions used for modelling. Positivity uses the specific binary-result denominator; it is not mixed with the distribution among globally positive patients. Unknown or not-performed subtype results are not assumed negative. The exact raw-availability numbers before predictive exclusions are:',
-        '',table(subtype,['label','tested_binary_n','tested_positive_n','positive_percent','tested_unavailable_n','known_excluded_n','eligible_n']),
+        policy_text + ' Supplementary Table S2 separates raw explicit binary results, recorded positives, missing-to-negative interpretations, remaining unavailable results and known-carrier exclusions. Positivity uses the interpreted tested denominator for the chosen policy, not the proportion of diagnoses among globally positive patients. The table below gives availability and interpretation before predictive exclusions:',
+        '',table(subtype,subtype_columns),
         '', '## Where to find the manuscript-ready text','',
         'replacement_manuscript_sections.md/.docx contains the replacement Methods, Results, conclusion and main tables. recalculated_supplement.md/.docx contains definitions, missingness, temporal/calibration tables and all final score cards. CSV files are the numeric source of truth; figures/ contains standalone PNG and SVG files.',
         '', '## Remaining limitations that wording cannot remove','',
-        'No independent assay-completion flag, laboratory repeat-confirmation record, anticoagulant-at-assay timestamp, or centre/country validation identifier was available. Those limitations are reported explicitly. No new clinical facts were inferred from their absence. Complete-case attrition and the exploratory nature of the cards remain substantive limitations.']
+        'No independent assay-completion flag, laboratory repeat-confirmation record, anticoagulant-at-assay timestamp, or centre/country validation identifier was available. Those limitations are reported explicitly. The routine-panel interpretation comes from the study investigators, not from independent confirmation in this extract. Complete-case attrition and the exploratory nature of the cards remain substantive limitations.']
     (output/'coauthor_responses.md').write_text('\n'.join(reply_sections)+'\n')
     (output/'README.md').write_text('''# Authoritative manuscript reanalysis outputs
 
@@ -266,18 +303,26 @@ run. `table5_primary_performance.csv` uses paired complete cases and nested CV;
 subtype availability tables intentionally precede predictive known-carrier
 exclusions; their denominators must not be used for model metrics.
 
-Each outcome directory contains held-out `predictions.parquet`, `metrics.csv`,
+Each local research outcome directory contains held-out `predictions.parquet`, `metrics.csv`,
 `calibration.csv`, candidate/missingness/exclusion audits, the nested search log,
 final development cards, locked models and automated numerical quality checks.
-The patient prediction files contain registry identifiers and are local research
-artifacts, not manuscript tables. Final model files are development-only fits;
+Patient prediction files contain registry identifiers and stay local, outside
+Git. Fitted model binaries also stay local. Word/PDF documents are optional
+local exports; Markdown, aggregate CSV/JSON and figures are versioned. Public
+manifest verification uses `outputs_sha256`; `local_artifacts` and
+`optional_exports` are separate inventories and are not required in a clone. Final model files are development-only fits;
 do not substitute their in-sample predictions for validation estimates.
 
-The original Word files and historical results were preserved. Top-level legacy
-outputs outside this directory are not valid replacements for the new results.
+The source Word documents remain local, and historical aggregate results were preserved. Legacy files
+are under `out/archive/`; the 7 September explicit-results run is an alternative
+policy analysis, not the current routine-panel principal result.
 Run instructions and technical contracts are in
 `docs/docs_source/manuscript_reanalysis.rst`.
 ''')
+    with (output/'README.md').open('a') as handle:
+        handle.write('\n' + policy_role + '\n')
+        if (output/'outcome_policy_comparison.md').exists():
+            handle.write('\nSee `outcome_policy_comparison.md` for the aggregate comparison with the earlier explicit-results run.\n')
     if config['compact']:
         for name in ['coauthor_responses','replacement_manuscript_sections','recalculated_supplement']:
             p=output/(name+'.md')
@@ -292,7 +337,7 @@ Run instructions and technical contracts are in
     (output/'report_manifest.json').write_text(json.dumps(metadata,indent=2)+'\n')
     if manifest.get('status') == 'complete':
         from manuscript_reanalysis import hash_file, write_json
-        manifest['outputs_sha256']={str(p.relative_to(output)):hash_file(p) for p in output.rglob('*') if p.is_file() and p.name!='run_manifest.json'}
+        manifest.update(artifact_inventory(output))
         write_json(output/'run_manifest.json',manifest)
 
 

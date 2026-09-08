@@ -1,0 +1,14 @@
+bin,n,predicted,observed,absolute_error,outcome,analysis,validation,model
+0,7204,0.013132031283750002,0.012770682953914493,0.0003613483298355088,var158,primary_complete_case,nested_cv,Logistic LASSO
+1,5,0.11477726950778197,0.0,0.11477726950778197,var158,primary_complete_case,nested_cv,Logistic LASSO
+0,7203,0.012605706232003275,0.012772455921143967,0.00016674968914069145,var158,primary_complete_case,nested_cv,Automatic integer score
+1,5,0.1469973184154914,0.0,0.1469973184154914,var158,primary_complete_case,nested_cv,Automatic integer score
+2,1,0.20434417809840447,0.0,0.20434417809840447,var158,primary_complete_case,nested_cv,Automatic integer score
+0,423,0.014413931204390343,0.01182033096926714,0.0025936002351232036,var158,primary_complete_case,temporal_holdout,Logistic LASSO
+0,423,0.013107645483354951,0.01182033096926714,0.0012873145140878117,var158,primary_complete_case,temporal_holdout,Automatic integer score
+0,7206,0.0131036285839263,0.012767138495698029,0.00033649008822827196,var158,primary_complete_case,nested_cv,XGBoost
+1,3,0.10801320771376292,0.0,0.10801320771376292,var158,primary_complete_case,nested_cv,XGBoost
+0,423,0.016712015133624098,0.01182033096926714,0.004891684164356959,var158,primary_complete_case,temporal_holdout,XGBoost
+0,21760,0.011395567278807849,0.011213235294117647,0.00018233198469020176,var158,sensitivity_native_missing,nested_cv,XGBoost
+1,2,0.12169238179922104,0.0,0.12169238179922104,var158,sensitivity_native_missing,nested_cv,XGBoost
+0,1085,0.01337177036373022,0.013824884792626729,0.0004531144288965096,var158,sensitivity_native_missing,temporal_holdout,XGBoost

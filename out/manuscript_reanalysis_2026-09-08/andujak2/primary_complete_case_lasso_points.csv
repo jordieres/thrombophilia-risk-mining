@@ -1,0 +1,7 @@
+variable,category,coefficient,points,label
+trat_est,Yes,0.26477605442015656,1,Statin treatment
+sin_tvp_,PE+DVT,-0.4731125872924308,-2,Index VTE presentation
+tv_l_ein,Yes,-0.8019397370050906,-3,Lower-extremity thrombosis
+fr_cance,Yes,1.107336814188571,4,Active cancer
+ana_crea,Normal,-1.2974735428128719,-5,Recorded creatinine category
+ana_plaq,>400,1.7775557515634732,7,Platelets (10^9/L)

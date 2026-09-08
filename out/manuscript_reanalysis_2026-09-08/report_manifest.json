@@ -1,0 +1,29 @@
+{
+  "generated_reports": [
+    "coauthor_responses",
+    "replacement_manuscript_sections",
+    "recalculated_supplement"
+  ],
+  "comment_count": 14,
+  "figure_files": [
+    "figures/ana_dura_validation.png",
+    "figures/ana_dura_validation.svg",
+    "figures/var156_validation.png",
+    "figures/var156_validation.svg",
+    "figures/var157_validation.png",
+    "figures/var157_validation.svg",
+    "figures/var161_validation.png",
+    "figures/var161_validation.svg",
+    "figures/var155_validation.png",
+    "figures/var155_validation.svg",
+    "figures/var154_validation.png",
+    "figures/var154_validation.svg",
+    "figures/var158_validation.png",
+    "figures/var158_validation.svg",
+    "figures/andujak2_validation.png",
+    "figures/andujak2_validation.svg",
+    "figures/cohort_flow.png",
+    "figures/cohort_flow.svg"
+  ],
+  "report_code_sha256": "80fd4707d0bb356c949fdd2cbb48faf9bcd0f7e5873ab7f31f0a1656191a0da1"
+}

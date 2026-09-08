@@ -248,8 +248,8 @@ change. <code class="docutils literal notranslate"><span class="pre">src/manuscr
 replies and manuscript replacement text; editing a generated report alone is
 not a durable correction.</p>
 <p>The authoritative analysis is distinct from the historical exploratory CLI.
-Do not use generic <code class="docutils literal notranslate"><span class="pre">score</span></code> output to update paper metrics. Historical files
-are preserved for provenance and labelled superseded in <code class="docutils literal notranslate"><span class="pre">out/README.md</span></code>.
+Do not use generic <code class="docutils literal notranslate"><span class="pre">score</span></code> output to update paper metrics. Historical aggregate files are preserved under <code class="docutils literal notranslate"><span class="pre">out/archive/</span></code>. The 7 September
+explicit-results alternative is labelled separately in <code class="docutils literal notranslate"><span class="pre">out/README.md</span></code>.
 The previous unsafe model loop in <code class="docutils literal notranslate"><span class="pre">manuscript_support.py</span></code> has been removed;
 its public command delegates to the new analysis.</p>
 </section>
@@ -314,7 +314,7 @@ installation resolution, not proof that those versions generated old results.</p
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">docs/docs_source/</span></code></dt><dd><p>English Sphinx source, including the complete manuscript manual.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">out/manuscript_reanalysis_2026-09-07/</span></code></dt><dd><p>Completed numerical evidence, generated English replies/text and figures.</p>
+<dt><code class="docutils literal notranslate"><span class="pre">out/manuscript_reanalysis_2026-09-08/</span></code></dt><dd><p>Completed numerical evidence, generated English replies/text and figures.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">out/manuscript_audit_2026-09-07/</span></code></dt><dd><p>Initial audit of the supplied documents and historical outputs.</p>
 </dd>
@@ -322,6 +322,18 @@ installation resolution, not proof that those versions generated old results.</p
 cohort eligibility from a prepared file whose original labels were removed.</p>
 </dd>
 </dl>
+</section>
+<section id="publication-artifact-checks">
+<h2>Publication artifact checks<a class="headerlink" href="#publication-artifact-checks" title="Link to this heading">¶</a></h2>
+<p>After staging the intended changes, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>scripts/check_repository_artifacts.py
+</pre></div>
+</div>
+<p>The check rejects patient-level predictions, individual CSVs, model binaries,
+optional Word/PDF files, Sphinx caches and executed notebook outputs in the Git
+index. It also verifies every public manifest reference is tracked and matches
+its checksum. Local-only and optional artifact absence is valid in a clone.
+The script does not inspect or rewrite historical commits.</p>
 </section>
 </section>
 
@@ -378,6 +390,7 @@ cohort eligibility from a prepared file whose original labels were removed.</p>
 <li><a class="reference internal" href="#documentation-build">Documentation build</a></li>
 <li><a class="reference internal" href="#type-hints-and-dependency-management">Type hints and dependency management</a></li>
 <li><a class="reference internal" href="#repository-layout">Repository layout</a></li>
+<li><a class="reference internal" href="#publication-artifact-checks">Publication artifact checks</a></li>
 </ul>
 </li>
 </ul>

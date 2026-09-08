@@ -1,0 +1,13 @@
+{
+  "global_negative_with_positive_subtype_n": {
+    "var156": 0,
+    "var157": 0,
+    "var161": 0,
+    "var154": 0,
+    "var155": 0,
+    "var158": 0,
+    "andujak2": 0
+  },
+  "all_zero": true,
+  "interpretation": "No recorded positive subtype conflicts with an explicitly negative global testing result."
+}

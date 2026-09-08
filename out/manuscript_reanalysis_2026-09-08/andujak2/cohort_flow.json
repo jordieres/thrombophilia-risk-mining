@@ -1,0 +1,19 @@
+{
+  "outcome": "andujak2",
+  "label": "JAK2 mutation",
+  "priority": "descriptive",
+  "outcome_policy": "routine-panel",
+  "outcome_missing_interpreted_negative_n": 0,
+  "eligible_n": 2239,
+  "eligible_positive_n": 61,
+  "development_eligible_n": 2098,
+  "temporal_eligible_n": 141,
+  "missing_date_n": 0,
+  "candidate_n": 50,
+  "complete_case_n": 702,
+  "complete_case_positive_n": 21,
+  "missing_excluded_n": 1537,
+  "development_complete_n": 648,
+  "temporal_complete_n": 54,
+  "cutoff_year": 2021
+}

@@ -225,3 +225,15 @@ data/*.parquet
 # Rebuildable Sphinx caches (published HTML remains tracked)
 docs/.doctrees/
 docs/docs_source/.doctrees/
+
+# Local research artifacts: never include patient-level outputs in Git.
+out/**/*.parquet
+out/**/*.joblib
+out/**/*.docx
+out/**/*.pdf
+out/**/clinical_risk_score_per_patient.csv
+out/**/clinical_risk_score_screening_candidates.csv
+out/**/umap_coordinates.csv
+out/archive/**/*.html
+out/archive/notebook_executed_copies/
+out/**/*.log

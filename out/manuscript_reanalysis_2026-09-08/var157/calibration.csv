@@ -1,0 +1,23 @@
+bin,n,predicted,observed,absolute_error,outcome,analysis,validation,model
+0,5330,0.07241714369353112,0.07842401500938086,0.006006871315849732,var157,primary_complete_case,nested_cv,Logistic LASSO
+1,1875,0.11109926500673438,0.0928,0.018299265006734386,var157,primary_complete_case,nested_cv,Logistic LASSO
+2,3,0.2584197693478179,0.0,0.2584197693478179,var157,primary_complete_case,nested_cv,Logistic LASSO
+3,1,0.310804560712027,0.0,0.310804560712027,var157,primary_complete_case,nested_cv,Logistic LASSO
+0,4995,0.06886850709682012,0.07587587587587588,0.007007368779055764,var157,primary_complete_case,nested_cv,Automatic integer score
+1,2196,0.11211138824121385,0.09699453551912568,0.015116852722088167,var157,primary_complete_case,nested_cv,Automatic integer score
+2,16,0.22019224176156876,0.0,0.22019224176156876,var157,primary_complete_case,nested_cv,Automatic integer score
+3,2,0.3533293909918161,0.0,0.3533293909918161,var157,primary_complete_case,nested_cv,Automatic integer score
+0,298,0.07157320320464017,0.05704697986577181,0.014526223338868355,var157,primary_complete_case,temporal_holdout,Logistic LASSO
+1,123,0.10821979498967076,0.07317073170731707,0.03504906328235369,var157,primary_complete_case,temporal_holdout,Logistic LASSO
+2,2,0.20885406565138515,0.5,0.29114593434861485,var157,primary_complete_case,temporal_holdout,Logistic LASSO
+0,282,0.06833112890797605,0.04964539007092199,0.01868573883705406,var157,primary_complete_case,temporal_holdout,Automatic integer score
+1,139,0.11013515407866396,0.08633093525179857,0.023804218826865398,var157,primary_complete_case,temporal_holdout,Automatic integer score
+2,2,0.23130800620869735,0.5,0.26869199379130265,var157,primary_complete_case,temporal_holdout,Automatic integer score
+0,5292,0.07579810004815099,0.07275132275132275,0.003046777296828243,var157,primary_complete_case,nested_cv,XGBoost
+1,1917,0.11116115981299989,0.107981220657277,0.0031799391557228857,var157,primary_complete_case,nested_cv,XGBoost
+0,322,0.07097843484316739,0.055900621118012424,0.015077813725154966,var157,primary_complete_case,temporal_holdout,XGBoost
+1,101,0.11055481337969846,0.0891089108910891,0.02144590248860935,var157,primary_complete_case,temporal_holdout,XGBoost
+0,18638,0.0642775072676601,0.0658332439102908,0.0015557366426307007,var157,sensitivity_native_missing,nested_cv,XGBoost
+1,3124,0.11324101210203351,0.10147247119078105,0.011768540911252456,var157,sensitivity_native_missing,nested_cv,XGBoost
+0,1045,0.0596425658403829,0.05263157894736842,0.007010986893014479,var157,sensitivity_native_missing,temporal_holdout,XGBoost
+1,40,0.11295019760727883,0.075,0.03795019760727883,var157,sensitivity_native_missing,temporal_holdout,XGBoost

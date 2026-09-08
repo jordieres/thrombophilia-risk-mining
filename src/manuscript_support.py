@@ -228,7 +228,7 @@ def main() -> None:
     """Keep the old executable name while using the corrected analysis engine."""
     parser = argparse.ArgumentParser(description="Compatibility entry point for the corrected manuscript pipeline")
     parser.add_argument("--data", type=Path, default=Path("data/patD.parquet"))
-    parser.add_argument("--output-dir", type=Path, default=Path("out/manuscript_reanalysis_2026-09-07"))
+    parser.add_argument("--output-dir", type=Path, default=Path("out/manuscript_reanalysis_2026-09-08"))
     args = parser.parse_args()
     print(generate_review_package(args.data, args.output_dir))
 

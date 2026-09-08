@@ -1,0 +1,1 @@
+Repository artifact checks passed: aggregate evidence only; public manifests resolve.

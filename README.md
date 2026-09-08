@@ -2,23 +2,27 @@
 
 This repository contains the RIETE thrombophilia manuscript reanalysis and the
 historical exploratory data-mining toolkit. The supported manuscript workflow
-uses explicit tested-only eligibility, pretest predictors, nested validation,
+uses documented-global-testing eligibility, the investigator-defined routine
+panel interpretation, pretest predictors, nested validation,
 locked temporal evaluation, and traceable tables and score cards.
 
 ## Current manuscript deliverables
 
 The recalculated evidence package is in
-[`out/manuscript_reanalysis_2026-09-07/`](out/manuscript_reanalysis_2026-09-07/):
+[`out/manuscript_reanalysis_2026-09-08/`](out/manuscript_reanalysis_2026-09-08/):
 
-- [`coauthor_responses.md`](out/manuscript_reanalysis_2026-09-07/coauthor_responses.md): replies to all 14 Word comments, also exported to DOCX.
-- [`replacement_manuscript_sections.md`](out/manuscript_reanalysis_2026-09-07/replacement_manuscript_sections.md): replacement Methods, Results, interpretation and main tables.
-- [`recalculated_supplement.md`](out/manuscript_reanalysis_2026-09-07/recalculated_supplement.md): definitions, missingness, temporal/calibration tables and final development cards.
+- [`coauthor_responses.md`](out/manuscript_reanalysis_2026-09-08/coauthor_responses.md): replies to all 14 Word comments, also exported to DOCX.
+- [`replacement_manuscript_sections.md`](out/manuscript_reanalysis_2026-09-08/replacement_manuscript_sections.md): replacement Methods, Results, interpretation and main tables.
+- [`recalculated_supplement.md`](out/manuscript_reanalysis_2026-09-08/recalculated_supplement.md): definitions, missingness, temporal/calibration tables and final development cards.
 - `run_manifest.json`: data/code hashes, parameters, software versions and completion status.
 - `table5_primary_performance.csv`: paired complete-case comparisons. Native-missing sensitivity results are separate.
 
-These outputs supersede the previous top-level `out/coauthor_response_review.md`
-and associated model summaries. The original Word documents and September audit
-are preserved; legacy outputs are not inputs to the new models. Results are
+The 8 September analysis interprets missing FVL, prothrombin, APS, protein C,
+protein S and antithrombin outcomes as negative only within documented global
+testing, as specified by the investigators. JAK2 remains explicit positive/negative
+only. The 7 September explicit-results run is retained as an alternative policy
+analysis. Historical top-level results have moved to `out/archive/legacy_top_level/`. The original Word documents are preserved locally and the September audit
+is retained; legacy outputs are not inputs to the new models. Results are
 exploratory research estimates, not clinical deployment validation.
 
 ## Reproduce the analysis
@@ -49,7 +53,11 @@ To regenerate English reports and figures from finished numerical outputs:
 python src/manuscript_reporting.py out/my_reanalysis
 ```
 
-Pandoc is optional and creates DOCX copies; Markdown/CSV are always available.
+Pandoc is optional and creates local DOCX copies. Markdown, aggregate CSV/JSON
+and figures are versioned. Patient predictions, fitted models, executed notebook
+outputs and build caches stay local. Public manifests do not require these local
+files or optional Word exports. The report command can reuse published figures
+when local patient predictions are unavailable.
 The compatibility command `src/manuscript_support.py` now delegates to the safe
 pipeline. For quick integration checks, `--compact --outer-splits 2
 --inner-splits 2 --bootstrap 0` reduces search, not the patient cohort; those runs
@@ -64,8 +72,23 @@ are explicitly test-only and must not be reported as the final analysis.
 
 ```bash
 python -m pytest tests -q
+python scripts/check_repository_artifacts.py
 python -m sphinx -W --keep-going -b html docs/docs_source docs
 ```
+
+## Explicit-results alternative and outcome audit
+
+Use `--outcome-policy explicit-results` in a new output directory to exclude
+missing subtype results, reproducing the earlier eligibility convention.
+The default is `--outcome-policy routine-panel`. Each run records the policy,
+raw binary counts and missing-to-negative counts; source outcomes are never
+modified. Predictor missingness and complete-case selection are separate steps.
+
+The effect of the updated outcome interpretation is documented in
+[outcome_policy_comparison.md](out/manuscript_reanalysis_2026-09-08/outcome_policy_comparison.md).
+Reproduce this aggregate comparison with `python scripts/compare_outcome_policies.py`
+after both numerical runs are complete, then regenerate reports to refresh the
+artifact inventory.
 
 ## Historical exploratory workflows
 

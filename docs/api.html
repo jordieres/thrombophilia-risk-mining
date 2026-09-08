@@ -846,8 +846,10 @@ or was not requested, producing a review-oriented ranking.</p>
 <section id="module-manuscript_cohort">
 <span id="manuscript-reanalysis"></span><h2>Manuscript reanalysis<a class="headerlink" href="#module-manuscript_cohort" title="Link to this heading">¶</a></h2>
 <p>Explicit pre-test cohort and feature contracts for the manuscript reanalysis.</p>
-<p>Unlike the exploratory processor, this module never imputes an unrecorded test
-as negative or an unrecorded history as absent. Numeric quality failures become
+<p>The routine-panel policy interprets missing routine subtype outcomes as negative
+only within documented global testing, following the study author clarification
+of 8 September 2026. JAK2 always requires an explicit binary result. Missing
+predictor history is never silently imputed as absent. Numeric quality failures become
 missing values, not silent patient exclusions. All transformations are fixed
 clinical definitions; no quantile or outcome-dependent cut-point is learned.</p>
 <dl class="py class">
@@ -941,17 +943,38 @@ Splanchnic absence requires all three source sites explicitly negative.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="manuscript_cohort.outcome_mask">
-<span class="sig-prename descclassname"><span class="pre">manuscript_cohort.</span></span><span class="sig-name descname"><span class="pre">outcome_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outcome</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_cohort.html#outcome_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_cohort.outcome_mask" title="Link to this definition">¶</a></dt>
-<dd><p>Require documented global testing and binary subtype; exclude known carriers.</p>
-<p>Binary subtype coding is the operational eligibility definition. The extract
-has no independent assay-performed flag, so it cannot prove that every No
-represents a laboratory-confirmed negative. Reports retain this limitation.</p>
+<dt class="sig sig-object py" id="manuscript_cohort.outcome_labels">
+<span class="sig-prename descclassname"><span class="pre">manuscript_cohort.</span></span><span class="sig-name descname"><span class="pre">outcome_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outcome</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'routine-panel'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_cohort.html#outcome_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_cohort.outcome_labels" title="Link to this definition">¶</a></dt>
+<dd><p>Return analysis labels without modifying the source registry.</p>
+<p>Under the author-confirmed routine-panel convention, a null/blank/literal
+Missing routine subtype is No only when ana_dura documents testing. This
+is an explicit registry interpretation, not laboratory adjudication. JAK2
+never receives a negative replacement. Other nonbinary labels stay invalid.
+The explicit-results policy preserves the earlier sensitivity definition.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>raw</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
 <li><p><strong>outcome</strong> (<a class="reference internal" href="#manuscript_cohort.Outcome" title="manuscript_cohort.Outcome"><em>Outcome</em></a>)</p></li>
+<li><p><strong>policy</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v3.0.5)"><em>Series</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_cohort.outcome_mask">
+<span class="sig-prename descclassname"><span class="pre">manuscript_cohort.</span></span><span class="sig-name descname"><span class="pre">outcome_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outcome</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'routine-panel'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_cohort.html#outcome_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_cohort.outcome_mask" title="Link to this definition">¶</a></dt>
+<dd><p>Apply global testing, known-carrier exclusions and outcome-policy eligibility.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raw</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>outcome</strong> (<a class="reference internal" href="#manuscript_cohort.Outcome" title="manuscript_cohort.Outcome"><em>Outcome</em></a>)</p></li>
+<li><p><strong>policy</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1424,7 +1447,7 @@ Fisher), not a variable-selection procedure.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="manuscript_reanalysis.descriptive_exports">
-<span class="sig-prename descclassname"><span class="pre">manuscript_reanalysis.</span></span><span class="sig-name descname"><span class="pre">descriptive_exports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reanalysis.html#descriptive_exports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reanalysis.descriptive_exports" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">manuscript_reanalysis.</span></span><span class="sig-name descname"><span class="pre">descriptive_exports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'routine-panel'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reanalysis.html#descriptive_exports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reanalysis.descriptive_exports" title="Link to this definition">¶</a></dt>
 <dd><p>Rebuild mutually exclusive baselines, subtype denominators and sex summaries.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1432,6 +1455,7 @@ Fisher), not a variable-selection procedure.</p>
 <li><p><strong>raw</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
 <li><p><strong>X</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
 <li><p><strong>output</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p></li>
+<li><p><strong>policy</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1483,7 +1507,7 @@ Clinical descriptors are fixed in advance and unknowns activate no descriptor.</
 
 <dl class="py function">
 <dt class="sig sig-object py" id="manuscript_reanalysis.validate_predictions">
-<span class="sig-prename descclassname"><span class="pre">manuscript_reanalysis.</span></span><span class="sig-name descname"><span class="pre">validate_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outcome</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff_year</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reanalysis.html#validate_predictions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reanalysis.validate_predictions" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">manuscript_reanalysis.</span></span><span class="sig-name descname"><span class="pre">validate_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outcome</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'routine-panel'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reanalysis.html#validate_predictions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reanalysis.validate_predictions" title="Link to this definition">¶</a></dt>
 <dd><p>Fail on cohort leakage, duplicate predictions, broken counts or nonfinite risk.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1493,6 +1517,7 @@ Clinical descriptors are fixed in advance and unknowns activate no descriptor.</
 <li><p><strong>raw</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
 <li><p><strong>outcome</strong> (<a class="reference internal" href="#manuscript_cohort.Outcome" title="manuscript_cohort.Outcome"><em>Outcome</em></a>)</p></li>
 <li><p><strong>cutoff_year</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>policy</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1503,7 +1528,7 @@ Clinical descriptors are fixed in advance and unknowns activate no descriptor.</
 
 <dl class="py function">
 <dt class="sig sig-object py" id="manuscript_reanalysis.run_reanalysis">
-<span class="sig-prename descclassname"><span class="pre">manuscript_reanalysis.</span></span><span class="sig-name descname"><span class="pre">run_reanalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outcomes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2021</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_missing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outer_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inner_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootstrap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compact</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reanalysis.html#run_reanalysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reanalysis.run_reanalysis" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">manuscript_reanalysis.</span></span><span class="sig-name descname"><span class="pre">run_reanalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outcomes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2021</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_missing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outer_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inner_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootstrap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compact</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outcome_policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'routine-panel'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reanalysis.html#run_reanalysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reanalysis.run_reanalysis" title="Link to this definition">¶</a></dt>
 <dd><p>Run the evidence pipeline and write an auditable, self-contained result package.</p>
 <p><code class="docutils literal notranslate"><span class="pre">compact</span></code> reduces search grids for integration testing only and marks the
 manifest accordingly. It never silently samples patients. Resume requires
@@ -1525,6 +1550,7 @@ matching raw-data, analysis-code and configuration hashes.</p>
 <li><p><strong>compact</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 <li><p><strong>resume</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 <li><p><strong>reports</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+<li><p><strong>outcome_policy</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1545,7 +1571,8 @@ matching raw-data, analysis-code and configuration hashes.</p>
 </dd></dl>
 
 <p id="module-manuscript_reporting">English manuscript sections, coauthor replies, and standalone research figures.</p>
-<p>Reports consume only the completed reanalysis CSV/JSON files. No old AUC,
+<p>Reports consume completed reanalysis CSV/JSON files and reuse published figures
+when local patient predictions are unavailable. No old AUC,
 threshold, point card, or denominator is copied from exploratory output. Pandoc
 and matplotlib are optional export dependencies; Markdown/CSV remain canonical.</p>
 <dl class="py function">
@@ -1604,6 +1631,20 @@ and matplotlib are optional export dependencies; Markdown/CSV remain canonical.<
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reporting.outcome_policy_text">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reporting.</span></span><span class="sig-name descname"><span class="pre">outcome_policy_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reporting.html#outcome_policy_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reporting.outcome_policy_text" title="Link to this definition">¶</a></dt>
+<dd><p>State the actual outcome interpretation, including the JAK2 exception.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1671,6 +1712,69 @@ and matplotlib are optional export dependencies; Markdown/CSV remain canonical.<
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p id="module-manuscript_artifacts">Separate distributable evidence from local research data and optional exports.</p>
+<p>Public manifests verify aggregate tables, narrative sources and figures without
+requiring patient predictions, fitted models or Word exports in a Git checkout.
+Local artifact hashes remain available for a complete research-environment audit.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_artifacts.sha256">
+<span class="sig-prename descclassname"><span class="pre">manuscript_artifacts.</span></span><span class="sig-name descname"><span class="pre">sha256</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_artifacts.html#sha256"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_artifacts.sha256" title="Link to this definition">¶</a></dt>
+<dd><p>Return a content hash for provenance, independently of Git tracking.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_artifacts.artifact_kind">
+<span class="sig-prename descclassname"><span class="pre">manuscript_artifacts.</span></span><span class="sig-name descname"><span class="pre">artifact_kind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_artifacts.html#artifact_kind"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_artifacts.artifact_kind" title="Link to this definition">¶</a></dt>
+<dd><p>Classify derived files without publishing patient-level data by default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_artifacts.artifact_inventory">
+<span class="sig-prename descclassname"><span class="pre">manuscript_artifacts.</span></span><span class="sig-name descname"><span class="pre">artifact_inventory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_artifacts.html#artifact_inventory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_artifacts.artifact_inventory" title="Link to this definition">¶</a></dt>
+<dd><p>Build a version-2 inventory with separate public, local and optional hashes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>output</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_artifacts.verify_public_artifacts">
+<span class="sig-prename descclassname"><span class="pre">manuscript_artifacts.</span></span><span class="sig-name descname"><span class="pre">verify_public_artifacts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_artifacts.html#verify_public_artifacts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_artifacts.verify_public_artifacts" title="Link to this definition">¶</a></dt>
+<dd><p>Return public missing/hash errors; absence of local/optional files is valid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>output</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p></li>
+<li><p><strong>manifest</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1825,6 +1929,7 @@ and matplotlib are optional export dependencies; Markdown/CSV remain canonical.<
 <li><a class="reference internal" href="#manuscript_cohort.prepare_features"><code class="docutils literal notranslate"><span class="pre">prepare_features()</span></code></a></li>
 <li><a class="reference internal" href="#manuscript_cohort.tested_mask"><code class="docutils literal notranslate"><span class="pre">tested_mask()</span></code></a></li>
 <li><a class="reference internal" href="#manuscript_cohort.known_thrombophilia_mask"><code class="docutils literal notranslate"><span class="pre">known_thrombophilia_mask()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_cohort.outcome_labels"><code class="docutils literal notranslate"><span class="pre">outcome_labels()</span></code></a></li>
 <li><a class="reference internal" href="#manuscript_cohort.outcome_mask"><code class="docutils literal notranslate"><span class="pre">outcome_mask()</span></code></a></li>
 <li><a class="reference internal" href="#manuscript_cohort.missingness_table"><code class="docutils literal notranslate"><span class="pre">missingness_table()</span></code></a></li>
 <li><a class="reference internal" href="#manuscript_models.split_indices"><code class="docutils literal notranslate"><span class="pre">split_indices()</span></code></a></li>
@@ -1869,11 +1974,16 @@ and matplotlib are optional export dependencies; Markdown/CSV remain canonical.<
 <li><a class="reference internal" href="#manuscript_reporting.export_word"><code class="docutils literal notranslate"><span class="pre">export_word()</span></code></a></li>
 <li><a class="reference internal" href="#manuscript_reporting.display_performance"><code class="docutils literal notranslate"><span class="pre">display_performance()</span></code></a></li>
 <li><a class="reference internal" href="#manuscript_reporting.concise_baseline"><code class="docutils literal notranslate"><span class="pre">concise_baseline()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reporting.outcome_policy_text"><code class="docutils literal notranslate"><span class="pre">outcome_policy_text()</span></code></a></li>
 <li><a class="reference internal" href="#manuscript_reporting.methods_text"><code class="docutils literal notranslate"><span class="pre">methods_text()</span></code></a></li>
 <li><a class="reference internal" href="#manuscript_reporting.generate_figures"><code class="docutils literal notranslate"><span class="pre">generate_figures()</span></code></a></li>
 <li><a class="reference internal" href="#manuscript_reporting.generate_reports"><code class="docutils literal notranslate"><span class="pre">generate_reports()</span></code></a></li>
 <li><a class="reference internal" href="#manuscript_reporting.create_word_reference"><code class="docutils literal notranslate"><span class="pre">create_word_reference()</span></code></a></li>
 <li><a class="reference internal" href="#manuscript_reporting.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_artifacts.sha256"><code class="docutils literal notranslate"><span class="pre">sha256()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_artifacts.artifact_kind"><code class="docutils literal notranslate"><span class="pre">artifact_kind()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_artifacts.artifact_inventory"><code class="docutils literal notranslate"><span class="pre">artifact_inventory()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_artifacts.verify_public_artifacts"><code class="docutils literal notranslate"><span class="pre">verify_public_artifacts()</span></code></a></li>
 </ul>
 </li>
 </ul>

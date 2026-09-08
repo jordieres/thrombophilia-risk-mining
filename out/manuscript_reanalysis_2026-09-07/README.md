@@ -1,26 +1,17 @@
-# Authoritative manuscript reanalysis outputs
+# Alternative analysis: explicit subtype results only
 
-Start with `coauthor_responses.md` (all 14 Word comments),
-`replacement_manuscript_sections.md` (replacement text and main tables), and
-`recalculated_supplement.md` (supplement and final cards). DOCX copies are generated
-when Pandoc is installed. Narrative documentation and replies are in English.
+This is the completed 7 September 2026 analysis, before the study investigators
+clarified routine-panel coding. It excludes missing subtype outcomes for all
+subtypes. Keep it as the explicit-results alternative; it is not the principal
+paper result after the 8 September clarification.
 
-`run_manifest.json` records parameters, hashes, software versions, completion
-status and outcome selection. Only a complete manifest is a finished numerical
-run. `table5_primary_performance.csv` uses paired complete cases and nested CV;
-`supplement_native_missing_performance.csv` is a separate sensitivity analysis.
-`model_cohort_flow.csv` explains every modelling denominator. The sex and raw
-subtype availability tables intentionally precede predictive known-carrier
-exclusions; their denominators must not be used for model metrics.
+The current routine-panel analysis is in `../manuscript_reanalysis_2026-09-08/`.
+Its six routine subtypes interpret missing results as negative only inside
+documented global testing. JAK2 remains explicit-only in both analyses.
 
-Each outcome directory contains held-out `predictions.parquet`, `metrics.csv`,
-`calibration.csv`, candidate/missingness/exclusion audits, the nested search log,
-final development cards, locked models and automated numerical quality checks.
-The patient prediction files contain registry identifiers and are local research
-artifacts, not manuscript tables. Final model files are development-only fits;
-do not substitute their in-sample predictions for validation estimates.
-
-The original Word files and historical results were preserved. Top-level legacy
-outputs outside this directory are not valid replacements for the new results.
-Run instructions and technical contracts are in
-`docs/docs_source/manuscript_reanalysis.rst`.
+All numerical results here are preserved. Aggregate CSV/JSON, narrative Markdown
+and figures are versioned. Patient predictions and fitted models remain local.
+Word files are optional local exports and are not required in a GitHub clone.
+The manifest separates public hashes from local and optional artifact hashes.
+The original numerical source corresponds to Git revision
+`edb3a69aa5e6cde13ca9c0fc5606778bd485d5ce` and its recorded source hashes.

@@ -1,0 +1,10 @@
+{
+  "eligible_patients_only": true,
+  "unique_predictions": true,
+  "dates_disjoint": true,
+  "paired_primary_cohorts": true,
+  "finite_probabilities": true,
+  "confusion_counts_match": true,
+  "utility_identity": true,
+  "integer_probability_decisions_match": true
+}

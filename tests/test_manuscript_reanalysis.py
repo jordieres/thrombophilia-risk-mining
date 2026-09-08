@@ -97,3 +97,70 @@ def test_nested_predictions_are_unique_and_thresholds_are_training_derived(monke
     assert pred.threshold.eq(.7).all() and not pred.predicted_positive.any()
     # Low holdout sensitivity does not trigger threshold reselection.
     assert metric_row(pred,bootstrap=0)['sensitivity']==0
+
+
+def test_routine_panel_fills_only_missing_routine_results_inside_global_testing():
+    from manuscript_cohort import ROUTINE_SUBTYPES, outcome_labels
+    raw=registry()
+    # A tested positive evaluation can have no recorded result for this subtype.
+    for col in ROUTINE_SUBTYPES:
+        raw[col]=[None,'No',None,None,'Sí']
+        o=next(o for o in OUTCOMES if o.column==col)
+        labels=outcome_labels(raw,o)
+        assert labels.iloc[0]=='No' and labels.iloc[1]=='No'
+        assert pd.isna(labels.iloc[2]) and pd.isna(labels.iloc[3])
+        assert labels.iloc[4]=='Sí'
+        assert raw.loc[outcome_mask(raw,o),'id_pacie'].tolist()==[1,2]
+        assert raw.loc[outcome_mask(raw,o,'explicit-results'),'id_pacie'].tolist()==[2]
+        assert pd.isna(raw[col].iloc[0]), 'Source outcomes must not be mutated'
+    raw['andujak2']=[None,'No',None,None,'Sí']
+    jak=next(o for o in OUTCOMES if o.column=='andujak2')
+    assert pd.isna(outcome_labels(raw,jak).iloc[0])
+    assert raw.loc[outcome_mask(raw,jak),'id_pacie'].tolist()==[2]
+
+
+def test_literal_missing_is_missing_but_other_nonbinary_outcome_codes_are_not_negative():
+    from manuscript_cohort import outcome_labels
+    raw=registry();o=next(o for o in OUTCOMES if o.column=='var156')
+    raw['var156']=[' Missing ','Not performed',None,None,'Sí']
+    labels=outcome_labels(raw,o)
+    assert labels.iloc[0]=='No' and labels.iloc[1]=='Not performed'
+    assert not outcome_mask(raw,o).iloc[1]
+    with pytest.raises(ValueError,match='Unknown outcome policy'):
+        outcome_labels(raw,o,'unrecognized')
+
+
+def test_public_manifest_does_not_require_private_predictions_or_optional_word(tmp_path):
+    from manuscript_artifacts import artifact_inventory,verify_public_artifacts
+    (tmp_path/'metrics.csv').write_text('n,auc\n100,0.6\n')
+    (tmp_path/'patients.csv').write_text('id_pacie,y_true\n1,0\n')
+    (tmp_path/'predictions.parquet').write_bytes(b'local research data')
+    (tmp_path/'report.docx').write_bytes(b'optional export')
+    manifest=artifact_inventory(tmp_path)
+    assert list(manifest['outputs_sha256'])==['metrics.csv']
+    assert set(manifest['local_artifacts'])=={'patients.csv','predictions.parquet'}
+    assert list(manifest['optional_exports'])==['report.docx']
+    for name in ['patients.csv','predictions.parquet','report.docx']:(tmp_path/name).unlink()
+    assert verify_public_artifacts(tmp_path,manifest)==[]
+    (tmp_path/'metrics.csv').write_text('n,auc\n100,0.7\n')
+    assert 'hash mismatch' in verify_public_artifacts(tmp_path,manifest)[0]
+
+
+def test_existing_manifest_is_not_overwritten_when_run_reuse_is_rejected(tmp_path):
+    from manuscript_reanalysis import run_reanalysis
+    data=tmp_path/'raw.parquet';data.write_bytes(b'not read before reuse checks')
+    output=tmp_path/'run';output.mkdir()
+    original='{"status":"complete","signature":"other","outcomes":["var156"]}'
+    (output/'run_manifest.json').write_text(original)
+    with pytest.raises(ValueError,match='Existing run differs'):
+        run_reanalysis(data,output,outcomes=['var156'])
+    assert (output/'run_manifest.json').read_text()==original
+
+
+def test_generated_methods_state_routine_exception_and_explicit_sensitivity():
+    from manuscript_reporting import outcome_policy_text
+    routine=outcome_policy_text({'outcome_policy':'routine-panel'})
+    assert 'JAK2' in routine and 'remained missing' in routine
+    assert 'only when ana_dura was explicitly positive or negative' in routine
+    explicit=outcome_policy_text({'outcome_policy':'explicit-results'})
+    assert 'remain excluded' in explicit and 'does not apply' in explicit

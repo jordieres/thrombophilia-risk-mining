@@ -1,0 +1,51 @@
+Running Sphinx v7.4.7
+loading translations [en]... done
+loading pickled environment... done
+[autosummary] generating autosummary for: api.rst, architecture.rst, development.rst, index.rst, installation.rst, manuscript_reanalysis.rst, usage.rst
+2026-09-08 17:46:22.118664: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-09-08 17:46:22.184137: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-09-08 17:46:23.879143: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+building [mo]: targets for 0 po files that are out of date
+writing output...
+building [html]: targets for 1 source files that are out of date
+updating environment: 0 added, 2 changed, 0 removed
+reading sources... [ 50%] api
+reading sources... [100%] manuscript_reanalysis
+
+looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
+preparing documents... done
+copying assets...
+copying static files... done
+copying extra files... done
+copying assets: done
+writing output... [ 33%] api
+writing output... [ 67%] index
+writing output... [100%] manuscript_reanalysis
+
+generating indices... genindex py-modindex done
+highlighting module code... [  6%] cli
+highlighting module code... [ 12%] data_processor
+highlighting module code... [ 19%] exp_association_explorer
+highlighting module code... [ 25%] exp_bayesian_networks
+highlighting module code... [ 31%] exp_categorical_association
+highlighting module code... [ 38%] exp_clinical_risk_score
+highlighting module code... [ 44%] exp_contrast_mining
+highlighting module code... [ 50%] exp_permutation_importance
+highlighting module code... [ 56%] exp_score_screening
+highlighting module code... [ 62%] exp_unsupervised_clustering
+highlighting module code... [ 69%] experiment_base
+highlighting module code... [ 75%] manuscript_artifacts
+highlighting module code... [ 81%] manuscript_cohort
+highlighting module code... [ 88%] manuscript_models
+highlighting module code... [ 94%] manuscript_reanalysis
+highlighting module code... [100%] manuscript_reporting
+
+writing additional pages... search done
+dumping search index in English (code: en)... done
+dumping object inventory... done
+build succeeded.
+
+The HTML pages are in docs.

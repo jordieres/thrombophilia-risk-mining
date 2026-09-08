@@ -1,7 +1,9 @@
 """Explicit pre-test cohort and feature contracts for the manuscript reanalysis.
 
-Unlike the exploratory processor, this module never imputes an unrecorded test
-as negative or an unrecorded history as absent. Numeric quality failures become
+The routine-panel policy interprets missing routine subtype outcomes as negative
+only within documented global testing, following the study author clarification
+of 8 September 2026. JAK2 always requires an explicit binary result. Missing
+predictor history is never silently imputed as absent. Numeric quality failures become
 missing values, not silent patient exclusions. All transformations are fixed
 clinical definitions; no quantile or outcome-dependent cut-point is learned.
 """
@@ -13,6 +15,8 @@ import numpy as np
 import pandas as pd
 
 TESTED = ("Buscada positivo", "Buscada negativo")
+ROUTINE_SUBTYPES = frozenset({"var156", "var157", "var161", "var154", "var155", "var158"})
+OUTCOME_POLICIES = ("routine-panel", "explicit-results")
 
 @dataclass(frozen=True)
 class Outcome:
@@ -153,16 +157,31 @@ def known_thrombophilia_mask(raw: pd.DataFrame) -> pd.Series:
     return text_values(raw.ana_port).eq("Yes").fillna(False) | text_values(raw.e_con_af).eq("Yes").fillna(False)
 
 
-def outcome_mask(raw: pd.DataFrame, outcome: Outcome) -> pd.Series:
-    """Require documented global testing and binary subtype; exclude known carriers.
+def outcome_labels(raw: pd.DataFrame, outcome: Outcome,
+                   policy: str = "routine-panel") -> pd.Series:
+    """Return analysis labels without modifying the source registry.
 
-    Binary subtype coding is the operational eligibility definition. The extract
-    has no independent assay-performed flag, so it cannot prove that every No
-    represents a laboratory-confirmed negative. Reports retain this limitation.
+    Under the author-confirmed routine-panel convention, a null/blank/literal
+    Missing routine subtype is No only when ana_dura documents testing. This
+    is an explicit registry interpretation, not laboratory adjudication. JAK2
+    never receives a negative replacement. Other nonbinary labels stay invalid.
+    The explicit-results policy preserves the earlier sensitivity definition.
     """
+    if policy not in OUTCOME_POLICIES:
+        raise ValueError(f"Unknown outcome policy: {policy}")
+    values = raw[outcome.column].astype("string").str.strip()
+    values = values.mask(values.str.casefold().isin(["", "missing"]))
+    if policy == "routine-panel" and outcome.column in ROUTINE_SUBTYPES:
+        values = values.mask(tested_mask(raw) & values.isna(), "No")
+    return values
+
+
+def outcome_mask(raw: pd.DataFrame, outcome: Outcome,
+                 policy: str = "routine-panel") -> pd.Series:
+    """Apply global testing, known-carrier exclusions and outcome-policy eligibility."""
     negative = TESTED[1] if outcome.column == "ana_dura" else "No"
     return (tested_mask(raw) & ~known_thrombophilia_mask(raw)
-            & raw[outcome.column].astype("string").isin([outcome.positive, negative]))
+            & outcome_labels(raw, outcome, policy).isin([outcome.positive, negative]))
 
 
 def missingness_table(raw: pd.DataFrame, features: pd.DataFrame, mask: pd.Series, group: str) -> pd.DataFrame:

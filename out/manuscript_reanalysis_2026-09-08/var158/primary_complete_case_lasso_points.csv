@@ -1,0 +1,3 @@
+variable,category,coefficient,points,label
+sin_tvp_,DVT,-0.5142572397866534,-4109,Index VTE presentation
+fr_inmov,Yes,-0.00012516696078955757,-1,Recent immobilization

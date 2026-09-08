@@ -1,0 +1,29 @@
+variable,category,coefficient,points,label
+ant_isq,Yes,-0.1702756633665942,-12,Prior cerebral ischemia
+diabetes,Yes,-0.15339030680333443,-10,Diabetes
+hip_art,Yes,-0.032051678570141094,-2,Hypertension
+insf_car,Yes,0.19582337862468407,13,Heart failure
+e_con_pp,Yes,-0.09358347456572204,-6,Chronic lung disease
+e_con_ec,Yes,-1.3172541594530294,-90,Crohn disease
+e_con_lu,Yes,-3.4522562849797755,-235,Known lupus
+e_con_be,Yes,-3.3308864376189273,-227,Behcet disease
+e_con_pr,Yes,-3.0836810132266597,-210,Polymyalgia rheumatica
+sin_tvp_,DVT,1.226564390371243,83,Index VTE presentation
+sin_tvp_,PE,0.8244439577073228,56,Index VTE presentation
+sin_tvp_,PE+DVT,0.9866554196554373,67,Index VTE presentation
+var171,Yes,-0.4306145239509167,-29,Syncope
+tvp_prox,Proximal (incluyendo la vena poplítea),0.5053713382220534,34,DVT proximal/distal location
+fr_cance,Yes,-0.3641636669697256,-25,Active cancer
+fr_cirug,Yes,-0.25860971157167645,-18,Recent surgery
+fr_inmov,Yes,-0.3881902826608454,-26,Recent immobilization
+fr_tvp_a,Yes,-0.15829231577054503,-11,Prior VTE
+fr_estro,Yes,0.18459754370350492,13,Recent hormone exposure
+fr_embar,Yes,0.6268419854397921,43,Pregnancy
+ana_crea,Normal,0.014703594760969869,1,Recorded creatinine category
+edad,<50,0.2845017695964687,19,Age (years)
+edad,≥70,-0.2972564586508033,-20,Age (years)
+tension_,≥100,0.5687393353290975,39,Systolic BP (mmHg)
+ana_hemo,≥12,0.5783196723799503,39,Hemoglobin (g/dL)
+ana_plaq,<144,-0.32149292784020794,-22,Platelets (10^9/L)
+ana_plaq,>400,0.2128376687224771,14,Platelets (10^9/L)
+female_under45,Yes,-0.1532121855052206,-10,Female and age <45

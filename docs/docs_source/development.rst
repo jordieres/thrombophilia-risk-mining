@@ -12,8 +12,8 @@ replies and manuscript replacement text; editing a generated report alone is
 not a durable correction.
 
 The authoritative analysis is distinct from the historical exploratory CLI.
-Do not use generic ``score`` output to update paper metrics. Historical files
-are preserved for provenance and labelled superseded in ``out/README.md``.
+Do not use generic ``score`` output to update paper metrics. Historical aggregate files are preserved under ``out/archive/``. The 7 September
+explicit-results alternative is labelled separately in ``out/README.md``.
 The previous unsafe model loop in ``manuscript_support.py`` has been removed;
 its public command delegates to the new analysis.
 
@@ -94,7 +94,7 @@ Repository layout
 ``docs/docs_source/``
    English Sphinx source, including the complete manuscript manual.
 
-``out/manuscript_reanalysis_2026-09-07/``
+``out/manuscript_reanalysis_2026-09-08/``
    Completed numerical evidence, generated English replies/text and figures.
 
 ``out/manuscript_audit_2026-09-07/``
@@ -103,3 +103,18 @@ Repository layout
 ``data/``
    Local source snapshots and the supplied variable dictionary. Do not infer
    cohort eligibility from a prepared file whose original labels were removed.
+
+Publication artifact checks
+---------------------------
+
+After staging the intended changes, run:
+
+.. code-block:: bash
+
+   python scripts/check_repository_artifacts.py
+
+The check rejects patient-level predictions, individual CSVs, model binaries,
+optional Word/PDF files, Sphinx caches and executed notebook outputs in the Git
+index. It also verifies every public manifest reference is tracked and matches
+its checksum. Local-only and optional artifact absence is valid in a clone.
+The script does not inspect or rewrite historical commits.

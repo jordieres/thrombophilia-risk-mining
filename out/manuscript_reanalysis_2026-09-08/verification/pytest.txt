@@ -1,0 +1,15 @@
+...........................                                              [100%]
+=============================== warnings summary ===============================
+tests/test_exp_score_screening.py::test_run_builds_screening_candidates_export
+tests/test_exp_score_screening.py::test_run_builds_screening_candidates_export
+tests/test_exp_score_screening.py::test_run_builds_screening_candidates_export
+tests/test_exp_score_screening.py::test_run_builds_screening_candidates_export
+  /home/jordieres/soft/vpy/lib/python3.12/site-packages/sklearn/preprocessing/_encoders.py:262: UserWarning: Found unknown categories in columns [0, 1, 2, 6] during transform. These unknown categories will be encoded as all zeros
+    warnings.warn(msg, UserWarning)
+
+tests/test_exp_unsupervised_clustering.py::test_run_supports_manhattan_metric_and_exports_coordinates
+  /home/jordieres/soft/vpy/lib/python3.12/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+    warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+27 passed, 5 warnings in 53.33s

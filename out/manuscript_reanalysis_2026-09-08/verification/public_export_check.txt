@@ -1,0 +1,2 @@
+Principal public-only package verification passed.
+All three English Markdown reports reproduced byte-for-byte without raw registry, patient predictions or model binaries.

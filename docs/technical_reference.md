@@ -26,7 +26,9 @@ The supported paper workflow follows this sequence:
    confusion/resource identities before writing a completion checkpoint.
 
 No old performance CSV or historical score card feeds this chain. Results are
-kept in a dedicated run directory with input/source/configuration hashes.
+kept in a dated run directory with input/source/configuration hashes. Public
+aggregate evidence, local patient/model artifacts and optional Word exports have
+separate inventories. The current principal run is dated 2026-09-08.
 Report generation has its own source hash because changing prose does not
 require refitting otherwise identical numerical models.
 
@@ -34,9 +36,12 @@ require refitting otherwise identical numerical models.
 
 The registry description retains every source patient. Unknown global study
 status is distinguished from explicit not-tested status even when both appear
-in the same descriptive comparison group. Subtype prediction requires a binary
-registered result within globally tested patients; the available extract cannot
-independently prove completion of every subtype assay.
+in the same descriptive comparison group. Within globally tested patients, missing outcomes for the six routine subtypes
+are interpreted as negative under the investigators’ 8 September clarification.
+JAK2 still requires an explicit binary result. `--outcome-policy explicit-results`
+retains the earlier sensitivity definition. The extract does not independently
+adjudicate completion of every assay; source labels and interpreted negatives
+are audited separately.
 
 Development diagnoses end in 2021. A fixed 40% development missingness ceiling
 and nonconstant-variable requirement define the primary candidate set, without

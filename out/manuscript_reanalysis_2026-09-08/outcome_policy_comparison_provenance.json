@@ -1,0 +1,21 @@
+{
+  "source_data_sha256": "0521062d089b5828d0ac9811c231a49ad2889e08f2a52785daa6e626fd790ba5",
+  "run_signatures": [
+    "fcbff07e1098fc26f7457f2c30e32ea0339c3756df18c30358179361bb9ce438",
+    "00c89b6b1368f9648c8d8ba771287d2b7f60db7db2d211cf17be91a827e8b553"
+  ],
+  "sources": {
+    "explicit_results": {
+      "all_model_metrics.csv": "2651b088357c028ebe142ce9f641feb702abbc8c1d174ff9e317f88e630bab41",
+      "model_cohort_flow.csv": "997bcedfea1bf0c9d85ee7d6596df668032d7a7f00e61e1648edd1cadb06a00a",
+      "supplement_outcome_denominators.csv": "3f75c14df08c008cd44b2f2578746f6be700bfd2911ad3576156fa76b4d98458"
+    },
+    "routine_panel": {
+      "all_model_metrics.csv": "6a3fa49f6d3546788dd25f2a2752e9c5f3deb1c05b6220b871d465547762ef2f",
+      "model_cohort_flow.csv": "8719bb6f844977d13530a9b1845b562e172fb715750303f7f5fb0ba182e4c411",
+      "supplement_outcome_denominators.csv": "8e0f0aa636a6216d163793bb6ea8ce73c7519d138436736a3530e774e2308547"
+    }
+  },
+  "unchanged_composite_and_jak2_metrics": true,
+  "comparison_code_sha256": "20f436577bde1c9c41eaf6ecabd3589c45e9d61df8dcc95d1402abb14e650915"
+}

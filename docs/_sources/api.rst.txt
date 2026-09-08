@@ -79,3 +79,6 @@ Manuscript reanalysis
 
 .. automodule:: manuscript_reporting
    :members:
+
+.. automodule:: manuscript_artifacts
+   :members:
