@@ -1,4 +1,9 @@
-"""Clinical risk-score experiment implementation.
+"""Historical exploratory clinical score implementation.
+
+This generic experiment is NOT the corrected manuscript analysis: it does not
+enforce the manuscript cohort, predictor allowlist, nested tuning or temporal
+contracts. Use manuscript_reanalysis.py for paper results. Historical outputs
+must not be presented as validated pre-test triage performance.
 
 This module supports two feature-selection strategies for a bedside-oriented
 clinical score:

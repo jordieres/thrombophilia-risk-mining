@@ -1,0 +1,17 @@
+{
+  "outcome": "var154",
+  "label": "Protein C deficiency",
+  "priority": "exploratory",
+  "eligible_n": 10255,
+  "eligible_positive_n": 355,
+  "development_eligible_n": 10034,
+  "temporal_eligible_n": 221,
+  "missing_date_n": 0,
+  "candidate_n": 37,
+  "complete_case_n": 5806,
+  "complete_case_positive_n": 182,
+  "missing_excluded_n": 4449,
+  "development_complete_n": 5711,
+  "temporal_complete_n": 95,
+  "cutoff_year": 2021
+}

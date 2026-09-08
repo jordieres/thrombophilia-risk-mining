@@ -1,0 +1,16 @@
+{
+  "checked_utc": "2026-09-08T10:59:23.681960+00:00",
+  "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+  "outcomes_completed": 8,
+  "word_comments_answered": 14,
+  "pytest_passed": 20,
+  "pytest_failed": 0,
+  "pytest_warnings": 5,
+  "pytest_warning_scope": "Historical exploratory encoder and UMAP warnings",
+  "sphinx_warning_as_error_build": "passed",
+  "git_diff_check": "passed",
+  "analysis_source_hashes": "match executed files",
+  "artifact_hashes": "verified",
+  "docx_packages": "three reports parsed successfully",
+  "cohort_flow_figure": "visually inspected"
+}

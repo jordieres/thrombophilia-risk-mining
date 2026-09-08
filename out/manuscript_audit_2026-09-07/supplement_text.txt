@@ -1,0 +1,214 @@
+P1: SUPPLEMENTARY MATERIAL
+P2: Supplementary Table 1.
+P3: Variable
+P4: Threshold
+P5: New category
+P6: Hemoglobin
+P7: Below 12 g/dL
+P8: Anemia
+P9: Platelets
+P10: <144,000
+P11: 144,000-400,000
+P12: >400,000
+P13: Thrombocytopenia
+P14: Normal counts
+P15: Thrombocytosis
+P16: Leucocytes
+P17: 4,000 to 11,000
+P18: Normal
+P19: Neutrophils
+P20: 1,500 to 8,000
+P21: Normal
+P22: Age
+P23: <50 years old
+P24: 50-69 years old
+P25: >69 years old
+P26: * Extra variable: women under 45 years old
+P27: Young
+P28: Intermediate
+P29: Senior 
+P30: Fertile age
+P31: Weight
+P32: <50 kg
+P33: 50-100 kg
+P34: > 100 kg
+P35: Low weight range
+P36: Intermediate weight range
+P37: High weight range
+P38: Blood pressure
+P39: <100 mmHg at presentation
+P40: Low
+P41: D-dimer
+P42: <500 ng/mL
+P43: >500 ng/mL
+P44: Unquantified
+P45: Negative
+P46: Positive
+P47: Not performed at diagnosis
+P48: C reactive protein
+P49: < 0.5 mg/dL
+P50: Normal
+P51: Table 1. Variable categorisation thresholds.
+P52: 
+P53: 
+P54: Supplementary figure 1.
+P55: 
+P56: Figure 1. ROC curves and score distribution for the automatic integer score. Left panel: Receiver operating characteristic (ROC) curves for the automatic integer score (red, AUC=0.553) and the logistic probability benchmark (blue, AUC=0.588), compared to the random baseline (grey dashed line). Right panel: Distribution of clinical integer scores by thrombophilia test outcome (purple: negative result, orange: positive result). The vertical dashed line indicates the sensitivity-safe threshold of ≥3 points, selected to achieve a minimum sensitivity of 90%. The substantial overlap between the two distributions reflects the modest overall discrimination of the score. AUC: area under the receiver operating characteristic curve.
+P57: 
+P58: Supplementary Table 2
+P59: Thrombophilic condition
+P60: Patients tested
+P61: n
+P62: % of positive results
+P63: Factor V Leiden
+P64: 10,638
+P65: 2,048
+P66: 19.3%
+P67: Antiphospholipid syndrome
+P68: 10,710
+P69: 1,908
+P70: 22.9%
+P71: Prothrombin G20210A mutation
+P72: 10,376
+P73: 1,559
+P74: 18.7%
+P75: Protein S deficiency
+P76: 10,315
+P77: 730
+P78: 8.8%
+P79: Protein C deficiency
+P80: 10,275
+P81: 338
+P82: 4.1%
+P83: Antithrombin deficiency
+P84: 
+P85: 260
+P86: 3.1%
+P87: JAK2 mutation
+P88: 
+P89: 61
+P90: 
+P91: 
+P92: Supplementary Table 2. Distribution of thrombophilic conditions among patients with a positive thrombophilia result (Cohort B; n=8,345). Counts represent the number of patients testing positive for each individual condition. Individual patients may carry more than one thrombophilic condition; therefore counts do not sum to the total number of patients with any positive result. Counts represent patients with a positive result for each individual thrombophilic condition. Patients may have more than one positive result; therefore individual condition counts may sum to more than the total number of patients with any positive result (n=8,345).
+P93: 
+P94: Supplementary Table 3. 
+P95: Variable
+P96: Points
+P97: Age <39 years
+P98: +3
+P99: Estrogen treatment
+P100: +3
+P101: Hypertension
+P102: +3
+P103: Age 39–53 years
+P104: +3
+P105: Caucasian ethnicity
+P106: +2
+P107: Active smoking
+P108: +2
+P109: Estrogen use
+P110: +2
+P111: Age 53–62 years
+P112: +2
+P113: Recurrent VTE
+P114: +1
+P115: Hemoglobin 14.5–15.3 g/dL
+P116: +1
+P117: Table 3. Integer point components of the Factor V Leiden clinical score. Age categories are mutually exclusive; only the highest applicable age category should be scored. At a threshold of ≥1 point, the score achieves a sensitivity of 94.2% and a specificity of 40.7%, with a negative predictive value of 99.0%. VTE: venous thromboembolism.
+P118: 
+P119: Supplementary Table 4. 
+P120: Variable
+P121: Points
+P122: Caucasian ethnicity
+P123: +5
+P124: Hypertension
+P125: +4
+P126: Age <40 years
+P127: +4
+P128: Age 40–53 years
+P129: +3
+P130: Estrogen treatment
+P131: +3
+P132: Active smoking
+P133: +3
+P134: Estrogen use
+P135: +2
+P136: Age 53–62 years
+P137: +2
+P138: Recurrent VTE
+P139: +2
+P140: Diabetes
+P141: +1
+P142: Table 4. Integer point components of the prothrombin G20210A clinical score. Age categories are mutually exclusive; only the highest applicable age category should be scored. At a threshold of ≥1 point, the score achieves a sensitivity of 94.0% and a specificity of 39.1%, with a negative predictive value of 99.2%. VTE: venous thromboembolism.
+P143: 
+P144: Supplementary Table 5. 
+P145: Variable
+P146: Points
+P147: Age <40 years
+P148: +3
+P149: Hypertension
+P150: +3
+P151: Age 40–53 years
+P152: +2
+P153: Estrogen treatment
+P154: +2
+P155: Elevated troponin
+P156: +1
+P157: Upper extremity thrombosis
+P158: +1
+P159: Active smoking
+P160: +1
+P161: Diabetes
+P162: +1
+P163: Proximal DVT
+P164: +1
+P165: Age 53–63 years
+P166: +1
+P167: Table 5. Integer point components of the protein S deficiency clinical score. Age categories are mutually exclusive; only the highest applicable age category should be scored. At a threshold of ≥1 point, the score achieves a sensitivity of 91.8% and a specificity of 28.3%, with a negative predictive value of 99.3%. DVT: deep vein thrombosis; VTE: venous thromboembolism.
+P168: 
+P169: Supplementary Table 6. 
+P170: Variable
+P171: Points
+P172: Non-catheter-related VTE
+P173: +3
+P174: Hypertension
+P175: +3
+P176: Age <40 years
+P177: +2
+P178: Age 40–53 years
+P179: +2
+P180: Estrogen treatment
+P181: +2
+P182: Age 53–63 years
+P183: +1
+P184: Recent travel
+P185: +1
+P186: WBC 13.5–40.0 ×10⁹/L
+P187: +1
+P188: Platelet count 177–200 ×10⁹/L
+P189: +1
+P190: Platelet count 15–148 ×10⁹/L
+P191: +1
+P192: Table 6. Integer point components of the protein C deficiency clinical score. Age categories are mutually exclusive; only the highest applicable age category should be scored. At a threshold of ≥1 point, the score achieves a sensitivity of 95.0% and a specificity of 22.5%, with a negative predictive value of 99.8%. Non-catheter-related VTE refers to venous thromboembolism occurring in the absence of a central venous catheter as a precipitating factor. WBC: white blood cell count; VTE: venous thromboembolism.
+P193: 
+P194: Supplementary Table 7. 
+P195: Variable
+P196: Points
+P197: Age <45 years
+P198: +2
+P199: Proximal DVT
+P200: +2
+P201: Distal DVT
+P202: +2
+P203: Height ≤155 cm
+P204: +1
+P205: Hemoglobin 14.0–15.0 g/dL
+P206: +1
+P207: Estrogen treatment
+P208: +1
+P209: Age 45–60 years
+P210: +1
+P211: Hemoglobin 12.3–13.1 g/dL
+P212: +1
+P213: Table 7. Integer point components of the antithrombin deficiency clinical score. Age categories are mutually exclusive; only the highest applicable age category should be scored. At a threshold of ≥1 point, the score achieves a sensitivity of 94.8% and a specificity of 9.1%, with a negative predictive value of 99.5%. DVT: deep vein thrombosis.
+P214: 

@@ -1,0 +1,540 @@
+P1: Subtype-specific clinical prediction of thrombophilia after venous thromboembolism: a machine learning analysis of the RIETE registry
+P2: ABSTRACT
+P3: Background: Thrombophilia testing after venous thromboembolism (VTE) remains controversial and shows poor diagnostic yield. Whether routinely available clinical variables can identify patients most likely to harbor specific thrombophilic disorders remains uncertain.
+P4: Objectives: To characterize real-world thrombophilia testing practices and evaluate the ability of pre-testing clinical variables to predict positive registered thrombophilia test results among patients already undergoing post-VTE thrombophilia evaluation.
+P5: Methods: Testing patterns were evaluated in the full RIETE registry cohort (119,449 patients). Among patients undergoing thrombophilia testing (n=22,874), we developed and internally validated machine-learning and simplified integer score models for a composite thrombophilia outcome and individual thrombophilic conditions. All models estimate the conditional probability of a positive result among patients already selected for testing.
+P6: Results: Thrombophilia testing was performed in 19.1% of patients. Male patients were more likely to undergo testing and had a higher diagnostic yield (39.5% vs 35.8%; p<0.001). Prediction of a composite positive result demonstrated limited discrimination (XGBoost AUC 0.592), indicating substantial biological heterogeneity. In contrast, subtype-specific models achieved markedly improved performance, with AUCs of 0.865 for antiphospholipid syndrome, 0.843 for Factor V Leiden, 0.829 for prothrombin G20210A mutation, 0.800 for protein S deficiency, 0.786 for antithrombin deficiency, and 0.768 for protein C deficiency. Simplified integer scores achieved AUCs of 0.710–0.800.
+P7: Conclusions: Routine clinical variables have limited ability to predict a positive thrombophilia result but reveal clinically meaningful subtype-specific predictive signals. These findings support a shift toward subtype-specific testing strategies and a framework for machine-learning-based clinical decision support tools to guide thrombophilia evaluation after VTE.
+P8: 
+P9: 
+P10: 
+P11: 
+P12: 
+P13: INTRODUCTION
+P14: Venous thromboembolism (VTE) may occur in the presence of transient or persistent provoking factors, or in the absence of an identifiable trigger (1,2). In selected patients, inherited or acquired thrombophilic disorders may contribute to thrombotic risk. These include deficiencies of natural anticoagulants, such as antithrombin, protein C and protein S, gain-of-function genetic variants, mainly Factor V Leiden and the prothrombin G20210A mutation, and acquired conditions such as antiphospholipid syndrome (3-6).
+P15: Despite their biological relevance, thrombophilia tests have limited diagnostic and therapeutic impact in many patients with VTE. Most carriers of common inherited thrombophilic variants never develop thrombosis, and test results often do not change anticoagulant management (4,11-15, 37). Consequently, current guidelines recommend a selective rather than routine approach to thrombophilia testing (4-7). However, in everyday practice, testing decisions remain heterogeneous and are frequently influenced by clinical judgement, local availability and physician preference. Previous RIETE data showed that only 60% of tested patients met pre-established indications for thrombophilia testing, whereas 24% of patients tested outside these indications nevertheless had a positive result (10).
+P16: Previous studies have identified clinical factors associated with a positive thrombophilia result, including young age, family history of VTE, recurrent events and proximal deep vein thrombosis (16-19). However, these predictors have shown inconsistent performance, and clinical selection alone has not reliably improved diagnostic yield (19,20). One possible explanation is that “thrombophilia” is commonly analyzed as a single composite outcome, despite grouping biologically distinct entities with different epidemiology, clinical presentation and mechanisms.
+P17: Large prospective registries provide an opportunity to evaluate real-world testing patterns and to explore whether routinely available clinical variables can identify patients with a higher probability of specific thrombophilic disorders (21). Machine-learning methods may be particularly useful in this setting because they can capture non-linear relationships and interactions across multiple clinical variables (22,23). However, whether such approaches can meaningfully improve thrombophilia test selection after VTE remains uncertain.
+P18: Using data from the RIETE registry, we aimed to characterize real-world thrombophilia testing patterns after VTE and to evaluate the ability of routinely available clinical variables to predict positive thrombophilia results. We specifically compared prediction of a composite thrombophilia outcome with subtype-specific prediction for individual thrombophilic conditions, including antiphospholipid syndrome (APS), Factor V Leiden, prothrombin G20210A mutation, and deficiencies of antithrombin, protein C and protein S.
+P19: 
+P20: MATERIAL AND METHODS
+P21: Study cohorts
+P22: This study comprised two complementary analyses performed on two overlapping cohorts derived from the RIETE registry, a multinational prospective registry of consecutive patients with objectively confirmed VTE, including deep vein thrombosis (DVT), pulmonary embolism (PE), and VTE at other venous sites (Figure 1). Patients are enrolled across specialized VTE units and participating centers from multiple countries. The registry has been approved by the relevant institutional ethics committees at participating centers, and patients provide informed consent in accordance with local regulations (21).
+P23: The full registry cohort, hereafter referred to as Cohort A, included 119,449 patients with objectively confirmed VTE. Cohort A was used to characterize real-world thrombophilia testing patterns at the population level. Patients were classified into three groups according to thrombophilia testing status and result: positive thrombophilia result, negative thrombophilia result, or no thrombophilia testing performed. Missing thrombophilia study outcome labels were reclassified as not tested during preprocessing normalization; the not-tested cohort therefore includes both patients explicitly coded as not tested and patients without a recorded thrombophilia study label.
+P24: Patients in whom thrombophilia testing was performed formed the analytical cohort for predictive modelling, hereafter referred to as Cohort B. Cohort B included 22,874 patients, corresponding to 19.1% of the full registry cohort. Within Cohort B, the primary composite outcome was defined as any positive thrombophilia result versus a negative thrombophilia evaluation.
+P25: All predictive models were developed and validated exclusively within Cohort B. The models therefore estimate the conditional probability of a positive registered thrombophilia test result among patients already selected for testing by their treating clinician, and should not be interpreted as estimating thrombophilia prevalence in the broader VTE population.
+P26: For subtype-specific analyses, separate analytical datasets were created for each thrombophilic condition: APS, Factor V Leiden mutation, prothrombin G20210A mutation, antithrombin deficiency, protein C deficiency, protein S deficiency, and JAK2 mutation-associated thrombophilia. For each subtype-specific model, the analytical denominator was restricted to patients in whom the corresponding test had been performed and whose result was available. The control group for each subtype therefore consisted of patients with a negative result for that same specific test, rather than patients who were not tested for that specific subtype.
+P27: 
+P28: 
+P29: 
+P30: Figure 1. TRIPOD flow diagram. Patients from the full RIETE registry (Cohort A, n=114,757) were classified according to TT outcome. Patients with missing outcome data were reclassified as not tested. Stage 1 analysis applied a Bayesian network to the full registry cohort to characterize testing patterns by sex. Patients in whom TT was performed formed the analytical cohort for predictive modelling (Cohort B, n=22,115; 19.3% of Cohort A). Stage 2 analysis applied association rule mining and gradient-boosted machine learning to Cohort B to derive the RIETE thrombophilia composite and subtype-specific thrombophilia triage scores. The composite and subtype-specific scores were internally validated within Cohort B. VTE: venous thromboembolism. Percentages for negative and positive results refer to proportions within Cohort B. Sex proportions refer to the proportion of male and female patients within each group.
+P31: 
+P32: Variable definitions and data preparation
+P33: Only variables available before thrombophilia testing were considered eligible for predictive analyses. Variables generated by, updated after, or directly dependent on thrombophilia testing were excluded to avoid data leakage that could lead to overoptimistic or misleading model performance (24). Patients with a previously known thrombophilia carrier status before the index VTE event were also excluded, as they represent a distinct clinical population in whom testing decisions differ from the intended use case of the models. 
+P34: Continuous demographic and laboratory variables were converted into clinically meaningful categories before analysis, as summarized in Supplementary Table 1. Age was grouped as young (<50 years), intermediate (50–69 years), or elderly (≥70 years). A separate binary variable was created for women younger than 45 years to reflect fertile age. Hemoglobin was dichotomized at 12 g/dL to define anemia. Platelet counts were categorized as thrombocytopenia, normal platelet count, or thrombocytosis according to local laboratory reference ranges. Creatinine was classified as normal or altered according to local laboratory reference ranges. Body weight was categorized as low weight range (<50 kg), intermediate weight range (50–100 kg), or high weight range (>100 kg). Systolic blood pressure <100 mmHg at presentation was classified as hypotension. Categorization thresholds are available in Supplementary Material Table 1.
+P35: D-dimer measurements were recorded in different units and measured using different assay platforms across participating centers, precluding reliable quantitative harmonization. D-dimer was therefore retained as a categorical variable only: negative, positive, or not performed, in line with the known variability of D-dimer testing across assays and clinical settings (25–27).
+P36: Medical history variables, including previous VTE, malignancy, and other comorbidities, were coded as present when explicitly recorded. Missing entries for history variables were coded as absent only when no positive record for the same condition was identified elsewhere in the patient’s registry chart, to minimize misclassification of incomplete documentation as true absence.
+P37: Rare thrombosis sites were grouped to reduce sparse categories. Portal, mesenteric, and splenic vein thromboses were grouped as splanchnic vein thrombosis. Other rare superficial or unusual venous thrombosis locations were grouped into auxiliary categories when required for modelling.
+P38: Race and ethnicity were recorded as reported by the treating clinician. Given known ethnic differences in the prevalence of some inherited thrombophilic variants, race and ethnicity were retained as exploratory predictors. 
+P39: Two important limitations of the thrombophilia outcome definitions must be acknowledged. First, the RIETE registry does not record anticoagulant treatment at the time of thrombophilia testing. Heparin, vitamin K antagonists, and direct oral anticoagulants may substantially affect functional assay results, particularly for protein C, protein S, and antithrombin. False-negative results for these conditions cannot be excluded in anticoagulated patients. Second, antiphospholipid syndrome in RIETE is based on a single positive result recorded during or after the index VTE event, without documented confirmation on a second determination at least twelve weeks later, as required by international classification criteria (38). The APS outcome in this study should therefore be interpreted as a registry-coded positive antiphospholipid antibody result rather than adjudicated persistent antiphospholipid syndrome.
+P40: Missing data were handled according to variable type and modelling strategy. XGBoost models were allowed to handle missingness within the modelling process when applicable. For regression-based score derivation, variables with excessive missingness were excluded from candidate predictors, and the final analytical dataset included patients with available data for the selected variables. The extent of missingness for candidate predictors is reported in Supplementary Table X.
+P41: Testing pattern analysis (Cohort A)
+P42: Testing patterns were evaluated in Cohort A. The proportion of patients undergoing thrombophilia testing was calculated overall and stratified by sex. Among tested patients, the proportion of positive results was also compared by sex.
+P43: Categorical variables were compared using chi-square tests. Effect sizes were reported as relative risks, odds ratios, and absolute risk differences with 95% confidence intervals, as appropriate. Baseline characteristics were compared between tested and untested patients, and among tested patients between those with positive and negative thrombophilia results.
+P44: A Bayesian network was used as an exploratory method to estimate conditional probabilities of testing status and thrombophilia test results according to sex and other baseline variables. This analysis was intended to describe real-world testing patterns rather than to develop a clinical prediction model.
+P45: Identification of clinical patterns associated with a negative result (Cohort B)
+P46: To identify combinations of clinical characteristics associated with thrombophilia test outcomes, we applied the Frequent Pattern Growth algorithm, an association rule mining method that identifies co-occurring clinical features without requiring a predefined parametric model (28,29).
+P47: Each patient record in Cohort B was transformed into a binary set of clinical descriptors, including sex, age category, VTE presentation, previous VTE history, comorbidities, and categorized laboratory values. Association rules were generated to identify clinical profiles associated with thrombophilia test outcomes.
+P48: For each rule, the following metrics were calculated:
+P49: Support, defined as the proportion of patients in whom the clinical feature combination was present.
+P50: Confidence, defined as the probability of the target outcome among patients with that feature combination.
+P51: Lift, defined as the ratio between the observed probability of the target outcome among patients with the feature combination and the baseline probability of that outcome in the cohort.
+P52: Leverage, defined as the absolute difference between the observed and expected frequency of the rule.
+P53: Given the clinical objective of identifying low-yield testing profiles, association rule mining was used as an exploratory analysis to identify clinical feature combinations associated with a negative thrombophilia result. Rules were ranked according to confidence and lift for a negative result. Only rules meeting predefined minimum support and confidence thresholds were retained for reporting.
+P54: Predictive modelling (Cohort B)
+P55: Predictive modelling was performed in Cohort B. The primary composite outcome was any positive thrombophilia result versus a negative thrombophilia evaluation. Secondary outcomes were positive results for each individual thrombophilic condition.
+P56: We developed machine-learning classification models using Extreme Gradient Boosting (XGBoost), which is suitable for high-dimensional structured clinical data and can model non-linear relationships and interactions between variables (30). Candidate predictors included only variables available before thrombophilia testing.
+P57: Model performance was evaluated using stratified five-fold cross-validation. In each iteration, the dataset was divided into five approximately equal folds while preserving the proportion of positive and negative outcomes. Four folds were used for model training and the remaining fold for testing, such that each patient contributed once to internal validation.
+P58: Hyperparameters, including maximum tree depth, learning rate, subsampling rate, column sampling rate, and regularization parameters, were tuned within the cross-validation framework to reduce overfitting. Model performance was assessed primarily using the area under the receiver operating characteristic curve (AUC). Calibration was assessed using calibration plots and summarized with mean absolute calibration error (MACE), where lower values indicate closer agreement between predicted and observed risk.
+P59: Internal temporal validation was additionally performed by restricting model development to patients with a diagnosis date up to and including 2021, and applying the fixed development threshold to patients diagnosed from 2022 onwards. 
+P60: For each model, performance at clinically relevant thresholds was summarized using sensitivity, specificity, positive predictive value, negative predictive value, false negative rate, false positive rate, and positive and negative likelihood ratios.
+P61: Clinical score derivation (Cohort B)
+P62: To translate predictive models into simplified bedside tools, integer scores were derived using logistic regression fitted in Cohort B. Candidate variables were first screened using univariable logistic regression, retaining variables associated with the outcome at p<0.10. Final variable selection was performed using multivariable logistic regression with L1 regularization (31). The regularization penalty was selected by five-fold cross-validation.
+P63: For each retained variable, integer points were assigned in proportion to the corresponding logistic regression coefficient. Coefficients were divided by the smallest non-zero coefficient and rounded to the nearest integer. The final score was calculated as the sum of all assigned points, with higher values indicating a higher predicted probability of a positive thrombophilia result. This approach follows the same general principle used in established clinical prediction scores in VTE medicine (32–34).
+P64: Two strategies for score derivation were evaluated: a fully data-driven approach based on variables selected by penalized regression, and an association-rule-guided approach restricted to variables identified in the FP-Growth analysis. The association-rule-guided score showed poor discrimination and retained only a limited number of variables; therefore, the automatic data-driven integer score was selected for further reporting.
+P65: The discriminative performance of the simplified score was compared with the corresponding XGBoost model to quantify the trade-off between model complexity and clinical interpretability.
+P66: Subtype-specific predictive modelling (Cohort B)
+P67: Subtype-specific predictive analyses were performed for APS, Factor V Leiden mutation, prothrombin G20210A mutation, protein S deficiency, protein C deficiency, antithrombin deficiency, and JAK2 mutation-associated thrombophilia.
+P68: For each subtype-specific model, the analytical denominator was restricted to patients in whom the corresponding thrombophilia test had been performed and whose result was available. The outcome was defined as a positive result for that specific thrombophilic condition versus a negative result for the same condition. 
+P69: Subtype-specific XGBoost models and simplified integer scores were developed using the same methodology as for the composite outcome (30,31). Given the outcome definition constraints described above, subtype-specific models are presented within a two-tier evidential framework. Models for genetic thrombophilias (Factor V Leiden and prothrombin G20210A mutation) are considered primary analyses, as these outcomes reflect stable inherited variants identified by DNA analysis and are unaffected by anticoagulant exposure or acute-phase physiology. Models for functional and antibody-based outcomes (APS, protein C deficiency, protein S deficiency, and antithrombin deficiency) are considered exploratory analyses, as their registry-coded results may be affected by concurrent anticoagulation, acute-phase effects, or absence of confirmatory testing.
+P70: JAK2 mutation-associated thrombophilia was analyzed descriptively because of the small number of positive cases. Formal clinical score derivation for JAK2 was not considered reliable.
+P71: Threshold selection and clinical utility metrics
+P72: The models were evaluated primarily as rule-out triage tools. The intended clinical use was to identify patients with a low predicted probability of a positive thrombophilia result, in whom testing might potentially be deferred after external validation.
+P73: Because missing a clinically relevant thrombophilia diagnosis could have important consequences, threshold selection prioritized sensitivity. A minimum sensitivity of 90% was pre-specified. For each model, the threshold achieving at least 90% sensitivity was identified from the ROC curve and applied to the internally validated predictions. At the selected threshold, we calculated sensitivity, specificity, positive predictive value, negative predictive value, false negative rate, false positive rate, positive likelihood ratio, and negative likelihood ratio. We also estimated the theoretical number of tests avoided and the number of positive cases missed per 1,000 tested patients at the selected threshold.
+P74: The discriminative performance of simplified integer scores was compared with the corresponding XGBoost models to quantify the trade-off between predictive accuracy and clinical simplicity.
+P75: All analyses were performed in Python version 3.10 using scikit-learn version 1.4.0, XGBoost version 2.0.0, pandas version 2.2.0, numpy version 1.26.0, openpyxl version 3.1.2, pyarrow version 23.0.0, mlxtend version 0.23.1, plotly version 5.19.0, and pgmpy version 0.1.25 (35).
+P76: The analysis code is publicly available at: https://github.com/jordieres/thrombophilia-risk-mining/
+P77: This study is reported in accordance with the TRIPOD statement for prediction model development and validation studies (36).
+P78: 
+P79: RESULTS
+P80: Study population
+P81: The full RIETE registry cohort included 119,449 patients with objectively confirmed VTE. Thrombophilia testing was performed in 22,874 patients, corresponding to 19.1% of the full cohort. Among tested patients, 8,345 had at least one positive thrombophilia result and 13,770 had a negative thrombophilia evaluation. 
+P82: Tested patients were younger than untested patients (mean age 55.2 vs 67.7 years; p<0.001) and had fewer comorbidities, including hypertension, diabetes, malignancy and immobilization. Active smoking and family history of VTE were more frequent among tested patients. The prevalence of previous DVT or PE was similar between tested and untested patients. Baseline characteristics of both cohorts are summarized in Table 1.
+P83: 
+P84: Variable
+P85: Tested patients (n=22,874)
+P86: Untested patients (n=96,575)
+P87: p-value
+P88: Demographics
+P89: 
+P90: 
+P91: 
+P92: Age, mean ± SD (years)
+P93: 55.2 ± 18.1
+P94: 67.7 ± 16.1
+P95: <0.001
+P96: Age, median [IQR] (years)
+P97: 69 [54–79]
+P98: 56 [41–70]
+P99: —
+P100: Female sex, n (%)
+P101: 10,781 (50.7%)
+P102: 48,463 (47.2%)
+P103: <0.001
+P104: Clinical factors
+P105: 
+P106: 
+P107: 
+P108: Hypertension, n (%)
+P109: 41,915 (36.5%)
+P110: 5,988 (27.1%)
+P111: <0.001
+P112: Diabetes, n (%)
+P113: 14,269 (12.4%)
+P114: 1,869 (8.5%)
+P115: <0.001
+P116: Active smoking, n (%)
+P117: 12,141 (10.6%)
+P118: 3,364 (15.2%)
+P119: <0.001
+P120: Malignancy, n (%)
+P121: 28,072 (24.5%)
+P122: 2,524 (11.4%)
+P123: <0.001
+P124: Immobilization, n (%)
+P125: 26,395 (23.0%)
+P126: 4,235 (19.1%)
+P127: <0.001
+P128: Prior DVT or PE, n (%)
+P129: 15,351 (13.4%)
+P130: 2,966 (13.4%)
+P131: 0.898
+P132: Family history of VTE, n (%)
+P133: 2,474 (2.2%)
+P134: 841 (3.8%)
+P135: <0.001
+P136: Table 1. Baseline characteristics of the full RIETE registry (Cohort A) and the thrombophilia-tested cohort (Cohort B). DVT: deep vein thrombosis; PE: pulmonary embolism; IQR: interquartile range; SD: standard deviation; VTE: venous thromboembolism. 
+P137: 
+P138: Characteristics of tested patients according to thrombophilia result
+P139: Among patients who underwent thrombophilia testing, those with a positive result were modestly younger than those with a negative result. Positive results were also more frequent in male patients. Patients with negative results had a higher prevalence of hypertension, diabetes, malignancy and immobilization. Active smoking and family history of VTE were more frequent among patients with positive results. Previous DVT or PE did not differ significantly between groups. Although several comparisons reached statistical significance, absolute differences were generally modest. Baseline characteristics by thrombophilia test result are presented in Table 2.
+P140: 
+P141: Variable
+P142: Positive result (n=8,345)
+P143: Negative result (n=13,770)
+P144: p-value
+P145: Demographics
+P146: 
+P147: 
+P148: 
+P149: Age, mean ± SD (years)
+P150: 53.5 ± 18.1
+P151: 56.2 ± 17.9
+P152: <0.001
+P153: Age, median [IQR] (years)
+P154: 54 [39–68]
+P155: 57 [42–71]
+P156: —
+P157: Female sex, n (%)
+P158: 3,736 (44.8%)
+P159: 6,709 (48.7%)
+P160: <0.001
+P161: Clinical factors
+P162: 
+P163: 
+P164: 
+P165: Hypertension, n (%)
+P166: 1,998 (23.9%)
+P167: 3,990 (29.0%)
+P168: <0.001
+P169: Diabetes, n (%)
+P170: 550 (6.6%)
+P171: 1,319 (9.6%)
+P172: <0.001
+P173: Active smoking, n (%)
+P174: 1,343 (16.1%)
+P175: 2,021 (14.7%)
+P176: 0.005
+P177: Malignancy, n (%)
+P178: 847 (10.1%)
+P179: 1,677 (12.2%)
+P180: <0.001
+P181: Immobilization, n (%)
+P182: 1,435 (17.2%)
+P183: 2,800 (20.3%)
+P184: <0.001
+P185: Prior DVT or PE, n (%)
+P186: 1,086 (13.0%)
+P187: 1,880 (13.7%)
+P188: 0.183
+P189: Family history of VTE, n (%)
+P190: 366 (4.4%)
+P191: 475 (3.4%)
+P192: <0.001
+P193: Table 2. Baseline characteristics of patients with positive and negative thrombophilia results within Cohort B (n=22,115). DVT: deep vein thrombosis; PE: pulmonary embolism; IQR: interquartile range; SD: standard deviation; VTE: venous thromboembolism.
+P194: 
+P195: Distribution of thrombophilic conditions within the tested cohort
+P196: Among the 8,345 patients with at least one positive thrombophilia result, the most frequently identified conditions were Factor V Leiden mutation (n=1,980; 23.7%), APS (n=1,908; 22.9% of positive results), and prothrombin G20210A mutation (n=1,559; 18.7%). Protein S deficiency (8.8%), protein C deficiency (4.1%), antithrombin deficiency (3.1%) and JAK2 mutation-associated thrombophilia (0.7%) were less frequent. Individual patients could have more than one thrombophilic condition; therefore, subtype counts are not mutually exclusive and may sum to more than the total number of patients with any positive result.
+P197: Detailed distribution can be found in Supplementary Table 2.
+P198: Thrombophilia testing across the full registry
+P199: Thrombophilia testing patterns differed significantly by sex across the full registry cohort (n=114,757; χ²=118.2, df=2, p<0.001). Overall, testing was performed in only 20.3% of male and 18.2% of female patients, confirming that the large majority of VTE patients do not undergo thrombophilia evaluation in routine clinical practice. Male patients were tested significantly more frequently than female patients (20.3% vs 18.2%, RR 1.12, 95% CI 1.09–1.15; absolute difference 2.2 percentage points; p<0.001). Among tested patients, the positive yield was higher in men than in women (39.5% vs 35.8%; OR 1.17, 95% CI 1.11–1.24; RR 1.10, 95% CI 1.07–1.14; absolute difference 3.7 percentage points; p<0.001). 
+P200: Association rule mining
+P201: The FP-Growth algorithm identified 4,805 association rules meeting the predefined support and confidence thresholds across the tested cohort (Cohort B, n=22,115). When restricted to rules predicting a negative thrombophilia result, consistent high-confidence clinical patterns emerged, characterizing patients unlikely to benefit from testing. Female sex combined with young or intermediate age (<70 years) and absence of a personal history of DVT or PE was associated with a negative result in more than 85% of patients with this profile. For instance, the combination of female sex, age below 50 years, and absence of prior DVT was associated with a negative result in 89.2% of patients with this profile, representing 1.4% of the tested cohort (n≈320). Normal hemoglobin, normal platelet count, and a negative D-dimer at presentation were additional frequent components of high-confidence negative rules. Selected high-confidence rules are presented in Table 3.
+P202: 
+P203: Clinical antecedent combination
+P204: Support
+P205: Confidence
+P206: Lift
+P207: Leverage 
+P208: Female AND Age <50 AND No prior DVT
+P209: 0.014
+P210: 0.892
+P211: 1.34
+P212: 0.004
+P213: Normal Hb AND Negative D-dimer AND No malignancy
+P214: 0.022
+P215: 0.875
+P216: 1.31
+P217: 0.005 
+P218: Female AND Age 50–69 AND No estrogen use
+P219: 0.018
+P220: 0.861
+P221: 1.29
+P222: 0.004
+P223: Normal platelets AND No immobilization AND No DVT
+P224: 0.035
+P225: 0.844 
+P226: 1.27
+P227: 0.007
+P228: Female AND No prior VTE AND Normal creatinine
+P229: 0.041
+P230: 0.829
+P231: 1.25
+P232: 0.008
+P233: Table 3. Selected high-confidence association rules predicting a negative thrombophilia result. DVT: deep vein thrombosis; Hb: hemoglobin; VTE: venous thromboembolism.
+P234: 
+P235: Composite thrombophilia prediction
+P236: The XGBoost model for the composite outcome, defined as any positive thrombophilia result versus a negative thrombophilia evaluation, showed limited discrimination. The AUC was 0.592. At the pre-specified threshold prioritizing 90% sensitivity, the model achieved a sensitivity of 90.0% and a specificity of 18.7%.
+P237: The automatic integer score was derived as a simplified benchmark model to evaluate whether routinely available clinical variables could be translated into a practical prediction tool for any thrombophilia (Table 4). The automatic score achieved an AUC of 0.553 (Supplementary Figure 1), compared to 0.592 for the full XGBoost model and 0.590 for the logistic regression benchmark, representing a modest reduction in discrimination in exchange for bedside applicability. Score distributions by outcome showed substantial overlap between patients with positive and negative results, with mean scores of 8.6 vs 7.8 points respectively (median 9 vs 8, interquartile ranges largely coincident), reflecting the modest overall discrimination. At the threshold of ≥3 points, the composite integer score achieved sensitivity 93.2%, specificity 9.4%, PPV 38.6%, and NPV 68.7%, avoiding 94 tests per 1,000 patients while missing 36 true positive cases per 1,000.
+P238: 
+P239: Variable
+P240: Points
+P241: Age <30 years
+P242: +2
+P243: Family history of VTE
+P244: +2
+P245: Proximal DVT
+P246: +2
+P247: WBC 8.9–9.7 ×10⁹/L
+P248: +1
+P249: PE + DVT at presentation
+P250: +1
+P251: Hemoglobin 15.8–20 g/dL
+P252: +1
+P253: DVT at presentation
+P254: +1
+P255: Age 31–38 years
+P256: +1
+P257: Male sex
+P258: +1
+P259: WBC 10.7–12.0 ×10⁹/L
+P260: +1
+P261: Recurrent VTE
+P262: +1
+P263: Prior cerebrovascular disease
+P264: +1
+P265: Table 4. Integer point components of the automatic clinical score. Higher total score indicates greater probability of a positive thrombophilia result. DVT: deep vein thrombosis; PE: pulmonary embolism; VTE: venous thromboembolism; WBC: white blood cell count.
+P266: 
+P267: Subtype-specific predictive modelling
+P268: Subtype-specific models showed substantially higher discrimination than the composite thrombophilia model for several individual thrombophilic conditions. The highest AUC values were observed for antiphospholipid syndrome, Factor V Leiden mutation and prothrombin G20210A mutation. More moderate discrimination was observed for protein S deficiency, protein C deficiency and antithrombin deficiency. The JAK2 model was considered descriptive because of the small number of positive cases. Performance metrics for all subtype models are summarized in Table 5. Score components are available in Supplementary Tables 3-7.
+P269: 
+P270: Model
+P271: n tested
+P272: n positive
+P273: AUC
+P274: Sens
+P275: Spec
+P276: PPV
+P277: NPV
+P278: Avoided/1k
+P279: Missed TP/1k
+P280: Composite XGBoost
+P281: 22,874
+P282: 8,345
+P283: 0.592
+P284: 90.0%
+P285: 18.7%
+P286: 40.2%
+P287: 75.5%
+P288: —
+P289: —
+P290: Composite integer score
+P291: 22,874
+P292: 8,345
+P293: 0.553
+P294: 93.2%
+P295: 9.4%
+P296: 38.4%
+P297: 69.5%
+P298: 94
+P299: 36
+P300: APS XGBoost (exploratory)
+P301: 10,710
+P302: 1,908
+P303: 0.865
+P304: 90.0%
+P305: 58.7%
+P306: 12.3%
+P307: 98.9%
+P308: —
+P309: —
+P310: APS integer score (exploratory)
+P311: 10,710
+P312: 1,908
+P313: 0.793
+P314: 90.5%
+P315: 47.2%
+P316: 10.0%
+P317: 98.7%
+P318: 471
+P319: 18
+P320: FVL XGBoost (primary)
+P321: 10,638
+P322: 2,048
+P323: 0.843
+P324: 90.1%
+P325: 61.0%
+P326: 13.7%
+P327: 98.9%
+P328: —
+P329: —
+P330: FVL integer score (primary)
+P331: 10,638
+P332: 2,048
+P333: 0.800
+P334: 94.2%
+P335: 40.7%
+P336: 9.9%
+P337: 99.0%
+P338: 384
+P339: 4
+P340: Prothrombin XGBoost (primary)
+P341: 10,376
+P342: 1,602
+P343: 0.829
+P344: 90.1%
+P345: 57.4%
+P346: 10.2%
+P347: 99.1%
+P348: —
+P349: —
+P350: Prothrombin integer score (primary)
+P351: 10,376
+P352: 1,602
+P353: 0.799
+P354: 94.0%
+P355: 39.1%
+P356: 7.6%
+P357: 99.2%
+P358: 374
+P359: 3
+P360: Protein S XGBoost (exploratory)
+P361: 10,315
+P362: 757
+P363: 0.800
+P364: 90.1%
+P365: 51.1%
+P366: 4.3%
+P367: 99.5%
+P368: —
+P369: —
+P370: Protein S integer score (exploratory)
+P371: 10,315
+P372: 757
+P373: 0.733
+P374: 91.8%
+P375: 28.3%
+P376: 3.0%
+P377: 99.3%
+P378: 278
+P379: 2
+P380: Protein C XGBoost (exploratory)
+P381: 10,275
+P382: 356
+P383: 0.768
+P384: 90.2%
+P385: 39.9%
+P386: 1.6%
+P387: 99.7%
+P388: —
+P389: —
+P390: Protein C integer score (exploratory)
+P391: 10,275
+P392: 356
+P393: 0.710
+P394: 95.0%
+P395: 22.5%
+P396: 1.3%
+P397: 99.8%
+P398: 223
+P399: <1
+P400: Antithrombin XGBoost (exploratory)
+P401: —
+P402: 260
+P403: 0.786
+P404: 90.3%
+P405: 45.1%
+P406: 1.4%
+P407: 99.8%
+P408: —
+P409: —
+P410: Antithrombin integer score (exploratory)
+P411: —
+P412: 260
+P413: 0.628
+P414: 94.8%
+P415: 9.1%
+P416: 0.9%
+P417: 99.5%
+P418: —
+P419: —
+P420: JAK2 XGBoost (descriptive)
+P421: —
+P422: 61
+P423: 0.800
+P424: —
+P425: —
+P426: —
+P427: —
+P428: —
+P429: —
+P430: 
+P431: Table 5. Comparative performance of composite and subtype-specific predictive models at the pre-specified 90% sensitivity threshold. JAK2 performance metrics not reported due to insufficient positive cases for reliable model development. APS: antiphospholipid syndrome; AUC: area under the receiver operating characteristic curve; FVL: Factor V Leiden; NPV: negative predictive value; PPV: positive predictive value.
+P432: 
+P433: Antiphospholipid syndrome 
+P434: The APS-specific XGBoost model achieved an AUC of 0.865, compared to 0.592 for the composite model. The simplified APS integer score achieved an AUC of 0.793. At the pre-specified sensitivity threshold (≥2 points), the APS integer score achieved a sensitivity of 90.5%, specificity of 47.2%, positive predictive value of 10.0% and negative predictive value of 98.7%. Patients scoring below this threshold had a low probability of APS in the internally validated cohort; external validation is required before using this score to defer APS testing.
+P435: Score distributions showed mean scores of 5.8 among APS-positive and 2.6 among APS-negative patients (median 6 vs 2).
+P436: 
+P437: Variable
+P438: Points
+P439: Hypertension
+P440: +4
+P441: Age <40 years
+P442: +4
+P443: Active smoking
+P444: +3
+P445: Estrogen treatment
+P446: +3
+P447: Age 40–53 years
+P448: +3
+P449: Caucasian ethnicity
+P450: +2
+P451: Age 53–62 years
+P452: +1
+P453: Platelet count 15–148 ×10⁹/L
+P454: +1
+P455: Hemoglobin 13.1–13.9 g/dL
+P456: +1
+P457: Proximal DVT
+P458: +1
+P459: Table 6. Integer point components of the APS-specific clinical score. Higher total score indicates greater probability of a positive APS result. Age categories are mutually exclusive; only the highest applicable age category should be scored. At a threshold of ≥2 points, the score achieves a sensitivity of 90.5% and a specificity of 47.2%, with a negative predictive value of 98.7%. APS: antiphospholipid syndrome; DVT: deep vein thrombosis.
+P460: Inherited thrombophilia subtypes
+P461: The Factor V Leiden-specific XGBoost model achieved an AUC of 0.843, and the simplified integer score achieved an AUC of 0.800. At the 90% sensitivity threshold, the XGBoost model achieved a specificity of 61.0%, with a negative predictive value of 98.9%.
+P462: The prothrombin G20210A-specific XGBoost model achieved an AUC of 0.829, and the simplified integer score achieved an AUC of 0.799. At the 90% sensitivity threshold, the XGBoost model achieved a specificity of 57.4%, with a negative predictive value of 99.1%.
+P463: For protein S deficiency, the XGBoost model achieved an AUC of 0.800, whereas the simplified integer score achieved an AUC of 0.733. For protein C deficiency, the corresponding AUCs were 0.768 and 0.710. For antithrombin deficiency, the XGBoost model achieved an AUC of 0.786, but the simplified integer score showed limited discrimination, with an AUC of 0.628 and specificity of 9.1% at the selected sensitivity threshold.
+P464: Overall, simplified integer scores preserved a substantial proportion of the discriminative performance of the XGBoost models for Factor V Leiden, prothrombin G20210A mutation and APS, but showed weaker performance for antithrombin deficiency and, to a lesser extent, protein C and protein S deficiency.
+P465: JAK2 mutation-associated thrombophilia
+P466: JAK2 mutation-associated thrombophilia was infrequent, with 61 positive cases. The JAK2-specific XGBoost model achieved an AUC of 0.800; however, because of the small number of positive cases, threshold-based performance metrics and clinical score derivation were not considered reliable. Platelet count in the high range and portal vein thrombosis emerged as the strongest predictors in the model. These findings are consistent with the clinical phenotype usually associated with myeloproliferative neoplasm-related thrombosis, but should be considered descriptive only.
+P467: Calibration and temporal validation
+P468: Calibration analyses showed heterogeneous agreement between predicted and observed risk. The APS automatic integer score demonstrated the best calibration (MACE 0.093). Calibration was poorer for the inherited thrombophilia integer scores (MACE: FVL 0.268, prothrombin G20210A 0.288, protein S 0.325, protein C 0.317), indicating that predicted probabilities should not be used for individual risk estimation without recalibration. Calibration plots are presented in Supplementary Figure X.
+P469: Temporal validation using patients diagnosed up to 2021 for development and those from 2022 onwards for holdout assessment showed preserved high sensitivity for FVL (100%) and prothrombin G20210A (94.8%) in the holdout period, with limited specificity (3.0% and 4.8% respectively). For APS, temporal validation revealed complete loss of specificity (0%) and NPV (0%) in the holdout period, indicating substantial temporal instability. Temporal validation results are summarized in Supplementary Table Y.
+P470: DISCUSSION
+P471: In this large RIETE registry analysis, thrombophilia testing after VTE was performed in fewer than one in five patients, confirming its selective use in routine clinical practice. Tested patients were younger and had fewer comorbidities than untested patients, but differences between patients with positive and negative results were modest. The main finding of this study is that routinely available clinical variables had limited ability to predict a composite positive thrombophilia result, even when using machine-learning methods. In contrast, subtype-specific models showed substantially better discrimination, particularly for APS, FVL, and prothrombin G20210A mutation. These results suggest that the poor performance of composite prediction may reflect the biological heterogeneity of thrombophilia rather than the complete absence of clinically useful predictive signals. 
+P472: Interpretation of testing patterns
+P473: Current guidelines recommend a selective approach to thrombophilia testing after VTE, because results often do not modify therapeutic management and inappropriate testing may increase costs, uncertainty, and patient anxiety (4–7,11–15). The clinical profile of patients selected for testing in RIETE was broadly consistent with this approach: tested patients were younger, less likely to have cancer or other comorbidities, and more likely to have a family history of VTE, in line with previous studies and guideline-based indications (3,5–7,17–20).
+P474: However, among tested patients, the differences between those with positive and negative results were small. Family history of VTE was more frequent among positive patients, but the absolute difference was modest, and previous DVT or PE did not distinguish positive from negative results. This may reflect the limited value of prior VTE when recorded as a simple binary variable, without information on whether previous events were provoked, unprovoked, estrogen-related, cancer-associated, recurrent at young age, or located at unusual sites. These findings reinforce the need for multivariable approaches rather than reliance on isolated clinical criteria.
+P475: Sex differences in testing and diagnostic yield were statistically significant but modest. Male patients were tested slightly more frequently and had a higher positive yield than female patients. This may reflect different clinical selection patterns, including testing prompted by female-specific transient risk factors such as estrogen exposure or pregnancy-related VTE (33,34). However, RIETE did not systematically record the clinical reason for testing; therefore, these findings should be interpreted as descriptive rather than as evidence supporting sex-specific testing strategies.
+P476: Composite versus subtype-specific prediction
+P477: The composite thrombophilia model performed poorly, with an XGBoost AUC of 0.592 and an integer-score AUC of 0.553. At the high-sensitivity threshold, the composite score had very low specificity and only modest negative predictive value. Therefore, the composite score should not be considered clinically useful as a stand-alone triage tool.
+P478: This negative result is nevertheless informative. Thrombophilia is frequently treated as a single diagnostic category, but it includes biologically distinct conditions, including deficiencies of natural anticoagulants, gain-of-function genetic variants, APS, and JAK2-associated thrombosis. These entities differ in epidemiology, mechanisms, clinical associations, and implications for management. A single composite outcome may therefore dilute disease-specific signals and obscure clinically meaningful predictors.
+P479: This interpretation is supported by the subtype-specific analyses. Discrimination improved substantially for APS, FVL, and prothrombin G20210A mutation. APS differs from inherited thrombophilia because it is an acquired autoimmune disorder diagnosed using both clinical and laboratory criteria (38,39). Its stronger predictive performance may reflect a more distinctive clinical phenotype, consistent with recent work suggesting that machine-learning approaches can help capture the complexity of APS-associated thrombosis (40–42). The FVL and prothrombin models also performed well, which is biologically plausible given the known population distribution of these variants (8,9).
+P480: Nevertheless, these models should be interpreted primarily as potential rule-out tools, not rule-in diagnostic instruments. Their positive predictive values were low, reflecting the low prevalence of individual thrombophilic conditions among tested patients. Their high negative predictive values are promising, but cannot justify withholding testing without external validation. Prediction was less consistent for protein C deficiency, protein S deficiency, and antithrombin deficiency, probably because of smaller event numbers, greater clinical heterogeneity, and loss of information when complex relationships are simplified into integer scores (43,44). JAK2 mutation-associated thrombophilia was rare and should be considered descriptive only; the association with high platelet count and splanchnic vein thrombosis is clinically plausible and consistent with the myeloproliferative phenotype of JAK2-associated VTE (45).
+P481: Clinical implications and limitations
+P482: These findings support a shift from composite thrombophilia prediction toward subtype-specific testing strategies. If externally validated, subtype-specific models could help identify patients with a low probability of specific thrombophilic disorders, potentially reducing unnecessary testing while maintaining high sensitivity. However, the present models are not ready for clinical implementation. The most appropriate clinical application is within a planned thrombophilia workup: subtype-specific scores could guide which individual assays to prioritize or defer within an already-indicated evaluation, rather than serving as gatekeepers to testing itself. It is equally important to note that a positive thrombophilia result does not automatically change anticoagulation management in all cases. Future implementation studies should therefore evaluate these scores specifically in clinical scenarios where thrombophilia testing results demonstrably affect management decisions.
+P483: Several limitations are important. First, all models were internally validated only. Cross-validation reduces overfitting but does not replace validation in independent cohorts. Internal-external validation leaving out complete centres or countries was not feasible because centre and country identifiers were not available in the analytical dataset; this validation approach is identified as a priority for future work. Second, thrombophilia testing in RIETE was clinician-driven rather than protocolized, so the tested cohort is subject to indication bias. The models may therefore capture both biological associations and real-world testing behavior. Third, anticoagulation status at the time of testing was not recorded; functional assay results for natural anticoagulant deficiencies may therefore be affected by concurrent anticoagulant treatment. Fourth, testing panels and laboratory methods were not necessarily standardized across centers. This is particularly relevant for functional assays such as protein C, protein S, and antithrombin. Fifth, D-dimer could not be quantitatively harmonized because of variability in assays and reporting units, and was therefore used only as a categorical variable (25-27). Sixth, the APS outcome in RIETE is based on a single positive result without confirmed persistence, and should be interpreted as exploratory accordingly; the APS temporal validation revealed complete loss of specificity in the 2022–2024 holdout period, suggesting substantial temporal instability that further limits its clinical applicability before external validation. Finally, ethnicity emerged as a predictor in some inherited thrombophilia models. Although this is epidemiologically plausible for FVL and prothrombin G20210A mutation (8,9), any model including ethnicity requires careful validation in diverse populations to avoid poor calibration or inequitable performance (43). 
+P484: Future studies should prioritize external validation of the APS, FVL, and prothrombin G20210A models, including calibration, clinical net benefit, and performance across different healthcare systems and populations. Prospective implementation studies will be needed to determine whether subtype-specific prediction can safely improve thrombophilia testing efficiency and diagnostic yield. Incorporating standardized coagulation assays, genetic information, and inflammatory biomarkers may further improve future prediction models (22,23,46).
+P485: CONCLUSION
+P486: In this large RIETE registry analysis, thrombophilia testing was performed in a minority of patients with VTE. Routinely available clinical variables showed limited ability to predict a composite positive thrombophilia result, even using machine-learning methods. However, prediction improved substantially when thrombophilic disorders were modelled separately, particularly for APS, FVL, and prothrombin G20210A mutation.
+P487: These findings suggest that future strategies to guide thrombophilia testing should move away from composite thrombophilia prediction and toward subtype-specific approaches. The proposed models should be considered exploratory and hypothesis-generating until externally validated and prospectively assessed in clinical practice.
+P488: 
+P489: 
+P490: 
+P491: 
+P492: 
+P493: REFERENCES
+P494: 1.Kearon C, Ageno W, Cannegieter SC, Cosmi B, Geersing GJ, Kyrle PA. Categorization of patients as having provoked or unprovoked venous thromboembolism: Guidance from the SSC of ISTH. J Thromb Haemost. 2016;14(7):1480–3. doi:10.1111/jth.13336
+P495: 2.Khan F, Tritschler T, Kahn SR, Rodger MA. Venous thromboembolism. The Lancet. 2021;398(10294):64–77. doi:10.1016/S0140-6736(20)32658-1
+P496: 3.Cohen O, Waldman Radinsky L, Kenet G, et al. Venous thromboembolism characteristics and outcomes among RIETE patients tested and untested for inherited thrombophilia. Blood Adv. 2024,24;8(18):4950–9. doi:10.1182/bloodadvances.2024012611
+P497: 4.Connors JM. Thrombophilia Testing and Venous Thrombosis. N Engl J Med. 2017,21;377(12):1177–87. doi:10.1056/NEJMra1700365
+P498: 5.Rees DC, Cox M, Clegg JB. World distribution of factor V Leiden. The Lancet. 1995;346(8983):1133–4. doi:10.1016/S0140-6736(95)91803-5 
+P499: 6.Poort SR, Rosendaal FR, Reitsma PH, Bertina RM. A common genetic variation in the 3’-untranslated region of the prothrombin gene is associated with elevated plasma prothrombin levels and an increase in venous thrombosis. Blood. 1996;88(10):3698–703. doi:10.1182/blood.V88.10.3698.bloodjournal88103698 
+P500: 7.Abughanimeh OK, Marar RI, Tahboub M, et al. Hereditary Thrombophilia Testing Among Hospitalized Patients: Is It Warranted? Cureus. 2022,9; 14(5):e24855. doi:10.7759/cureus.24855
+P501: 8.Middeldorp S, Nieuwlaat R, Baumann Kreuziger L, et al. American Society of Hematology 2023 guidelines for management of venous thromboembolism: thrombophilia testing. Blood Adv. 2023;7(22):7101–38. doi:10.1182/bloodadvances.2023010177 
+P502: 9.Baglin T, Gray E, Greaves M, et al. Clinical guidelines for testing for heritable thrombophilia. Br J Haematol. 2010,22;149(2):209–20. doi:10.1111/j.1365-2141.2009.08022.x
+P503: 10.Roldan V, Lecumberri R, Muñoz-Torrero JFS, et al. Thrombophilia testing in patients with venous thromboembolism. Findings from the RIETE registry. Thromb Res. 2009;124(2):174–7. doi:10.1016/j.thromres.2008.11.003
+P504: 11.Moll S. Thrombophilia: clinical-practical aspects. J Thromb Thrombolysis. 2015;39(3):367–78. doi:10.1007/s11239-015-1197-3 
+P505: 12.Petrilli CM, Heidemann L, Mack M, Durance P, Chopra V. Inpatient inherited thrombophilia testing. J Hosp Med. 2016 Nov 26;11(11):801–4. doi:10.1002/jhm.2616
+P506: 13.Favaloro EJ, Soltani S, McDonald J, Grezchik E, Easton L. Laboratory Identification of Familial Thrombophilia: Do the Pitfalls Exceed the Benefits? A Reassessment of ABO-Blood Group, Gender,Age, and other Laboratory Parameters on the Potential Influence on a Diagnosis of Protein C, Protein S, and Antithromb. Laboratory Hematology. 2005,1;11(3):174–84. doi:10.1532/LH96.05029
+P507: 14.Moran J, Bauer KA. Managing thromboembolic risk in patients with hereditary and acquired thrombophilias. Blood. 2020,30;135(5):344–50. doi:10.1182/blood.2019000917
+P508: 15.Lynch JA, Berse B, Bowen MS, Grosse SD. In Reference to: “Cost and Utility of Thrombophilia Testing.” J Hosp Med. 2017;12(9):783–783. doi:10.12788/jhm.2818
+P509: 16.Hirmerova J, Seidlerova J, Subrt I, Slechtova J. Thrombophilia testing results in patients with a first venous thromboembolic event: should the selection criteria for testing be revisited? Intl Angiol. 2017;36(2):167-173. doi:10.23736/S0392-9590.16.03679-8
+P510: 17.Christiansen SC. Thrombophilia, Clinical Factors, and Recurrent Venous Thrombotic Events. JAMA. 2005,18;293(19):2352. doi:10.1001/jama.293.19.2352
+P511: 18.Henry-Bonniot G, Côté B, Yannoutsos A, Emmerich J. Consistency of thrombophilia testing in a reference center according to the current guidelines. J Med Vasc. 2020;45(3):125–9. doi:10.1016/j.jdmv.2020.03.007
+P512: 19.Shen YM, Tsai J, Taiwo E, et al. Analysis of Thrombophilia Test Ordering Practices at an Academic Center: A Proposal for Appropriate Testing to Reduce Harm and Cost. PLoS One. 2016,13;11(5):e0155326. doi:10.1371/journal.pone.0155326
+P513: 20.Meyer MR, Witt DM, Delate T, Johnson SG, Fang M, Go A, et al. Thrombophilia testing patterns amongst patients with acute venous thromboembolism. Thromb Res. 2015;136(6):1160–4. doi:10.1016/j.thromres.2015.10.019
+P514: 21.Monreal M, Kakkar AK, Caprini JA, Barba R, Uresandi F, Valle R. The outcome after treatment of venous thromboembolism is different in surgical and acutely ill medical patients. Findings from the RIETE registry. J Thromb Haemost. 2004;2(11):1892–8. doi:10.1111/j.1538-7836.2004.00931.x 
+P515: 22.Kvale HA, Brekke PH, Grimsmo A, Helland IS, Opdahl A, Pedersen TR. Machine learning approaches in venous thromboembolism risk prediction: a systematic review. J Thromb Haemost. 2024;22(4):1020–33. doi:10.1016/j.jtha.2023.12.036
+P516: 23.Ge W jing, Zhu T fei, Ge W jie, Zhu X yi, Chu A qin. Systematic review of a machine learning model for prediction of venous thromboembolism risk. Thromb Res. 2025 Dec;256:109507. doi:10.1016/j.thromres.2025.109507
+P517: 24.Kapoor S, Narayanan A. Leakage and the reproducibility crisis in machine-learning-based science. Patterns. 2023;4(9):100804. doi:10.1016/j.patter.2023.100804
+P518: 25.Righini M, Van Es J, Den Exter PL, et al. Age-Adjusted D-Dimer Cutoff Levels to Rule Out Pulmonary Embolism: The ADJUST-PE Study. JAMA. 2014;311(11):1117–24. doi:10.1001/jama.2014.2135 
+P519: 26.Righini M, Perrier A, De Moerloose P, Bounameaux H. D-Dimer for venous thromboembolism diagnosis: 20 years later. J Thromb Haemost. 2008;6(7):1059–71. doi:10.1111/j.1538-7836.2008.02981.x
+P520: 27.Ordieres-Ortega L, Demelo-Rodríguez P, Galeano-Valle F, Kremers BMM, ten Cate-Hoek AJ, ten Cate H. Predictive value of D-dimer testing for the diagnosis of venous thrombosis in unusual locations: A systematic review. Thromb Res. 2020 May;189:5–12. doi:10.1016/j.thromres.2020.02.009
+P521: 28.Han J, Pei J, Yin Y. Mining frequent patterns without candidate generation. In: Proceedings of the 2000 ACM SIGMOD International Conference on Management of Data. ACM; 2000. p. 1–12. doi:10.1145/342009.335372
+P522: 29.Shekar BH, Dagnew G. Association rule mining from medical data — a review. Int J Comput Appl. 2017;173(5):41–9. doi:10.5120/ijca2017915238
+P523: 30.Chen T, Guestrin C. XGBoost: A Scalable Tree Boosting System. In: Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining. ACM; 2016. p. 785–94. doi:10.1145/2939672.2939785
+P524: 31.Tibshirani R. Regression Shrinkage and Selection Via the Lasso. J R Stat Soc Series B Stat Methodol. 1996;58(1):267–88. doi:10.1111/j.2517-6161.1996.tb02080.x
+P525: 32.Wells PS, Hirsh J, Anderson DR, Lensing AW, Foster G, Kearon C. Accuracy of clinical assessment of deep-vein thrombosis. The Lancet. 1995;345(8961):1326–30. doi:10.1016/S0140-6736(95)92535-X 
+P526: 33.Le Gal G, Righini M, Roy PM, et al. Prediction of Pulmonary Embolism in the Emergency Department: The Revised Geneva Score. Ann Intern Med. 2006;144(3):165–71. doi:10.7326/0003-4819-144-3-200602070-00004 
+P527: 34.Jimenez D, Aujesky D, Moores L, et al. Simplification of the pulmonary embolism severity index for prognostication in patients with acute symptomatic pulmonary embolism. Arch Intern Med. 2010;170(15):1383–9. doi:10.1001/archinternmed.2010.199 
+P528: 35.Ankan A, Panda A. pgmpy: Probabilistic Graphical Models using Python. In. 2015. p. 6–11. doi:10.25080/Majora-7b98e3ed-001
+P529: 36.Collins GS, Reitsma JB, Altman DG, Moons KGM. Transparent Reporting of a Multivariable Prediction Model for Individual Prognosis or Diagnosis (TRIPOD): The TRIPOD Statement. Ann Intern Med. 2015;162(1):55–63. doi:10.7326/M14-0697 PubMed PMID: 25560714.
+P530: 37.Cordeanu EM, Mirea C, Zamperini C, Brouder S, Stephan D. Thrombophilia testing in venous thromboembolism: When, who and why it matters. A practical review. Arch Cardiovasc Dis. 2026. In Press. doi:10.1016/j.acvd.2026.04.004
+P531: 38.Miyakis S, Lockshin MD, Atsumi T, Branch DW, Brey RL, Cervera R. International consensus statement on an update of the classification criteria for definite antiphospholipid syndrome (APS). J Thromb Haemost. 2006;4(2):295–306. doi:10.1111/j.1538-7836.2006.01753.x 
+P532: 39.Yin Y, Ma T, Zhang X, Chi X, Zhu K, Ling J. Systematic review and network meta-analysis of performance of the Sapporo criteria, the revised Sapporo criteria, and the 2023 ACR/EULAR APS classification criteria for patients with antiphospholipid syndrome. Front Immunol. 2026,11;17:1812710.. doi:10.3389/fimmu.2026.1812710
+P533: 40.Mathur A, Cox C, Banerjee S, et al. Prevalence and outcomes of antiphospholipid syndrome after unprovoked venous thromboembolism: a multicenter real-world data analysis. J Thromb Haemost. 2026. In Press. doi:10.1016/j.jtha.2026.04.036
+P534: 41.Marco-Rico A, Fernández-Bello I, Mateo-Sotos J, Marco-Vera P. Machine learning for predicting thrombotic recurrence in antiphospholipid syndrome. Res Pract Thromb Haemost. 2025;9(7):103198. doi:10.1016/j.rpth.2025.103198
+P535: 42.Gutierrez-Rosas LE, Martínez-Sánchez FD. Artificial intelligence in antiphospholipid syndrome: toward individualized risk prediction. Res Pract Thromb Haemost. 2025;9(7):103213. doi:10.1016/j.rpth.2025.103213
+P536: 43.Na M, Kim J. Characteristics of Protein S in Koreans by Age and Gender: a Retrospective Analysis based on Results from Korean Referral Laboratories. Clin Lab. 2025;71(12/2025). doi:10.7754/Clin.Lab.2025.250451
+P537: 44.Konstantinides S, Geibel A, Olschewski M, et al. Importance of Cardiac Troponins I and T in Risk Stratification of Patients With Acute Pulmonary Embolism. Circulation. 2002,3;106(10):1263–8. doi:10.1161/01.CIR.0000028422.51668.A2
+P538: 45.Dentali F, Squizzato A, Brivio L, et al. JAK2V617F mutation for the early diagnosis of Ph− myeloproliferative neoplasms in patients with venous thromboembolism: a meta-analysis. Blood. 2009,28;113(22):5617–23. doi:10.1182/blood-2008-12-196014
+P539: 46.Sanchez-Martinez S, Camara O, Piella G, et al. Machine Learning for Clinical Decision-Making: Challenges and Opportunities in Cardiovascular Imaging. Front Cardiovasc Med. 2022.4:8:765693.  doi:10.3389/fcvm.2021.765693
+P540: 

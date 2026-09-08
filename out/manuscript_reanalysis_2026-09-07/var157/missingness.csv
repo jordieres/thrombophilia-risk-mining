@@ -1,0 +1,64 @@
+group,variable,label,n,source_null_n,missing_n,missing_pct,not_performed_n
+Prothrombin G20210A,sexo,Sex,10356,0,0,0.0,0
+Prothrombin G20210A,raza,Recorded ethnicity,10356,7550,7550,72.90459636925453,0
+Prothrombin G20210A,ant_inf,Prior myocardial ischemia,10356,4932,4932,47.62456546929316,0
+Prothrombin G20210A,ant_isq,Prior cerebral ischemia,10356,4945,4945,47.7500965623793,0
+Prothrombin G20210A,ant_clau,Peripheral arterial disease,10356,4954,4954,47.83700270374662,0
+Prothrombin G20210A,fum_act,Current smoking,10356,5020,5020,48.47431440710699,0
+Prothrombin G20210A,diabetes,Diabetes,10356,4905,4905,47.36384704519119,0
+Prothrombin G20210A,hip_art,Hypertension,10356,4800,4800,46.349942062572424,0
+Prothrombin G20210A,insf_car,Heart failure,10356,18,18,0.17381228273464658,0
+Prothrombin G20210A,fibr_aur,Atrial fibrillation,10356,7259,7259,70.09463113171108,0
+Prothrombin G20210A,trat_est,Statin treatment,10356,4977,4977,48.05909617612978,0
+Prothrombin G20210A,e_con_pp,Chronic lung disease,10356,0,0,0.0,0
+Prothrombin G20210A,e_con_cu,Ulcerative colitis,10356,0,0,0.0,0
+Prothrombin G20210A,e_con_ec,Crohn disease,10356,0,0,0.0,0
+Prothrombin G20210A,e_con_lu,Known lupus,10356,0,0,0.0,0
+Prothrombin G20210A,e_con_be,Behcet disease,10356,0,0,0.0,0
+Prothrombin G20210A,e_con_at,Temporal arteritis,10356,0,0,0.0,0
+Prothrombin G20210A,e_con_va,Other vasculitis,10356,0,0,0.0,0
+Prothrombin G20210A,e_con_ar,Rheumatoid arthritis,10356,0,0,0.0,0
+Prothrombin G20210A,e_con_ea,Ankylosing spondylitis,10356,0,0,0.0,0
+Prothrombin G20210A,e_con_pr,Polymyalgia rheumatica,10356,0,0,0.0,0
+Prothrombin G20210A,e_con_ro,Rendu-Osler disease,10356,0,0,0.0,0
+Prothrombin G20210A,e_con_av,Vena cava agenesis,10356,0,0,0.0,0
+Prothrombin G20210A,e_con_sm,May-Thurner syndrome,10356,0,0,0.0,0
+Prothrombin G20210A,sin_tvp_,Index VTE presentation,10356,0,0,0.0,0
+Prothrombin G20210A,var171,Syncope,10356,323,323,3.118964851293936,0
+Prothrombin G20210A,tv_l_esu,Upper-extremity thrombosis,10356,7333,7333,70.80919273850907,0
+Prothrombin G20210A,tvp_orig,Upper-extremity catheter relationship,10356,9968,9968,96.2533796832754,0
+Prothrombin G20210A,tv_l_ein,Lower-extremity thrombosis,10356,2631,2631,25.40556199304751,0
+Prothrombin G20210A,tvp_prox,DVT proximal/distal location,10356,3359,3359,32.435303205870994,0
+Prothrombin G20210A,tv_l_svc,Cerebral sinus thrombosis,10356,7923,7923,76.5063731170336,0
+Prothrombin G20210A,tv_l_vre,Retinal vein thrombosis,10356,8169,8169,78.88180764774044,0
+Prothrombin G20210A,tv_l_vrn,Renal vein thrombosis,10356,8152,8152,78.7176516029355,0
+Prothrombin G20210A,tv_l_vca,Vena cava thrombosis,10356,9229,9229,89.11741985322519,0
+Prothrombin G20210A,tv_l_yug,Jugular vein thrombosis,10356,9271,9271,89.52298184627269,0
+Prothrombin G20210A,tv_l_ova,Ovarian vein thrombosis,10356,9273,9273,89.5422943221321,0
+Prothrombin G20210A,tv_l_sup,Suprahepatic vein thrombosis,10356,9270,9270,89.51332560834298,0
+Prothrombin G20210A,tv_l_pul,Pulmonary vein thrombosis,10356,9271,9271,89.52298184627269,0
+Prothrombin G20210A,tv_l_ove,Other vein thrombosis,10356,8164,8164,78.83352645809192,0
+Prothrombin G20210A,fr_cance,Active cancer,10356,0,0,0.0,0
+Prothrombin G20210A,fr_cirug,Recent surgery,10356,0,0,0.0,0
+Prothrombin G20210A,fr_inmov,Recent immobilization,10356,0,0,0.0,0
+Prothrombin G20210A,fr_tvp_a,Prior VTE,10356,0,0,0.0,0
+Prothrombin G20210A,fr_antfa,Family history of VTE,10356,8453,8453,81.62417921977597,0
+Prothrombin G20210A,fr_tvs_a,Prior superficial thrombosis,10356,7478,7478,72.20934723831596,0
+Prothrombin G20210A,fr_viaje,Recent prolonged travel,10356,187,187,1.8057164928543838,0
+Prothrombin G20210A,fr_estro,Recent hormone exposure,10356,124,124,1.197373503283121,0
+Prothrombin G20210A,fr_embar,Pregnancy,10356,0,0,0.0,0
+Prothrombin G20210A,fr_varic,Varicose veins,10356,252,252,2.4333719582850524,0
+Prothrombin G20210A,fr_antec,Recent delivery,10356,48,48,0.4634994206257242,0
+Prothrombin G20210A,ana_dime,Recorded categorical D-dimer,10356,490,490,4.7315565855542685,2442
+Prothrombin G20210A,ana_crea,Recorded creatinine category,10356,285,285,2.7520278099652375,0
+Prothrombin G20210A,ana_trop,Recorded troponin category,10356,7430,7430,71.74584781769022,0
+Prothrombin G20210A,edad,Age (years),10356,0,0,0.0,0
+Prothrombin G20210A,peso,Weight (kg),10356,0,2,0.019312475859405175,0
+Prothrombin G20210A,tension_,Systolic BP (mmHg),10356,0,456,4.40324449594438,0
+Prothrombin G20210A,ana_hemo,Hemoglobin (g/dL),10356,10,12,0.11587485515643105,0
+Prothrombin G20210A,ana_plaq,Platelets (10^9/L),10356,12,12,0.11587485515643105,0
+Prothrombin G20210A,ana_leuc,Leukocytes (10^9/L),10356,10,40,0.3862495171881035,0
+Prothrombin G20210A,ana_neu,Neutrophils (10^9/L),10356,9312,9313,89.9285438393202,0
+Prothrombin G20210A,protcrea,C-reactive protein (mg/dL),10356,10219,10220,98.68675164156045,0
+Prothrombin G20210A,female_under45,Female and age <45,10356,0,0,0.0,0
+Prothrombin G20210A,splanchnic,Splanchnic thrombosis,10356,7889,7889,76.17806102742371,0

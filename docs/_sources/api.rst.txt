@@ -64,3 +64,18 @@ Experiments
    :members:
    :undoc-members:
    :show-inheritance:
+
+Manuscript reanalysis
+---------------------
+
+.. automodule:: manuscript_cohort
+   :members:
+
+.. automodule:: manuscript_models
+   :members:
+
+.. automodule:: manuscript_reanalysis
+   :members:
+
+.. automodule:: manuscript_reporting
+   :members:

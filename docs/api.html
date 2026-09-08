@@ -1,38 +1,243 @@
-<!DOCTYPE html>
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html"><link rel="search" title="Search" href="search.html"><link rel="next" title="Development and verification" href="development.html"><link rel="prev" title="Architecture" href="architecture.html">
 
-<html lang="en" data-content_root="./">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Generated with Sphinx 7.4.7 and Furo 2025.12.19 -->
+        <title>API Reference - Thrombophilia Risk Mining 0.3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
 
-    <title>API Reference &#8212; Thrombophilia Risk Mining 0.1.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=6625fa76" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=cb25574f" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
-    <script src="_static/documentation_options.js?v=01f34227"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Development" href="development.html" />
-    <link rel="prev" title="Architecture" href="architecture.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  </head><body>
-  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          
 
-          <div class="body" role="main">
-            
-  <section id="api-reference">
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+
+      }
+    }
+  }
+</style></head>
+  <body>
+
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Thrombophilia Risk Mining 0.3.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+
+  <span class="sidebar-brand-text">Thrombophilia Risk Mining 0.3.0 documentation</span>
+
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="manuscript_reanalysis.html">Manuscript reanalysis: user and technical manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development and verification</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/api.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="api-reference">
 <h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">¶</a></h1>
 <section id="module-cli">
 <span id="cli-entry-points"></span><h2>CLI entry points<a class="headerlink" href="#module-cli" title="Link to this heading">¶</a></h2>
@@ -50,9 +255,9 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>DataFrame</em>) – </p></li>
-<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>) – </p></li>
-<li><p><strong>output_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>) – </p></li>
+<li><p><strong>data</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
+<li><p><strong>output_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -67,7 +272,7 @@
 <dd><p>Builds only the experiment objects required for the current CLI request.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>selected_experiment</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – </p>
+<dd class="field-odd"><p><strong>selected_experiment</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a>]</p>
@@ -103,7 +308,7 @@ transitions between compressed Parquet and standard Excel spreadsheets while est
 defensive imputation layers to handle clinical missingness metrics cleanly.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – </p>
+<dd class="field-odd"><p><strong>file_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -169,7 +374,7 @@ interactive Plotly figure.</p>
 execution contract to ensure seamless integration into the CLI pipeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – </p>
+<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
 </dd>
 </dl>
 <dl class="py method">
@@ -255,8 +460,8 @@ inside each validation fold.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>DataFrame</em>) – </p></li>
-<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>) – </p></li>
+<li><p><strong>data</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -286,8 +491,8 @@ clinical datasets.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>DataFrame</em>) – </p></li>
-<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>) – </p></li>
+<li><p><strong>data</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -316,8 +521,8 @@ and then produces a two-dimensional UMAP embedding for visualization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>DataFrame</em>) – </p></li>
-<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>) – </p></li>
+<li><p><strong>data</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -346,8 +551,8 @@ interactive heatmap for exploratory review.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>DataFrame</em>) – </p></li>
-<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>) – </p></li>
+<li><p><strong>data</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -375,8 +580,8 @@ allowing exploratory analysis beyond a single target outcome.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>DataFrame</em>) – </p></li>
-<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>) – </p></li>
+<li><p><strong>data</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -405,8 +610,8 @@ require a full graphical-model dependency to generate the exported summary.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>DataFrame</em>) – </p></li>
-<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>) – </p></li>
+<li><p><strong>data</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -417,7 +622,11 @@ require a full graphical-model dependency to generate the exported summary.</p>
 
 </dd></dl>
 
-<p id="module-exp_clinical_risk_score">Clinical risk-score experiment implementation.</p>
+<p id="module-exp_clinical_risk_score">Historical exploratory clinical score implementation.</p>
+<p>This generic experiment is NOT the corrected manuscript analysis: it does not
+enforce the manuscript cohort, predictor allowlist, nested tuning or temporal
+contracts. Use manuscript_reanalysis.py for paper results. Historical outputs
+must not be presented as validated pre-test triage performance.</p>
 <p>This module supports two feature-selection strategies for a bedside-oriented
 clinical score:</p>
 <ul class="simple">
@@ -434,20 +643,20 @@ level for direct comparison.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – </p></li>
-<li><p><strong>score_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – </p></li>
-<li><p><strong>y_true</strong> (<em>ndarray</em>) – </p></li>
-<li><p><strong>scores</strong> (<em>ndarray</em>) – </p></li>
-<li><p><strong>probabilities</strong> (<em>ndarray</em>) – </p></li>
-<li><p><strong>auc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – </p></li>
-<li><p><strong>fpr</strong> (<em>ndarray</em>) – </p></li>
-<li><p><strong>tpr</strong> (<em>ndarray</em>) – </p></li>
-<li><p><strong>thresholds</strong> (<em>ndarray</em>) – </p></li>
-<li><p><strong>selected_threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – </p></li>
-<li><p><strong>sensitivity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – </p></li>
-<li><p><strong>specificity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – </p></li>
-<li><p><strong>threshold_method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – </p></li>
-<li><p><strong>positive_if_score_at_most</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – </p></li>
+<li><p><strong>model_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>score_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>y_true</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>scores</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>probabilities</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>auc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>fpr</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>tpr</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>thresholds</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>selected_threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>sensitivity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>specificity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>threshold_method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>positive_if_score_at_most</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -531,12 +740,12 @@ level for direct comparison.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>strategy_key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – </p></li>
-<li><p><strong>strategy_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – </p></li>
-<li><p><strong>evaluation</strong> (<a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation" title="exp_clinical_risk_score.ModelEvaluation"><em>ModelEvaluation</em></a>) – </p></li>
-<li><p><strong>points_table</strong> (<em>DataFrame</em>) – </p></li>
-<li><p><strong>patient_scores_df</strong> (<em>DataFrame</em>) – </p></li>
-<li><p><strong>score_summary</strong> (<em>DataFrame</em>) – </p></li>
+<li><p><strong>strategy_key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>strategy_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>evaluation</strong> (<a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation" title="exp_clinical_risk_score.ModelEvaluation"><em>ModelEvaluation</em></a>)</p></li>
+<li><p><strong>points_table</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>patient_scores_df</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>score_summary</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -557,17 +766,17 @@ level for direct comparison.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="exp_clinical_risk_score.StrategyResult.points_table">
-<span class="sig-name descname"><span class="pre">points_table</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><a class="headerlink" href="#exp_clinical_risk_score.StrategyResult.points_table" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">points_table</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><span class="pre">DataFrame</span></a></em><a class="headerlink" href="#exp_clinical_risk_score.StrategyResult.points_table" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="exp_clinical_risk_score.StrategyResult.patient_scores_df">
-<span class="sig-name descname"><span class="pre">patient_scores_df</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><a class="headerlink" href="#exp_clinical_risk_score.StrategyResult.patient_scores_df" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">patient_scores_df</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><span class="pre">DataFrame</span></a></em><a class="headerlink" href="#exp_clinical_risk_score.StrategyResult.patient_scores_df" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="exp_clinical_risk_score.StrategyResult.score_summary">
-<span class="sig-name descname"><span class="pre">score_summary</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DataFrame</span></em><a class="headerlink" href="#exp_clinical_risk_score.StrategyResult.score_summary" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">score_summary</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><span class="pre">DataFrame</span></a></em><a class="headerlink" href="#exp_clinical_risk_score.StrategyResult.score_summary" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -591,8 +800,8 @@ level for direct comparison.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>DataFrame</em>) – </p></li>
-<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>) – </p></li>
+<li><p><strong>data</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -611,7 +820,7 @@ or was not requested, producing a review-oriented ranking.</p>
 <dt class="sig sig-object py" id="exp_score_screening.ClinicalScoreScreeningExperiment">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">exp_score_screening.</span></span><span class="sig-name descname"><span class="pre">ClinicalScoreScreeningExperiment</span></span><a class="reference internal" href="_modules/exp_score_screening.html#ClinicalScoreScreeningExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#exp_score_screening.ClinicalScoreScreeningExperiment" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#exp_clinical_risk_score.ClinicalRiskScoreExperiment" title="exp_clinical_risk_score.ClinicalRiskScoreExperiment"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClinicalRiskScoreExperiment</span></code></a></p>
-<p>Study 8: Apply the validated clinical score to unstudied or missing cases.</p>
+<p>Study 8: Historical exploratory ranking of unstudied or missing cases.</p>
 <dl class="field-list simple">
 </dl>
 <dl class="py method">
@@ -621,8 +830,8 @@ or was not requested, producing a review-oriented ranking.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> (<em>DataFrame</em>) – </p></li>
-<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>) – </p></li>
+<li><p><strong>data</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><em>Dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><em>Any</em></a><em>]</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -634,84 +843,1053 @@ or was not requested, producing a review-oriented ranking.</p>
 </dd></dl>
 
 </section>
+<section id="module-manuscript_cohort">
+<span id="manuscript-reanalysis"></span><h2>Manuscript reanalysis<a class="headerlink" href="#module-manuscript_cohort" title="Link to this heading">¶</a></h2>
+<p>Explicit pre-test cohort and feature contracts for the manuscript reanalysis.</p>
+<p>Unlike the exploratory processor, this module never imputes an unrecorded test
+as negative or an unrecorded history as absent. Numeric quality failures become
+missing values, not silent patient exclusions. All transformations are fixed
+clinical definitions; no quantile or outcome-dependent cut-point is learned.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="manuscript_cohort.Outcome">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">manuscript_cohort.</span></span><span class="sig-name descname"><span class="pre">Outcome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">positive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Sí'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'exploratory'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_cohort.html#Outcome"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_cohort.Outcome" title="Link to this definition">¶</a></dt>
+<dd><p>Registry field, display name, positive label, and reporting priority.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>column</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>positive</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>priority</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_cohort.load_registry">
+<span class="sig-prename descclassname"><span class="pre">manuscript_cohort.</span></span><span class="sig-name descname"><span class="pre">load_registry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_cohort.html#load_registry"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_cohort.load_registry" title="Link to this definition">¶</a></dt>
+<dd><p>Read raw Parquet and reject duplicate/missing IDs and absent cohort fields.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_cohort.text_values">
+<span class="sig-prename descclassname"><span class="pre">manuscript_cohort.</span></span><span class="sig-name descname"><span class="pre">text_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">series</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_cohort.html#text_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_cohort.text_values" title="Link to this definition">¶</a></dt>
+<dd><p>Normalize recorded category spellings without filling absent observations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>series</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v3.0.5)"><em>Series</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v3.0.5)"><em>Series</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_cohort.prepare_features">
+<span class="sig-prename descclassname"><span class="pre">manuscript_cohort.</span></span><span class="sig-name descname"><span class="pre">prepare_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_cohort.html#prepare_features"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_cohort.prepare_features" title="Link to this definition">¶</a></dt>
+<dd><p>Return categorical pre-test features and a field-level quality audit.</p>
+<p>Missing history stays missing. <code class="docutils literal notranslate"><span class="pre">Not</span> <span class="pre">performed</span></code> D-dimer is an observed
+category, distinct from unknown. Out-of-range numeric measurements are set
+missing; quality bounds are analysis conventions, not diagnostic limits.
+Splanchnic absence requires all three source sites explicitly negative.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>raw</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)">tuple</a>[<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>, <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_cohort.tested_mask">
+<span class="sig-prename descclassname"><span class="pre">manuscript_cohort.</span></span><span class="sig-name descname"><span class="pre">tested_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_cohort.html#tested_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_cohort.tested_mask" title="Link to this definition">¶</a></dt>
+<dd><p>Study status is documented positive/negative; unknown is not evidence of testing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>raw</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v3.0.5)"><em>Series</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_cohort.known_thrombophilia_mask">
+<span class="sig-prename descclassname"><span class="pre">manuscript_cohort.</span></span><span class="sig-name descname"><span class="pre">known_thrombophilia_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_cohort.html#known_thrombophilia_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_cohort.known_thrombophilia_mask" title="Link to this definition">¶</a></dt>
+<dd><p>Exclude explicit pre-existing carrier status or known APS; never infer from nulls.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>raw</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v3.0.5)"><em>Series</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_cohort.outcome_mask">
+<span class="sig-prename descclassname"><span class="pre">manuscript_cohort.</span></span><span class="sig-name descname"><span class="pre">outcome_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outcome</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_cohort.html#outcome_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_cohort.outcome_mask" title="Link to this definition">¶</a></dt>
+<dd><p>Require documented global testing and binary subtype; exclude known carriers.</p>
+<p>Binary subtype coding is the operational eligibility definition. The extract
+has no independent assay-performed flag, so it cannot prove that every No
+represents a laboratory-confirmed negative. Reports retain this limitation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raw</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>outcome</strong> (<a class="reference internal" href="#manuscript_cohort.Outcome" title="manuscript_cohort.Outcome"><em>Outcome</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v3.0.5)"><em>Series</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_cohort.missingness_table">
+<span class="sig-prename descclassname"><span class="pre">manuscript_cohort.</span></span><span class="sig-name descname"><span class="pre">missingness_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_cohort.html#missingness_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_cohort.missingness_table" title="Link to this definition">¶</a></dt>
+<dd><p>Quantify missingness before modelling, with not-performed counts kept separate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raw</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>features</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>mask</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v3.0.5)"><em>Series</em></a>)</p></li>
+<li><p><strong>group</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p id="module-manuscript_models">Leakage-controlled estimators, nested validation, and operating-point metrics.</p>
+<p>All supervised screening, category vocabularies, hyperparameter selection,
+point construction, point-to-probability calibration, and threshold selection
+are fitted exclusively using the current training partition. Outer-fold and
+temporal outcomes never select the operating threshold. Dense one-hot matrices
+preserve observed zeros for XGBoost; actual unknown source categories become
+NaN across that source’s encoded block.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_models.split_indices">
+<span class="sig-prename descclassname"><span class="pre">manuscript_models.</span></span><span class="sig-name descname"><span class="pre">split_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requested</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#split_indices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.split_indices" title="Link to this definition">¶</a></dt>
+<dd><p>Yield deterministic stratified folds; fail rather than validate a one-class cohort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>requested</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_models.univariable_screen">
+<span class="sig-prename descclassname"><span class="pre">manuscript_models.</span></span><span class="sig-name descname"><span class="pre">univariable_screen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#univariable_screen"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.univariable_screen" title="Link to this definition">¶</a></dt>
+<dd><p>Likelihood-ratio screening for categorical univariable logistic models.</p>
+<p>The contingency-table G statistic is exactly the likelihood-ratio statistic
+comparing a saturated categorical logistic predictor with intercept only.
+This avoids unstable coefficient estimates under separation; asymptotic
+chi-square p-values remain exploratory for sparse categories. Missingness is
+not converted into an observed clinical level by this function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>y</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>p_limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="manuscript_models.CategoryEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">manuscript_models.</span></span><span class="sig-name descname"><span class="pre">CategoryEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">native_missing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_first</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#CategoryEncoder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.CategoryEncoder" title="Link to this definition">¶</a></dt>
+<dd><p>Training-only category vocabulary with explicit dense missing-value semantics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>native_missing</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+<li><p><strong>drop_first</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="manuscript_models.CategoryEncoder.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#CategoryEncoder.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.CategoryEncoder.fit" title="Link to this definition">¶</a></dt>
+<dd><p>Learn observed category levels from this training set only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>X</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="manuscript_models.CategoryEncoder.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#CategoryEncoder.transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.CategoryEncoder.transform" title="Link to this definition">¶</a></dt>
+<dd><p>Encode observations; source missingness is NaN only for native tree models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>X</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>ndarray</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="manuscript_models.CategoryEncoder.components">
+<span class="sig-name descname"><span class="pre">components</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#CategoryEncoder.components"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.CategoryEncoder.components" title="Link to this definition">¶</a></dt>
+<dd><p>Return lossless (source variable, category) identities for score documentation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)">tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="manuscript_models.LassoPointModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">manuscript_models.</span></span><span class="sig-name descname"><span class="pre">LassoPointModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">C</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#LassoPointModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.LassoPointModel" title="Link to this definition">¶</a></dt>
+<dd><p>Univariable-screened L1 logistic model and signed integer simplification.</p>
+<p>Points preserve coefficient signs and are scaled by the smallest retained
+nonzero absolute coefficient. A nonnegative-slope logistic mapping of the
+actual point sum provides a separate score probability, fitted on training
+data only. This is not the full logistic model’s probability.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>C</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>p_limit</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="manuscript_models.LassoPointModel.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#LassoPointModel.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.LassoPointModel.fit" title="Link to this definition">¶</a></dt>
+<dd><p>Screen variables and fit L1 coefficients, point weights and score calibration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>y</strong> (<em>ndarray</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="manuscript_models.LassoPointModel.point_scores">
+<span class="sig-name descname"><span class="pre">point_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#LassoPointModel.point_scores"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.LassoPointModel.point_scores" title="Link to this definition">¶</a></dt>
+<dd><p>Sum the signed points; an intercept-only fallback has zero points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>X</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>ndarray</em></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="manuscript_models.LassoPointModel.probabilities">
+<span class="sig-name descname"><span class="pre">probabilities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#LassoPointModel.probabilities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.LassoPointModel.probabilities" title="Link to this definition">¶</a></dt>
+<dd><p>Return distinct logistic and calibrated integer-score probabilities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>X</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <em>ndarray</em>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="manuscript_models.LassoPointModel.integer_cutoff">
+<span class="sig-name descname"><span class="pre">integer_cutoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">probability_threshold</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#LassoPointModel.integer_cutoff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.LassoPointModel.integer_cutoff" title="Link to this definition">¶</a></dt>
+<dd><p>Translate a fixed calibrated-probability threshold to a signed point cutoff.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>probability_threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="manuscript_models.NativeXGBModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">manuscript_models.</span></span><span class="sig-name descname"><span class="pre">NativeXGBModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#NativeXGBModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.NativeXGBModel" title="Link to this definition">¶</a></dt>
+<dd><p>Tuned tree benchmark preserving observed zeros and true missing blocks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>threads</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="manuscript_models.NativeXGBModel.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#NativeXGBModel.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.NativeXGBModel.fit" title="Link to this definition">¶</a></dt>
+<dd><p>Fit a training vocabulary and a histogram-based binary XGBoost model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>y</strong> (<em>ndarray</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="manuscript_models.NativeXGBModel.probabilities">
+<span class="sig-name descname"><span class="pre">probabilities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#NativeXGBModel.probabilities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.NativeXGBModel.probabilities" title="Link to this definition">¶</a></dt>
+<dd><p>Predict probability of the positive registered outcome.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>X</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <em>ndarray</em>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_models.select_threshold">
+<span class="sig-prename descclassname"><span class="pre">manuscript_models.</span></span><span class="sig-name descname"><span class="pre">select_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">probability</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#select_threshold"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.select_threshold" title="Link to this definition">¶</a></dt>
+<dd><p>Select the most specific training-only ROC point satisfying target sensitivity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>probability</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>sensitivity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="manuscript_models.TunedFit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">manuscript_models.</span></span><span class="sig-name descname"><span class="pre">TunedFit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresholds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inner_predictions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inner_splits</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#TunedFit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.TunedFit" title="Link to this definition">¶</a></dt>
+<dd><p>A final training fit with inner-CV predictions, thresholds and a search audit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>estimator</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><em>object</em></a>)</p></li>
+<li><p><strong>thresholds</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em>)</p></li>
+<li><p><strong>inner_predictions</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>ndarray</em><em>]</em>)</p></li>
+<li><p><strong>search</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>parameters</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>)</p></li>
+<li><p><strong>inner_splits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_models.fit_tuned">
+<span class="sig-prename descclassname"><span class="pre">manuscript_models.</span></span><span class="sig-name descname"><span class="pre">fit_tuned</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inner_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compact</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#fit_tuned"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.fit_tuned" title="Link to this definition">¶</a></dt>
+<dd><p>Search on inner folds and refit without using any external validation labels.</p>
+<p>C is selected using logistic AUC; the same selected C supplies the integer
+score. XGBoost parameters are selected by AUC. Ties favor the first declared
+(simpler) candidate. The selected inner predictions set operating thresholds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>y</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>kind</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>inner_splits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>min_sensitivity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>threads</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>compact</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#manuscript_models.TunedFit" title="manuscript_models.TunedFit"><em>TunedFit</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_models.nested_predictions">
+<span class="sig-prename descclassname"><span class="pre">manuscript_models.</span></span><span class="sig-name descname"><span class="pre">nested_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outer_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inner_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compact</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#nested_predictions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.nested_predictions" title="Link to this definition">¶</a></dt>
+<dd><p>Generate exactly one held-out prediction per eligible patient and model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>y</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>ids</strong> (<em>ndarray</em>)</p></li>
+<li><p><strong>kind</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>outer_splits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>inner_splits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>min_sensitivity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>threads</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>compact</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)">tuple</a>[<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>, <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_models.ratio">
+<span class="sig-prename descclassname"><span class="pre">manuscript_models.</span></span><span class="sig-name descname"><span class="pre">ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#ratio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.ratio" title="Link to this definition">¶</a></dt>
+<dd><p>Return NaN for undefined conditional probabilities instead of false zeroes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>b</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_models.wilson">
+<span class="sig-prename descclassname"><span class="pre">manuscript_models.</span></span><span class="sig-name descname"><span class="pre">wilson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#wilson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.wilson" title="Link to this definition">¶</a></dt>
+<dd><p>Two-sided 95% Wilson interval for a binomial proportion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>b</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)">tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_models.metric_row">
+<span class="sig-prename descclassname"><span class="pre">manuscript_models.</span></span><span class="sig-name descname"><span class="pre">metric_row</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootstrap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#metric_row"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.metric_row" title="Link to this definition">¶</a></dt>
+<dd><p>Derive every operating metric from one set of held-out binary predictions.</p>
+<p>AUC intervals use a stratified patient bootstrap of fixed predictions. They
+are conditional descriptive intervals, not a resampling of model fitting.
+Pooled calibrated probabilities permit comparison across fold-specific point
+scales; mean within-fold raw-score AUC is also provided for integer scores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>bootstrap</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_models.calibration_bins">
+<span class="sig-prename descclassname"><span class="pre">manuscript_models.</span></span><span class="sig-name descname"><span class="pre">calibration_bins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_models.html#calibration_bins"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_models.calibration_bins" title="Link to this definition">¶</a></dt>
+<dd><p>Fixed-width held-out calibration bins, with counts and both error summaries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>bins</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p id="module-manuscript_reanalysis">Reproducible manuscript reanalysis command, exports, and numerical quality gates.</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">src/manuscript_reanalysis.py</span> <span class="pre">--help</span></code> for the supported interface.
+Results live in a dedicated run directory; historical exploratory outputs are
+never consumed as model evidence. Each completed outcome has a signature-checked
+checkpoint. Patient predictions are local research artifacts, not report text.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reanalysis.log">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reanalysis.</span></span><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reanalysis.html#log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reanalysis.log" title="Link to this definition">¶</a></dt>
+<dd><p>Print a timestamped, immediately flushed progress line without patient data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reanalysis.write_json">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reanalysis.</span></span><span class="sig-name descname"><span class="pre">write_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reanalysis.html#write_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reanalysis.write_json" title="Link to this definition">¶</a></dt>
+<dd><p>Write human-readable JSON, converting numpy scalars and nonfinite values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reanalysis.hash_file">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reanalysis.</span></span><span class="sig-name descname"><span class="pre">hash_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reanalysis.html#hash_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reanalysis.hash_file" title="Link to this definition">¶</a></dt>
+<dd><p>Hash file contents without depending on modification timestamps.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reanalysis.baseline_table">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reanalysis.</span></span><span class="sig-name descname"><span class="pre">baseline_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reanalysis.html#baseline_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reanalysis.baseline_table" title="Link to this definition">¶</a></dt>
+<dd><p>Tidy descriptive comparison with explicit observed and missing denominators.</p>
+<p>Counts are shown per recorded category. Percentages use observed values,
+never an implicit unknown-to-No conversion. Numeric statistics use the same
+validity ranges as modelling. P-values are descriptive (Welch or chi-square/
+Fisher), not a variable-selection procedure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raw</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>first</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v3.0.5)"><em>Series</em></a>)</p></li>
+<li><p><strong>second</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series" title="(in pandas v3.0.5)"><em>Series</em></a>)</p></li>
+<li><p><strong>first_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>second_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reanalysis.descriptive_exports">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reanalysis.</span></span><span class="sig-name descname"><span class="pre">descriptive_exports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reanalysis.html#descriptive_exports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reanalysis.descriptive_exports" title="Link to this definition">¶</a></dt>
+<dd><p>Rebuild mutually exclusive baselines, subtype denominators and sex summaries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raw</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>X</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>output</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reanalysis.association_exports">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reanalysis.</span></span><span class="sig-name descname"><span class="pre">association_exports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reanalysis.html#association_exports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reanalysis.association_exports" title="Link to this definition">¶</a></dt>
+<dd><p>Recalculate the published example profiles and bounded negative FP-Growth rules.</p>
+<p>Rules are descriptive within the eligible composite cohort, not validated
+predictions. Antecedent support and joint rule support are separate exports.
+Clinical descriptors are fixed in advance and unknowns activate no descriptor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raw</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>X</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>output</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reanalysis.run_outcome">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reanalysis.</span></span><span class="sig-name descname"><span class="pre">run_outcome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outcome</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reanalysis.html#run_outcome"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reanalysis.run_outcome" title="Link to this definition">¶</a></dt>
+<dd><p>Train primary paired models and an incomplete-data tree sensitivity analysis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>raw</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>features</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>outcome</strong> (<a class="reference internal" href="#manuscript_cohort.Outcome" title="manuscript_cohort.Outcome"><em>Outcome</em></a>)</p></li>
+<li><p><strong>output</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p></li>
+<li><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reanalysis.validate_predictions">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reanalysis.</span></span><span class="sig-name descname"><span class="pre">validate_predictions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outcome</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff_year</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reanalysis.html#validate_predictions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reanalysis.validate_predictions" title="Link to this definition">¶</a></dt>
+<dd><p>Fail on cohort leakage, duplicate predictions, broken counts or nonfinite risk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predictions</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>metrics</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>raw</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>outcome</strong> (<a class="reference internal" href="#manuscript_cohort.Outcome" title="manuscript_cohort.Outcome"><em>Outcome</em></a>)</p></li>
+<li><p><strong>cutoff_year</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reanalysis.run_reanalysis">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reanalysis.</span></span><span class="sig-name descname"><span class="pre">run_reanalysis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outcomes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2021</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_missing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outer_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inner_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bootstrap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compact</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reports</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reanalysis.html#run_reanalysis"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reanalysis.run_reanalysis" title="Link to this definition">¶</a></dt>
+<dd><p>Run the evidence pipeline and write an auditable, self-contained result package.</p>
+<p><code class="docutils literal notranslate"><span class="pre">compact</span></code> reduces search grids for integration testing only and marks the
+manifest accordingly. It never silently samples patients. Resume requires
+matching raw-data, analysis-code and configuration hashes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p></li>
+<li><p><strong>output</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p></li>
+<li><p><strong>outcomes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>cutoff_year</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>max_missing</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>outer_splits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>inner_splits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>min_sensitivity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>threads</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>bootstrap</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>compact</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+<li><p><strong>resume</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+<li><p><strong>reports</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reanalysis.main">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reanalysis.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reanalysis.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reanalysis.main" title="Link to this definition">¶</a></dt>
+<dd><p>Parse reproducible analysis settings; manuscript defaults use five-by-five CV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p id="module-manuscript_reporting">English manuscript sections, coauthor replies, and standalone research figures.</p>
+<p>Reports consume only the completed reanalysis CSV/JSON files. No old AUC,
+threshold, point card, or denominator is copied from exploratory output. Pandoc
+and matplotlib are optional export dependencies; Markdown/CSV remain canonical.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reporting.table">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reporting.</span></span><span class="sig-name descname"><span class="pre">table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reporting.html#table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reporting.table" title="Link to this definition">¶</a></dt>
+<dd><p>Render a portable Markdown table without an optional tabulate dependency.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p></li>
+<li><p><strong>columns</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>digits</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reporting.export_word">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reporting.</span></span><span class="sig-name descname"><span class="pre">export_word</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">markdown</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reporting.html#export_word"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reporting.export_word" title="Link to this definition">¶</a></dt>
+<dd><p>Create a shareable DOCX when Pandoc is available; preserve the Markdown source.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>markdown</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reporting.display_performance">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reporting.</span></span><span class="sig-name descname"><span class="pre">display_performance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metrics</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reporting.html#display_performance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reporting.display_performance" title="Link to this definition">¶</a></dt>
+<dd><p>Format clinically interpretable columns while retaining exact CSV precision.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>metrics</strong> (<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reporting.concise_baseline">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reporting.</span></span><span class="sig-name descname"><span class="pre">concise_baseline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">csv</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reporting.html#concise_baseline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reporting.concise_baseline" title="Link to this definition">¶</a></dt>
+<dd><p>Format the principal manuscript variables with observed-denominator percentages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>csv</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v3.0.5)"><em>DataFrame</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reporting.methods_text">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reporting.</span></span><span class="sig-name descname"><span class="pre">methods_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reporting.html#methods_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reporting.methods_text" title="Link to this definition">¶</a></dt>
+<dd><p>Describe the implemented workflow and its unavoidable extract-level limitations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reporting.generate_figures">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reporting.</span></span><span class="sig-name descname"><span class="pre">generate_figures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reporting.html#generate_figures"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reporting.generate_figures" title="Link to this definition">¶</a></dt>
+<dd><p>Export standalone PNG/SVG ROC, calibration, score distribution and cohort flow.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>output</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reporting.generate_reports">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reporting.</span></span><span class="sig-name descname"><span class="pre">generate_reports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reporting.html#generate_reports"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reporting.generate_reports" title="Link to this definition">¶</a></dt>
+<dd><p>Build a complete English response pack directly from the current run outputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>output</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reporting.create_word_reference">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reporting.</span></span><span class="sig-name descname"><span class="pre">create_word_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reporting.html#create_word_reference"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reporting.create_word_reference" title="Link to this definition">¶</a></dt>
+<dd><p>Create a landscape A4 reference so wide scientific tables stay reviewable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>output</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>Path</em></a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="manuscript_reporting.main">
+<span class="sig-prename descclassname"><span class="pre">manuscript_reporting.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/manuscript_reporting.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#manuscript_reporting.main" title="Link to this definition">¶</a></dt>
+<dd><p>Regenerate narrative/figure outputs from an already completed numerical run.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 </section>
 
+        </article>
+      </div>
+      <footer>
+
+        <div class="related-pages">
+          <a class="next-page" href="development.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Development and verification</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="architecture.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+
+                <div class="title">Architecture</div>
+
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169;
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
 
           </div>
-          
+          <div class="right-details">
+
+          </div>
         </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Thrombophilia Risk Mining</a></h1>
+
+      </footer>
+    </div>
+    <aside class="toc-drawer">
 
 
-
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-cli">CLI entry points</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-data_processor">Shared infrastructure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-exp_permutation_importance">Experiments</a></li>
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">API Reference</a><ul>
+<li><a class="reference internal" href="#module-cli">CLI entry points</a><ul>
+<li><a class="reference internal" href="#cli.run_edas_analysis"><code class="docutils literal notranslate"><span class="pre">run_edas_analysis()</span></code></a></li>
+<li><a class="reference internal" href="#cli.build_experiment_registry"><code class="docutils literal notranslate"><span class="pre">build_experiment_registry()</span></code></a></li>
+<li><a class="reference internal" href="#cli.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a></li>
+<li><a class="reference internal" href="#module-data_processor">Shared infrastructure</a><ul>
+<li><a class="reference internal" href="#data_processor.ClinicalDataProcessor"><code class="docutils literal notranslate"><span class="pre">ClinicalDataProcessor</span></code></a><ul>
+<li><a class="reference internal" href="#data_processor.ClinicalDataProcessor.__init__"><code class="docutils literal notranslate"><span class="pre">ClinicalDataProcessor.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#data_processor.ClinicalDataProcessor.load_data"><code class="docutils literal notranslate"><span class="pre">ClinicalDataProcessor.load_data()</span></code></a></li>
+<li><a class="reference internal" href="#data_processor.ClinicalDataProcessor.transform_pipeline"><code class="docutils literal notranslate"><span class="pre">ClinicalDataProcessor.transform_pipeline()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#experiment_base.BaseExperiment"><code class="docutils literal notranslate"><span class="pre">BaseExperiment</span></code></a><ul>
+<li><a class="reference internal" href="#experiment_base.BaseExperiment.__init__"><code class="docutils literal notranslate"><span class="pre">BaseExperiment.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#experiment_base.BaseExperiment.run"><code class="docutils literal notranslate"><span class="pre">BaseExperiment.run()</span></code></a></li>
+<li><a class="reference internal" href="#experiment_base.BaseExperiment.export_latex"><code class="docutils literal notranslate"><span class="pre">BaseExperiment.export_latex()</span></code></a></li>
+<li><a class="reference internal" href="#experiment_base.BaseExperiment.save_interactive_plot"><code class="docutils literal notranslate"><span class="pre">BaseExperiment.save_interactive_plot()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-exp_permutation_importance">Experiments</a><ul>
+<li><a class="reference internal" href="#exp_permutation_importance.PermutationImportanceExperiment"><code class="docutils literal notranslate"><span class="pre">PermutationImportanceExperiment</span></code></a><ul>
+<li><a class="reference internal" href="#exp_permutation_importance.PermutationImportanceExperiment.run"><code class="docutils literal notranslate"><span class="pre">PermutationImportanceExperiment.run()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exp_contrast_mining.ContrastPatternMiningExperiment"><code class="docutils literal notranslate"><span class="pre">ContrastPatternMiningExperiment</span></code></a><ul>
+<li><a class="reference internal" href="#exp_contrast_mining.ContrastPatternMiningExperiment.run"><code class="docutils literal notranslate"><span class="pre">ContrastPatternMiningExperiment.run()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment"><code class="docutils literal notranslate"><span class="pre">UnsupervisedClusteringExperiment</span></code></a><ul>
+<li><a class="reference internal" href="#exp_unsupervised_clustering.UnsupervisedClusteringExperiment.run"><code class="docutils literal notranslate"><span class="pre">UnsupervisedClusteringExperiment.run()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exp_categorical_association.CategoricalAssociationExperiment"><code class="docutils literal notranslate"><span class="pre">CategoricalAssociationExperiment</span></code></a><ul>
+<li><a class="reference internal" href="#exp_categorical_association.CategoricalAssociationExperiment.run"><code class="docutils literal notranslate"><span class="pre">CategoricalAssociationExperiment.run()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exp_association_explorer.AssociationExplorerExperiment"><code class="docutils literal notranslate"><span class="pre">AssociationExplorerExperiment</span></code></a><ul>
+<li><a class="reference internal" href="#exp_association_explorer.AssociationExplorerExperiment.run"><code class="docutils literal notranslate"><span class="pre">AssociationExplorerExperiment.run()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exp_bayesian_networks.BayesianNetworkExperiment"><code class="docutils literal notranslate"><span class="pre">BayesianNetworkExperiment</span></code></a><ul>
+<li><a class="reference internal" href="#exp_bayesian_networks.BayesianNetworkExperiment.run"><code class="docutils literal notranslate"><span class="pre">BayesianNetworkExperiment.run()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation</span></code></a><ul>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.model_name"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.model_name</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.score_label"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.score_label</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.y_true"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.y_true</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.scores"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.scores</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.probabilities"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.probabilities</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.auc"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.auc</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.fpr"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.fpr</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.tpr"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.tpr</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.thresholds"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.thresholds</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.selected_threshold"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.selected_threshold</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.sensitivity"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.sensitivity</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.specificity"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.specificity</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.threshold_method"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.threshold_method</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ModelEvaluation.positive_if_score_at_most"><code class="docutils literal notranslate"><span class="pre">ModelEvaluation.positive_if_score_at_most</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.StrategyResult"><code class="docutils literal notranslate"><span class="pre">StrategyResult</span></code></a><ul>
+<li><a class="reference internal" href="#exp_clinical_risk_score.StrategyResult.strategy_key"><code class="docutils literal notranslate"><span class="pre">StrategyResult.strategy_key</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.StrategyResult.strategy_name"><code class="docutils literal notranslate"><span class="pre">StrategyResult.strategy_name</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.StrategyResult.evaluation"><code class="docutils literal notranslate"><span class="pre">StrategyResult.evaluation</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.StrategyResult.points_table"><code class="docutils literal notranslate"><span class="pre">StrategyResult.points_table</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.StrategyResult.patient_scores_df"><code class="docutils literal notranslate"><span class="pre">StrategyResult.patient_scores_df</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.StrategyResult.score_summary"><code class="docutils literal notranslate"><span class="pre">StrategyResult.score_summary</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ClinicalRiskScoreExperiment"><code class="docutils literal notranslate"><span class="pre">ClinicalRiskScoreExperiment</span></code></a><ul>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ClinicalRiskScoreExperiment.ASSOCIATION_GUIDED_COMPONENTS"><code class="docutils literal notranslate"><span class="pre">ClinicalRiskScoreExperiment.ASSOCIATION_GUIDED_COMPONENTS</span></code></a></li>
+<li><a class="reference internal" href="#exp_clinical_risk_score.ClinicalRiskScoreExperiment.run"><code class="docutils literal notranslate"><span class="pre">ClinicalRiskScoreExperiment.run()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exp_score_screening.ClinicalScoreScreeningExperiment"><code class="docutils literal notranslate"><span class="pre">ClinicalScoreScreeningExperiment</span></code></a><ul>
+<li><a class="reference internal" href="#exp_score_screening.ClinicalScoreScreeningExperiment.run"><code class="docutils literal notranslate"><span class="pre">ClinicalScoreScreeningExperiment.run()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-manuscript_cohort">Manuscript reanalysis</a><ul>
+<li><a class="reference internal" href="#manuscript_cohort.Outcome"><code class="docutils literal notranslate"><span class="pre">Outcome</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_cohort.load_registry"><code class="docutils literal notranslate"><span class="pre">load_registry()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_cohort.text_values"><code class="docutils literal notranslate"><span class="pre">text_values()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_cohort.prepare_features"><code class="docutils literal notranslate"><span class="pre">prepare_features()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_cohort.tested_mask"><code class="docutils literal notranslate"><span class="pre">tested_mask()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_cohort.known_thrombophilia_mask"><code class="docutils literal notranslate"><span class="pre">known_thrombophilia_mask()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_cohort.outcome_mask"><code class="docutils literal notranslate"><span class="pre">outcome_mask()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_cohort.missingness_table"><code class="docutils literal notranslate"><span class="pre">missingness_table()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_models.split_indices"><code class="docutils literal notranslate"><span class="pre">split_indices()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_models.univariable_screen"><code class="docutils literal notranslate"><span class="pre">univariable_screen()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_models.CategoryEncoder"><code class="docutils literal notranslate"><span class="pre">CategoryEncoder</span></code></a><ul>
+<li><a class="reference internal" href="#manuscript_models.CategoryEncoder.fit"><code class="docutils literal notranslate"><span class="pre">CategoryEncoder.fit()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_models.CategoryEncoder.transform"><code class="docutils literal notranslate"><span class="pre">CategoryEncoder.transform()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_models.CategoryEncoder.components"><code class="docutils literal notranslate"><span class="pre">CategoryEncoder.components()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manuscript_models.LassoPointModel"><code class="docutils literal notranslate"><span class="pre">LassoPointModel</span></code></a><ul>
+<li><a class="reference internal" href="#manuscript_models.LassoPointModel.fit"><code class="docutils literal notranslate"><span class="pre">LassoPointModel.fit()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_models.LassoPointModel.point_scores"><code class="docutils literal notranslate"><span class="pre">LassoPointModel.point_scores()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_models.LassoPointModel.probabilities"><code class="docutils literal notranslate"><span class="pre">LassoPointModel.probabilities()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_models.LassoPointModel.integer_cutoff"><code class="docutils literal notranslate"><span class="pre">LassoPointModel.integer_cutoff()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manuscript_models.NativeXGBModel"><code class="docutils literal notranslate"><span class="pre">NativeXGBModel</span></code></a><ul>
+<li><a class="reference internal" href="#manuscript_models.NativeXGBModel.fit"><code class="docutils literal notranslate"><span class="pre">NativeXGBModel.fit()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_models.NativeXGBModel.probabilities"><code class="docutils literal notranslate"><span class="pre">NativeXGBModel.probabilities()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manuscript_models.select_threshold"><code class="docutils literal notranslate"><span class="pre">select_threshold()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_models.TunedFit"><code class="docutils literal notranslate"><span class="pre">TunedFit</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_models.fit_tuned"><code class="docutils literal notranslate"><span class="pre">fit_tuned()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_models.nested_predictions"><code class="docutils literal notranslate"><span class="pre">nested_predictions()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_models.ratio"><code class="docutils literal notranslate"><span class="pre">ratio()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_models.wilson"><code class="docutils literal notranslate"><span class="pre">wilson()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_models.metric_row"><code class="docutils literal notranslate"><span class="pre">metric_row()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_models.calibration_bins"><code class="docutils literal notranslate"><span class="pre">calibration_bins()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reanalysis.log"><code class="docutils literal notranslate"><span class="pre">log()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reanalysis.write_json"><code class="docutils literal notranslate"><span class="pre">write_json()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reanalysis.hash_file"><code class="docutils literal notranslate"><span class="pre">hash_file()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reanalysis.baseline_table"><code class="docutils literal notranslate"><span class="pre">baseline_table()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reanalysis.descriptive_exports"><code class="docutils literal notranslate"><span class="pre">descriptive_exports()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reanalysis.association_exports"><code class="docutils literal notranslate"><span class="pre">association_exports()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reanalysis.run_outcome"><code class="docutils literal notranslate"><span class="pre">run_outcome()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reanalysis.validate_predictions"><code class="docutils literal notranslate"><span class="pre">validate_predictions()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reanalysis.run_reanalysis"><code class="docutils literal notranslate"><span class="pre">run_reanalysis()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reanalysis.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reporting.table"><code class="docutils literal notranslate"><span class="pre">table()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reporting.export_word"><code class="docutils literal notranslate"><span class="pre">export_word()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reporting.display_performance"><code class="docutils literal notranslate"><span class="pre">display_performance()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reporting.concise_baseline"><code class="docutils literal notranslate"><span class="pre">concise_baseline()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reporting.methods_text"><code class="docutils literal notranslate"><span class="pre">methods_text()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reporting.generate_figures"><code class="docutils literal notranslate"><span class="pre">generate_figures()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reporting.generate_reports"><code class="docutils literal notranslate"><span class="pre">generate_reports()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reporting.create_word_reference"><code class="docutils literal notranslate"><span class="pre">create_word_reference()</span></code></a></li>
+<li><a class="reference internal" href="#manuscript_reporting.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="architecture.html" title="previous chapter">Architecture</a></li>
-      <li>Next: <a href="development.html" title="next chapter">Development</a></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-
-
-
-
-
-
-
-
+          </div>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/api.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
 
-    
-  </body>
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=e259d695"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    </body>
 </html>

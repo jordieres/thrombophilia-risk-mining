@@ -1,0 +1,12 @@
+# Exact scientific/reporting stack used for the September 2026 reanalysis.
+# Use Python 3.12. Pandoc is an optional system executable for DOCX conversion.
+numpy==2.4.6
+pandas==3.0.3
+scipy==1.17.1
+scikit-learn==1.9.0
+xgboost==2.1.4
+pyarrow==23.0.1
+openpyxl==3.1.5
+mlxtend==0.23.4
+joblib==1.5.3
+matplotlib==3.10.9

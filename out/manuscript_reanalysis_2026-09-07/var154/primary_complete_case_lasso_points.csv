@@ -1,0 +1,9 @@
+variable,category,coefficient,points,label
+e_con_ea,Yes,1.9898241992470551,15,Ankylosing spondylitis
+sin_tvp_,DVT,-0.3173737574273513,-2,Index VTE presentation
+sin_tvp_,PE,-0.1300562561360647,-1,Index VTE presentation
+fr_cance,Yes,0.401225594024263,3,Active cancer
+fr_inmov,Yes,-0.4531811741296859,-3,Recent immobilization
+ana_dime,Not performed,-0.6689659132775587,-5,Recorded categorical D-dimer
+tension_,≥100,-0.8254738556792346,-6,Systolic BP (mmHg)
+ana_hemo,≥12,-0.32795715912022344,-3,Hemoglobin (g/dL)

@@ -1,0 +1,17 @@
+{
+  "outcome": "var156",
+  "label": "Factor V Leiden",
+  "priority": "primary",
+  "eligible_n": 10618,
+  "eligible_positive_n": 2045,
+  "development_eligible_n": 10379,
+  "temporal_eligible_n": 239,
+  "missing_date_n": 0,
+  "candidate_n": 37,
+  "complete_case_n": 5966,
+  "complete_case_positive_n": 1196,
+  "missing_excluded_n": 4652,
+  "development_complete_n": 5864,
+  "temporal_complete_n": 102,
+  "cutoff_year": 2021
+}

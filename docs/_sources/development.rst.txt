@@ -1,62 +1,105 @@
-Development
-===========
+Development and verification
+================================
 
-Documentation conventions
--------------------------
+Documentation contracts
+---------------------------
 
-The source code is documented with English Google-style docstrings so Sphinx can
-extract API documentation through ``autodoc`` and ``napoleon``.
+New scientific code and user-facing documentation are written in English.
+Maintain the implementation details in :doc:`manuscript_reanalysis` whenever
+cohort definitions, predictors, tuning, threshold selection or export schemas
+change. ``src/manuscript_reporting.py`` is the source of generated coauthor
+replies and manuscript replacement text; editing a generated report alone is
+not a durable correction.
 
-Type checking
--------------
+The authoritative analysis is distinct from the historical exploratory CLI.
+Do not use generic ``score`` output to update paper metrics. Historical files
+are preserved for provenance and labelled superseded in ``out/README.md``.
+The previous unsafe model loop in ``manuscript_support.py`` has been removed;
+its public command delegates to the new analysis.
 
-Type checking is formalized in ``pyproject.toml`` through the ``[tool.mypy]``
-section. The project currently enforces:
+Tests
+---------
 
-* explicit type annotations on functions and methods,
-* validation of untyped function bodies,
-* no implicit optional parameters,
-* warnings for redundant casts and unused ignores,
-* strict equality checks.
-
-Run the checker with:
+Run the repository suite:
 
 .. code-block:: bash
 
-   poetry run mypy src
+   python -m pytest tests -q
 
-Build the documentation
+The focused scientific regression suite is:
+
+.. code-block:: bash
+
+   python -m pytest tests/test_manuscript_reanalysis.py -q
+
+It protects tested-only subtype controls, known-carrier exclusions, unknown
+versus negative categories, fixed numeric boundaries, forbidden predictors,
+dense tree-missing semantics, calibration of actual integer points,
+training-only thresholds, unique held-out predictions and confusion-matrix
+resource identities. Production output checks additionally verify disjoint
+temporal eras and paired primary patient populations.
+
+Use a test-only compact integration run in a fresh temporary directory before
+starting expensive reanalyses. Do not overwrite a completed run to test a new
+implementation. Changes to numerical source files alter the resume signature;
+use a fresh result directory when scientific code changes.
+
+Documentation build
 -----------------------
 
-Generate the HTML documentation locally from the repository root with:
+Install the Poetry ``docs`` dependency group or equivalent Sphinx dependencies.
+The executable HTML build is:
 
 .. code-block:: bash
 
-   poetry run sphinx-build -d docs/docs_source/.doctrees -b html docs/docs_source docs
+   python -m sphinx -W --keep-going -b html docs/docs_source docs
 
-If you prefer to build from inside ``docs/docs_source``, the equivalent command
-is:
+``-W`` makes warnings actionable. The build uses docstrings from the actual
+modules, not hand-copied API declarations. ``docs/docs_source`` is the editable
+Sphinx source; ``docs`` is the published HTML root. Do not accidentally write a
+second generated tree under ``docs/docs``. Existing duplicate historical pages
+should link readers to the canonical documentation.
 
-.. code-block:: bash
+The build uses optional external intersphinx inventories. For an explicitly
+offline build, provide a small configuration override disabling
+``intersphinx_mapping``; do not claim that a network inventory failure is a code
+or scientific-validation failure.
 
-   poetry run sphinx-build -d .doctrees -b html . ..
+Type hints and dependency management
+----------------------------------------
 
-The ``docs/`` directory is both the editable documentation container and the
-published GitHub Pages output root. The ``docs/docs_source/`` subtree contains
-Sphinx source files, while the generated HTML is written directly into
-``docs/``.
+The modules use annotations and documented input/output contracts. The project
+does not currently declare a mypy quality gate; do not claim a strict mypy check
+has passed without installing/configuring and running one. Runtime and data
+integrity tests are the current executable quality gates.
 
-Project structure
------------------
+``pyproject.toml`` and ``requirements.txt`` describe supported dependency ranges.
+``requirements-manuscript.txt`` records the exact tested analysis/reporting
+versions for a Python 3.12 environment. ``run_manifest.json`` independently records
+the packages used in each numerical execution. A dependency lock describes an
+installation resolution, not proof that those versions generated old results.
 
-``src/``
-   Application source code, preprocessing utilities, and experiment modules.
+Repository layout
+---------------------
+
+``src/manuscript_*.py``
+   Cohort contracts, estimators, orchestration, reporting and compatibility APIs.
+
+``src/exp_*.py`` and ``src/cli.py``
+   Historical exploratory framework; preserved for existing experiments.
+
+``tests/``
+   Regression and integration-oriented tests.
 
 ``docs/docs_source/``
-   Editable Sphinx configuration and reStructuredText source files.
+   English Sphinx source, including the complete manuscript manual.
 
-``docs/``
-   Published HTML documentation generated from ``docs/docs_source/``.
+``out/manuscript_reanalysis_2026-09-07/``
+   Completed numerical evidence, generated English replies/text and figures.
 
-``.vscode/launch.json``
-   Debugger configuration for interactive CLI runs.
+``out/manuscript_audit_2026-09-07/``
+   Initial audit of the supplied documents and historical outputs.
+
+``data/``
+   Local source snapshots and the supplied variable dictionary. Do not infer
+   cohort eligibility from a prepared file whose original labels were removed.

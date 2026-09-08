@@ -1,69 +1,91 @@
-# Comprehensive Data Mining and Machine Learning Workflows for Thrombophilia Risk Stratification
+# Thrombophilia Risk Mining
 
-This repository houses an advanced, object-oriented framework engineered to deconstruct hypercoagulable risk factors utilizing a consolidated national database for thrombophilic disease.
+This repository contains the RIETE thrombophilia manuscript reanalysis and the
+historical exploratory data-mining toolkit. The supported manuscript workflow
+uses explicit tested-only eligibility, pretest predictors, nested validation,
+locked temporal evaluation, and traceable tables and score cards.
 
-## Functional Architecture
+## Current manuscript deliverables
 
-The functional capabilities of the execution engine and its interaction with clinical research actors are described in the following specification:
+The recalculated evidence package is in
+[`out/manuscript_reanalysis_2026-09-07/`](out/manuscript_reanalysis_2026-09-07/):
 
-![System Functional Use Cases](docs/architecture/UseCaseDiagram.png)
+- [`coauthor_responses.md`](out/manuscript_reanalysis_2026-09-07/coauthor_responses.md): replies to all 14 Word comments, also exported to DOCX.
+- [`replacement_manuscript_sections.md`](out/manuscript_reanalysis_2026-09-07/replacement_manuscript_sections.md): replacement Methods, Results, interpretation and main tables.
+- [`recalculated_supplement.md`](out/manuscript_reanalysis_2026-09-07/recalculated_supplement.md): definitions, missingness, temporal/calibration tables and final development cards.
+- `run_manifest.json`: data/code hashes, parameters, software versions and completion status.
+- `table5_primary_performance.csv`: paired complete-case comparisons. Native-missing sensitivity results are separate.
 
-The entire dataset operations, extending from compressed Parquet tables to multi-stage statistical outputs, follow a highly decoupled execution path:
+These outputs supersede the previous top-level `out/coauthor_response_review.md`
+and associated model summaries. The original Word documents and September audit
+are preserved; legacy outputs are not inputs to the new models. Results are
+exploratory research estimates, not clinical deployment validation.
 
-![System Architecture and Component Layout](docs/architecture/ComponentsDiagram.png)
+## Reproduce the analysis
 
-## Detailed Technical Documentation
-
-For a deep dive into the runtime sequence validation, class inheritance structures, state machine boundaries, and multi-node deployment topologies, please consult the comprehensive technical manual available at [Technical Reference Guide](docs/technical_reference.md).
-
-## One-off Dataset Preparation
-
-The repository also includes a one-off preparation utility for adapting
-`data/patD.parquet` to an external Excel variable specification. The tool reads
-the variables listed in column A, preserves `id_pacie` only as a reference
-column, applies a minimal normalization layer required for analysis, and writes
-both a filtered parquet and a JSON validation report.
+Use the raw `data/patD.parquet`, not an already imputed or subtype-filtered file.
+Install the analysis environment with `requirements-manuscript.txt`, or use the
+project Poetry environment. The full command runs all eight outcomes without
+patient subsampling, using five outer and five inner folds.
 
 ```bash
-python -m src.patd_spec_tool \
-  --spec-xlsx "/tmp/varibeles explained.xlsx" \
+python src/manuscript_reanalysis.py \
+  --data data/patD.parquet \
+  --output-dir out/my_reanalysis
+```
+
+To continue an interrupted run with identical input, code and settings:
+
+```bash
+python src/manuscript_reanalysis.py \
+  --data data/patD.parquet \
+  --output-dir out/my_reanalysis \
+  --resume
+```
+
+To regenerate English reports and figures from finished numerical outputs:
+
+```bash
+python src/manuscript_reporting.py out/my_reanalysis
+```
+
+Pandoc is optional and creates DOCX copies; Markdown/CSV are always available.
+The compatibility command `src/manuscript_support.py` now delegates to the safe
+pipeline. For quick integration checks, `--compact --outer-splits 2
+--inner-splits 2 --bootstrap 0` reduces search, not the patient cohort; those runs
+are explicitly test-only and must not be reported as the final analysis.
+
+## Documentation and tests
+
+- [User and technical manuscript manual](docs/docs_source/manuscript_reanalysis.rst)
+- [Technical reference](docs/technical_reference.md)
+- [Published HTML documentation](docs/index.html)
+- [Developer and validation guide](docs/docs_source/development.rst)
+
+```bash
+python -m pytest tests -q
+python -m sphinx -W --keep-going -b html docs/docs_source docs
+```
+
+## Historical exploratory workflows
+
+`src/cli.py` provides association mining, generic scores, permutation importance,
+Bayesian summaries, clustering and screening. Their preprocessing and population
+contracts differ from the supported manuscript workflow. Use them for
+exploration; their outputs must not be substituted into the new manuscript
+performance tables. The legacy score-screening workflow does not establish the
+safety of withholding a test.
+
+The one-off Excel preparation tool remains available:
+
+```bash
+python src/patd_spec_tool.py \
+  --input-parquet data/patD.parquet \
+  --spec-xlsx "data/varibeles explained.xlsx" \
   --output-parquet out/patD_spec_subset.parquet \
   --report-json out/patD_spec_subset_validation.json
-
-python -m src.patd_spec_tool \
-  --input-parquet data/patD.parquet \
-  --spec-xlsx "/tmp/varibeles explained.xlsx" \
-  --target-columns var161 \
-  --filter-column var161 \
-  --filter-allowed-values Sí No \
-  --output-parquet data/patD_var161.parquet \
-  --report-json out/patD_var161_validation.json
 ```
 
-The command-line summary now reports the full row trace: input rows, rows
-after applying the Excel criteria, rows after the optional value filter, and
-final output rows written to the parquet. The JSON validation report mirrors
-this with `source_row_count`, `output_row_count`, `criteria_audit`, and
-`row_filter_audit`.
-
-## Manuscript Review Support
-
-The repository now includes a manuscript-oriented audit helper that rebuilds the
-main methodological checks raised during peer review directly from the local
-registry snapshot. During preprocessing, missing `ana_dura` values are
-normalized to `No buscada`, so every downstream cohort split treats unlabeled
-thrombophilia-study rows as not searched. The helper creates mutually exclusive
-`tested` vs `not tested` cohort tables, outcome prevalence summaries restricted
-to tested patients, selected-threshold confusion matrices, calibration
-summaries, temporal validation outputs, and a ready-to-share Markdown response
-in `out/`.
-
-```bash
-python src/manuscript_support.py \
-  --data data/patD.parquet \
-  --output-dir out
-```
-
-Key artifacts include `out/coauthor_response_review.md`,
-`out/tested_vs_not_tested_baseline.csv`, `out/score_clinical_utility_summary.csv`,
-and `out/temporal_validation_summary.csv`.
+Its numeric filters can remove rows and its historical missing-value directives
+can fill absent observations. Those outputs are intentionally not the source
+for the manuscript reanalysis. See the manual for the distinct contracts.

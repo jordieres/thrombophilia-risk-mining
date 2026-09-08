@@ -1,0 +1,64 @@
+group,variable,label,n,source_null_n,missing_n,missing_pct,not_performed_n
+Factor V Leiden,sexo,Sex,10618,0,0,0.0,0
+Factor V Leiden,raza,Recorded ethnicity,10618,7701,7701,72.52778300998305,0
+Factor V Leiden,ant_inf,Prior myocardial ischemia,10618,4957,4957,46.684874741005835,0
+Factor V Leiden,ant_isq,Prior cerebral ischemia,10618,4973,4973,46.8355622527783,0
+Factor V Leiden,ant_clau,Peripheral arterial disease,10618,4980,4980,46.90148803917875,0
+Factor V Leiden,fum_act,Current smoking,10618,5041,5041,47.47598417781126,0
+Factor V Leiden,diabetes,Diabetes,10618,4932,4932,46.44942550386137,0
+Factor V Leiden,hip_art,Hypertension,10618,4823,4823,45.42286682991147,0
+Factor V Leiden,insf_car,Heart failure,10618,26,26,0.2448672066302505,0
+Factor V Leiden,fibr_aur,Atrial fibrillation,10618,7353,7353,69.25032962893201,0
+Factor V Leiden,trat_est,Statin treatment,10618,5006,5006,47.146355245809005,0
+Factor V Leiden,e_con_pp,Chronic lung disease,10618,0,0,0.0,0
+Factor V Leiden,e_con_cu,Ulcerative colitis,10618,0,0,0.0,0
+Factor V Leiden,e_con_ec,Crohn disease,10618,0,0,0.0,0
+Factor V Leiden,e_con_lu,Known lupus,10618,0,0,0.0,0
+Factor V Leiden,e_con_be,Behcet disease,10618,0,0,0.0,0
+Factor V Leiden,e_con_at,Temporal arteritis,10618,0,0,0.0,0
+Factor V Leiden,e_con_va,Other vasculitis,10618,0,0,0.0,0
+Factor V Leiden,e_con_ar,Rheumatoid arthritis,10618,0,0,0.0,0
+Factor V Leiden,e_con_ea,Ankylosing spondylitis,10618,0,0,0.0,0
+Factor V Leiden,e_con_pr,Polymyalgia rheumatica,10618,0,0,0.0,0
+Factor V Leiden,e_con_ro,Rendu-Osler disease,10618,0,0,0.0,0
+Factor V Leiden,e_con_av,Vena cava agenesis,10618,0,0,0.0,0
+Factor V Leiden,e_con_sm,May-Thurner syndrome,10618,0,0,0.0,0
+Factor V Leiden,sin_tvp_,Index VTE presentation,10618,0,0,0.0,0
+Factor V Leiden,var171,Syncope,10618,345,345,3.249199472593709,0
+Factor V Leiden,tv_l_esu,Upper-extremity thrombosis,10618,7459,7459,70.24863439442456,0
+Factor V Leiden,tvp_orig,Upper-extremity catheter relationship,10618,10215,10215,96.20455829723112,0
+Factor V Leiden,tv_l_ein,Lower-extremity thrombosis,10618,2702,2702,25.447353550574498,0
+Factor V Leiden,tvp_prox,DVT proximal/distal location,10618,3452,3452,32.510830664908646,0
+Factor V Leiden,tv_l_svc,Cerebral sinus thrombosis,10618,8109,8109,76.37031456018083,0
+Factor V Leiden,tv_l_vre,Retinal vein thrombosis,10618,8365,8365,78.78131474854021,0
+Factor V Leiden,tv_l_vrn,Renal vein thrombosis,10618,8343,8343,78.57411941985308,0
+Factor V Leiden,tv_l_vca,Vena cava thrombosis,10618,9457,9457,89.06573742701073,0
+Factor V Leiden,tv_l_yug,Jugular vein thrombosis,10618,9503,9503,89.49896402335656,0
+Factor V Leiden,tv_l_ova,Ovarian vein thrombosis,10618,9502,9502,89.48954605387078,0
+Factor V Leiden,tv_l_sup,Suprahepatic vein thrombosis,10618,9499,9499,89.46129214541345,0
+Factor V Leiden,tv_l_pul,Pulmonary vein thrombosis,10618,9501,9501,89.480128084385,0
+Factor V Leiden,tv_l_ove,Other vein thrombosis,10618,8356,8356,78.6965530231682,0
+Factor V Leiden,fr_cance,Active cancer,10618,0,0,0.0,0
+Factor V Leiden,fr_cirug,Recent surgery,10618,0,0,0.0,0
+Factor V Leiden,fr_inmov,Recent immobilization,10618,0,0,0.0,0
+Factor V Leiden,fr_tvp_a,Prior VTE,10618,0,0,0.0,0
+Factor V Leiden,fr_antfa,Family history of VTE,10618,8602,8602,81.0133735166698,0
+Factor V Leiden,fr_tvs_a,Prior superficial thrombosis,10618,7578,7578,71.36937276323224,0
+Factor V Leiden,fr_viaje,Recent prolonged travel,10618,191,191,1.7988321717837634,0
+Factor V Leiden,fr_estro,Recent hormone exposure,10618,127,127,1.196082124693916,0
+Factor V Leiden,fr_embar,Pregnancy,10618,0,0,0.0,0
+Factor V Leiden,fr_varic,Varicose veins,10618,269,269,2.533433791674515,0
+Factor V Leiden,fr_antec,Recent delivery,10618,53,53,0.49915238274627993,0
+Factor V Leiden,ana_dime,Recorded categorical D-dimer,10618,518,518,4.8785081936334524,2490
+Factor V Leiden,ana_crea,Recorded creatinine category,10618,304,304,2.863062723676775,0
+Factor V Leiden,ana_trop,Recorded troponin category,10618,7625,7625,71.81201732906385,0
+Factor V Leiden,edad,Age (years),10618,0,0,0.0,0
+Factor V Leiden,peso,Weight (kg),10618,0,3,0.0282539084573366,0
+Factor V Leiden,tension_,Systolic BP (mmHg),10618,0,466,4.388773780372952,0
+Factor V Leiden,ana_hemo,Hemoglobin (g/dL),10618,10,12,0.1130156338293464,0
+Factor V Leiden,ana_plaq,Platelets (10^9/L),10618,12,13,0.12243360331512525,0
+Factor V Leiden,ana_leuc,Leukocytes (10^9/L),10618,10,41,0.3861367489169335,0
+Factor V Leiden,ana_neu,Neutrophils (10^9/L),10618,9514,9515,89.61197965718591,0
+Factor V Leiden,protcrea,C-reactive protein (mg/dL),10618,10469,10471,98.6155584855905,0
+Factor V Leiden,female_under45,Female and age <45,10618,0,0,0.0,0
+Factor V Leiden,splanchnic,Splanchnic thrombosis,10618,8068,8068,75.98417781126389,0

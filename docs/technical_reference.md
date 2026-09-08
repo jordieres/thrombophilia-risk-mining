@@ -1,53 +1,86 @@
-# Thrombophilia Risk Mining Suite: Technical Reference Manual
+# Technical reference: thrombophilia manuscript reanalysis
 
-This document provides a comprehensive technical overview of the architectural pipelines, behavioral contracts, and runtime execution sequences that govern the thrombophilia risk stratification software. The system is engineered around an object-oriented paradigm using strict typing and modular encapsulation to separate high-performance data ingestion from mathematical validation frameworks.
+The authoritative technical and user specification is
+[the manuscript reanalysis manual](docs_source/manuscript_reanalysis.rst), also
+published as [HTML](manuscript_reanalysis.html). It documents the executed
+statistical procedure, configuration, complete output schema, reproduction,
+failure behaviour and scientific limitations in English.
 
-## Behavioral and Interaction Specifications
+## Architecture and trust boundaries
 
-The operational lifecycle of the system is governed by a series of structured state transitions and execution workflows. The application transitions through deterministic stages starting from initial parameter parsing inside the command line interface to data-frame splitting and downstream algorithmic evaluation.
+The supported paper workflow follows this sequence:
 
-### Runtime Use Case Interactions
+1. `manuscript_cohort.py` reads the raw registry, checks unique IDs, defines
+   tested-only eligibility and explicit known-carrier exclusions, and applies
+   an allowlist of fixed pretest clinical transformations.
+2. `manuscript_reanalysis.py` produces descriptive tables, defines candidate
+   availability in development, builds paired complete-case and native-missing
+   populations, and orchestrates nested and temporal validation.
+3. `manuscript_models.py` learns supervised screens, category vocabularies,
+   L1/tree parameters, signed point cards, separate point calibration and
+   training-only operating thresholds.
+4. `manuscript_reporting.py` derives English responses, manuscript text,
+   supplementary material and standalone figures from the new numerical files.
+5. Outcome checks enforce cohort membership, unique held-out predictions,
+   temporal separation, paired primary populations, finite risks and exact
+   confusion/resource identities before writing a completion checkpoint.
 
-The core functional capabilities of the package are exposed to the clinical investigator through a single entry point managed by the Poetry environment. The primary use cases include multi-format dataset ingestion, demographic isolation using gradient boosted trees, sex-stratified contrast rule discovery, unsupervised phenotypic cluster mapping, and causal inference tracking through Bayesian networks. The execution engine enforces that all experimental sub-modules share a unified reporting interface, which automates the export of standalone HTML graphics and publication-ready LaTeX tables.
+No old performance CSV or historical score card feeds this chain. Results are
+kept in a dedicated run directory with input/source/configuration hashes.
+Report generation has its own source hash because changing prose does not
+require refitting otherwise identical numerical models.
 
-In addition to the main experiment CLI, the repository now includes a targeted
-one-off preparation tool for curating ``patD.parquet`` against an external
-Excel specification. This helper is implemented in ``src/patd_spec_tool.py``
-and is intended for deterministic dataset reduction rather than exploratory
-analysis.
+## Population and model contracts
 
-### Control Flow and Activity Sequences
+The registry description retains every source patient. Unknown global study
+status is distinguished from explicit not-tested status even when both appear
+in the same descriptive comparison group. Subtype prediction requires a binary
+registered result within globally tested patients; the available extract cannot
+independently prove completion of every subtype assay.
 
-When a command is submitted via the command-line driver, the software initializes an orchestration context that validates the underlying data integrity before allocating system resources. The ingestion layer determines the file extension on disk, parsing compressed binary tables via the PyArrow vectorization layer or fall-back spreadsheet structures into standardized pandas matrices. Once the dataframe is stored in memory, categorical variables are cleaned, missing historical records are defensively imputed as non-present, and laboratory features are categorized into discrete clinical bins to prevent information leakage.
+Development diagnoses end in 2021. A fixed 40% development missingness ceiling
+and nonconstant-variable requirement define the primary candidate set, without
+using outcomes. Primary models use the same complete-case patients. A separate
+XGBoost analysis retains incomplete observations and a broader allowlisted
+candidate set; it is not an isolated imputation experiment. Holdout records do
+not redefine candidate availability.
 
-Following this preprocessing stage, control is routed to the target experiment instances registered within the deployment matrix. Each active module executes its specialized mathematical routing independently inside a isolated memory subspace. The permutation importance pipeline manages its own internal stratified validation loop, the contrast miner isolates rule intersections using compressed frequent pattern trees, the clustering module reduces dimensional spaces via t-SNE algorithms, and the Bayesian module computes conditional probability distributions using maximum likelihood estimators.
+Univariable categorical logistic likelihood-ratio screening at p<0.10 precedes
+L1 logistic fitting within training folds. Five inner folds tune C; five outer
+folds estimate performance. XGBoost searches four documented configurations.
+Signed points preserve coefficient direction, and their probability mapping
+uses actual point sums rather than full-model probabilities. Operating thresholds
+come from training predictions and are locked before validation; a held-out
+sensitivity below 90% is an honest result, not an error to optimize away.
 
-The one-off ``patD`` preparation tool follows a narrower sequence. It loads the
-Excel specification, interprets column A as the authoritative list of retained
-variables, verifies their existence in the source parquet, preserves
-``id_pacie`` strictly as a reference field, applies minimal normalization
-required for downstream use, and writes both a filtered parquet and a JSON
-validation report. Validation includes categorical domain checks for the
-structured variables described in the specification and threshold summaries
-where column C contains interpretable numeric criteria.
+The manual provides every numeric boundary, the complete XGBoost grid, missing
+semantics, uncertainty calculations and the interpretation of constant-card
+fallbacks. Source/category identities are retained in point tables: `trat_est`
+means statins and `fr_estro` means hormone exposure.
 
-The analytical layer now also includes exploratory categorical-association and
-open association-rule experiments, plus a ``score_screening`` workflow that can
-rank ``ana_dura`` cases marked as ``Missing`` or ``No buscada`` using both the
-bedside integer score and benchmark model probabilities for manual review. The
-supervised research modules are no longer conceptually tied to ``ana_dura``: the
-CLI can now redirect permutation importance, contrast mining, Bayesian
-conditional summaries, and the score workflows toward an alternative target
-column when the dataset exposes a clinically meaningful derived label.
+## Historical framework
 
-### State Transitions and Inter-Process Communication
+The original `src/cli.py` still orchestrates the generic experiment classes.
+Their general processor can fill missing histories with No and their generic
+score route does not impose the paper's predictor/cohort contracts. These tools
+are exploratory and must not replace the new validation outputs. Clustering
+uses UMAP, and Bayesian conditional summaries describe associations rather than
+causal effects. The old manuscript command now delegates to the safe workflow;
+its former unsafe model-generation loop has been removed.
 
-An individual experiment instance maintains an isolated lifecycle to prevent cross-contamination between parallel executions. Upon initialization, the object exists in an unconfigured state until the baseline command arguments are injected as a unified parameter dictionary. Once the configuration is established, the module transitions into an active execution state where input data streams are consumed. During this phase, internal state variables track modeling milestones, such as classifier convergence or rule-filtering completions. A successful pipeline evaluation transitions the module into an artifact building state, where formatting routines write the physical outputs onto the local storage layout before the object is safely decommissioned by the garbage collection layer.
+The Excel preparation utility remains available for reproducing historical
+subsets, but its row filtering and imputation directives mean those subsets are
+not interchangeable with the raw source for the new analysis.
 
-## Structural and Modular Organization
+## Verification and scientific limits
 
-The internal architecture of the suite follows a highly decoupled design pattern where individual clinical questions are isolated within standalone class definitions extending a core abstract class contract.
+Run `python -m pytest tests -q` for regression tests and
+`python -m sphinx -W --keep-going -b html docs/docs_source docs` for documentation.
+See the developer guide for test-only integration settings and dependency pins.
+The numerical outputs, code, generated reports and documentation must agree on
+population, model identity, threshold selection and missing-data policy.
 
-### Class Hierarchies and Type Contracts
-
-The framework relies heavily on inheritance to enforce uniform behavior across all research modules. The abstract baseline class defines the structural layout, declaring explicit data fields for the resulting LaTeX strings, public Plotly figure handlers, and descriptive names. It exposes abstract execution contracts that mandate specific input matrices and configuration parameter maps, ensuring that any newly introduced clinical experiment remains
+Successful execution does not establish assay timing, repeated laboratory
+confirmation, causal explanations of sex differences, or external validity.
+Those data are unavailable here. Complete-case attrition, sparse outcomes and
+small temporal holdouts remain visible in the manuscript-ready results.

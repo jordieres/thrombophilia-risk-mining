@@ -1,0 +1,16 @@
+variable,category,coefficient,points,label
+e_con_ea,Yes,1.2376260682379698,109,Ankylosing spondylitis
+e_con_sm,Yes,0.8736210384678157,77,May-Thurner syndrome
+var171,Yes,0.2896350006069679,26,Syncope
+tvp_prox,Proximal (incluyendo la vena poplítea),0.5040872614036676,45,DVT proximal/distal location
+fr_tvp_a,Yes,-0.17934636159657794,-16,Prior VTE
+fr_estro,Yes,0.08676646194172283,8,Recent hormone exposure
+fr_embar,Yes,0.45101903588467845,40,Pregnancy
+fr_varic,Yes,-0.2017552978743133,-18,Varicose veins
+ana_crea,Normal,0.2860055258720367,25,Recorded creatinine category
+edad,<50,-0.03563344005158935,-3,Age (years)
+edad,≥70,-0.3677592177620238,-33,Age (years)
+ana_hemo,≥12,0.20242660173279026,18,Hemoglobin (g/dL)
+ana_plaq,<144,-0.24472214456598784,-22,Platelets (10^9/L)
+ana_plaq,>400,-0.011304663519000887,-1,Platelets (10^9/L)
+female_under45,Yes,0.0897214425409508,8,Female and age <45

@@ -8,6 +8,7 @@ quality gates for the thrombophilia risk mining toolkit.
    :maxdepth: 2
    :caption: Contents
 
+   manuscript_reanalysis
    installation
    usage
    architecture

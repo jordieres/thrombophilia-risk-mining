@@ -4,7 +4,10 @@ Usage
 CLI entry point
 ---------------
 
-The project exposes a single CLI entry point implemented in ``src/cli.py``.
+For manuscript results, use ``src/manuscript_reanalysis.py`` as described in
+:doc:`manuscript_reanalysis`. The commands on this page describe the historical
+exploratory toolkit implemented in ``src/cli.py``. Their generic score outputs
+are not authoritative manuscript validation results.
 
 .. code-block:: bash
 

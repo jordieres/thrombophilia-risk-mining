@@ -1,0 +1,17 @@
+{
+  "outcome": "var161",
+  "label": "Registry-coded APS",
+  "priority": "exploratory",
+  "eligible_n": 10685,
+  "eligible_positive_n": 1885,
+  "development_eligible_n": 10417,
+  "temporal_eligible_n": 268,
+  "missing_date_n": 0,
+  "candidate_n": 37,
+  "complete_case_n": 5981,
+  "complete_case_positive_n": 901,
+  "missing_excluded_n": 4704,
+  "development_complete_n": 5866,
+  "temporal_complete_n": 115,
+  "cutoff_year": 2021
+}

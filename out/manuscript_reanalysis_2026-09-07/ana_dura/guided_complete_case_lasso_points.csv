@@ -1,0 +1,10 @@
+variable,category,coefficient,points,label
+sexo,Male,0.16449058677525782,2,Sex
+edad,<50,0.20916345732626515,2,Age (years)
+edad,≥70,-0.09131753105946311,-1,Age (years)
+fr_tvp_a,Yes,-0.12335936885731598,-1,Prior VTE
+ana_hemo,≥12,0.1026081120301487,1,Hemoglobin (g/dL)
+ana_dime,Not performed,-0.10871478705197399,-1,Recorded categorical D-dimer
+ana_dime,Positive,0.1669450231125263,2,Recorded categorical D-dimer
+fr_cance,Yes,-0.26275255911227746,-3,Active cancer
+fr_inmov,Yes,-0.24678938716054707,-3,Recent immobilization

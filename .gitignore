@@ -221,3 +221,7 @@ __marimo__/
 *.xlsx
 data/*.xlsx
 data/*.parquet
+
+# Rebuildable Sphinx caches (published HTML remains tracked)
+docs/.doctrees/
+docs/docs_source/.doctrees/

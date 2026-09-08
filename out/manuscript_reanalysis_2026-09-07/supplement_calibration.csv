@@ -1,0 +1,314 @@
+bin,n,predicted,observed,absolute_error,outcome,analysis,validation,model
+0,7,0.0918859425014063,0.2857142857142857,0.1938283432128793,ana_dura,primary_complete_case,nested_cv,Logistic LASSO
+1,164,0.170320754699239,0.1890243902439024,0.0187036355446633,ana_dura,primary_complete_case,nested_cv,Logistic LASSO
+2,890,0.2624303524072806,0.2955056179775281,0.0330752655702475,ana_dura,primary_complete_case,nested_cv,Logistic LASSO
+3,2706,0.3561942788909081,0.359940872135994,0.0037465932450859,ana_dura,primary_complete_case,nested_cv,Logistic LASSO
+4,2907,0.4455681296780862,0.4279325765393877,0.0176355531386985,ana_dura,primary_complete_case,nested_cv,Logistic LASSO
+5,521,0.5199928852663266,0.5355086372360844,0.0155157519697578,ana_dura,primary_complete_case,nested_cv,Logistic LASSO
+6,13,0.6515567821051936,0.5384615384615384,0.1130952436436552,ana_dura,primary_complete_case,nested_cv,Logistic LASSO
+7,1,0.705151071903876,1.0,0.2948489280961239,ana_dura,primary_complete_case,nested_cv,Logistic LASSO
+0,8,0.0922270775438275,0.25,0.1577729224561724,ana_dura,primary_complete_case,nested_cv,Automatic integer score
+1,187,0.1706384262427731,0.1871657754010695,0.0165273491582964,ana_dura,primary_complete_case,nested_cv,Automatic integer score
+2,934,0.2631049260915551,0.3019271948608137,0.0388222687692585,ana_dura,primary_complete_case,nested_cv,Automatic integer score
+3,2645,0.3565274529227079,0.3606805293005671,0.0041530763778591,ana_dura,primary_complete_case,nested_cv,Automatic integer score
+4,2800,0.4454160201953751,0.4260714285714285,0.0193445916239465,ana_dura,primary_complete_case,nested_cv,Automatic integer score
+5,620,0.5199313224199891,0.5274193548387097,0.0074880324187206,ana_dura,primary_complete_case,nested_cv,Automatic integer score
+6,12,0.6436201807801473,0.5,0.1436201807801472,ana_dura,primary_complete_case,nested_cv,Automatic integer score
+7,3,0.7061266895530979,0.6666666666666666,0.0394600228864312,ana_dura,primary_complete_case,nested_cv,Automatic integer score
+1,6,0.1708611624186945,0.3333333333333333,0.1624721709146388,ana_dura,primary_complete_case,temporal_holdout,Logistic LASSO
+2,29,0.2585522997443568,0.3793103448275862,0.1207580450832293,ana_dura,primary_complete_case,temporal_holdout,Logistic LASSO
+3,153,0.3590824265114961,0.2745098039215686,0.0845726225899274,ana_dura,primary_complete_case,temporal_holdout,Logistic LASSO
+4,206,0.4462245220542771,0.3543689320388349,0.0918555900154421,ana_dura,primary_complete_case,temporal_holdout,Logistic LASSO
+5,28,0.5226333141797131,0.4285714285714285,0.0940618856082846,ana_dura,primary_complete_case,temporal_holdout,Logistic LASSO
+6,1,0.6669512629406988,1.0,0.3330487370593011,ana_dura,primary_complete_case,temporal_holdout,Logistic LASSO
+1,6,0.1638563527585124,0.3333333333333333,0.1694769805748208,ana_dura,primary_complete_case,temporal_holdout,Automatic integer score
+2,32,0.2572360131805121,0.34375,0.0865139868194878,ana_dura,primary_complete_case,temporal_holdout,Automatic integer score
+3,144,0.3568670595875171,0.2708333333333333,0.0860337262541837,ana_dura,primary_complete_case,temporal_holdout,Automatic integer score
+4,193,0.4416015738570902,0.3730569948186528,0.0685445790384373,ana_dura,primary_complete_case,temporal_holdout,Automatic integer score
+5,47,0.5179249314936565,0.3404255319148936,0.1774993995787628,ana_dura,primary_complete_case,temporal_holdout,Automatic integer score
+6,1,0.6771373077786997,1.0,0.3228626922213002,ana_dura,primary_complete_case,temporal_holdout,Automatic integer score
+0,5,0.0938894316554069,0.0,0.0938894316554069,ana_dura,primary_complete_case,nested_cv,XGBoost
+1,101,0.1579653747601084,0.1584158415841584,0.00045046682405,ana_dura,primary_complete_case,nested_cv,XGBoost
+2,830,0.2658568058746406,0.2759036144578313,0.0100468085831906,ana_dura,primary_complete_case,nested_cv,XGBoost
+3,2733,0.3555907583851714,0.3563849249908525,0.0007941666056811,ana_dura,primary_complete_case,nested_cv,XGBoost
+4,3223,0.4440872998497259,0.4365497983245423,0.0075375015251835,ana_dura,primary_complete_case,nested_cv,XGBoost
+5,317,0.5196938018317478,0.5520504731861199,0.032356671354372,ana_dura,primary_complete_case,nested_cv,XGBoost
+1,2,0.1809947118163108,0.0,0.1809947118163108,ana_dura,primary_complete_case,temporal_holdout,XGBoost
+2,47,0.2653392011180837,0.2127659574468085,0.0525732436712752,ana_dura,primary_complete_case,temporal_holdout,XGBoost
+3,143,0.3587929385525363,0.3146853146853147,0.0441076238672216,ana_dura,primary_complete_case,temporal_holdout,XGBoost
+4,218,0.4434824572243822,0.3669724770642202,0.0765099801601619,ana_dura,primary_complete_case,temporal_holdout,XGBoost
+5,13,0.5179167940066411,0.4615384615384615,0.0563783324681795,ana_dura,primary_complete_case,temporal_holdout,XGBoost
+0,85,0.0822870403528213,0.0117647058823529,0.0705223344704684,ana_dura,sensitivity_native_missing,nested_cv,XGBoost
+1,477,0.1668088996247925,0.0985324947589098,0.0682764048658826,ana_dura,sensitivity_native_missing,nested_cv,XGBoost
+2,2559,0.2656678992085924,0.2669011332551778,0.0012332340465853,ana_dura,sensitivity_native_missing,nested_cv,XGBoost
+3,9870,0.3586896080557698,0.3499493414387031,0.0087402666170666,ana_dura,sensitivity_native_missing,nested_cv,XGBoost
+4,8154,0.4376517607318089,0.4480009811135639,0.010349220381755,ana_dura,sensitivity_native_missing,nested_cv,XGBoost
+5,598,0.5218862753648025,0.5735785953177257,0.0516923199529232,ana_dura,sensitivity_native_missing,nested_cv,XGBoost
+6,19,0.6228992342948914,1.0,0.3771007657051086,ana_dura,sensitivity_native_missing,nested_cv,XGBoost
+0,1,0.0556894317269325,0.0,0.0556894317269325,ana_dura,sensitivity_native_missing,temporal_holdout,XGBoost
+1,29,0.1667724403327909,0.0689655172413793,0.0978069230914115,ana_dura,sensitivity_native_missing,temporal_holdout,XGBoost
+2,219,0.2665014136327456,0.2191780821917808,0.0473233314409647,ana_dura,sensitivity_native_missing,temporal_holdout,XGBoost
+3,575,0.3521540131257928,0.3339130434782609,0.0182409696475319,ana_dura,sensitivity_native_missing,temporal_holdout,XGBoost
+4,251,0.4292039149310959,0.3904382470119522,0.0387656679191437,ana_dura,sensitivity_native_missing,temporal_holdout,XGBoost
+5,10,0.5184426367282867,0.5,0.0184426367282867,ana_dura,sensitivity_native_missing,temporal_holdout,XGBoost
+1,7,0.1900083486905948,0.2857142857142857,0.0957059370236908,ana_dura,guided_complete_case,nested_cv,Logistic LASSO
+2,652,0.2703498818584762,0.2837423312883436,0.0133924494298673,ana_dura,guided_complete_case,nested_cv,Logistic LASSO
+3,3174,0.3572670922762736,0.3588531821045999,0.0015860898283262,ana_dura,guided_complete_case,nested_cv,Logistic LASSO
+4,3376,0.4413560426699112,0.4369075829383886,0.0044484597315226,ana_dura,guided_complete_case,nested_cv,Logistic LASSO
+1,7,0.1897359360635012,0.1428571428571428,0.0468787932063583,ana_dura,guided_complete_case,nested_cv,Automatic integer score
+2,628,0.2697762184153991,0.286624203821656,0.0168479854062569,ana_dura,guided_complete_case,nested_cv,Automatic integer score
+3,3383,0.3594594952525285,0.3609222583505764,0.0014627630980478,ana_dura,guided_complete_case,nested_cv,Automatic integer score
+4,3191,0.4432264981864425,0.4384205578188656,0.0048059403675769,ana_dura,guided_complete_case,nested_cv,Automatic integer score
+2,16,0.282495913891445,0.375,0.0925040861085549,ana_dura,guided_complete_case,temporal_holdout,Logistic LASSO
+3,156,0.3653243909317293,0.3397435897435897,0.0255808011881395,ana_dura,guided_complete_case,temporal_holdout,Logistic LASSO
+4,251,0.4429190496298989,0.3266932270916334,0.1162258225382654,ana_dura,guided_complete_case,temporal_holdout,Logistic LASSO
+2,16,0.2807171380134147,0.375,0.0942828619865852,ana_dura,guided_complete_case,temporal_holdout,Automatic integer score
+3,157,0.3650617308593698,0.3439490445859872,0.0211126862733825,ana_dura,guided_complete_case,temporal_holdout,Automatic integer score
+4,250,0.4427867130370512,0.324,0.1187867130370512,ana_dura,guided_complete_case,temporal_holdout,Automatic integer score
+0,557,0.0783564161034998,0.1059245960502693,0.0275681799467694,var156,primary_complete_case,nested_cv,Logistic LASSO
+1,2532,0.1530860797988574,0.1488941548183254,0.004191924980532,var156,primary_complete_case,nested_cv,Logistic LASSO
+2,2144,0.2434611364837164,0.2486007462686567,0.0051396097849402,var156,primary_complete_case,nested_cv,Logistic LASSO
+3,603,0.334405587492822,0.3101160862354892,0.0242895012573328,var156,primary_complete_case,nested_cv,Logistic LASSO
+4,25,0.4212454983958653,0.44,0.0187545016041346,var156,primary_complete_case,nested_cv,Logistic LASSO
+6,1,0.6554048544475863,0.0,0.6554048544475863,var156,primary_complete_case,nested_cv,Logistic LASSO
+7,2,0.7704190672383636,0.0,0.7704190672383636,var156,primary_complete_case,nested_cv,Logistic LASSO
+0,605,0.0770965414295447,0.112396694214876,0.0353001527853313,var156,primary_complete_case,nested_cv,Automatic integer score
+1,2507,0.1525495542791086,0.1491822895891504,0.0033672646899582,var156,primary_complete_case,nested_cv,Automatic integer score
+2,2108,0.2446242967054678,0.2462049335863377,0.0015806368808699,var156,primary_complete_case,nested_cv,Automatic integer score
+3,610,0.3379335579349582,0.3163934426229508,0.0215401153120073,var156,primary_complete_case,nested_cv,Automatic integer score
+4,31,0.4224811058731904,0.4193548387096774,0.0031262671635129,var156,primary_complete_case,nested_cv,Automatic integer score
+6,1,0.6644768046450187,0.0,0.6644768046450187,var156,primary_complete_case,nested_cv,Automatic integer score
+7,2,0.7790942457539364,0.0,0.7790942457539364,var156,primary_complete_case,nested_cv,Automatic integer score
+0,5,0.0713064783482415,0.4,0.3286935216517584,var156,primary_complete_case,temporal_holdout,Logistic LASSO
+1,32,0.1655111124540831,0.25,0.0844888875459168,var156,primary_complete_case,temporal_holdout,Logistic LASSO
+2,53,0.2451233692597115,0.3018867924528302,0.0567634231931186,var156,primary_complete_case,temporal_holdout,Logistic LASSO
+3,11,0.3394815095843456,0.1818181818181818,0.1576633277661638,var156,primary_complete_case,temporal_holdout,Logistic LASSO
+4,1,0.4142792473439676,1.0,0.5857207526560324,var156,primary_complete_case,temporal_holdout,Logistic LASSO
+0,5,0.0672653624531713,0.4,0.3327346375468287,var156,primary_complete_case,temporal_holdout,Automatic integer score
+1,32,0.1638374389306824,0.25,0.0861625610693175,var156,primary_complete_case,temporal_holdout,Automatic integer score
+2,53,0.246912225555823,0.3018867924528302,0.0549745668970071,var156,primary_complete_case,temporal_holdout,Automatic integer score
+3,11,0.3473341223214389,0.1818181818181818,0.165515940503257,var156,primary_complete_case,temporal_holdout,Automatic integer score
+4,1,0.4272006359249789,1.0,0.5727993640750211,var156,primary_complete_case,temporal_holdout,Automatic integer score
+0,258,0.0869365463885225,0.1007751937984496,0.013838647409927,var156,primary_complete_case,nested_cv,XGBoost
+1,2838,0.1523077349093827,0.1448202959830866,0.007487438926296,var156,primary_complete_case,nested_cv,XGBoost
+2,2226,0.2427561282241333,0.2479784366576819,0.0052223084335485,var156,primary_complete_case,nested_cv,XGBoost
+3,529,0.3273839866619254,0.3270321361058601,0.0003518505560652,var156,primary_complete_case,nested_cv,XGBoost
+4,13,0.4308524269324083,0.3846153846153846,0.0462370423170236,var156,primary_complete_case,nested_cv,XGBoost
+0,4,0.0807680189609527,0.5,0.4192319810390472,var156,primary_complete_case,temporal_holdout,XGBoost
+1,34,0.1640019478166804,0.2647058823529412,0.1007039345362607,var156,primary_complete_case,temporal_holdout,XGBoost
+2,51,0.2435429140048868,0.2941176470588235,0.0505747330539367,var156,primary_complete_case,temporal_holdout,XGBoost
+3,13,0.3400039237279158,0.2307692307692307,0.109234692958685,var156,primary_complete_case,temporal_holdout,XGBoost
+0,2874,0.071583768536279,0.0615866388308977,0.0099971297053813,var156,sensitivity_native_missing,nested_cv,XGBoost
+1,3475,0.1417934717913326,0.1479136690647482,0.0061201972734156,var156,sensitivity_native_missing,nested_cv,XGBoost
+2,1823,0.2495645030687225,0.2386176631925397,0.0109468398761827,var156,sensitivity_native_missing,nested_cv,XGBoost
+3,1650,0.3473228299979007,0.36,0.0126771700020992,var156,sensitivity_native_missing,nested_cv,XGBoost
+4,528,0.4320854630998589,0.4526515151515151,0.0205660520516561,var156,sensitivity_native_missing,nested_cv,XGBoost
+5,29,0.5255882246740933,0.4827586206896552,0.042829603984438,var156,sensitivity_native_missing,nested_cv,XGBoost
+0,1,0.0886084660887718,1.0,0.9113915339112282,var156,sensitivity_native_missing,temporal_holdout,XGBoost
+1,47,0.1626293025118239,0.1914893617021276,0.0288600591903037,var156,sensitivity_native_missing,temporal_holdout,XGBoost
+2,91,0.2491390318660945,0.2967032967032967,0.0475642648372021,var156,sensitivity_native_missing,temporal_holdout,XGBoost
+3,80,0.3524870533496141,0.3125,0.0399870533496141,var156,sensitivity_native_missing,temporal_holdout,XGBoost
+4,19,0.4384333271729319,0.4736842105263157,0.0352508833533838,var156,sensitivity_native_missing,temporal_holdout,XGBoost
+5,1,0.5641475915908813,1.0,0.4358524084091186,var156,sensitivity_native_missing,temporal_holdout,XGBoost
+0,639,0.0835147580100535,0.0923317683881064,0.0088170103780528,var157,primary_complete_case,nested_cv,Logistic LASSO
+1,4712,0.1500970440836178,0.1528013582342954,0.0027043141506775,var157,primary_complete_case,nested_cv,Logistic LASSO
+2,396,0.2245921538956565,0.1717171717171717,0.0528749821784848,var157,primary_complete_case,nested_cv,Logistic LASSO
+3,10,0.3364904067594302,0.3,0.0364904067594302,var157,primary_complete_case,nested_cv,Logistic LASSO
+5,1,0.5626165324475834,0.0,0.5626165324475834,var157,primary_complete_case,nested_cv,Logistic LASSO
+0,783,0.0813597034392237,0.0970625798212005,0.0157028763819767,var157,primary_complete_case,nested_cv,Automatic integer score
+1,4533,0.1507978064452657,0.1533200970659607,0.002522290620695,var157,primary_complete_case,nested_cv,Automatic integer score
+2,430,0.2296520509620026,0.1767441860465116,0.052907864915491,var157,primary_complete_case,nested_cv,Automatic integer score
+3,9,0.3383100549504175,0.3333333333333333,0.0049767216170841,var157,primary_complete_case,nested_cv,Automatic integer score
+4,2,0.4241230115650378,0.0,0.4241230115650378,var157,primary_complete_case,nested_cv,Automatic integer score
+6,1,0.6164077713989556,0.0,0.6164077713989556,var157,primary_complete_case,nested_cv,Automatic integer score
+0,7,0.0878313056384125,0.2857142857142857,0.1978829800758731,var157,primary_complete_case,temporal_holdout,Logistic LASSO
+1,76,0.1551091439970444,0.2894736842105263,0.1343645402134819,var157,primary_complete_case,temporal_holdout,Logistic LASSO
+2,8,0.2237670448908468,0.25,0.0262329551091531,var157,primary_complete_case,temporal_holdout,Logistic LASSO
+4,2,0.4758654625555194,0.5,0.0241345374444805,var157,primary_complete_case,temporal_holdout,Logistic LASSO
+0,8,0.0856918722094579,0.25,0.1643081277905421,var157,primary_complete_case,temporal_holdout,Automatic integer score
+1,75,0.1559845563392354,0.2933333333333333,0.1373487769940979,var157,primary_complete_case,temporal_holdout,Automatic integer score
+2,8,0.2299146900742838,0.25,0.0200853099257161,var157,primary_complete_case,temporal_holdout,Automatic integer score
+4,1,0.4792762355257228,0.0,0.4792762355257228,var157,primary_complete_case,temporal_holdout,Automatic integer score
+5,1,0.5274481385836024,1.0,0.4725518614163976,var157,primary_complete_case,temporal_holdout,Automatic integer score
+0,901,0.0825140968701088,0.099889012208657,0.0173749153385482,var157,primary_complete_case,nested_cv,XGBoost
+1,4208,0.1501485638093812,0.1506653992395437,0.0005168354301624,var157,primary_complete_case,nested_cv,XGBoost
+2,636,0.2235975495580607,0.1981132075471698,0.0254843420108908,var157,primary_complete_case,nested_cv,XGBoost
+3,13,0.3209364918562082,0.0,0.3209364918562082,var157,primary_complete_case,nested_cv,XGBoost
+0,6,0.0808329166223605,0.3333333333333333,0.2525004167109728,var157,primary_complete_case,temporal_holdout,XGBoost
+1,76,0.1549727791234066,0.2763157894736842,0.1213430103502775,var157,primary_complete_case,temporal_holdout,XGBoost
+2,11,0.2291771268302744,0.3636363636363636,0.1344592368060892,var157,primary_complete_case,temporal_holdout,XGBoost
+0,4237,0.0703192749714616,0.0658484776964833,0.0044707972749782,var157,sensitivity_native_missing,nested_cv,XGBoost
+1,2433,0.149436915258885,0.1644060830250719,0.0149691677661868,var157,sensitivity_native_missing,nested_cv,XGBoost
+2,3071,0.2443554450113972,0.2409638554216867,0.0033915895897105,var157,sensitivity_native_missing,nested_cv,XGBoost
+3,369,0.3270871270962847,0.3116531165311653,0.0154340105651193,var157,sensitivity_native_missing,nested_cv,XGBoost
+4,22,0.4279270876537669,0.3636363636363636,0.0642907240174033,var157,sensitivity_native_missing,nested_cv,XGBoost
+5,2,0.5054453313350677,1.0,0.4945546686649322,var157,sensitivity_native_missing,nested_cv,XGBoost
+0,2,0.0653582625091075,0.0,0.0653582625091075,var157,sensitivity_native_missing,temporal_holdout,XGBoost
+1,62,0.1671636979426107,0.1774193548387097,0.0102556568960989,var157,sensitivity_native_missing,temporal_holdout,XGBoost
+2,134,0.245389098885344,0.2835820895522388,0.0381929906668947,var157,sensitivity_native_missing,temporal_holdout,XGBoost
+3,23,0.3395866673925649,0.391304347826087,0.051717680433522,var157,sensitivity_native_missing,temporal_holdout,XGBoost
+4,1,0.4210491776466369,0.0,0.4210491776466369,var157,sensitivity_native_missing,temporal_holdout,XGBoost
+0,1269,0.0788008525945535,0.086682427107959,0.0078815745134055,var161,primary_complete_case,nested_cv,Logistic LASSO
+1,4025,0.1469858952851754,0.1468322981366459,0.0001535971485294,var161,primary_complete_case,nested_cv,Logistic LASSO
+2,425,0.2394688531742708,0.2117647058823529,0.0277041472919179,var161,primary_complete_case,nested_cv,Logistic LASSO
+3,111,0.3208807629635931,0.3603603603603603,0.0394795973967672,var161,primary_complete_case,nested_cv,Logistic LASSO
+4,9,0.4628558320072565,0.3333333333333333,0.1295224986739231,var161,primary_complete_case,nested_cv,Logistic LASSO
+5,10,0.5570410077783381,0.3,0.2570410077783381,var161,primary_complete_case,nested_cv,Logistic LASSO
+6,7,0.6614681121894258,0.8571428571428571,0.1956747449534313,var161,primary_complete_case,nested_cv,Logistic LASSO
+7,6,0.7622384045470146,1.0,0.2377615954529853,var161,primary_complete_case,nested_cv,Logistic LASSO
+8,3,0.8367855487457861,0.6666666666666666,0.1701188820791195,var161,primary_complete_case,nested_cv,Logistic LASSO
+9,1,0.973420117101366,0.0,0.973420117101366,var161,primary_complete_case,nested_cv,Logistic LASSO
+0,1318,0.0768855726888494,0.0842185128983308,0.0073329402094813,var161,primary_complete_case,nested_cv,Automatic integer score
+1,3911,0.1462923979024505,0.1485553566862694,0.0022629587838189,var161,primary_complete_case,nested_cv,Automatic integer score
+2,452,0.2346209885672641,0.2013274336283186,0.0332935549389455,var161,primary_complete_case,nested_cv,Automatic integer score
+3,146,0.3205272862355388,0.3219178082191781,0.0013905219836392,var161,primary_complete_case,nested_cv,Automatic integer score
+4,9,0.4383129345361454,0.2222222222222222,0.2160907123139231,var161,primary_complete_case,nested_cv,Automatic integer score
+5,9,0.5382839253280756,0.3333333333333333,0.2049505919947422,var161,primary_complete_case,nested_cv,Automatic integer score
+6,9,0.633457368018504,0.6666666666666666,0.0332092986481625,var161,primary_complete_case,nested_cv,Automatic integer score
+7,7,0.7416968119477777,1.0,0.2583031880522223,var161,primary_complete_case,nested_cv,Automatic integer score
+8,4,0.8290751006714345,0.75,0.0790751006714345,var161,primary_complete_case,nested_cv,Automatic integer score
+9,1,0.9695195251424168,0.0,0.9695195251424168,var161,primary_complete_case,nested_cv,Automatic integer score
+0,16,0.0900818715189923,0.4375,0.3474181284810076,var161,primary_complete_case,temporal_holdout,Logistic LASSO
+1,81,0.1548315585448819,0.4074074074074074,0.2525758488625254,var161,primary_complete_case,temporal_holdout,Logistic LASSO
+2,12,0.2627904972777297,0.4166666666666667,0.153876169388937,var161,primary_complete_case,temporal_holdout,Logistic LASSO
+3,4,0.3303452567147668,0.75,0.4196547432852331,var161,primary_complete_case,temporal_holdout,Logistic LASSO
+4,1,0.4911831167770331,1.0,0.5088168832229669,var161,primary_complete_case,temporal_holdout,Logistic LASSO
+8,1,0.8747495018415845,1.0,0.1252504981584155,var161,primary_complete_case,temporal_holdout,Logistic LASSO
+0,17,0.0908285425980667,0.4117647058823529,0.3209361632842862,var161,primary_complete_case,temporal_holdout,Automatic integer score
+1,81,0.156697532167285,0.4074074074074074,0.2507098752401223,var161,primary_complete_case,temporal_holdout,Automatic integer score
+2,12,0.2647597780107955,0.5,0.2352402219892045,var161,primary_complete_case,temporal_holdout,Automatic integer score
+3,3,0.3379633809605034,0.6666666666666666,0.3287032857061632,var161,primary_complete_case,temporal_holdout,Automatic integer score
+5,1,0.51014826009076,1.0,0.48985173990924,var161,primary_complete_case,temporal_holdout,Automatic integer score
+8,1,0.8791824869037852,1.0,0.1208175130962148,var161,primary_complete_case,temporal_holdout,Automatic integer score
+0,989,0.0849642868184826,0.0839231547017189,0.0010411321167637,var161,primary_complete_case,nested_cv,XGBoost
+1,4412,0.1451167799447978,0.1441523118766999,0.0009644680680978,var161,primary_complete_case,nested_cv,XGBoost
+2,388,0.2424911965721661,0.2474226804123711,0.004931483840205,var161,primary_complete_case,nested_cv,XGBoost
+3,54,0.3303000893857744,0.3518518518518518,0.0215517624660774,var161,primary_complete_case,nested_cv,XGBoost
+4,10,0.4330995440483093,0.7,0.2669004559516906,var161,primary_complete_case,nested_cv,XGBoost
+5,9,0.5535540580749512,1.0,0.4464459419250488,var161,primary_complete_case,nested_cv,XGBoost
+6,2,0.6267562508583069,0.5,0.1267562508583068,var161,primary_complete_case,nested_cv,XGBoost
+7,2,0.7383875250816345,0.0,0.7383875250816345,var161,primary_complete_case,nested_cv,XGBoost
+0,7,0.0902499875852039,0.4285714285714285,0.3383214409862246,var161,primary_complete_case,temporal_holdout,XGBoost
+1,90,0.1501561247640186,0.4,0.2498438752359814,var161,primary_complete_case,temporal_holdout,XGBoost
+2,15,0.2515969564517339,0.6,0.348403043548266,var161,primary_complete_case,temporal_holdout,XGBoost
+3,2,0.3468251824378967,0.5,0.1531748175621032,var161,primary_complete_case,temporal_holdout,XGBoost
+5,1,0.5978932976722717,1.0,0.4021067023277282,var161,primary_complete_case,temporal_holdout,XGBoost
+0,4701,0.0695604175333963,0.0657306955966815,0.0038297219367147,var161,sensitivity_native_missing,nested_cv,XGBoost
+1,2483,0.1540840051879193,0.153040676600886,0.0010433285870333,var161,sensitivity_native_missing,nested_cv,XGBoost
+2,1561,0.2430007834032817,0.2504804612427931,0.0074796778395113,var161,sensitivity_native_missing,nested_cv,XGBoost
+3,982,0.3532292912059792,0.3594704684317719,0.0062411772257927,var161,sensitivity_native_missing,nested_cv,XGBoost
+4,569,0.4360280609403218,0.453427065026362,0.0173990040860402,var161,sensitivity_native_missing,nested_cv,XGBoost
+5,97,0.5368804796454832,0.5567010309278351,0.0198205512823518,var161,sensitivity_native_missing,nested_cv,XGBoost
+6,18,0.636777917544047,0.7222222222222222,0.0854443046781752,var161,sensitivity_native_missing,nested_cv,XGBoost
+7,6,0.7526101867357889,0.8333333333333334,0.0807231465975444,var161,sensitivity_native_missing,nested_cv,XGBoost
+1,7,0.1825523121016366,0.1428571428571428,0.0396951692444937,var161,sensitivity_native_missing,temporal_holdout,XGBoost
+2,31,0.2399224509154596,0.3548387096774194,0.1149162587619597,var161,sensitivity_native_missing,temporal_holdout,XGBoost
+3,81,0.3613185757472191,0.2716049382716049,0.0897136374756142,var161,sensitivity_native_missing,temporal_holdout,XGBoost
+4,117,0.4369863860118083,0.5470085470085471,0.1100221609967387,var161,sensitivity_native_missing,temporal_holdout,XGBoost
+5,27,0.544638576330962,0.7037037037037037,0.1590651273727417,var161,sensitivity_native_missing,temporal_holdout,XGBoost
+6,3,0.6453851858774821,1.0,0.3546148141225179,var161,sensitivity_native_missing,temporal_holdout,XGBoost
+7,2,0.7433373630046844,1.0,0.2566626369953155,var161,sensitivity_native_missing,temporal_holdout,XGBoost
+0,5134,0.0620155722608007,0.0648617062719127,0.0028461340111119,var155,primary_complete_case,nested_cv,Logistic LASSO
+1,570,0.1195584688195537,0.0859649122807017,0.0335935565388519,var155,primary_complete_case,nested_cv,Logistic LASSO
+2,18,0.2243635104759833,0.1111111111111111,0.1132523993648722,var155,primary_complete_case,nested_cv,Logistic LASSO
+3,1,0.304802432273329,0.0,0.304802432273329,var155,primary_complete_case,nested_cv,Logistic LASSO
+0,5123,0.06020375506217,0.0650009759906305,0.0047972209284604,var155,primary_complete_case,nested_cv,Automatic integer score
+1,571,0.1229300771981277,0.0805604203152364,0.0423696568828912,var155,primary_complete_case,nested_cv,Automatic integer score
+2,27,0.2199943918806047,0.1851851851851851,0.0348092066954195,var155,primary_complete_case,nested_cv,Automatic integer score
+3,2,0.3189460395932946,0.0,0.3189460395932946,var155,primary_complete_case,nested_cv,Automatic integer score
+0,95,0.0655498830040042,0.1473684210526315,0.0818185380486273,var155,primary_complete_case,temporal_holdout,Logistic LASSO
+1,7,0.1158821889705088,0.1428571428571428,0.026974953886634,var155,primary_complete_case,temporal_holdout,Logistic LASSO
+0,90,0.0606525360138304,0.1444444444444444,0.083791908430614,var155,primary_complete_case,temporal_holdout,Automatic integer score
+1,12,0.1159597469833681,0.1666666666666666,0.0507069196832985,var155,primary_complete_case,temporal_holdout,Automatic integer score
+0,5188,0.063630307274034,0.0661141094834232,0.0024838022093892,var155,primary_complete_case,nested_cv,XGBoost
+1,524,0.1235996678272503,0.0782442748091603,0.04535539301809,var155,primary_complete_case,nested_cv,XGBoost
+2,11,0.2218338305299932,0.0,0.2218338305299932,var155,primary_complete_case,nested_cv,XGBoost
+0,94,0.06419300343445,0.1382978723404255,0.0741048689059754,var155,primary_complete_case,temporal_holdout,XGBoost
+1,8,0.1209761593490839,0.25,0.1290238406509161,var155,primary_complete_case,temporal_holdout,XGBoost
+0,7726,0.0543994985801948,0.0542324618172404,0.0001670367629543,var155,sensitivity_native_missing,nested_cv,XGBoost
+1,2227,0.1275660429379037,0.1243825774584643,0.0031834654794394,var155,sensitivity_native_missing,nested_cv,XGBoost
+2,101,0.2265836789761439,0.2574257425742574,0.0308420635981134,var155,sensitivity_native_missing,nested_cv,XGBoost
+3,10,0.3189126551151275,0.2,0.1189126551151275,var155,sensitivity_native_missing,nested_cv,XGBoost
+4,1,0.4502972960472107,1.0,0.5497027039527893,var155,sensitivity_native_missing,nested_cv,XGBoost
+0,129,0.0755007568775683,0.0930232558139534,0.0175224989363851,var155,sensitivity_native_missing,temporal_holdout,XGBoost
+1,90,0.1269251493944062,0.2,0.0730748506055938,var155,sensitivity_native_missing,temporal_holdout,XGBoost
+2,11,0.2221387137066234,0.0909090909090909,0.1312296227975325,var155,sensitivity_native_missing,temporal_holdout,XGBoost
+0,5695,0.0328658786715993,0.0316066725197541,0.0012592061518452,var154,primary_complete_case,nested_cv,Logistic LASSO
+1,15,0.1106739200974454,0.0,0.1106739200974454,var154,primary_complete_case,nested_cv,Logistic LASSO
+6,1,0.6859488258795452,0.0,0.6859488258795452,var154,primary_complete_case,nested_cv,Logistic LASSO
+0,5678,0.0308369519192289,0.0313490665727368,0.0005121146535079,var154,primary_complete_case,nested_cv,Automatic integer score
+1,32,0.1104673603983181,0.0625,0.0479673603983181,var154,primary_complete_case,nested_cv,Automatic integer score
+7,1,0.7397967171311242,0.0,0.7397967171311242,var154,primary_complete_case,nested_cv,Automatic integer score
+0,93,0.0331382199826576,0.021505376344086,0.0116328436385715,var154,primary_complete_case,temporal_holdout,Logistic LASSO
+1,1,0.1186350997793625,0.0,0.1186350997793625,var154,primary_complete_case,temporal_holdout,Logistic LASSO
+2,1,0.2370310572176291,0.0,0.2370310572176291,var154,primary_complete_case,temporal_holdout,Logistic LASSO
+0,93,0.0326745608070965,0.021505376344086,0.0111691844630105,var154,primary_complete_case,temporal_holdout,Automatic integer score
+1,1,0.1343023243014758,0.0,0.1343023243014758,var154,primary_complete_case,temporal_holdout,Automatic integer score
+2,1,0.2748184117503193,0.0,0.2748184117503193,var154,primary_complete_case,temporal_holdout,Automatic integer score
+0,5668,0.0311330301022806,0.031227946365561,9.49162632804014e-05,var154,primary_complete_case,nested_cv,XGBoost
+1,43,0.1226859596926112,0.0697674418604651,0.0529185178321461,var154,primary_complete_case,nested_cv,XGBoost
+0,94,0.0336770055557977,0.0212765957446808,0.0124004098111169,var154,primary_complete_case,temporal_holdout,XGBoost
+1,1,0.1038397327065467,0.0,0.1038397327065467,var154,primary_complete_case,temporal_holdout,XGBoost
+0,9866,0.0337425396849808,0.0340563551591323,0.0003138154741514,var154,sensitivity_native_missing,nested_cv,XGBoost
+1,162,0.1222333544750272,0.0679012345679012,0.054332119907126,var154,sensitivity_native_missing,nested_cv,XGBoost
+2,6,0.2188240413864453,0.3333333333333333,0.1145092919468879,var154,sensitivity_native_missing,nested_cv,XGBoost
+0,212,0.0564171028639769,0.0283018867924528,0.0281152160715241,var154,sensitivity_native_missing,temporal_holdout,XGBoost
+1,9,0.1136047947737905,0.0,0.1136047947737905,var154,sensitivity_native_missing,temporal_holdout,XGBoost
+0,5703,0.0217895455886285,0.0219182886200245,0.000128743031396,var158,primary_complete_case,nested_cv,Logistic LASSO
+1,37,0.1247033705149124,0.054054054054054,0.0706493164608584,var158,primary_complete_case,nested_cv,Logistic LASSO
+2,2,0.2263652313713905,0.0,0.2263652313713905,var158,primary_complete_case,nested_cv,Logistic LASSO
+0,5676,0.0210209520866233,0.0220225510923185,0.0010015990056952,var158,primary_complete_case,nested_cv,Automatic integer score
+1,60,0.1230190089991031,0.0166666666666666,0.1063523423324364,var158,primary_complete_case,nested_cv,Automatic integer score
+2,5,0.2299896562074768,0.2,0.0299896562074768,var158,primary_complete_case,nested_cv,Automatic integer score
+3,1,0.3082894529286079,0.0,0.3082894529286079,var158,primary_complete_case,nested_cv,Automatic integer score
+0,97,0.0259854160183326,0.0618556701030927,0.0358702540847601,var158,primary_complete_case,temporal_holdout,Logistic LASSO
+1,1,0.1541686994604304,0.0,0.1541686994604304,var158,primary_complete_case,temporal_holdout,Logistic LASSO
+0,95,0.02438384090371,0.0631578947368421,0.038774053833132,var158,primary_complete_case,temporal_holdout,Automatic integer score
+1,3,0.1361000263469491,0.0,0.1361000263469491,var158,primary_complete_case,temporal_holdout,Automatic integer score
+0,5709,0.0219556034824757,0.0220704151339989,0.0001148116515231,var158,primary_complete_case,nested_cv,XGBoost
+1,33,0.1267894289710305,0.0303030303030303,0.0964863986680001,var158,primary_complete_case,nested_cv,XGBoost
+0,96,0.0256425096255649,0.0625,0.036857490374435,var158,primary_complete_case,temporal_holdout,XGBoost
+1,2,0.1172852106392383,0.0,0.1172852106392383,var158,primary_complete_case,temporal_holdout,XGBoost
+0,9995,0.0236687910400159,0.0237118559279639,4.3064887948023045e-05,var158,sensitivity_native_missing,nested_cv,XGBoost
+1,87,0.1299196381507248,0.0804597701149425,0.0494598680357823,var158,sensitivity_native_missing,nested_cv,XGBoost
+2,3,0.2373684147993723,0.0,0.2373684147993723,var158,sensitivity_native_missing,nested_cv,XGBoost
+0,216,0.0469660320905623,0.0601851851851851,0.0132191530946228,var158,sensitivity_native_missing,temporal_holdout,XGBoost
+1,10,0.1303529344499111,0.1,0.0303529344499111,var158,sensitivity_native_missing,temporal_holdout,XGBoost
+2,2,0.2365425005555153,0.5,0.2634574994444847,var158,sensitivity_native_missing,temporal_holdout,XGBoost
+0,628,0.0182087678108862,0.0175159235668789,0.0006928442440072,andujak2,primary_complete_case,nested_cv,Logistic LASSO
+1,12,0.1339815062004996,0.0833333333333333,0.0506481728671663,andujak2,primary_complete_case,nested_cv,Logistic LASSO
+2,6,0.263185962500445,0.3333333333333333,0.0701473708328882,andujak2,primary_complete_case,nested_cv,Logistic LASSO
+3,1,0.3831042940824306,1.0,0.6168957059175694,andujak2,primary_complete_case,nested_cv,Logistic LASSO
+4,1,0.4492243010426933,0.0,0.4492243010426933,andujak2,primary_complete_case,nested_cv,Logistic LASSO
+0,619,0.0130650510479478,0.0177705977382875,0.0047055466903397,andujak2,primary_complete_case,nested_cv,Automatic integer score
+1,19,0.1340252711304599,0.0,0.1340252711304599,andujak2,primary_complete_case,nested_cv,Automatic integer score
+2,2,0.2341958170933085,0.5,0.2658041829066915,andujak2,primary_complete_case,nested_cv,Automatic integer score
+3,5,0.3787040457270361,0.4,0.0212959542729638,andujak2,primary_complete_case,nested_cv,Automatic integer score
+4,1,0.4635826322343619,0.0,0.4635826322343619,andujak2,primary_complete_case,nested_cv,Automatic integer score
+5,1,0.5982894461350016,1.0,0.4017105538649984,andujak2,primary_complete_case,nested_cv,Automatic integer score
+6,1,0.675154388859868,0.0,0.675154388859868,andujak2,primary_complete_case,nested_cv,Automatic integer score
+0,50,0.0189747685524779,0.06,0.041025231447522,andujak2,primary_complete_case,temporal_holdout,Logistic LASSO
+1,4,0.138408996035315,0.75,0.611591003964685,andujak2,primary_complete_case,temporal_holdout,Logistic LASSO
+0,50,0.0154769208646404,0.06,0.0445230791353595,andujak2,primary_complete_case,temporal_holdout,Automatic integer score
+1,3,0.1545956834612591,1.0,0.8454043165387408,andujak2,primary_complete_case,temporal_holdout,Automatic integer score
+2,1,0.2187029794600348,0.0,0.2187029794600348,andujak2,primary_complete_case,temporal_holdout,Automatic integer score
+0,636,0.0251404154751414,0.0172955974842767,0.0078448179908647,andujak2,primary_complete_case,nested_cv,XGBoost
+1,10,0.1441373668611049,0.3,0.155862633138895,andujak2,primary_complete_case,nested_cv,XGBoost
+2,1,0.2812814712524414,1.0,0.7187185287475586,andujak2,primary_complete_case,nested_cv,XGBoost
+3,1,0.3148435652256012,0.0,0.3148435652256012,andujak2,primary_complete_case,nested_cv,XGBoost
+0,52,0.0327018495792379,0.0769230769230769,0.0442212273438389,andujak2,primary_complete_case,temporal_holdout,XGBoost
+1,2,0.1559259593486786,1.0,0.8440740406513214,andujak2,primary_complete_case,temporal_holdout,XGBoost
+0,2014,0.0237434353045203,0.0143992055610724,0.0093442297434478,andujak2,sensitivity_native_missing,nested_cv,XGBoost
+1,51,0.1422371237593538,0.0980392156862745,0.0441979080730793,andujak2,sensitivity_native_missing,nested_cv,XGBoost
+2,15,0.2350637674331665,0.3333333333333333,0.0982695659001668,andujak2,sensitivity_native_missing,nested_cv,XGBoost
+3,8,0.3386453576385975,0.5,0.1613546423614025,andujak2,sensitivity_native_missing,nested_cv,XGBoost
+4,5,0.4197717189788818,0.6,0.1802282810211181,andujak2,sensitivity_native_missing,nested_cv,XGBoost
+5,3,0.5443039337793986,1.0,0.4556960662206014,andujak2,sensitivity_native_missing,nested_cv,XGBoost
+6,2,0.6462116539478302,1.0,0.3537883460521698,andujak2,sensitivity_native_missing,nested_cv,XGBoost
+0,130,0.01860037688345,0.0384615384615384,0.0198611615780884,andujak2,sensitivity_native_missing,temporal_holdout,XGBoost
+1,5,0.1297914564609527,0.2,0.0702085435390472,andujak2,sensitivity_native_missing,temporal_holdout,XGBoost
+2,1,0.2272427529096603,0.0,0.2272427529096603,andujak2,sensitivity_native_missing,temporal_holdout,XGBoost
+4,1,0.4530022144317627,1.0,0.5469977855682373,andujak2,sensitivity_native_missing,temporal_holdout,XGBoost
+5,1,0.5607576966285706,1.0,0.4392423033714294,andujak2,sensitivity_native_missing,temporal_holdout,XGBoost
+6,1,0.6061148047447205,1.0,0.3938851952552795,andujak2,sensitivity_native_missing,temporal_holdout,XGBoost
+7,2,0.7755590379238129,0.5,0.2755590379238128,andujak2,sensitivity_native_missing,temporal_holdout,XGBoost

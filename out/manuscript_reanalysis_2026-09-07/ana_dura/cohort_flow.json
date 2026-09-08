@@ -1,0 +1,17 @@
+{
+  "outcome": "ana_dura",
+  "label": "Composite thrombophilia",
+  "priority": "composite",
+  "eligible_n": 22847,
+  "eligible_positive_n": 8545,
+  "development_eligible_n": 21762,
+  "temporal_eligible_n": 1085,
+  "missing_date_n": 0,
+  "candidate_n": 44,
+  "complete_case_n": 7632,
+  "complete_case_positive_n": 2942,
+  "missing_excluded_n": 15215,
+  "development_complete_n": 7209,
+  "temporal_complete_n": 423,
+  "cutoff_year": 2021
+}

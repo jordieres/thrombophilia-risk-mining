@@ -21,7 +21,7 @@ from exp_clinical_risk_score import ClinicalRiskScoreExperiment, ModelEvaluation
 
 
 class ClinicalScoreScreeningExperiment(ClinicalRiskScoreExperiment):
-    """Study 8: Apply the validated clinical score to unstudied or missing cases."""
+    """Study 8: Historical exploratory ranking of unstudied or missing cases."""
 
     def __init__(self) -> None:
         super().__init__()
@@ -42,7 +42,7 @@ class ClinicalScoreScreeningExperiment(ClinicalRiskScoreExperiment):
         benchmark_model: str = str(config.get("score_benchmark_model", "both"))
         xgboost_estimators: int = int(config.get("score_xgboost_estimators", 80))
         output_dir: Path = Path(str(config.get("output_dir", ".")))
-        screening_labels_raw = config.get("screening_labels", ["No buscada"])
+        screening_labels_raw = config.get("screening_labels", ["Missing", "No buscada"])
         screening_labels: List[str] = [str(label) for label in screening_labels_raw]
 
         if feature_strategy not in {"automatic", "association", "compare"}:
@@ -279,8 +279,10 @@ class ClinicalScoreScreeningExperiment(ClinicalRiskScoreExperiment):
     ) -> pd.DataFrame:
         if target_col not in data.columns:
             raise ValueError(f"The clinical score screening experiment requires the target column '{target_col}'.")
+        # Preserve unknown study status when the raw API supplies it. The legacy
+        # general processor may already have coalesced unknown and not tested.
         df = data.copy()
-        df[target_col] = df[target_col].astype("string").fillna("No buscada")
+        df[target_col] = df[target_col].astype("string").fillna("Missing")
         df = df[df[target_col].isin(screening_labels)].reset_index(drop=True)
         if df.empty:
             raise ValueError("No rows matched the requested screening labels for the clinical score screening experiment.")

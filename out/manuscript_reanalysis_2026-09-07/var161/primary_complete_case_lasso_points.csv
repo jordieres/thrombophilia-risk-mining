@@ -1,0 +1,19 @@
+variable,category,coefficient,points,label
+sexo,Male,0.18361146036581175,2,Sex
+e_con_ec,Yes,1.4236263791846533,14,Crohn disease
+e_con_lu,Yes,2.9873510915268393,30,Known lupus
+e_con_be,Yes,1.4166556906130416,14,Behcet disease
+e_con_va,Yes,1.4702605030334517,15,Other vasculitis
+tvp_prox,Proximal (incluyendo la vena poplítea),0.21525225171139029,2,DVT proximal/distal location
+fr_cance,Yes,-0.2394073782262389,-2,Active cancer
+fr_cirug,Yes,-0.4256976603892934,-4,Recent surgery
+fr_inmov,Yes,-0.23421976040618236,-2,Recent immobilization
+fr_estro,Yes,-0.6190823647443788,-6,Recent hormone exposure
+fr_embar,Yes,-0.7458002830126763,-7,Pregnancy
+ana_dime,Not performed,-0.6096152785083492,-6,Recorded categorical D-dimer
+ana_dime,Positive,-0.10154930143324861,-1,Recorded categorical D-dimer
+edad,<50,0.09946880378189608,1,Age (years)
+edad,≥70,-0.27534896959712196,-3,Age (years)
+ana_plaq,<144,0.6454139054141838,6,Platelets (10^9/L)
+ana_plaq,>400,-0.1628493304625209,-2,Platelets (10^9/L)
+female_under45,Yes,0.12289103299370072,1,Female and age <45

@@ -1,0 +1,64 @@
+group,variable,label,n,source_null_n,missing_n,missing_pct,not_performed_n
+Protein S deficiency,sexo,Sex,10295,0,0,0.0,0
+Protein S deficiency,raza,Recorded ethnicity,10295,7484,7484,72.69548324429334,0
+Protein S deficiency,ant_inf,Prior myocardial ischemia,10295,4923,4923,47.819329771733855,0
+Protein S deficiency,ant_isq,Prior cerebral ischemia,10295,4938,4938,47.96503156872268,0
+Protein S deficiency,ant_clau,Peripheral arterial disease,10295,4944,4944,48.02331228751821,0
+Protein S deficiency,fum_act,Current smoking,10295,5012,5012,48.68382710053424,0
+Protein S deficiency,diabetes,Diabetes,10295,4896,4896,47.55706653715396,0
+Protein S deficiency,hip_art,Hypertension,10295,4792,4792,46.54686741136474,0
+Protein S deficiency,insf_car,Heart failure,10295,15,15,0.1457017969888295,0
+Protein S deficiency,fibr_aur,Atrial fibrillation,10295,7194,7194,69.87858183584265,0
+Protein S deficiency,trat_est,Statin treatment,10295,4969,4969,48.266148615832925,0
+Protein S deficiency,e_con_pp,Chronic lung disease,10295,0,0,0.0,0
+Protein S deficiency,e_con_cu,Ulcerative colitis,10295,0,0,0.0,0
+Protein S deficiency,e_con_ec,Crohn disease,10295,0,0,0.0,0
+Protein S deficiency,e_con_lu,Known lupus,10295,0,0,0.0,0
+Protein S deficiency,e_con_be,Behcet disease,10295,0,0,0.0,0
+Protein S deficiency,e_con_at,Temporal arteritis,10295,0,0,0.0,0
+Protein S deficiency,e_con_va,Other vasculitis,10295,0,0,0.0,0
+Protein S deficiency,e_con_ar,Rheumatoid arthritis,10295,0,0,0.0,0
+Protein S deficiency,e_con_ea,Ankylosing spondylitis,10295,0,0,0.0,0
+Protein S deficiency,e_con_pr,Polymyalgia rheumatica,10295,0,0,0.0,0
+Protein S deficiency,e_con_ro,Rendu-Osler disease,10295,0,0,0.0,0
+Protein S deficiency,e_con_av,Vena cava agenesis,10295,0,0,0.0,0
+Protein S deficiency,e_con_sm,May-Thurner syndrome,10295,0,0,0.0,0
+Protein S deficiency,sin_tvp_,Index VTE presentation,10295,0,0,0.0,0
+Protein S deficiency,var171,Syncope,10295,308,308,2.9917435648372996,0
+Protein S deficiency,tv_l_esu,Upper-extremity thrombosis,10295,7286,7286,70.77221952404079,0
+Protein S deficiency,tvp_orig,Upper-extremity catheter relationship,10295,9902,9902,96.18261291889266,0
+Protein S deficiency,tv_l_ein,Lower-extremity thrombosis,10295,2640,2640,25.643516270033995,0
+Protein S deficiency,tvp_prox,DVT proximal/distal location,10295,3361,3361,32.6469159786304,0
+Protein S deficiency,tv_l_svc,Cerebral sinus thrombosis,10295,7885,7885,76.5905779504614,0
+Protein S deficiency,tv_l_vre,Retinal vein thrombosis,10295,8127,8127,78.94123360854783,0
+Protein S deficiency,tv_l_vrn,Renal vein thrombosis,10295,8107,8107,78.74696454589608,0
+Protein S deficiency,tv_l_vca,Vena cava thrombosis,10295,9161,9161,88.98494414764448,0
+Protein S deficiency,tv_l_yug,Jugular vein thrombosis,10295,9206,9206,89.42204953861098,0
+Protein S deficiency,tv_l_ova,Ovarian vein thrombosis,10295,9207,9207,89.43176299174357,0
+Protein S deficiency,tv_l_sup,Suprahepatic vein thrombosis,10295,9202,9202,89.38319572608063,0
+Protein S deficiency,tv_l_pul,Pulmonary vein thrombosis,10295,9204,9204,89.4026226323458,0
+Protein S deficiency,tv_l_ove,Other vein thrombosis,10295,8118,8118,78.85381253035455,0
+Protein S deficiency,fr_cance,Active cancer,10295,0,0,0.0,0
+Protein S deficiency,fr_cirug,Recent surgery,10295,0,0,0.0,0
+Protein S deficiency,fr_inmov,Recent immobilization,10295,0,0,0.0,0
+Protein S deficiency,fr_tvp_a,Prior VTE,10295,0,0,0.0,0
+Protein S deficiency,fr_antfa,Family history of VTE,10295,8382,8382,81.41816415735794,0
+Protein S deficiency,fr_tvs_a,Prior superficial thrombosis,10295,7409,7409,71.9669742593492,0
+Protein S deficiency,fr_viaje,Recent prolonged travel,10295,182,182,1.7678484701311317,0
+Protein S deficiency,fr_estro,Recent hormone exposure,10295,118,118,1.1461874696454588,0
+Protein S deficiency,fr_embar,Pregnancy,10295,0,0,0.0,0
+Protein S deficiency,fr_varic,Varicose veins,10295,246,246,2.389509470616804,0
+Protein S deficiency,fr_antec,Recent delivery,10295,47,47,0.4565322972316659,0
+Protein S deficiency,ana_dime,Recorded categorical D-dimer,10295,463,463,4.497328800388538,2423
+Protein S deficiency,ana_crea,Recorded creatinine category,10295,278,278,2.7003399708596403,0
+Protein S deficiency,ana_trop,Recorded troponin category,10295,7375,7375,71.63671685284119,0
+Protein S deficiency,edad,Age (years),10295,0,0,0.0,0
+Protein S deficiency,peso,Weight (kg),10295,0,4,0.03885381253035454,0
+Protein S deficiency,tension_,Systolic BP (mmHg),10295,0,450,4.3710539096648855,0
+Protein S deficiency,ana_hemo,Hemoglobin (g/dL),10295,9,11,0.10684798445847497,0
+Protein S deficiency,ana_plaq,Platelets (10^9/L),10295,10,11,0.10684798445847497,0
+Protein S deficiency,ana_leuc,Leukocytes (10^9/L),10295,9,40,0.38853812530354537,0
+Protein S deficiency,ana_neu,Neutrophils (10^9/L),10295,9240,9241,89.76202039825158,0
+Protein S deficiency,protcrea,C-reactive protein (mg/dL),10295,10150,10152,98.61097620203982,0
+Protein S deficiency,female_under45,Female and age <45,10295,0,0,0.0,0
+Protein S deficiency,splanchnic,Splanchnic thrombosis,10295,7850,7850,76.2506070908208,0

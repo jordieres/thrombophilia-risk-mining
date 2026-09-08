@@ -15,7 +15,7 @@ sys.path.insert(0, str(SOURCE_DIR))
 
 project = "Thrombophilia Risk Mining"
 author = "Lucia Ordieres-Ortega"
-release = "0.1.0"
+release = "0.3.0"
 
 extensions = [
     "sphinx.ext.autodoc",

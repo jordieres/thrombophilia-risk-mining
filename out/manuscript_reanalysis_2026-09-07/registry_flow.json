@@ -1,0 +1,10 @@
+{
+  "registry_n": 119449,
+  "tested_n": 22874,
+  "explicitly_not_tested_n": 35784,
+  "unknown_testing_n": 60791,
+  "not_tested_or_unknown_n": 96575,
+  "positive_n": 8568,
+  "negative_n": 14306,
+  "known_thrombophilia_tested_n": 27
+}

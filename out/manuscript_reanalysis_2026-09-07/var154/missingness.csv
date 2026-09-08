@@ -1,0 +1,64 @@
+group,variable,label,n,source_null_n,missing_n,missing_pct,not_performed_n
+Protein C deficiency,sexo,Sex,10255,0,0,0.0,0
+Protein C deficiency,raza,Recorded ethnicity,10255,7456,7456,72.70599707459776,0
+Protein C deficiency,ant_inf,Prior myocardial ischemia,10255,4922,4922,47.99609946367626,0
+Protein C deficiency,ant_isq,Prior cerebral ischemia,10255,4938,4938,48.15212091662603,0
+Protein C deficiency,ant_clau,Peripheral arterial disease,10255,4945,4945,48.22038030229157,0
+Protein C deficiency,fum_act,Current smoking,10255,5012,5012,48.87372013651877,0
+Protein C deficiency,diabetes,Diabetes,10255,4896,4896,47.74256460263287,0
+Protein C deficiency,hip_art,Hypertension,10255,4791,4791,46.71867381764992,0
+Protein C deficiency,insf_car,Heart failure,10255,15,15,0.14627011214041932,0
+Protein C deficiency,fibr_aur,Atrial fibrillation,10255,7175,7175,69.96587030716724,0
+Protein C deficiency,trat_est,Statin treatment,10255,4968,4968,48.444661140906874,0
+Protein C deficiency,e_con_pp,Chronic lung disease,10255,0,0,0.0,0
+Protein C deficiency,e_con_cu,Ulcerative colitis,10255,0,0,0.0,0
+Protein C deficiency,e_con_ec,Crohn disease,10255,0,0,0.0,0
+Protein C deficiency,e_con_lu,Known lupus,10255,0,0,0.0,0
+Protein C deficiency,e_con_be,Behcet disease,10255,0,0,0.0,0
+Protein C deficiency,e_con_at,Temporal arteritis,10255,0,0,0.0,0
+Protein C deficiency,e_con_va,Other vasculitis,10255,0,0,0.0,0
+Protein C deficiency,e_con_ar,Rheumatoid arthritis,10255,0,0,0.0,0
+Protein C deficiency,e_con_ea,Ankylosing spondylitis,10255,0,0,0.0,0
+Protein C deficiency,e_con_pr,Polymyalgia rheumatica,10255,0,0,0.0,0
+Protein C deficiency,e_con_ro,Rendu-Osler disease,10255,0,0,0.0,0
+Protein C deficiency,e_con_av,Vena cava agenesis,10255,0,0,0.0,0
+Protein C deficiency,e_con_sm,May-Thurner syndrome,10255,0,0,0.0,0
+Protein C deficiency,sin_tvp_,Index VTE presentation,10255,0,0,0.0,0
+Protein C deficiency,var171,Syncope,10255,305,305,2.9741589468551926,0
+Protein C deficiency,tv_l_esu,Upper-extremity thrombosis,10255,7255,7255,70.74597757191614,0
+Protein C deficiency,tvp_orig,Upper-extremity catheter relationship,10255,9861,9861,96.15797172111165,0
+Protein C deficiency,tv_l_ein,Lower-extremity thrombosis,10255,2627,2627,25.616772306192104,0
+Protein C deficiency,tvp_prox,DVT proximal/distal location,10255,3351,3351,32.67674305216967,0
+Protein C deficiency,tv_l_svc,Cerebral sinus thrombosis,10255,7850,7850,76.54802535348611,0
+Protein C deficiency,tv_l_vre,Retinal vein thrombosis,10255,8090,8090,78.88834714773282,0
+Protein C deficiency,tv_l_vrn,Renal vein thrombosis,10255,8070,8070,78.69332033154559,0
+Protein C deficiency,tv_l_vca,Vena cava thrombosis,10255,9126,9126,88.9907362262311,0
+Protein C deficiency,tv_l_yug,Jugular vein thrombosis,10255,9171,9171,89.42954656265236,0
+Protein C deficiency,tv_l_ova,Ovarian vein thrombosis,10255,9172,9172,89.43929790346172,0
+Protein C deficiency,tv_l_sup,Suprahepatic vein thrombosis,10255,9167,9167,89.39054119941491,0
+Protein C deficiency,tv_l_pul,Pulmonary vein thrombosis,10255,9169,9169,89.41004388103364,0
+Protein C deficiency,tv_l_ove,Other vein thrombosis,10255,8082,8082,78.81033642125792,0
+Protein C deficiency,fr_cance,Active cancer,10255,0,0,0.0,0
+Protein C deficiency,fr_cirug,Recent surgery,10255,0,0,0.0,0
+Protein C deficiency,fr_inmov,Recent immobilization,10255,0,0,0.0,0
+Protein C deficiency,fr_tvp_a,Prior VTE,10255,0,0,0.0,0
+Protein C deficiency,fr_antfa,Family history of VTE,10255,8356,8356,81.48220380302291,0
+Protein C deficiency,fr_tvs_a,Prior superficial thrombosis,10255,7389,7389,72.05265724037055,0
+Protein C deficiency,fr_viaje,Recent prolonged travel,10255,176,176,1.7162359824475866,0
+Protein C deficiency,fr_estro,Recent hormone exposure,10255,115,115,1.121404193076548,0
+Protein C deficiency,fr_embar,Pregnancy,10255,0,0,0.0,0
+Protein C deficiency,fr_varic,Varicose veins,10255,239,239,2.3305704534373475,0
+Protein C deficiency,fr_antec,Recent delivery,10255,46,46,0.44856167723061924,0
+Protein C deficiency,ana_dime,Recorded categorical D-dimer,10255,468,468,4.5636274987810825,2415
+Protein C deficiency,ana_crea,Recorded creatinine category,10255,277,277,2.7011214041930764,0
+Protein C deficiency,ana_trop,Recorded troponin category,10255,7350,7350,71.67235494880546,0
+Protein C deficiency,edad,Age (years),10255,0,0,0.0,0
+Protein C deficiency,peso,Weight (kg),10255,0,3,0.02925402242808386,0
+Protein C deficiency,tension_,Systolic BP (mmHg),10255,0,444,4.329595319356412,0
+Protein C deficiency,ana_hemo,Hemoglobin (g/dL),10255,9,11,0.10726474890297416,0
+Protein C deficiency,ana_plaq,Platelets (10^9/L),10255,10,11,0.10726474890297416,0
+Protein C deficiency,ana_leuc,Leukocytes (10^9/L),10255,9,41,0.39980497318381275,0
+Protein C deficiency,ana_neu,Neutrophils (10^9/L),10255,9217,9218,89.88785958069234,0
+Protein C deficiency,protcrea,C-reactive protein (mg/dL),10255,10113,10115,98.63481228668942,0
+Protein C deficiency,female_under45,Female and age <45,10255,0,0,0.0,0
+Protein C deficiency,splanchnic,Splanchnic thrombosis,10255,7813,7813,76.18722574353973,0

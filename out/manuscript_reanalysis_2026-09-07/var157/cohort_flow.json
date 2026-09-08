@@ -1,0 +1,17 @@
+{
+  "outcome": "var157",
+  "label": "Prothrombin G20210A",
+  "priority": "primary",
+  "eligible_n": 10356,
+  "eligible_positive_n": 1602,
+  "development_eligible_n": 10134,
+  "temporal_eligible_n": 222,
+  "missing_date_n": 0,
+  "candidate_n": 37,
+  "complete_case_n": 5851,
+  "complete_case_positive_n": 877,
+  "missing_excluded_n": 4505,
+  "development_complete_n": 5758,
+  "temporal_complete_n": 93,
+  "cutoff_year": 2021
+}

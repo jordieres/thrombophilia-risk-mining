@@ -1,0 +1,17 @@
+{
+  "outcome": "var158",
+  "label": "Antithrombin deficiency",
+  "priority": "exploratory",
+  "eligible_n": 10313,
+  "eligible_positive_n": 259,
+  "development_eligible_n": 10085,
+  "temporal_eligible_n": 228,
+  "missing_date_n": 0,
+  "candidate_n": 37,
+  "complete_case_n": 5840,
+  "complete_case_positive_n": 133,
+  "missing_excluded_n": 4473,
+  "development_complete_n": 5742,
+  "temporal_complete_n": 98,
+  "cutoff_year": 2021
+}

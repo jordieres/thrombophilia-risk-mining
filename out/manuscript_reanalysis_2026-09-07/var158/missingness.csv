@@ -1,0 +1,64 @@
+group,variable,label,n,source_null_n,missing_n,missing_pct,not_performed_n
+Antithrombin deficiency,sexo,Sex,10313,0,0,0.0,0
+Antithrombin deficiency,raza,Recorded ethnicity,10313,7501,7501,72.73344322699505,0
+Antithrombin deficiency,ant_inf,Prior myocardial ischemia,10313,4922,4922,47.72617085232231,0
+Antithrombin deficiency,ant_isq,Prior cerebral ischemia,10313,4938,4938,47.88131484534083,0
+Antithrombin deficiency,ant_clau,Peripheral arterial disease,10313,4947,4947,47.96858334141375,0
+Antithrombin deficiency,fum_act,Current smoking,10313,5013,5013,48.608552312615146,0
+Antithrombin deficiency,diabetes,Diabetes,10313,4896,4896,47.47406186366722,0
+Antithrombin deficiency,hip_art,Hypertension,10313,4792,4792,46.46562590904683,0
+Antithrombin deficiency,insf_car,Heart failure,10313,17,17,0.16484049258217784,0
+Antithrombin deficiency,fibr_aur,Atrial fibrillation,10313,7215,7215,69.960244351789,0
+Antithrombin deficiency,trat_est,Statin treatment,10313,4972,4972,48.21099583050519,0
+Antithrombin deficiency,e_con_pp,Chronic lung disease,10313,0,0,0.0,0
+Antithrombin deficiency,e_con_cu,Ulcerative colitis,10313,0,0,0.0,0
+Antithrombin deficiency,e_con_ec,Crohn disease,10313,0,0,0.0,0
+Antithrombin deficiency,e_con_lu,Known lupus,10313,0,0,0.0,0
+Antithrombin deficiency,e_con_be,Behcet disease,10313,0,0,0.0,0
+Antithrombin deficiency,e_con_at,Temporal arteritis,10313,0,0,0.0,0
+Antithrombin deficiency,e_con_va,Other vasculitis,10313,0,0,0.0,0
+Antithrombin deficiency,e_con_ar,Rheumatoid arthritis,10313,0,0,0.0,0
+Antithrombin deficiency,e_con_ea,Ankylosing spondylitis,10313,0,0,0.0,0
+Antithrombin deficiency,e_con_pr,Polymyalgia rheumatica,10313,0,0,0.0,0
+Antithrombin deficiency,e_con_ro,Rendu-Osler disease,10313,0,0,0.0,0
+Antithrombin deficiency,e_con_av,Vena cava agenesis,10313,0,0,0.0,0
+Antithrombin deficiency,e_con_sm,May-Thurner syndrome,10313,0,0,0.0,0
+Antithrombin deficiency,sin_tvp_,Index VTE presentation,10313,0,0,0.0,0
+Antithrombin deficiency,var171,Syncope,10313,309,309,2.9962183651701735,0
+Antithrombin deficiency,tv_l_esu,Upper-extremity thrombosis,10313,7287,7287,70.65839232037234,0
+Antithrombin deficiency,tvp_orig,Upper-extremity catheter relationship,10313,9923,9923,96.21836517017357,0
+Antithrombin deficiency,tv_l_ein,Lower-extremity thrombosis,10313,2633,2633,25.53088335111025,0
+Antithrombin deficiency,tvp_prox,DVT proximal/distal location,10313,3361,3361,32.589935033452925,0
+Antithrombin deficiency,tv_l_svc,Cerebral sinus thrombosis,10313,7885,7885,76.45689905943954,0
+Antithrombin deficiency,tv_l_vre,Retinal vein thrombosis,10313,8129,8129,78.82284495297198,0
+Antithrombin deficiency,tv_l_vrn,Renal vein thrombosis,10313,8109,8109,78.62891496169883,0
+Antithrombin deficiency,tv_l_vca,Vena cava thrombosis,10313,9182,9182,89.03325899350335,0
+Antithrombin deficiency,tv_l_yug,Jugular vein thrombosis,10313,9226,9226,89.45990497430427,0
+Antithrombin deficiency,tv_l_ova,Ovarian vein thrombosis,10313,9228,9228,89.4792979734316,0
+Antithrombin deficiency,tv_l_sup,Suprahepatic vein thrombosis,10313,9223,9223,89.4308154756133,0
+Antithrombin deficiency,tv_l_pul,Pulmonary vein thrombosis,10313,9225,9225,89.45020847474062,0
+Antithrombin deficiency,tv_l_ove,Other vein thrombosis,10313,8121,8121,78.74527295646271,0
+Antithrombin deficiency,fr_cance,Active cancer,10313,0,0,0.0,0
+Antithrombin deficiency,fr_cirug,Recent surgery,10313,0,0,0.0,0
+Antithrombin deficiency,fr_inmov,Recent immobilization,10313,0,0,0.0,0
+Antithrombin deficiency,fr_tvp_a,Prior VTE,10313,0,0,0.0,0
+Antithrombin deficiency,fr_antfa,Family history of VTE,10313,8411,8411,81.5572578299234,0
+Antithrombin deficiency,fr_tvs_a,Prior superficial thrombosis,10313,7434,7434,72.08377775623,0
+Antithrombin deficiency,fr_viaje,Recent prolonged travel,10313,183,183,1.7744594201493262,0
+Antithrombin deficiency,fr_estro,Recent hormone exposure,10313,116,116,1.1247939493842722,0
+Antithrombin deficiency,fr_embar,Pregnancy,10313,0,0,0.0,0
+Antithrombin deficiency,fr_varic,Varicose veins,10313,243,243,2.356249393968777,0
+Antithrombin deficiency,fr_antec,Recent delivery,10313,48,48,0.46543197905556094,0
+Antithrombin deficiency,ana_dime,Recorded categorical D-dimer,10313,479,479,4.644623290991952,2437
+Antithrombin deficiency,ana_crea,Recorded creatinine category,10313,280,280,2.7150198778241057,0
+Antithrombin deficiency,ana_trop,Recorded troponin category,10313,7399,7399,71.74440027150199,0
+Antithrombin deficiency,edad,Age (years),10313,0,0,0.0,0
+Antithrombin deficiency,peso,Weight (kg),10313,0,3,0.02908949869097256,0
+Antithrombin deficiency,tension_,Systolic BP (mmHg),10313,0,445,4.314942305827596,0
+Antithrombin deficiency,ana_hemo,Hemoglobin (g/dL),10313,9,11,0.10666149520023273,0
+Antithrombin deficiency,ana_plaq,Platelets (10^9/L),10313,11,12,0.11635799476389024,0
+Antithrombin deficiency,ana_leuc,Leukocytes (10^9/L),10313,9,39,0.3781634829826433,0
+Antithrombin deficiency,ana_neu,Neutrophils (10^9/L),10313,9271,9272,89.90594395423253,0
+Antithrombin deficiency,protcrea,C-reactive protein (mg/dL),10313,10171,10173,98.64249006108795,0
+Antithrombin deficiency,female_under45,Female and age <45,10313,0,0,0.0,0
+Antithrombin deficiency,splanchnic,Splanchnic thrombosis,10313,7847,7847,76.08843207602055,0

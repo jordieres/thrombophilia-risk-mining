@@ -1,0 +1,64 @@
+group,variable,label,n,source_null_n,missing_n,missing_pct,not_performed_n
+Registry-coded APS,sexo,Sex,10685,0,0,0.0,0
+Registry-coded APS,raza,Recorded ethnicity,10685,7637,7637,71.47402901263453,0
+Registry-coded APS,ant_inf,Prior myocardial ischemia,10685,4948,4948,46.30790828263922,0
+Registry-coded APS,ant_isq,Prior cerebral ischemia,10685,4963,4963,46.44829199812822,0
+Registry-coded APS,ant_clau,Peripheral arterial disease,10685,4971,4971,46.52316331305569,0
+Registry-coded APS,fum_act,Current smoking,10685,5037,5037,47.1408516612073,0
+Registry-coded APS,diabetes,Diabetes,10685,4921,4921,46.05521759475901,0
+Registry-coded APS,hip_art,Hypertension,10685,4814,4814,45.05381375760412,0
+Registry-coded APS,insf_car,Heart failure,10685,26,26,0.24333177351427235,0
+Registry-coded APS,fibr_aur,Atrial fibrillation,10685,7313,7313,68.44174075807207,0
+Registry-coded APS,trat_est,Statin treatment,10685,4994,4994,46.738418343472155,0
+Registry-coded APS,e_con_pp,Chronic lung disease,10685,0,0,0.0,0
+Registry-coded APS,e_con_cu,Ulcerative colitis,10685,0,0,0.0,0
+Registry-coded APS,e_con_ec,Crohn disease,10685,0,0,0.0,0
+Registry-coded APS,e_con_lu,Known lupus,10685,0,0,0.0,0
+Registry-coded APS,e_con_be,Behcet disease,10685,0,0,0.0,0
+Registry-coded APS,e_con_at,Temporal arteritis,10685,0,0,0.0,0
+Registry-coded APS,e_con_va,Other vasculitis,10685,0,0,0.0,0
+Registry-coded APS,e_con_ar,Rheumatoid arthritis,10685,0,0,0.0,0
+Registry-coded APS,e_con_ea,Ankylosing spondylitis,10685,0,0,0.0,0
+Registry-coded APS,e_con_pr,Polymyalgia rheumatica,10685,0,0,0.0,0
+Registry-coded APS,e_con_ro,Rendu-Osler disease,10685,0,0,0.0,0
+Registry-coded APS,e_con_av,Vena cava agenesis,10685,0,0,0.0,0
+Registry-coded APS,e_con_sm,May-Thurner syndrome,10685,0,0,0.0,0
+Registry-coded APS,sin_tvp_,Index VTE presentation,10685,0,0,0.0,0
+Registry-coded APS,var171,Syncope,10685,339,339,3.1726719700514736,0
+Registry-coded APS,tv_l_esu,Upper-extremity thrombosis,10685,7499,7499,70.18249883013571,0
+Registry-coded APS,tvp_orig,Upper-extremity catheter relationship,10685,10281,10281,96.21899859616285,0
+Registry-coded APS,tv_l_ein,Lower-extremity thrombosis,10685,2762,2762,25.84932147870847,0
+Registry-coded APS,tvp_prox,DVT proximal/distal location,10685,3526,3526,32.99953205428171,0
+Registry-coded APS,tv_l_svc,Cerebral sinus thrombosis,10685,8141,8141,76.19092185306503,0
+Registry-coded APS,tv_l_vre,Retinal vein thrombosis,10685,8395,8395,78.56808610201217,0
+Registry-coded APS,tv_l_vrn,Renal vein thrombosis,10685,8378,8378,78.4089845577913,0
+Registry-coded APS,tv_l_vca,Vena cava thrombosis,10685,9479,9479,88.71314927468413,0
+Registry-coded APS,tv_l_yug,Jugular vein thrombosis,10685,9528,9528,89.17173607861488,0
+Registry-coded APS,tv_l_ova,Ovarian vein thrombosis,10685,9528,9528,89.17173607861488,0
+Registry-coded APS,tv_l_sup,Suprahepatic vein thrombosis,10685,9523,9523,89.12494150678522,0
+Registry-coded APS,tv_l_pul,Pulmonary vein thrombosis,10685,9524,9524,89.13430042115115,0
+Registry-coded APS,tv_l_ove,Other vein thrombosis,10685,8389,8389,78.51193261581656,0
+Registry-coded APS,fr_cance,Active cancer,10685,0,0,0.0,0
+Registry-coded APS,fr_cirug,Recent surgery,10685,0,0,0.0,0
+Registry-coded APS,fr_inmov,Recent immobilization,10685,0,0,0.0,0
+Registry-coded APS,fr_tvp_a,Prior VTE,10685,0,0,0.0,0
+Registry-coded APS,fr_antfa,Family history of VTE,10685,8558,8558,80.09358914365934,0
+Registry-coded APS,fr_tvs_a,Prior superficial thrombosis,10685,7542,7542,70.58493214787084,0
+Registry-coded APS,fr_viaje,Recent prolonged travel,10685,191,191,1.7875526438933083,0
+Registry-coded APS,fr_estro,Recent hormone exposure,10685,123,123,1.151146467009827,0
+Registry-coded APS,fr_embar,Pregnancy,10685,0,0,0.0,0
+Registry-coded APS,fr_varic,Varicose veins,10685,277,277,2.5924192793635936,0
+Registry-coded APS,fr_antec,Recent delivery,10685,48,48,0.44922788956481047,0
+Registry-coded APS,ana_dime,Recorded categorical D-dimer,10685,527,527,4.932147870846982,2489
+Registry-coded APS,ana_crea,Recorded creatinine category,10685,293,293,2.7421619092185305,0
+Registry-coded APS,ana_trop,Recorded troponin category,10685,7635,7635,71.45531118390267,0
+Registry-coded APS,edad,Age (years),10685,0,0,0.0,0
+Registry-coded APS,peso,Weight (kg),10685,0,3,0.028076743097800654,0
+Registry-coded APS,tension_,Systolic BP (mmHg),10685,0,466,4.361254094525035,0
+Registry-coded APS,ana_hemo,Hemoglobin (g/dL),10685,13,17,0.1591015442208704,0
+Registry-coded APS,ana_plaq,Platelets (10^9/L),10685,15,16,0.14974262985493683,0
+Registry-coded APS,ana_leuc,Leukocytes (10^9/L),10685,13,46,0.43051006083294335,0
+Registry-coded APS,ana_neu,Neutrophils (10^9/L),10685,9489,9490,88.8160973327094,0
+Registry-coded APS,protcrea,C-reactive protein (mg/dL),10685,10530,10533,98.57744501637809,0
+Registry-coded APS,female_under45,Female and age <45,10685,0,0,0.0,0
+Registry-coded APS,splanchnic,Splanchnic thrombosis,10685,8100,8100,75.80720636406177,0

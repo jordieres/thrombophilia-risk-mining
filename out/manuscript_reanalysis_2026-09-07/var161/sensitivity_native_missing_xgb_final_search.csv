@@ -1,0 +1,5 @@
+candidate,auc,n_estimators,max_depth,learning_rate,subsample,colsample_bytree,reg_alpha,reg_lambda,selected
+0,0.7281444283745916,80,2,0.03,0.8,0.8,0.0,1.0,False
+1,0.7420030488296455,80,3,0.08,0.8,0.8,0.1,5.0,True
+2,0.7379680818027028,120,2,0.08,1.0,0.9,0.5,5.0,False
+3,0.7382943582231949,120,3,0.03,0.9,1.0,0.1,10.0,False

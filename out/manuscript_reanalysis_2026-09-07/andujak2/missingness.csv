@@ -1,0 +1,64 @@
+group,variable,label,n,source_null_n,missing_n,missing_pct,not_performed_n
+JAK2 mutation,sexo,Sex,2239,0,0,0.0,0
+JAK2 mutation,raza,Recorded ethnicity,2239,689,689,30.77266636891469,0
+JAK2 mutation,ant_inf,Prior myocardial ischemia,2239,42,42,1.8758374274229568,0
+JAK2 mutation,ant_isq,Prior cerebral ischemia,2239,43,43,1.9205002233139794,0
+JAK2 mutation,ant_clau,Peripheral arterial disease,2239,43,43,1.9205002233139794,0
+JAK2 mutation,fum_act,Current smoking,2239,57,57,2.5457793657882983,0
+JAK2 mutation,diabetes,Diabetes,2239,41,41,1.831174631531934,0
+JAK2 mutation,hip_art,Hypertension,2239,42,42,1.8758374274229568,0
+JAK2 mutation,insf_car,Heart failure,2239,10,10,0.4466279589102278,0
+JAK2 mutation,fibr_aur,Atrial fibrillation,2239,301,301,13.443501563197858,0
+JAK2 mutation,trat_est,Statin treatment,2239,49,49,2.188476998660116,0
+JAK2 mutation,e_con_pp,Chronic lung disease,2239,0,0,0.0,0
+JAK2 mutation,e_con_cu,Ulcerative colitis,2239,0,0,0.0,0
+JAK2 mutation,e_con_ec,Crohn disease,2239,0,0,0.0,0
+JAK2 mutation,e_con_lu,Known lupus,2239,0,0,0.0,0
+JAK2 mutation,e_con_be,Behcet disease,2239,0,0,0.0,0
+JAK2 mutation,e_con_at,Temporal arteritis,2239,0,0,0.0,0
+JAK2 mutation,e_con_va,Other vasculitis,2239,0,0,0.0,0
+JAK2 mutation,e_con_ar,Rheumatoid arthritis,2239,0,0,0.0,0
+JAK2 mutation,e_con_ea,Ankylosing spondylitis,2239,0,0,0.0,0
+JAK2 mutation,e_con_pr,Polymyalgia rheumatica,2239,0,0,0.0,0
+JAK2 mutation,e_con_ro,Rendu-Osler disease,2239,0,0,0.0,0
+JAK2 mutation,e_con_av,Vena cava agenesis,2239,0,0,0.0,0
+JAK2 mutation,e_con_sm,May-Thurner syndrome,2239,0,0,0.0,0
+JAK2 mutation,sin_tvp_,Index VTE presentation,2239,0,0,0.0,0
+JAK2 mutation,var171,Syncope,2239,33,33,1.4738722644037516,0
+JAK2 mutation,tv_l_esu,Upper-extremity thrombosis,2239,607,607,27.11031710585083,0
+JAK2 mutation,tvp_orig,Upper-extremity catheter relationship,2239,2149,2149,95.98034836980796,0
+JAK2 mutation,tv_l_ein,Lower-extremity thrombosis,2239,471,471,21.03617686467173,0
+JAK2 mutation,tvp_prox,DVT proximal/distal location,2239,925,925,41.31308619919607,0
+JAK2 mutation,tv_l_svc,Cerebral sinus thrombosis,2239,805,805,35.95355069227333,0
+JAK2 mutation,tv_l_vre,Retinal vein thrombosis,2239,829,829,37.025457793657885,0
+JAK2 mutation,tv_l_vrn,Renal vein thrombosis,2239,817,817,36.48950424296561,0
+JAK2 mutation,tv_l_vca,Vena cava thrombosis,2239,1510,1510,67.44082179544439,0
+JAK2 mutation,tv_l_yug,Jugular vein thrombosis,2239,1530,1530,68.33407771326485,0
+JAK2 mutation,tv_l_ova,Ovarian vein thrombosis,2239,1533,1533,68.46806610093792,0
+JAK2 mutation,tv_l_sup,Suprahepatic vein thrombosis,2239,1530,1530,68.33407771326485,0
+JAK2 mutation,tv_l_pul,Pulmonary vein thrombosis,2239,1531,1531,68.37874050915588,0
+JAK2 mutation,tv_l_ove,Other vein thrombosis,2239,818,818,36.53416703885663,0
+JAK2 mutation,fr_cance,Active cancer,2239,0,0,0.0,0
+JAK2 mutation,fr_cirug,Recent surgery,2239,0,0,0.0,0
+JAK2 mutation,fr_inmov,Recent immobilization,2239,0,0,0.0,0
+JAK2 mutation,fr_tvp_a,Prior VTE,2239,0,0,0.0,0
+JAK2 mutation,fr_antfa,Family history of VTE,2239,1098,1098,49.03974988834301,0
+JAK2 mutation,fr_tvs_a,Prior superficial thrombosis,2239,405,405,18.088432335864223,0
+JAK2 mutation,fr_viaje,Recent prolonged travel,2239,14,14,0.6252791424743189,0
+JAK2 mutation,fr_estro,Recent hormone exposure,2239,21,21,0.9379187137114784,0
+JAK2 mutation,fr_embar,Pregnancy,2239,0,0,0.0,0
+JAK2 mutation,fr_varic,Varicose veins,2239,51,51,2.2778025904421617,0
+JAK2 mutation,fr_antec,Recent delivery,2239,1,1,0.044662795891022775,0
+JAK2 mutation,ana_dime,Recorded categorical D-dimer,2239,306,306,13.666815542652971,436
+JAK2 mutation,ana_crea,Recorded creatinine category,2239,81,81,3.6176864671728453,0
+JAK2 mutation,ana_trop,Recorded troponin category,2239,1410,1410,62.97454220634212,0
+JAK2 mutation,edad,Age (years),2239,0,0,0.0,0
+JAK2 mutation,peso,Weight (kg),2239,0,1,0.044662795891022775,0
+JAK2 mutation,tension_,Systolic BP (mmHg),2239,0,113,5.046895935685574,0
+JAK2 mutation,ana_hemo,Hemoglobin (g/dL),2239,5,6,0.2679767753461367,0
+JAK2 mutation,ana_plaq,Platelets (10^9/L),2239,6,6,0.2679767753461367,0
+JAK2 mutation,ana_leuc,Leukocytes (10^9/L),2239,5,21,0.9379187137114784,0
+JAK2 mutation,ana_neu,Neutrophils (10^9/L),2239,1663,1663,74.27422956677088,0
+JAK2 mutation,protcrea,C-reactive protein (mg/dL),2239,2169,2170,96.91826708351942,0
+JAK2 mutation,female_under45,Female and age <45,2239,0,0,0.0,0
+JAK2 mutation,splanchnic,Splanchnic thrombosis,2239,785,785,35.060294774452885,0

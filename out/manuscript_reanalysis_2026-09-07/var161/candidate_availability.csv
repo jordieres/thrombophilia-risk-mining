@@ -1,0 +1,64 @@
+variable,label,development_missing_fraction,nonconstant,retained_for_primary
+sexo,Sex,0.0,True,True
+raza,Recorded ethnicity,0.7304406258999712,True,False
+ant_inf,Prior myocardial ischemia,0.4745128155899011,True,False
+ant_isq,Prior cerebral ischemia,0.47595276951137566,True,False
+ant_clau,Peripheral arterial disease,0.47672074493616207,True,False
+fum_act,Current smoking,0.4829605452625516,True,False
+diabetes,Diabetes,0.4717289046750504,True,False
+hip_art,Hypertension,0.4617452241528271,True,False
+insf_car,Heart failure,0.0018239416338677163,True,True
+fibr_aur,Atrial fibrillation,0.701353556686186,True,False
+trat_est,Statin treatment,0.47883267735432467,True,False
+e_con_pp,Chronic lung disease,0.0,True,True
+e_con_cu,Ulcerative colitis,0.0,True,True
+e_con_ec,Crohn disease,0.0,True,True
+e_con_lu,Known lupus,0.0,True,True
+e_con_be,Behcet disease,0.0,True,True
+e_con_at,Temporal arteritis,0.0,True,True
+e_con_va,Other vasculitis,0.0,True,True
+e_con_ar,Rheumatoid arthritis,0.0,True,True
+e_con_ea,Ankylosing spondylitis,0.0,True,True
+e_con_pr,Polymyalgia rheumatica,0.0,True,True
+e_con_ro,Rendu-Osler disease,0.0,True,True
+e_con_av,Vena cava agenesis,0.0,True,True
+e_con_sm,May-Thurner syndrome,0.0,True,True
+sin_tvp_,Index VTE presentation,0.0,True,True
+var171,Syncope,0.03196697705673419,True,True
+tv_l_esu,Upper-extremity thrombosis,0.7099932802150332,True,False
+tvp_orig,Upper-extremity catheter relationship,0.9623692041854661,True,False
+tv_l_ein,Lower-extremity thrombosis,0.2577517519439378,True,True
+tvp_prox,DVT proximal/distal location,0.3271575309590093,True,True
+tv_l_svc,Cerebral sinus thrombosis,0.766439473936834,True,False
+tv_l_vre,Retinal vein thrombosis,0.7909186906019008,True,False
+tv_l_vrn,Renal vein thrombosis,0.7891907458961314,True,False
+tv_l_vca,Vena cava thrombosis,0.8964193145819334,True,False
+tv_l_yug,Jugular vein thrombosis,0.8993952193529807,True,False
+tv_l_ova,Ovarian vein thrombosis,0.8992992224248824,True,False
+tv_l_sup,Suprahepatic vein thrombosis,0.8991072285686859,True,False
+tv_l_pul,Pulmonary vein thrombosis,0.8992032254967841,True,False
+tv_l_ove,Other vein thrombosis,0.7903427090333109,True,False
+fr_cance,Active cancer,0.0,True,True
+fr_cirug,Recent surgery,0.0,True,True
+fr_inmov,Recent immobilization,0.0,True,True
+fr_tvp_a,Prior VTE,0.0,True,True
+fr_antfa,Family history of VTE,0.8213497168090621,True,False
+fr_tvs_a,Prior superficial thrombosis,0.7238168378611884,True,False
+fr_viaje,Recent prolonged travel,0.018239416338677164,True,True
+fr_estro,Recent hormone exposure,0.011519631371796103,True,True
+fr_embar,Pregnancy,0.0,True,True
+fr_varic,Varicose veins,0.02553518287414803,True,True
+fr_antec,Recent delivery,0.004607852548718441,True,True
+ana_dime,Recorded categorical D-dimer,0.04723048862436402,True,True
+ana_crea,Recorded creatinine category,0.027455121436114043,True,True
+ana_trop,Recorded troponin category,0.7184410098876836,True,False
+edad,Age (years),0.0,True,True
+peso,Weight (kg),0.0001919938561966017,True,True
+tension_,Systolic BP (mmHg),0.04291062685994048,True,True
+ana_hemo,Hemoglobin (g/dL),0.0016319477776711145,True,True
+ana_plaq,Platelets (10^9/L),0.001439953921474513,True,True
+ana_leuc,Leukocytes (10^9/L),0.004319861764423539,True,True
+ana_neu,Neutrophils (10^9/L),0.9062110012479601,True,False
+protcrea,C-reactive protein (mg/dL),0.9909762887587598,True,False
+female_under45,Female and age <45,0.0,True,True
+splanchnic,Splanchnic thrombosis,0.7626955937410003,True,False

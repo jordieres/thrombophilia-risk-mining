@@ -1,0 +1,13 @@
+{
+  "date": "2026-09-07",
+  "git_head": "9c00d4cf4b7c1de82108100057171dde1f53bc30",
+  "comments_reviewed": 14,
+  "sha256": {
+    "/tmp/Thrombophil-IA 06.09.2026.docx": "ba89bd6ca9e7de6ec67031319e362548828c9d8e9b91416776140d6c5be9204d",
+    "/tmp/SUPPLEMENTARY MATERIAL Trombofil-IA JTH (1).docx": "ee669c5914c69cd2651ef89562f6414f20f718de3b5b589b7c824ce49c2faad8",
+    "data/patD.parquet": "0521062d089b5828d0ac9811c231a49ad2889e08f2a52785daa6e626fd790ba5",
+    "data/patD_slim.parquet": "1d5fd9bac9ca5f5c1e31fe24ea50d486620449fb7f062c4485c8b219a937f9c7",
+    "src/exp_clinical_risk_score.py": "1268b1c75388903a16308a59babf7ef60d8c9ef26648f949148576c49b584856",
+    "src/manuscript_support.py": "8ff83aa2c4f90432ba225a1daf719736bcffcc87bd02048ec4c479e7887c8242"
+  }
+}

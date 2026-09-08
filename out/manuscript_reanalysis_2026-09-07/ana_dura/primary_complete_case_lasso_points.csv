@@ -1,0 +1,29 @@
+variable,category,coefficient,points,label
+sexo,Male,0.15392515150245248,27,Sex
+ant_clau,Yes,-0.2542527728586103,-44,Peripheral arterial disease
+fum_act,Yes,0.1476848831894698,25,Current smoking
+diabetes,Yes,-0.2935340192587922,-51,Diabetes
+insf_car,Yes,-0.15826717752860575,-27,Heart failure
+trat_est,Yes,0.10467054494966696,18,Statin treatment
+e_con_pp,Yes,-0.1700353520666036,-29,Chronic lung disease
+e_con_lu,Yes,0.9935169900139712,171,Known lupus
+e_con_ar,Yes,-0.2604935933763483,-45,Rheumatoid arthritis
+e_con_pr,Yes,-1.0098610288223893,-174,Polymyalgia rheumatica
+e_con_av,Yes,-0.9030380526674063,-156,Vena cava agenesis
+sin_tvp_,PE,-0.14881609030871,-26,Index VTE presentation
+sin_tvp_,PE+DVT,0.02820649873832169,5,Index VTE presentation
+tvp_prox,Proximal (incluyendo la vena poplítea),0.31662379194509976,55,DVT proximal/distal location
+fr_cance,Yes,-0.2350056438266262,-41,Active cancer
+fr_cirug,Yes,-0.2702526469680341,-47,Recent surgery
+fr_inmov,Yes,-0.23292769759371737,-40,Recent immobilization
+fr_tvp_a,Yes,-0.1245178636291827,-21,Prior VTE
+fr_embar,Yes,0.360033905719983,62,Pregnancy
+ana_dime,Not performed,-0.1584714071579656,-27,Recorded categorical D-dimer
+ana_dime,Positive,0.13331604308232378,23,Recorded categorical D-dimer
+edad,<50,0.1690193061074349,29,Age (years)
+edad,≥70,-0.028186914639534804,-5,Age (years)
+tension_,≥100,0.3602367143744838,62,Systolic BP (mmHg)
+ana_hemo,≥12,0.07471011433594142,13,Hemoglobin (g/dL)
+ana_leuc,<4,-0.6047378386883083,-104,Leukocytes (10^9/L)
+ana_leuc,>11,-0.005798927828081573,-1,Leukocytes (10^9/L)
+female_under45,Yes,0.006735078271844779,1,Female and age <45

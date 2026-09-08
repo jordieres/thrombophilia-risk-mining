@@ -5,6 +5,10 @@ This page explains the runtime architecture of the thrombophilia risk mining
 project and how data moves from the command line entry point to experiment-
 specific output artifacts.
 
+The dedicated manuscript pipeline bypasses the historical general processor.
+See :doc:`manuscript_reanalysis` for its cohort, training, validation and report
+contracts. The diagrams below describe the historical exploratory engine only.
+
 System Overview
 ---------------
 
@@ -104,7 +108,7 @@ Experiment Roles
 
 ``UnsupervisedClusteringExperiment``
    Restricts the dataset to numeric variables, imputes missing values, scales
-   them, and combines agglomerative clustering with a t-SNE visualization.
+   them, and combines agglomerative clustering with a UMAP visualization.
 
 ``CategoricalAssociationExperiment``
    Restricts the dataset to categorical variables and measures pairwise
@@ -121,7 +125,7 @@ Experiment Roles
    exports it as both a LaTeX table and a grouped bar chart.
 
 ``ClinicalScoreScreeningExperiment``
-   Fits the validated score on confirmed positive/negative studies and applies
+   Fits the historical exploratory score on confirmed positive/negative studies and applies
    it to ``Missing`` or ``No buscada`` records to build a review-oriented
    candidate ranking.
 

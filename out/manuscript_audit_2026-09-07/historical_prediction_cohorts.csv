@@ -1,0 +1,7 @@
+file,n,target,tested_n,outside_tested_n
+out/clinical_risk_score_per_patient.csv,4000,ana_dura,4000,0
+out/archive/var154_score/clinical_risk_score_per_patient.csv,30700,var154,10070,20630
+out/archive/var155_score/clinical_risk_score_per_patient.csv,30700,var155,10095,20605
+out/archive/var156_score/clinical_risk_score_per_patient.csv,30700,var156,10315,20385
+out/archive/var157_score/clinical_risk_score_per_patient.csv,30700,var157,10138,20562
+out/archive/var161_score/clinical_risk_score_per_patient.csv,31471,var161,10710,20761

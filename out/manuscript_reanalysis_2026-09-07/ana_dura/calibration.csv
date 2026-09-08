@@ -1,0 +1,67 @@
+bin,n,predicted,observed,absolute_error,outcome,analysis,validation,model
+0,7,0.09188594250140636,0.2857142857142857,0.19382834321287934,ana_dura,primary_complete_case,nested_cv,Logistic LASSO
+1,164,0.17032075469923905,0.18902439024390244,0.018703635544663394,ana_dura,primary_complete_case,nested_cv,Logistic LASSO
+2,890,0.2624303524072806,0.2955056179775281,0.033075265570247536,ana_dura,primary_complete_case,nested_cv,Logistic LASSO
+3,2706,0.3561942788909081,0.35994087213599407,0.003746593245085972,ana_dura,primary_complete_case,nested_cv,Logistic LASSO
+4,2907,0.44556812967808623,0.4279325765393877,0.017635553138698523,ana_dura,primary_complete_case,nested_cv,Logistic LASSO
+5,521,0.5199928852663266,0.5355086372360844,0.015515751969757852,ana_dura,primary_complete_case,nested_cv,Logistic LASSO
+6,13,0.6515567821051936,0.5384615384615384,0.1130952436436552,ana_dura,primary_complete_case,nested_cv,Logistic LASSO
+7,1,0.705151071903876,1.0,0.29484892809612395,ana_dura,primary_complete_case,nested_cv,Logistic LASSO
+0,8,0.09222707754382753,0.25,0.15777292245617247,ana_dura,primary_complete_case,nested_cv,Automatic integer score
+1,187,0.17063842624277312,0.18716577540106952,0.0165273491582964,ana_dura,primary_complete_case,nested_cv,Automatic integer score
+2,934,0.26310492609155517,0.3019271948608137,0.03882226876925854,ana_dura,primary_complete_case,nested_cv,Automatic integer score
+3,2645,0.35652745292270793,0.3606805293005671,0.004153076377859166,ana_dura,primary_complete_case,nested_cv,Automatic integer score
+4,2800,0.4454160201953751,0.42607142857142855,0.019344591623946528,ana_dura,primary_complete_case,nested_cv,Automatic integer score
+5,620,0.5199313224199891,0.5274193548387097,0.007488032418720647,ana_dura,primary_complete_case,nested_cv,Automatic integer score
+6,12,0.6436201807801473,0.5,0.14362018078014727,ana_dura,primary_complete_case,nested_cv,Automatic integer score
+7,3,0.7061266895530979,0.6666666666666666,0.039460022886431245,ana_dura,primary_complete_case,nested_cv,Automatic integer score
+1,6,0.1708611624186945,0.3333333333333333,0.1624721709146388,ana_dura,primary_complete_case,temporal_holdout,Logistic LASSO
+2,29,0.25855229974435684,0.3793103448275862,0.12075804508322935,ana_dura,primary_complete_case,temporal_holdout,Logistic LASSO
+3,153,0.3590824265114961,0.27450980392156865,0.08457262258992743,ana_dura,primary_complete_case,temporal_holdout,Logistic LASSO
+4,206,0.44622452205427715,0.35436893203883496,0.09185559001544219,ana_dura,primary_complete_case,temporal_holdout,Logistic LASSO
+5,28,0.5226333141797131,0.42857142857142855,0.0940618856082846,ana_dura,primary_complete_case,temporal_holdout,Logistic LASSO
+6,1,0.6669512629406988,1.0,0.33304873705930116,ana_dura,primary_complete_case,temporal_holdout,Logistic LASSO
+1,6,0.16385635275851246,0.3333333333333333,0.16947698057482086,ana_dura,primary_complete_case,temporal_holdout,Automatic integer score
+2,32,0.25723601318051215,0.34375,0.08651398681948785,ana_dura,primary_complete_case,temporal_holdout,Automatic integer score
+3,144,0.3568670595875171,0.2708333333333333,0.08603372625418376,ana_dura,primary_complete_case,temporal_holdout,Automatic integer score
+4,193,0.4416015738570902,0.37305699481865284,0.06854457903843736,ana_dura,primary_complete_case,temporal_holdout,Automatic integer score
+5,47,0.5179249314936565,0.3404255319148936,0.17749939957876287,ana_dura,primary_complete_case,temporal_holdout,Automatic integer score
+6,1,0.6771373077786997,1.0,0.32286269222130026,ana_dura,primary_complete_case,temporal_holdout,Automatic integer score
+0,5,0.09388943165540695,0.0,0.09388943165540695,ana_dura,primary_complete_case,nested_cv,XGBoost
+1,101,0.1579653747601084,0.15841584158415842,0.0004504668240500054,ana_dura,primary_complete_case,nested_cv,XGBoost
+2,830,0.26585680587464067,0.27590361445783135,0.01004680858319068,ana_dura,primary_complete_case,nested_cv,XGBoost
+3,2733,0.35559075838517146,0.35638492499085256,0.0007941666056811014,ana_dura,primary_complete_case,nested_cv,XGBoost
+4,3223,0.4440872998497259,0.4365497983245423,0.007537501525183565,ana_dura,primary_complete_case,nested_cv,XGBoost
+5,317,0.5196938018317478,0.5520504731861199,0.032356671354372035,ana_dura,primary_complete_case,nested_cv,XGBoost
+1,2,0.18099471181631088,0.0,0.18099471181631088,ana_dura,primary_complete_case,temporal_holdout,XGBoost
+2,47,0.26533920111808373,0.2127659574468085,0.05257324367127522,ana_dura,primary_complete_case,temporal_holdout,XGBoost
+3,143,0.35879293855253636,0.3146853146853147,0.04410762386722167,ana_dura,primary_complete_case,temporal_holdout,XGBoost
+4,218,0.4434824572243822,0.3669724770642202,0.07650998016016197,ana_dura,primary_complete_case,temporal_holdout,XGBoost
+5,13,0.5179167940066411,0.46153846153846156,0.05637833246817958,ana_dura,primary_complete_case,temporal_holdout,XGBoost
+0,85,0.08228704035282135,0.011764705882352941,0.0705223344704684,ana_dura,sensitivity_native_missing,nested_cv,XGBoost
+1,477,0.16680889962479253,0.09853249475890985,0.06827640486588268,ana_dura,sensitivity_native_missing,nested_cv,XGBoost
+2,2559,0.26566789920859246,0.2669011332551778,0.0012332340465853187,ana_dura,sensitivity_native_missing,nested_cv,XGBoost
+3,9870,0.3586896080557698,0.34994934143870315,0.008740266617066672,ana_dura,sensitivity_native_missing,nested_cv,XGBoost
+4,8154,0.4376517607318089,0.4480009811135639,0.010349220381755009,ana_dura,sensitivity_native_missing,nested_cv,XGBoost
+5,598,0.5218862753648025,0.5735785953177257,0.05169231995292323,ana_dura,sensitivity_native_missing,nested_cv,XGBoost
+6,19,0.6228992342948914,1.0,0.37710076570510864,ana_dura,sensitivity_native_missing,nested_cv,XGBoost
+0,1,0.055689431726932526,0.0,0.055689431726932526,ana_dura,sensitivity_native_missing,temporal_holdout,XGBoost
+1,29,0.1667724403327909,0.06896551724137931,0.09780692309141159,ana_dura,sensitivity_native_missing,temporal_holdout,XGBoost
+2,219,0.2665014136327456,0.2191780821917808,0.04732333144096479,ana_dura,sensitivity_native_missing,temporal_holdout,XGBoost
+3,575,0.3521540131257928,0.3339130434782609,0.018240969647531913,ana_dura,sensitivity_native_missing,temporal_holdout,XGBoost
+4,251,0.42920391493109594,0.3904382470119522,0.038765667919143765,ana_dura,sensitivity_native_missing,temporal_holdout,XGBoost
+5,10,0.5184426367282867,0.5,0.01844263672828672,ana_dura,sensitivity_native_missing,temporal_holdout,XGBoost
+1,7,0.19000834869059488,0.2857142857142857,0.09570593702369082,ana_dura,guided_complete_case,nested_cv,Logistic LASSO
+2,652,0.27034988185847625,0.2837423312883436,0.013392449429867337,ana_dura,guided_complete_case,nested_cv,Logistic LASSO
+3,3174,0.3572670922762736,0.3588531821045999,0.0015860898283262537,ana_dura,guided_complete_case,nested_cv,Logistic LASSO
+4,3376,0.44135604266991124,0.4369075829383886,0.004448459731522636,ana_dura,guided_complete_case,nested_cv,Logistic LASSO
+1,7,0.1897359360635012,0.14285714285714285,0.04687879320635835,ana_dura,guided_complete_case,nested_cv,Automatic integer score
+2,628,0.2697762184153991,0.28662420382165604,0.016847985406256927,ana_dura,guided_complete_case,nested_cv,Automatic integer score
+3,3383,0.35945949525252857,0.3609222583505764,0.0014627630980478257,ana_dura,guided_complete_case,nested_cv,Automatic integer score
+4,3191,0.44322649818644255,0.4384205578188656,0.004805940367576977,ana_dura,guided_complete_case,nested_cv,Automatic integer score
+2,16,0.28249591389144507,0.375,0.09250408610855493,ana_dura,guided_complete_case,temporal_holdout,Logistic LASSO
+3,156,0.3653243909317293,0.33974358974358976,0.025580801188139546,ana_dura,guided_complete_case,temporal_holdout,Logistic LASSO
+4,251,0.4429190496298989,0.32669322709163345,0.11622582253826547,ana_dura,guided_complete_case,temporal_holdout,Logistic LASSO
+2,16,0.28071713801341475,0.375,0.09428286198658525,ana_dura,guided_complete_case,temporal_holdout,Automatic integer score
+3,157,0.3650617308593698,0.34394904458598724,0.021112686273382586,ana_dura,guided_complete_case,temporal_holdout,Automatic integer score
+4,250,0.44278671303705125,0.324,0.11878671303705124,ana_dura,guided_complete_case,temporal_holdout,Automatic integer score

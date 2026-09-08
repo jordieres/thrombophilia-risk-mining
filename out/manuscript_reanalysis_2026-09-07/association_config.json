@@ -1,0 +1,27 @@
+{
+  "cohort_n": 22847,
+  "min_joint_support": 0.01,
+  "min_confidence": 0.8,
+  "min_lift": 1,
+  "max_antecedents": 3,
+  "retained_rules": 0,
+  "descriptors": [
+    "Female",
+    "Age <50",
+    "Age 50–69",
+    "No prior VTE",
+    "Hemoglobin ≥12",
+    "Negative D-dimer",
+    "No cancer",
+    "No hormone exposure",
+    "Normal platelets",
+    "No immobilization",
+    "Normal creatinine",
+    "Male",
+    "Age ≥70",
+    "Prior VTE",
+    "Cancer",
+    "Immobilization"
+  ],
+  "note": "Descriptive, not cross-validated; old No DVT wording is operationalized as No prior VTE."
+}

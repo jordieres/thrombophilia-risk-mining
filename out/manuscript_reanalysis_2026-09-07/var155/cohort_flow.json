@@ -1,0 +1,17 @@
+{
+  "outcome": "var155",
+  "label": "Protein S deficiency",
+  "priority": "exploratory",
+  "eligible_n": 10295,
+  "eligible_positive_n": 756,
+  "development_eligible_n": 10065,
+  "temporal_eligible_n": 230,
+  "missing_date_n": 0,
+  "candidate_n": 37,
+  "complete_case_n": 5825,
+  "complete_case_positive_n": 399,
+  "missing_excluded_n": 4470,
+  "development_complete_n": 5723,
+  "temporal_complete_n": 102,
+  "cutoff_year": 2021
+}

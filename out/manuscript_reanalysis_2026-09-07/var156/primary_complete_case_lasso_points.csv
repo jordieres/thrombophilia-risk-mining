@@ -1,0 +1,27 @@
+variable,category,coefficient,points,label
+insf_car,Yes,-0.042197920026325234,-4,Heart failure
+e_con_pp,Yes,-0.011311893509556994,-1,Chronic lung disease
+e_con_lu,Yes,-1.4004102497993465,-124,Known lupus
+e_con_be,Yes,-0.8935559207147626,-79,Behcet disease
+e_con_av,Yes,0.3369608470715871,30,Vena cava agenesis
+sin_tvp_,DVT,0.2932245986562883,26,Index VTE presentation
+sin_tvp_,PE,-0.036743112401548116,-3,Index VTE presentation
+var171,Yes,-0.42025772275661916,-37,Syncope
+tvp_prox,Proximal (incluyendo la vena poplítea),0.36355889960216237,32,DVT proximal/distal location
+fr_cance,Yes,-0.2661399268032136,-24,Active cancer
+fr_cirug,Yes,-0.24952599656031538,-22,Recent surgery
+fr_inmov,Yes,-0.28731553414733463,-25,Recent immobilization
+fr_tvp_a,Yes,-0.2023973758655683,-18,Prior VTE
+fr_viaje,Yes,0.16260631169738562,14,Recent prolonged travel
+fr_estro,Yes,0.38147665909097195,34,Recent hormone exposure
+fr_embar,Yes,0.521430293357153,46,Pregnancy
+fr_varic,Yes,-0.1290196939180661,-11,Varicose veins
+ana_dime,Not performed,0.3109447741939077,27,Recorded categorical D-dimer
+ana_dime,Positive,0.5280898792673426,47,Recorded categorical D-dimer
+edad,<50,0.24610793694030234,22,Age (years)
+edad,≥70,-0.4320950003150275,-38,Age (years)
+peso,>100,0.19645758285605225,17,Weight (kg)
+ana_hemo,≥12,0.4378003026185452,39,Hemoglobin (g/dL)
+ana_plaq,<144,-0.19699515684802604,-17,Platelets (10^9/L)
+ana_plaq,>400,-0.03034017576153489,-3,Platelets (10^9/L)
+female_under45,Yes,-0.25936675961080197,-23,Female and age <45

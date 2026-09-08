@@ -1,0 +1,16 @@
+variable,category,coefficient,points,label
+sexo,Male,0.4105596130022677,7,Sex
+sin_tvp_,DVT,-0.6420582274999803,-11,Index VTE presentation
+sin_tvp_,PE,-0.35336301488135613,-6,Index VTE presentation
+var171,Yes,0.09756904423420613,2,Syncope
+fr_inmov,Yes,-0.46183110830237484,-8,Recent immobilization
+fr_tvp_a,Yes,0.4917224191286934,9,Prior VTE
+fr_antec,Yes,1.1422860282712202,20,Recent delivery
+ana_dime,Not performed,-0.37818819220392763,-7,Recorded categorical D-dimer
+edad,<50,0.36421951189915164,7,Age (years)
+edad,≥70,-0.1485740216533471,-3,Age (years)
+peso,<50,1.083228271856281,19,Weight (kg)
+peso,>100,0.05602759068912109,1,Weight (kg)
+tension_,≥100,-0.4804247476564108,-9,Systolic BP (mmHg)
+ana_plaq,<144,0.8261552487255333,15,Platelets (10^9/L)
+ana_leuc,>11,0.32912069758416856,6,Leukocytes (10^9/L)
