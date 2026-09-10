@@ -1,0 +1,14 @@
+{
+  "eligible_patients_only": true,
+  "unique_predictions": true,
+  "dates_disjoint": true,
+  "paired_primary_cohorts": true,
+  "finite_probabilities": true,
+  "confusion_counts_match": true,
+  "utility_identity": true,
+  "integer_probability_decisions_match": true,
+  "all_eligible_patients_predicted": true,
+  "no_missing_predictor_patient_exclusion": true,
+  "outcome_not_used_for_imputation": true,
+  "no_univariable_screening": true
+}

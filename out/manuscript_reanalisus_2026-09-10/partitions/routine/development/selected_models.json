@@ -1,0 +1,160 @@
+{
+  "parameters": {
+    "ana_dura": {
+      "lasso": [
+        {
+          "C": 0.1
+        }
+      ],
+      "xgb": [
+        {
+          "n_estimators": 80,
+          "max_depth": 3,
+          "learning_rate": 0.08,
+          "subsample": 0.8,
+          "colsample_bytree": 0.8,
+          "reg_alpha": 0.1,
+          "reg_lambda": 5.0
+        }
+      ]
+    },
+    "var156": {
+      "lasso": [
+        {
+          "C": 0.1
+        }
+      ],
+      "xgb": [
+        {
+          "n_estimators": 80,
+          "max_depth": 3,
+          "learning_rate": 0.08,
+          "subsample": 0.8,
+          "colsample_bytree": 0.8,
+          "reg_alpha": 0.1,
+          "reg_lambda": 5.0
+        }
+      ]
+    },
+    "var157": {
+      "lasso": [
+        {
+          "C": 0.1
+        }
+      ],
+      "xgb": [
+        {
+          "n_estimators": 80,
+          "max_depth": 3,
+          "learning_rate": 0.08,
+          "subsample": 0.8,
+          "colsample_bytree": 0.8,
+          "reg_alpha": 0.1,
+          "reg_lambda": 5.0
+        }
+      ]
+    },
+    "var161": {
+      "lasso": [
+        {
+          "C": 0.1
+        }
+      ],
+      "xgb": [
+        {
+          "n_estimators": 80,
+          "max_depth": 3,
+          "learning_rate": 0.08,
+          "subsample": 0.8,
+          "colsample_bytree": 0.8,
+          "reg_alpha": 0.1,
+          "reg_lambda": 5.0
+        }
+      ]
+    },
+    "var155": {
+      "lasso": [
+        {
+          "C": 0.1
+        }
+      ],
+      "xgb": [
+        {
+          "n_estimators": 80,
+          "max_depth": 3,
+          "learning_rate": 0.08,
+          "subsample": 0.8,
+          "colsample_bytree": 0.8,
+          "reg_alpha": 0.1,
+          "reg_lambda": 5.0
+        }
+      ]
+    },
+    "var154": {
+      "lasso": [
+        {
+          "C": 0.1
+        }
+      ],
+      "xgb": [
+        {
+          "n_estimators": 80,
+          "max_depth": 3,
+          "learning_rate": 0.08,
+          "subsample": 0.8,
+          "colsample_bytree": 0.8,
+          "reg_alpha": 0.1,
+          "reg_lambda": 5.0
+        }
+      ]
+    },
+    "var158": {
+      "lasso": [
+        {
+          "C": 0.1
+        }
+      ],
+      "xgb": [
+        {
+          "n_estimators": 80,
+          "max_depth": 3,
+          "learning_rate": 0.08,
+          "subsample": 0.8,
+          "colsample_bytree": 0.8,
+          "reg_alpha": 0.1,
+          "reg_lambda": 5.0
+        }
+      ]
+    }
+  },
+  "thresholds": {
+    "ana_dura": {
+      "lasso": 0.3015891220450778,
+      "xgb": 0.32109731435775757
+    },
+    "var156": {
+      "lasso": 0.05360997650995669,
+      "xgb": 0.056353725492954254
+    },
+    "var157": {
+      "lasso": 0.04757923141325366,
+      "xgb": 0.04993312805891037
+    },
+    "var161": {
+      "lasso": 0.052725802790317064,
+      "xgb": 0.057337306439876556
+    },
+    "var155": {
+      "lasso": 0.02222308085427231,
+      "xgb": 0.023117749020457268
+    },
+    "var154": {
+      "lasso": 0.011103623037456888,
+      "xgb": 0.010880935937166214
+    },
+    "var158": {
+      "lasso": 0.00806181692832821,
+      "xgb": 0.007666689343750477
+    }
+  }
+}

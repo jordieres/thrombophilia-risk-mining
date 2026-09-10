@@ -1,0 +1,6 @@
+profile,eligible_n,profile_fields_observed_n,profile_fields_missing_n,profile_n,negative_n,negative_fraction
+"Female, age <50, no prior VTE",22847,22847,0,4326,2684,0.6204345815996302
+"Hemoglobin ≥12, negative D-dimer, no cancer",22847,21225,1622,565,365,0.6460176991150443
+"Female, age 50–69, no hormone exposure",22847,22564,283,2710,1795,0.6623616236162362
+"Normal platelets, no immobilization, no prior VTE",22847,22807,40,13448,8303,0.6174152290303391
+"Female, no prior VTE, normal creatinine",22847,22096,751,8375,5428,0.6481194029850746

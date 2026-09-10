@@ -1,0 +1,11 @@
+{
+  "outcome": "var155",
+  "label": "Protein S deficiency",
+  "eligible_n": 22847,
+  "eligible_positive_n": 756,
+  "development_n": 21762,
+  "temporal_n": 1085,
+  "excluded_for_missing_predictors_n": 0,
+  "outcome_policy": "routine-panel",
+  "priority": "exploratory"
+}

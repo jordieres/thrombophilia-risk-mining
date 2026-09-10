@@ -1,0 +1,9 @@
+outcome,label,eligible_n,eligible_positive_n,development_n,temporal_n,excluded_for_missing_predictors_n,outcome_policy,priority
+ana_dura,Composite thrombophilia,22847,8545,21762,1085,0,routine-panel,composite
+var156,Factor V Leiden,22847,2045,21762,1085,0,routine-panel,primary
+var157,Prothrombin G20210A,22847,1602,21762,1085,0,routine-panel,primary
+var161,Registry-coded APS,22847,1885,21762,1085,0,routine-panel,exploratory
+var155,Protein S deficiency,22847,756,21762,1085,0,routine-panel,exploratory
+var154,Protein C deficiency,22847,355,21762,1085,0,routine-panel,exploratory
+var158,Antithrombin deficiency,22847,259,21762,1085,0,routine-panel,exploratory
+andujak2,JAK2 mutation,2239,61,2098,141,0,routine-panel,descriptive

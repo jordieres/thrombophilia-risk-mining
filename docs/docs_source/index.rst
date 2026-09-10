@@ -9,6 +9,7 @@ quality gates for the thrombophilia risk mining toolkit.
    :caption: Contents
 
    manuscript_reanalysis
+   manuscript_multiple_imputation
    installation
    usage
    architecture

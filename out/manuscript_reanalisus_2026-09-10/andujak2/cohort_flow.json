@@ -1,0 +1,11 @@
+{
+  "outcome": "andujak2",
+  "label": "JAK2 mutation",
+  "eligible_n": 2239,
+  "eligible_positive_n": 61,
+  "development_n": 2098,
+  "temporal_n": 141,
+  "excluded_for_missing_predictors_n": 0,
+  "outcome_policy": "routine-panel",
+  "priority": "descriptive"
+}

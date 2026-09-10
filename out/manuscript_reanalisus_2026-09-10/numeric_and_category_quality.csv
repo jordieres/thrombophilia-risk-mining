@@ -1,0 +1,62 @@
+variable,label,original_missing,invalid_numeric,transformed_missing,rule
+sexo,Sex,0,0,0,Recorded category; unknown remains missing
+raza,Recorded ethnicity,71428,0,71428,Recorded category; unknown remains missing
+ant_inf,Prior myocardial ischemia,29664,0,29664,Recorded category; unknown remains missing
+ant_isq,Prior cerebral ischemia,29706,0,29706,Recorded category; unknown remains missing
+ant_clau,Peripheral arterial disease,30000,0,30000,Recorded category; unknown remains missing
+fum_act,Current smoking,30876,0,30876,Recorded category; unknown remains missing
+diabetes,Diabetes,29287,0,29287,Recorded category; unknown remains missing
+hip_art,Hypertension,28050,0,28050,Recorded category; unknown remains missing
+insf_car,Heart failure,2475,0,2475,Recorded category; unknown remains missing
+fibr_aur,Atrial fibrillation,53577,0,53577,Recorded category; unknown remains missing
+trat_est,Statin treatment,30215,0,30215,Recorded category; unknown remains missing
+e_con_pp,Chronic lung disease,0,0,0,Recorded category; unknown remains missing
+e_con_cu,Ulcerative colitis,0,0,0,Recorded category; unknown remains missing
+e_con_ec,Crohn disease,0,0,0,Recorded category; unknown remains missing
+e_con_lu,Known lupus,0,0,0,Recorded category; unknown remains missing
+e_con_be,Behcet disease,0,0,0,Recorded category; unknown remains missing
+e_con_at,Temporal arteritis,0,0,0,Recorded category; unknown remains missing
+e_con_va,Other vasculitis,0,0,0,Recorded category; unknown remains missing
+e_con_ar,Rheumatoid arthritis,0,0,0,Recorded category; unknown remains missing
+e_con_ea,Ankylosing spondylitis,0,0,0,Recorded category; unknown remains missing
+e_con_pr,Polymyalgia rheumatica,0,0,0,Recorded category; unknown remains missing
+e_con_ro,Rendu-Osler disease,0,0,0,Recorded category; unknown remains missing
+e_con_av,Vena cava agenesis,0,0,0,Recorded category; unknown remains missing
+e_con_sm,May-Thurner syndrome,0,0,0,Recorded category; unknown remains missing
+sin_tvp_,Index VTE presentation,0,0,0,Recorded category; unknown remains missing
+var171,Syncope,7242,0,7242,Recorded category; unknown remains missing
+tv_l_esu,Upper-extremity thrombosis,68306,0,68306,Recorded category; unknown remains missing
+tvp_orig,Upper-extremity catheter relationship,113851,0,113851,Recorded category; unknown remains missing
+tv_l_ein,Lower-extremity thrombosis,37067,0,37067,Recorded category; unknown remains missing
+tvp_prox,DVT proximal/distal location,51588,0,51588,Recorded category; unknown remains missing
+tv_l_svc,Cerebral sinus thrombosis,80779,0,80779,Recorded category; unknown remains missing
+tv_l_vre,Retinal vein thrombosis,83486,0,83486,Recorded category; unknown remains missing
+tv_l_vrn,Renal vein thrombosis,83186,0,83186,Recorded category; unknown remains missing
+tv_l_vca,Vena cava thrombosis,97884,0,97884,Recorded category; unknown remains missing
+tv_l_yug,Jugular vein thrombosis,98345,0,98345,Recorded category; unknown remains missing
+tv_l_ova,Ovarian vein thrombosis,98552,0,98552,Recorded category; unknown remains missing
+tv_l_sup,Suprahepatic vein thrombosis,98489,0,98489,Recorded category; unknown remains missing
+tv_l_pul,Pulmonary vein thrombosis,98497,0,98497,Recorded category; unknown remains missing
+tv_l_ove,Other vein thrombosis,83161,0,83161,Recorded category; unknown remains missing
+fr_cance,Active cancer,1,0,1,Recorded category; unknown remains missing
+fr_cirug,Recent surgery,1,0,1,Recorded category; unknown remains missing
+fr_inmov,Recent immobilization,1,0,1,Recorded category; unknown remains missing
+fr_tvp_a,Prior VTE,1,0,1,Recorded category; unknown remains missing
+fr_antfa,Family history of VTE,74794,0,74794,Recorded category; unknown remains missing
+fr_tvs_a,Prior superficial thrombosis,58014,0,58014,Recorded category; unknown remains missing
+fr_viaje,Recent prolonged travel,3832,0,3832,Recorded category; unknown remains missing
+fr_estro,Recent hormone exposure,3820,0,3820,Recorded category; unknown remains missing
+fr_embar,Pregnancy,0,0,0,Recorded category; unknown remains missing
+fr_varic,Varicose veins,10427,0,10427,Recorded category; unknown remains missing
+fr_antec,Recent delivery,536,0,536,Recorded category; unknown remains missing
+ana_dime,Recorded categorical D-dimer,14686,0,14686,Recorded category; unknown remains missing
+ana_crea,Recorded creatinine category,5915,0,5915,Recorded category; unknown remains missing
+ana_trop,Recorded troponin category,80285,0,80285,Recorded category; unknown remains missing
+edad,Age (years),0,0,0,"Continuous; valid [0, 120]; invalid -> missing"
+peso,Weight (kg),7,47,54,"Continuous; valid [29, 300]; invalid -> missing"
+tension_,Systolic BP (mmHg),0,23,6137,"Continuous; valid [35, 300]; invalid -> missing"
+ana_hemo,Hemoglobin (g/dL),252,58,310,"Continuous; valid [4, 20]; invalid -> missing"
+ana_plaq,Platelets (10^9/L),262,41,303,"Continuous; valid [10, 1500]; invalid -> missing"
+ana_leuc,Leukocytes (10^9/L),281,686,967,"Continuous; valid [2, 40]; invalid -> missing"
+ana_neu,Neutrophils (10^9/L),94367,161,94528,"Continuous; valid [0.4, 30]; invalid -> missing"
+protcrea,C-reactive protein (mg/dL),115629,107,115736,"Continuous; valid [0, 200]; invalid -> missing"

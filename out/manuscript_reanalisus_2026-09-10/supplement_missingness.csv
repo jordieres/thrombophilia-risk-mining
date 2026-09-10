@@ -1,0 +1,127 @@
+group,variable,label,n,source_null_n,missing_n,missing_pct,not_performed_n
+Full registry,sexo,Sex,119449,0,0,0.0,0
+Full registry,raza,Recorded ethnicity,119449,71428,71428,59.79790538221334,0
+Full registry,ant_inf,Prior myocardial ischemia,119449,29664,29664,24.834029585848356,0
+Full registry,ant_isq,Prior cerebral ischemia,119449,29706,29706,24.86919103550469,0
+Full registry,ant_clau,Peripheral arterial disease,119449,30000,30000,25.115321183099066,0
+Full registry,fum_act,Current smoking,119449,30876,30876,25.848688561645556,0
+Full registry,diabetes,Diabetes,119449,29287,29287,24.518413716314075,0
+Full registry,hip_art,Hypertension,119449,28050,28050,23.482825306197626,0
+Full registry,insf_car,Heart failure,119449,2475,2475,2.072013997605673,0
+Full registry,fibr_aur,Atrial fibrillation,119449,53577,53577,44.85345210089662,0
+Full registry,trat_est,Statin treatment,119449,30215,30215,25.295314318244603,0
+Full registry,e_con_pp,Chronic lung disease,119449,0,0,0.0,0
+Full registry,e_con_cu,Ulcerative colitis,119449,0,0,0.0,0
+Full registry,e_con_ec,Crohn disease,119449,0,0,0.0,0
+Full registry,e_con_lu,Known lupus,119449,0,0,0.0,0
+Full registry,e_con_be,Behcet disease,119449,0,0,0.0,0
+Full registry,e_con_at,Temporal arteritis,119449,0,0,0.0,0
+Full registry,e_con_va,Other vasculitis,119449,0,0,0.0,0
+Full registry,e_con_ar,Rheumatoid arthritis,119449,0,0,0.0,0
+Full registry,e_con_ea,Ankylosing spondylitis,119449,0,0,0.0,0
+Full registry,e_con_pr,Polymyalgia rheumatica,119449,0,0,0.0,0
+Full registry,e_con_ro,Rendu-Osler disease,119449,0,0,0.0,0
+Full registry,e_con_av,Vena cava agenesis,119449,0,0,0.0,0
+Full registry,e_con_sm,May-Thurner syndrome,119449,0,0,0.0,0
+Full registry,sin_tvp_,Index VTE presentation,119449,0,0,0.0,0
+Full registry,var171,Syncope,119449,7242,7242,6.062838533600114,0
+Full registry,tv_l_esu,Upper-extremity thrombosis,119449,68306,68306,57.184237624425485,0
+Full registry,tvp_orig,Upper-extremity catheter relationship,119449,113851,113851,95.31348106723372,0
+Full registry,tv_l_ein,Lower-extremity thrombosis,119449,37067,37067,31.031653676464433,0
+Full registry,tvp_prox,DVT proximal/distal location,119449,51588,51588,43.18830630645715,0
+Full registry,tv_l_svc,Cerebral sinus thrombosis,119449,80779,80779,67.6263509949853,0
+Full registry,tv_l_vre,Retinal vein thrombosis,119449,83486,83486,69.89259014307362,0
+Full registry,tv_l_vrn,Renal vein thrombosis,119449,83186,83186,69.64143693124262,0
+Full registry,tv_l_vca,Vena cava thrombosis,119449,97884,97884,81.94626995621562,0
+Full registry,tv_l_yug,Jugular vein thrombosis,119449,98345,98345,82.33220872506259,0
+Full registry,tv_l_ova,Ovarian vein thrombosis,119449,98552,98552,82.50550444122597,0
+Full registry,tv_l_sup,Suprahepatic vein thrombosis,119449,98489,98489,82.45276226674146,0
+Full registry,tv_l_pul,Pulmonary vein thrombosis,119449,98497,98497,82.45945968572362,0
+Full registry,tv_l_ove,Other vein thrombosis,119449,83161,83161,69.62050749692338,0
+Full registry,fr_cance,Active cancer,119449,1,1,0.0008371773727699688,0
+Full registry,fr_cirug,Recent surgery,119449,1,1,0.0008371773727699688,0
+Full registry,fr_inmov,Recent immobilization,119449,1,1,0.0008371773727699688,0
+Full registry,fr_tvp_a,Prior VTE,119449,1,1,0.0008371773727699688,0
+Full registry,fr_antfa,Family history of VTE,119449,74794,74794,62.615844418957046,0
+Full registry,fr_tvs_a,Prior superficial thrombosis,119449,58014,58014,48.56800810387697,0
+Full registry,fr_viaje,Recent prolonged travel,119449,3832,3832,3.20806369245452,0
+Full registry,fr_estro,Recent hormone exposure,119449,3820,3820,3.1980175639812805,0
+Full registry,fr_embar,Pregnancy,119449,0,0,0.0,0
+Full registry,fr_varic,Varicose veins,119449,10427,10427,8.729248465872464,0
+Full registry,fr_antec,Recent delivery,119449,536,536,0.4487270718047032,0
+Full registry,ana_dime,Recorded categorical D-dimer,119449,14686,14686,12.294786896499762,26709
+Full registry,ana_crea,Recorded creatinine category,119449,5915,5915,4.951904159934365,0
+Full registry,ana_trop,Recorded troponin category,119449,80285,80285,67.21278537283695,0
+Full registry,edad,Age (years),119449,0,0,0.0,0
+Full registry,peso,Weight (kg),119449,7,54,0.04520757812957831,0
+Full registry,tension_,Systolic BP (mmHg),119449,0,6137,5.137757536689298,0
+Full registry,ana_hemo,Hemoglobin (g/dL),119449,252,310,0.25952498555869036,0
+Full registry,ana_plaq,Platelets (10^9/L),119449,262,303,0.25366474394930055,0
+Full registry,ana_leuc,Leukocytes (10^9/L),119449,281,967,0.8095505194685598,0
+Full registry,ana_neu,Neutrophils (10^9/L),119449,94367,94528,79.13670269319961,0
+Full registry,protcrea,C-reactive protein (mg/dL),119449,115629,115736,96.89156041490511,0
+Full registry,female_under45,Female and age <45,119449,0,0,0.0,0
+Full registry,splanchnic,Splanchnic thrombosis,119449,80055,80055,67.02023457709984,0
+Globally tested,sexo,Sex,22874,0,0,0.0,0
+Globally tested,raza,Recorded ethnicity,22874,13433,13433,58.72606452741104,0
+Globally tested,ant_inf,Prior myocardial ischemia,22874,5471,5471,23.917985485704293,0
+Globally tested,ant_isq,Prior cerebral ischemia,22874,5483,5483,23.970446795488325,0
+Globally tested,ant_clau,Peripheral arterial disease,22874,5498,5498,24.03602343271837,0
+Globally tested,fum_act,Current smoking,22874,5651,5651,24.70490513246481,0
+Globally tested,diabetes,Diabetes,22874,5445,5445,23.804319314505552,0
+Globally tested,hip_art,Hypertension,22874,5289,5289,23.122322287313107,0
+Globally tested,insf_car,Heart failure,22874,186,186,0.8131503016525312,0
+Globally tested,fibr_aur,Atrial fibrillation,22874,11585,11585,50.647022820669754,0
+Globally tested,trat_est,Statin treatment,22874,5555,5555,24.285214654192533,0
+Globally tested,e_con_pp,Chronic lung disease,22874,0,0,0.0,0
+Globally tested,e_con_cu,Ulcerative colitis,22874,0,0,0.0,0
+Globally tested,e_con_ec,Crohn disease,22874,0,0,0.0,0
+Globally tested,e_con_lu,Known lupus,22874,0,0,0.0,0
+Globally tested,e_con_be,Behcet disease,22874,0,0,0.0,0
+Globally tested,e_con_at,Temporal arteritis,22874,0,0,0.0,0
+Globally tested,e_con_va,Other vasculitis,22874,0,0,0.0,0
+Globally tested,e_con_ar,Rheumatoid arthritis,22874,0,0,0.0,0
+Globally tested,e_con_ea,Ankylosing spondylitis,22874,0,0,0.0,0
+Globally tested,e_con_pr,Polymyalgia rheumatica,22874,0,0,0.0,0
+Globally tested,e_con_ro,Rendu-Osler disease,22874,0,0,0.0,0
+Globally tested,e_con_av,Vena cava agenesis,22874,0,0,0.0,0
+Globally tested,e_con_sm,May-Thurner syndrome,22874,0,0,0.0,0
+Globally tested,sin_tvp_,Index VTE presentation,22874,0,0,0.0,0
+Globally tested,var171,Syncope,22874,1007,1007,4.402378246043543,0
+Globally tested,tv_l_esu,Upper-extremity thrombosis,22874,12878,12878,56.29972894989945,0
+Globally tested,tvp_orig,Upper-extremity catheter relationship,22874,21831,21831,95.44023782460435,0
+Globally tested,tv_l_ein,Lower-extremity thrombosis,22874,5943,5943,25.981463670542976,0
+Globally tested,tvp_prox,DVT proximal/distal location,22874,8947,8947,39.11427821981289,0
+Globally tested,tv_l_svc,Cerebral sinus thrombosis,22874,14703,14703,64.278219812888,0
+Globally tested,tv_l_vre,Retinal vein thrombosis,22874,15458,15458,67.57891055346683,0
+Globally tested,tv_l_vrn,Renal vein thrombosis,22874,15398,15398,67.31660400454665,0
+Globally tested,tv_l_vca,Vena cava thrombosis,22874,18965,18965,82.91072833785084,0
+Globally tested,tv_l_yug,Jugular vein thrombosis,22874,19094,19094,83.4746874180292,0
+Globally tested,tv_l_ova,Ovarian vein thrombosis,22874,19109,19109,83.54026405525926,0
+Globally tested,tv_l_sup,Suprahepatic vein thrombosis,22874,19099,19099,83.4965462971059,0
+Globally tested,tv_l_pul,Pulmonary vein thrombosis,22874,19104,19104,83.51840517618257,0
+Globally tested,tv_l_ove,Other vein thrombosis,22874,15418,15418,67.40403952085337,0
+Globally tested,fr_cance,Active cancer,22874,0,0,0.0,0
+Globally tested,fr_cirug,Recent surgery,22874,0,0,0.0,0
+Globally tested,fr_inmov,Recent immobilization,22874,0,0,0.0,0
+Globally tested,fr_tvp_a,Prior VTE,22874,0,0,0.0,0
+Globally tested,fr_antfa,Family history of VTE,22874,15845,15845,69.27078779400192,0
+Globally tested,fr_tvs_a,Prior superficial thrombosis,22874,12323,12323,53.873393372387866,0
+Globally tested,fr_viaje,Recent prolonged travel,22874,395,395,1.7268514470577951,0
+Globally tested,fr_estro,Recent hormone exposure,22874,284,284,1.2415843315554778,0
+Globally tested,fr_embar,Pregnancy,22874,0,0,0.0,0
+Globally tested,fr_varic,Varicose veins,22874,816,816,3.5673690653143306,0
+Globally tested,fr_antec,Recent delivery,22874,94,94,0.41094692664160176,0
+Globally tested,ana_dime,Recorded categorical D-dimer,22874,1603,1603,7.007956631983912,5064
+Globally tested,ana_crea,Recorded creatinine category,22874,754,754,3.2963189647634867,0
+Globally tested,ana_trop,Recorded troponin category,22874,15169,15169,66.31546734283465,0
+Globally tested,edad,Age (years),22874,0,0,0.0,0
+Globally tested,peso,Weight (kg),22874,0,20,0.08743551630672379,0
+Globally tested,tension_,Systolic BP (mmHg),22874,0,1042,4.555390399580309,0
+Globally tested,ana_hemo,Hemoglobin (g/dL),22874,38,52,0.22733234239748187,0
+Globally tested,ana_plaq,Platelets (10^9/L),22874,37,40,0.17487103261344758,0
+Globally tested,ana_leuc,Leukocytes (10^9/L),22874,38,110,0.48089533968698084,0
+Globally tested,ana_neu,Neutrophils (10^9/L),22874,18945,18948,82.83640814899012,0
+Globally tested,protcrea,C-reactive protein (mg/dL),22874,22220,22240,97.22829413307686,0
+Globally tested,female_under45,Female and age <45,22874,0,0,0.0,0
+Globally tested,splanchnic,Splanchnic thrombosis,22874,14573,14573,63.70988895689429,0

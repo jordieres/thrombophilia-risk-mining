@@ -45,3 +45,11 @@ Parquet files remain local. To resume one deliberately, pass
 settings. New exploratory runs still default to `out/checkpoints/`, created on
 demand. The current manuscript's outcome-level `completed.json` files remain
 inside its analysis directory and continue to support manuscript `--resume`.
+
+## Additional methodological review: continuous multiple imputation
+
+`manuscript_mi_2026-09-09/` is the separate new run with mixed-type chained
+imputation, continuous predictors, spline LASSO without univariable screening,
+and held-out decision curves. Check its `run_manifest.json` for completion;
+do not treat a running/failed run as finished evidence. The existing principal
+package above remains preserved for comparison.

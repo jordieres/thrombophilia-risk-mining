@@ -1,0 +1,11 @@
+{
+  "directory": "/tmp/thrombophilia_mi_smoke_20260909",
+  "manifest": "complete",
+  "population": "JAK2",
+  "imputations": 2,
+  "iterations": 2,
+  "outer_splits": 2,
+  "inner_splits": 2,
+  "publication_evidence": false,
+  "routine_full_chain_benchmark_seconds": 79.87
+}

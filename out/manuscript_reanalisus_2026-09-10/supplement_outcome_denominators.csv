@@ -1,0 +1,9 @@
+outcome,label,priority,registry_n,tested_n,tested_binary_n,tested_positive_n,tested_unavailable_n,outside_tested_binary_n,outcome_policy,interpreted_tested_n,missing_interpreted_negative_n,missing_interpreted_negative_eligible_n,remaining_unavailable_n,known_excluded_n,eligible_n,eligible_positive_n
+ana_dura,Composite thrombophilia,composite,119449,22874,22874,8568,0,0,routine-panel,22874,0,0,0,27,22847,8545
+var156,Factor V Leiden,primary,119449,22874,10638,2048,12236,20761,routine-panel,22874,12236,12229,0,27,22847,2045
+var157,Prothrombin G20210A,primary,119449,22874,10376,1602,12498,20761,routine-panel,22874,12498,12491,0,27,22847,1602
+var161,Registry-coded APS,exploratory,119449,22874,10710,1908,12164,20761,routine-panel,22874,12164,12162,0,27,22847,1885
+var155,Protein S deficiency,exploratory,119449,22874,10315,757,12559,20761,routine-panel,22874,12559,12552,0,27,22847,756
+var154,Protein C deficiency,exploratory,119449,22874,10275,356,12599,20761,routine-panel,22874,12599,12592,0,27,22847,355
+var158,Antithrombin deficiency,exploratory,119449,22874,10333,260,12541,20761,routine-panel,22874,12541,12534,0,27,22847,259
+andujak2,JAK2 mutation,descriptive,119449,22874,2246,61,20628,0,routine-panel,2246,0,0,20628,7,2239,61

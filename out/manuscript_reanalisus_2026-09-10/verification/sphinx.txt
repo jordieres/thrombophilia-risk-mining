@@ -1,0 +1,47 @@
+Running Sphinx v7.2.6
+loading pickled environment... done
+[autosummary] generating autosummary for: api.rst, architecture.rst, development.rst, index.rst, installation.rst, manuscript_multiple_imputation.rst, manuscript_reanalysis.rst, usage.rst
+2026-09-09 23:47:40.465923: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-09-09 23:47:40.488434: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:477] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1788990460.511233 1018188 cuda_dnn.cc:8310] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1788990460.518021 1018188 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-09-09 23:47:40.544741: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+building [mo]: targets for 0 po files that are out of date
+writing output... 
+building [html]: targets for 1 source files that are out of date
+updating environment: 0 added, 1 changed, 0 removed
+[2Kreading sources... [100%] manuscript_multiple_imputation
+looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
+preparing documents... done
+copying assets... copying static files... done
+copying extra files... done
+done
+[2Kwriting output... [ 50%] index
+[2Kwriting output... [100%] manuscript_multiple_imputation
+generating indices... genindex py-modindex done
+[2Khighlighting module code... [  6%] cli
+[2Khighlighting module code... [ 12%] data_processor
+[2Khighlighting module code... [ 19%] exp_association_explorer
+[2Khighlighting module code... [ 25%] exp_bayesian_networks
+[2Khighlighting module code... [ 31%] exp_categorical_association
+[2Khighlighting module code... [ 38%] exp_clinical_risk_score
+[2Khighlighting module code... [ 44%] exp_contrast_mining
+[2Khighlighting module code... [ 50%] exp_permutation_importance
+[2Khighlighting module code... [ 56%] exp_score_screening
+[2Khighlighting module code... [ 62%] exp_unsupervised_clustering
+[2Khighlighting module code... [ 69%] experiment_base
+[2Khighlighting module code... [ 75%] manuscript_artifacts
+[2Khighlighting module code... [ 81%] manuscript_cohort
+[2Khighlighting module code... [ 88%] manuscript_models
+[2Khighlighting module code... [ 94%] manuscript_reanalysis
+[2Khighlighting module code... [100%] manuscript_reporting
+writing additional pages... search done
+dumping search index in English (code: en)... done
+dumping object inventory... done
+build succeeded.
+
+The HTML pages are in ../../../../../../tmp/thrombophilia_mi_docs.

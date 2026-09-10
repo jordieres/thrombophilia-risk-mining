@@ -1,0 +1,10 @@
+{
+  "pid": 1018313,
+  "command": [
+    "/usr/bin/python",
+    "src/manuscript_mi_reanalysis.py",
+    "--output-dir",
+    "out/manuscript_mi_2026-09-09"
+  ],
+  "expected_runtime": "Several hours; benchmark-based, not a guarantee"
+}

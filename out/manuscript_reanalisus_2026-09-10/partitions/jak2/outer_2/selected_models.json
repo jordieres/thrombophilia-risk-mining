@@ -1,0 +1,28 @@
+{
+  "parameters": {
+    "andujak2": {
+      "lasso": [
+        {
+          "C": 0.1
+        }
+      ],
+      "xgb": [
+        {
+          "n_estimators": 120,
+          "max_depth": 2,
+          "learning_rate": 0.08,
+          "subsample": 1.0,
+          "colsample_bytree": 0.9,
+          "reg_alpha": 0.5,
+          "reg_lambda": 5.0
+        }
+      ]
+    }
+  },
+  "thresholds": {
+    "andujak2": {
+      "lasso": 0.016024127490435254,
+      "xgb": 0.006035434547811747
+    }
+  }
+}
